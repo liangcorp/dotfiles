@@ -51,6 +51,8 @@
   :ensure t
   :init (global-flycheck-mode))
 
+(use-package flycheck :ensure)
+
 ;; turn on semantic
 (semantic-mode 1)
 
