@@ -9,8 +9,14 @@
              '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 ;; (package-refresh-contents)
-(require 'evil)
-(evil-mode 0)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(use-package evil :ensure)
+;; (require 'evil)
+;; (evil-mode 0)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -29,7 +35,8 @@
  )
 (load-theme 'one-dark t)
 
-(require 'rust-mode)
+(use-package rust-mode :ensure)
+;; (require 'rust-mode)
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
@@ -37,7 +44,8 @@
           (lambda () (prettify-symbols-mode)))
 (add-hook 'rust-mode-hook #'lsp)
 
-(require 'web-mode)
+(use-package web-mode :ensure)
+;; (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
@@ -48,18 +56,14 @@
 
 (apheleia-global-mode +1)
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
 
-(use-package flycheck :ensure)
+;; (use-package flycheck :ensure)
 
 ;; turn on semantic
-(semantic-mode 1)
+;; (semantic-mode 1)
 
 (use-package lsp-mode
   :ensure
@@ -77,6 +81,8 @@
   (add-hook 'css-mode 'lsp)
   (add-hook 'web-mode 'lsp))
 
+(use-package js2-mode :ensure)
+
 (use-package lsp-ui
   :ensure
   :commands lsp-ui-mode
@@ -91,12 +97,15 @@
 ;; Better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
 
-(require 'js2-refactor)
-(require 'xref-js2)
+
+(use-package js2-refactor :ensure)
+;; (require 'js2-refactor)
+(use-package xref-js2 :ensure)
+;; (require 'xref-js2)
 
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
 (js2r-add-keybindings-with-prefix "C-c C-r")
-(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
 
 ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
 ;; unbind it.
