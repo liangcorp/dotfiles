@@ -1,3 +1,8 @@
+;;; package --- Summary
+;;; Commentary:
+
+
+;;; Code:
 ;; Set up package.el to work with MELPA
 (require 'package)
 (add-to-list 'package-archives
@@ -15,7 +20,7 @@
  '(custom-safe-themes
    '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(package-selected-packages
-   '(spacemacs-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -103,7 +108,7 @@
 (company-mode +1)
 
 (defun move-region (start end n)
-  "Move the current region up or down by N lines."
+  "Move the current region up or down by N lines from START to END."
   (interactive "r\np")
   (let ((line-text (delete-and-extract-region start end)))
     (forward-line n)
@@ -113,14 +118,16 @@
       (set-mark start))))
 
 (defun move-region-up (start end n)
-  "Move the current line up by N lines."
+  "Move the current line up by N lines from START to END."
   (interactive "r\np")
   (move-region start end (if (null n) -1 (- n))))
 
 (defun move-region-down (start end n)
-  "Move the current line down by N lines."
+  "Move the current line down by N lines from START to END."
   (interactive "r\np")
   (move-region start end (if (null n) 1 n)))
 
 (global-set-key (kbd "M-<up>") 'move-region-up)
 (global-set-key (kbd "M-<down>") 'move-region-down)
+
+;;; init.el ends here
