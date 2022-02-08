@@ -16,6 +16,7 @@
 
 (use-package evil :ensure)
 (use-package magit :ensure)
+
 ;; (require 'evil)
 ;; (evil-mode 0)
 
@@ -27,7 +28,7 @@
  '(custom-safe-themes
    '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(package-selected-packages
-   '(auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,34 +38,16 @@
 
 (setq-default tab-width 4)
 
-(use-package one-themes
+(use-package atom-dark-theme
   :ensure t
   :load-path "themes"
   :init
   ;; (setq one-dark-theme-kit t)
   :config
-  (load-theme 'one-dark t)
+  (load-theme 'atom-one-dark t)
   )
 ;; (load-theme 'atom-one-dark t)
 
-(use-package rust-mode :ensure)
-;; (require 'rust-mode)
-(add-hook 'rust-mode-hook
-          (lambda () (setq indent-tabs-mode nil)))
-(setq rust-format-on-save t)
-(add-hook 'rust-mode-hook
-          (lambda () (prettify-symbols-mode)))
-(add-hook 'rust-mode-hook #'lsp)
-
-(use-package web-mode :ensure)
-;; (require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
 (use-package apheleia :ensure)
 (apheleia-global-mode +1)
@@ -74,6 +57,11 @@
   :init (global-flycheck-mode))
 
 ;; (use-package flycheck :ensure)
+(require 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(use-package yaml-mode :ensure)
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
 ;; turn on semantic
 ;; (semantic-mode 1)
@@ -92,11 +80,45 @@
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-mode-hook 'flyspell-prog-mode)
   (add-hook 'lsp-mode-hook 'auto-complete-mode)
-  (add-hook 'js2-mode-hook 'lsp)
-  (add-hook 'css-mode 'lsp)
-  (add-hook 'web-mode 'lsp)
-  (add-hook 'c-mode 'lsp)
-  (add-hook 'c++-mode 'lsp))
+  (add-hook 'js2-mode-hook #'lsp))
+
+(ac-config-default)
+
+(use-package rust-mode :ensure)
+;; (require 'rust-mode)
+(add-hook 'rust-mode-hook
+          (lambda () (setq indent-tabs-mode nil)))
+(setq rust-format-on-save t)
+(add-hook 'rust-mode-hook
+          (lambda () (prettify-symbols-mode)))
+(add-hook 'rust-mode-hook #'lsp)
+(add-hook 'rust-mode-hook #'cargo-minor-mode)
+
+;; (define-key rust-mode-map (kbd "C-c C-r") 'rust-run)
+;; (define-key rust-mode-map (kbd "C-c C-t") 'rust-test)
+;; (define-key rust-mode-map (kbd "C-c C-c") 'rust-check)
+
+(use-package web-mode :ensure)
+;; (require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+;; Add hook for various modes that will run LSP
+(add-hook 'css-mode #'lsp)
+
+(add-hook 'c-mode-hook #'lsp)
+(add-hook 'c-mode-hook
+          (lambda () (setq indent-tabs-mode nil)))
+;; (setq c-format-on-save t)
+(add-hook 'c-mode-hook
+          (lambda () (prettify-symbols-mode)))
+
+(add-hook 'c++-mode-hook #'lsp)
 
 (use-package js2-mode :ensure)
 
@@ -134,6 +156,12 @@
 (use-package company :ensure)
 (company-mode +1)
 
+(use-package yasnippet
+  :ensure
+  :config
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook 'yas-minor-mode)
+  (add-hook 'text-mode-hook 'yas-minor-mode))
 
 ;; Allow moving of a line or a block with M-Up and M-Down
 (defun move-region (start end n)
