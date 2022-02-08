@@ -1,2 +1,0 @@
-;;; Generated package description from flymake-aspell.el  -*- no-byte-compile: t -*-
-(define-package "flymake-aspell" "20220128.1518" "Aspell checker for flymake" '((emacs "26.1")) :commit "ffe905560bb917ae4bbbbb8ad2d7e2c70664225a" :authors '(("Leo Gaskin" . "leo.gaskin@le0.gs")) :maintainer '("Leo Gaskin" . "leo.gaskin@le0.gs") :keywords '("wp" "flymake" "spell" "aspell") :url "https://github.com/leotaku/flycheck-aspell")
