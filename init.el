@@ -70,9 +70,9 @@
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
   (lsp-rust-analyzer-cargo-watch-command "clippy")
-  (lsp-eldoc-render-all t)
+  (lsp-eldoc-render-all nil)
   (lsp-idle-delay 0.6)
-  (lsp-rust-analyzer-server-display-inlay-hints t)
+  (lsp-rust-analyzer-server-display-inlay-hints nil)
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-mode-hook 'flyspell-prog-mode)
@@ -87,12 +87,9 @@
   :custom
   (lsp-ui-peek-always-show t)
   (lsp-ui-sideline-show-hover t)
-  (lsp-ui-doc-enable nil))
+  (lsp-ui-doc-enable t))
 
-  (require 'js2-mode)
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
-(ac-config-default)
+;; (ac-config-default)
 
 ;; Rust mode with LSP support
 (use-package rust-mode :ensure)
@@ -100,8 +97,6 @@
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
-(add-hook 'rust-mode-hook
-          (lambda () (prettify-symbols-mode)))
 (add-hook 'rust-mode-hook #'lsp)
 ;; (add-hook 'rust-mode-hook #'cargo-minor-mode)
 
@@ -129,16 +124,12 @@
 (add-hook 'c-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
 ;; (setq c-format-on-save t)
-(add-hook 'c-mode-hook
-          (lambda () (prettify-symbols-mode)))
 
 ;; C++-mode that will run LSP at start
 (add-hook 'c++-mode-hook #'lsp)
 (add-hook 'c++-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
 ;; (setq c-format-on-save t)
-(add-hook 'c++-mode-hook
-          (lambda () (prettify-symbols-mode)))
 
 ;; Javascript mode will run LSP at start
 (use-package js2-mode :ensure)
@@ -146,6 +137,7 @@
 ;; Better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
 
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (use-package js2-refactor :ensure)
 ;; (require 'js2-refactor)
