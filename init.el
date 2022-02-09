@@ -43,7 +43,7 @@
  )
 
 (setq-default tab-width 4)
-(hl-line-mode +1)
+;; (hl-line-mode +1)
 
 (use-package atom-dark-theme
   :ensure t
@@ -51,8 +51,7 @@
   :init
   ;; (setq one-dark-theme-kit t)
   :config
-  (load-theme 'atom-one-dark t)
-  )
+  (load-theme 'atom-one-dark t))
 
 (use-package apheleia :ensure)
 (apheleia-global-mode +1)
@@ -70,15 +69,15 @@
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
   (lsp-rust-analyzer-cargo-watch-command "clippy")
-  (lsp-eldoc-render-all nil)
+  (lsp-eldoc-render-all t)
   (lsp-idle-delay 0.6)
-  (lsp-rust-analyzer-server-display-inlay-hints nil)
+  (lsp-rust-analyzer-server-display-inlay-hints t)
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-mode-hook 'flyspell-prog-mode)
   (add-hook 'lsp-mode-hook 'auto-complete-mode)
   (add-hook 'lsp-mode-hook 'display-line-numbers-mode)
-  ;; (add-hook 'lsp-mode-hook 'hl-line-mode)
+  (add-hook 'lsp-mode-hook 'hl-line-mode)
   (add-hook 'js2-mode-hook #'lsp))
 
 (use-package lsp-ui
