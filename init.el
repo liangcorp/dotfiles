@@ -43,6 +43,7 @@
  )
 
 (setq-default tab-width 4)
+(hl-line-mode +1)
 
 (use-package atom-dark-theme
   :ensure t
@@ -76,6 +77,8 @@
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-mode-hook 'flyspell-prog-mode)
   (add-hook 'lsp-mode-hook 'auto-complete-mode)
+  (add-hook 'lsp-mode-hook 'display-line-numbers-mode)
+  ;; (add-hook 'lsp-mode-hook 'hl-line-mode)
   (add-hook 'js2-mode-hook #'lsp))
 
 (use-package lsp-ui
@@ -142,7 +145,6 @@
 (add-hook 'js2-mode-hook #'lsp)
 ;; Better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
-
 
 
 (use-package js2-refactor :ensure)
