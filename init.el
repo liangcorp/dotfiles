@@ -19,6 +19,9 @@
 ;; wgrep package for string refactoring in multiple files
 (use-package wgrep :ensure)
 
+;; Remove trailing white space
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; (use-package evil :ensure)
 ;; (require 'evil)
 ;; (evil-mode 0)
