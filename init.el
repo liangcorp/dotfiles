@@ -34,7 +34,7 @@
  '(custom-safe-themes
    '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(package-selected-packages
-   '(wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -98,6 +98,7 @@
 (setq rust-format-on-save t)
 (add-hook 'rust-mode-hook #'lsp)
 ;; (add-hook 'rust-mode-hook #'cargo-minor-mode)
+(use-package rustic :ensure)
 
 (define-key rust-mode-map (kbd "C-c C-r") 'rust-run)
 (define-key rust-mode-map (kbd "C-c C-t") 'rust-test)
@@ -157,6 +158,24 @@
 ;; (use-package company :ensure)
 ;; (company-mode +1)
 
+;; PYTHON support
+(use-package elpy :ensure)
+(elpy-enable)
+;; Enable autopep8
+(use-package py-autopep8 :ensure)
+(use-package blacken :ensure)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; (add-to-list 'auto-mode-alist '("\\.py\\'" . elpy-mode))
+;; (use-package lsp-python-ms
+;;   :ensure t
+;;   :init (setq lsp-python-ms-auto-install-server t)
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-python-ms)
+;;                           (lsp))))  ; or lsp-deferred
+
+;; ELISP mode hooks company-mode
+;; (add-hook 'emacs-lisp-mode #'company-mode)
+
 (use-package yasnippet
   :ensure
   :config
@@ -198,5 +217,15 @@
 
 (global-set-key (kbd "M-<up>") 'move-region-up)
 (global-set-key (kbd "M-<down>") 'move-region-down)
+
+;; Ensure ibuffer opens with point at the current buffer's entry.
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(defadvice ibuffer
+  (around ibuffer-point-to-most-recent) ()
+  "Open ibuffer with cursor pointed to most recent buffer name."
+  (let ((recent-buffer-name (buffer-name)))
+    ad-do-it
+    (ibuffer-jump-to-buffer recent-buffer-name)))
+(ad-activate 'ibuffer)
 
 ;;; init.el ends here

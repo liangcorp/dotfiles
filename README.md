@@ -13,6 +13,11 @@ sudo npm install -g typescript-language-server
 sudo npm install -g typescript
 ```
 
+### For Python and LSP
+```
+pip install 'python-lsp-server[all]'
+```
+
 #### Following Packages may not be necessary
 ```
 sudo npm install -g prettier
