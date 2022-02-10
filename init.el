@@ -34,7 +34,7 @@
  '(custom-safe-themes
    '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(package-selected-packages
-   '(atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -44,6 +44,22 @@
 
 (setq-default tab-width 4)
 ;; (hl-line-mode +1)
+(use-package neotree :ensure)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-smart-open t)
+(setq projectile-switch-project-action 'neotree-projectile-action)
+;; (defun neotree-project-dir ()
+;;     "Open NeoTree using the git root."
+;;     (interactive)
+;;     (let ((project-dir (ffip-project-root))
+;;           (file-name (buffer-file-name)))
+;;       (if project-dir
+;;           (progn
+;;             (neotree-dir project-dir)
+;;             (neotree-find file-name))
+;;         (message "Could not find git project root."))))
+
+;;   (define-key map (kbd "C-c C-p") 'neotree-project-dir)
 
 (use-package atom-one-dark-theme
   :ensure t
