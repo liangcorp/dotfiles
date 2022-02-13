@@ -13,6 +13,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Disable tool bar
+(tool-bar-mode -1)
+
 ;; Git support for Emacs
 (use-package magit :ensure)
 
