@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 12
+font pango:ubuntu-regular 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -28,7 +28,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --color=101010 --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -45,7 +45,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -209,16 +209,23 @@ bar {
 }
 
 exec --no-startup-id xdg-user-dirs-update
-exec --no-startup-id feh --bg-scale ~/Pictures/Ibm-Wallpapers-HD-1920x1080.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/Ibm-Wallpapers-HD-1920x1080.jpg
+exec --no-startup-id volumeicon
 
 # Personal bindings
 bindsym $mod+Shift+b exec "chromium-freeworld"
-bindsym $mod+Shift+m exec "thunderbird"
+bindsym $mod+Shift+m exec "evolution"
 bindsym $mod+Shift+w exec "firefox"
-# bindsym $mod+Shift+s exec "slack"
+bindsym $mod+Shift+s exec "slack"
 bindsym $mod+Shift+f exec "pcmanfm"
-bindsym $mod+Shift+v exec "emacs"
 
+bindsym $mod+Ctrl+w exec "scrot -u"
 bindsym $mod+Ctrl+a exec "scrot"
-bindsym $mod+Ctrl+u exec "scrot -u"
-bindsym $mod+Ctrl+s exec "scrot -s"
+bindsym --release $mod+Ctrl+s exec "scrot -s"
+
+bindsym --release $mod+Ctrl+l exec "sleep 0.2; xset dpms force off"
+
+# Flowing windows for specific apps
+for_window [class="Gimp"] floating enable
+for_window [class="com-wikidsystems-jw-JW"] floating enable
+for_window [class="Pcmanfm"] floating enable
