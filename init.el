@@ -16,6 +16,8 @@
 ;; Disable tool bar
 (tool-bar-mode -1)
 
+;; Set default font
+
 ;; Git support for Emacs
 (use-package magit :ensure)
 
@@ -37,9 +39,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
+   '("835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(package-selected-packages
-   '(haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -74,12 +76,18 @@
   :config
   (load-theme 'atom-one-dark t))
 
-(use-package apheleia :ensure)
-(apheleia-global-mode +1)
+;; (use-package apheleia :ensure)
+;; (apheleia-global-mode +1)
+(use-package apheleia
+  :ensure t
+  :init (apheleia-global-mode))
+
+(use-package vimrc-mode :ensure)
+(add-to-list 'auto-mode-alist '("\\vimrc\\'" . vimrc-mode))
 
 (use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
+   :ensure t
+   :init (global-flycheck-mode))
 
 ;; Load auto-complete
 (use-package auto-complete :ensure)
@@ -96,10 +104,9 @@
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-mode-hook 'flyspell-prog-mode)
-  (add-hook 'lsp-mode-hook 'auto-complete-mode)
+  (add-hook 'lsp-mode-hook 'company-mode)
   (add-hook 'lsp-mode-hook 'display-line-numbers-mode)
-  (add-hook 'lsp-mode-hook 'hl-line-mode)
-  (add-hook 'js2-mode-hook #'lsp))
+  (add-hook 'lsp-mode-hook 'hl-line-mode))
 
 (use-package lsp-ui
   :ensure
@@ -153,18 +160,25 @@
 ;; (setq c-format-on-save t)
 
 ;; Javascript mode will run LSP at start
-(use-package js2-mode :ensure)
-(add-hook 'js2-mode-hook #'lsp)
-;; Better imenu
-(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+(use-package js2-refactor :ensure)
+(use-package xref-js2 :ensure)
+
+(use-package js2-mode
+  :ensure t
+  :hook
+  (js2-mode . (lambda ()
+				(require 'lsp)
+				(lsp-deferred)
+				(add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; (use-package js2-mode :ensure)
+;; (add-hook 'js2-mode-hook #'lsp)
+;; (add-hook 'js2-mode-hook
+;; 		  (lambda () (flycheck-add-next-checker 'javascript-eslint 'lsp-ui)))
 
-(use-package js2-refactor :ensure)
-;; (require 'js2-refactor)
-(use-package xref-js2 :ensure)
-;; (require 'xref-js2)
-
+;; Better imenu
+(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
 (js2r-add-keybindings-with-prefix "C-c C-r")
 ;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
@@ -173,8 +187,8 @@
 ;; unbind it.
 ;; (define-key js-mode-map (kbd "M-.") nil)
 
-(add-hook 'js2-mode-hook (lambda ()
- 			   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+;; (add-hook 'js2-mode-hook (lambda ()
+;; 			   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
 ;; (use-package company :ensure)
 ;; (company-mode +1)
@@ -242,7 +256,7 @@
 ;; Ensure ibuffer opens with point at the current buffer's entry.
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (defadvice ibuffer
-  (around ibuffer-point-to-most-recent) ()
+  (around ibuffer-point-to-most-recent)
   "Open ibuffer with cursor pointed to most recent buffer name."
   (let ((recent-buffer-name (buffer-name)))
     ad-do-it
