@@ -15,8 +15,14 @@
 
 ;; Disable tool bar
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 
-;; Set default font
+;; Enable minimap
+(use-package minimap :ensure)
+(minimap-mode +1)
+
+;; Add spell check to Org mode
+(add-hook 'org 'flyspell-mode)
 
 ;; Git support for Emacs
 (use-package magit :ensure)
@@ -40,8 +46,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
+ '(minimap-minimum-width 7)
  '(package-selected-packages
-   '(vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -68,13 +75,18 @@
 
 ;;   (define-key map (kbd "C-c C-p") 'neotree-project-dir)
 
+;; (use-package spacemacs-theme :ensure)
+
 (use-package atom-one-dark-theme
   :ensure t
   :load-path "themes"
   :init
   ;; (setq one-dark-theme-kit t)
   :config
-  (load-theme 'atom-one-dark t))
+  ;; (load-theme 'atom-one-dark t))
+  (load-theme 'spacemacs-dark t))
+
+
 
 ;; (use-package apheleia :ensure)
 ;; (apheleia-global-mode +1)
