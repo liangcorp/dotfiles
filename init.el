@@ -17,9 +17,18 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; TODO done with timestamp
+(setq org-log-done 'time)
+
 ;; Enable minimap
 (use-package minimap :ensure)
-(minimap-mode +1)
+;; (minimap-mode +1)
+
+;; Enable go-mode
+(use-package go-mode :ensure)
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(add-hook 'go-mode-hook #'lsp)
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; Add spell check to Org mode
 (add-hook 'org 'flyspell-mode)
@@ -45,10 +54,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
+   '("76ed126dd3c3b653601ec8447f28d8e71a59be07d010cd96c55794c3008df4d7" "835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(minimap-minimum-width 7)
  '(package-selected-packages
-   '(minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(go-mode minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -84,7 +93,7 @@
   ;; (setq one-dark-theme-kit t)
   :config
   ;; (load-theme 'atom-one-dark t))
-  (load-theme 'spacemacs-dark t))
+  (load-theme 'atom-one-dark t))
 
 
 
