@@ -9,17 +9,23 @@ $ cargo xtask install --server # will install rust-analyzer into $HOME/.cargo/bi
 
 ### For Javascript and LSP
 ```
-sudo npm install -g typescript-language-server
-sudo npm install -g typescript
+$ sudo npm install -g typescript-language-server
+$ sudo npm install -g typescript
 ```
 
 ### For Python and LSP
 ```
-pip install 'python-lsp-server[all]'
+$ pip install 'python-lsp-server[all]'
+```
+
+### For Go
+Install golang and gopls. Following command is for fedora
+```
+$ sudo dnf install golang golang-x-tools-gopls
 ```
 
 #### Following Packages may not be necessary
 ```
-sudo npm install -g prettier
-sudo npm install -g eslint
+$ sudo npm install -g prettier
+$ sudo npm install -g eslint
 ```
