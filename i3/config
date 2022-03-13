@@ -28,7 +28,9 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
+# exec --no-startup-id xset 3600
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
+exec --no-startup-id xscreensaver --no-splash
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -36,8 +38,8 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -209,23 +211,46 @@ bar {
 }
 
 exec --no-startup-id xdg-user-dirs-update
-exec --no-startup-id feh --bg-fill ~/Pictures/Ibm-Wallpapers-HD-1920x1080.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper/IBM.png
 exec --no-startup-id volumeicon
+exec --no-startup-id ibus-daemon
+
+# exec --no-startup-id pkill -f volumeicon
+exec --no-startup-id pkill -f blueman-applet
+exec --no-startup-id pkill -f nm-applet
+exec --no-startup-id pkill -f xscreensaver
+exec --no-startup-id pkill -f ibus-daemon
+
+# exec --no-startup-id volumeicon
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+exec --no-startup-id xscreenserver --no-splash
+exec --no-startup-id ibus-daemon
 
 # Personal bindings
-bindsym $mod+Shift+b exec "chromium-freeworld"
-bindsym $mod+Shift+m exec "evolution"
-bindsym $mod+Shift+w exec "firefox"
-bindsym $mod+Shift+s exec "slack"
-bindsym $mod+Shift+f exec "pcmanfm"
+bindsym $mod+Ctrl+c exec "chromium-freeworld"
+bindsym $mod+Ctrl+m exec "evolution"
+bindsym $mod+Ctrl+f exec "firefox"
+bindsym $mod+Ctrl+s exec "slack"
+bindsym $mod+Ctrl+p exec "pcmanfm"
+bindsym $mod+Ctrl+v exec "virt-manager"
+bindsym $mod+Ctrl+e exec "emacs"
 
 bindsym $mod+Ctrl+w exec "scrot -u"
 bindsym $mod+Ctrl+a exec "scrot"
-bindsym --release $mod+Ctrl+s exec "scrot -s"
+bindsym --release $mod+Ctrl+r exec "scrot -s"
 
-bindsym --release $mod+Ctrl+l exec "sleep 0.2; xset dpms force off"
+bindsym --release $mod+Ctrl+l exec "xset dpms force off; xscreensaver-command -lock"
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 # Flowing windows for specific apps
 for_window [class="Gimp"] floating enable
 for_window [class="com-wikidsystems-jw-JW"] floating enable
 for_window [class="Pcmanfm"] floating enable
+for_window [class="Virt-manager"] floating enable
+for_window [class="feh"] floating enable
