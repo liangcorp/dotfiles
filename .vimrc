@@ -8,7 +8,7 @@ set tabstop=4
 set path+=**
 set wildmenu
 
-colorscheme onedark
+colorscheme dracula
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -22,10 +22,11 @@ call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
 Plug 'joshdick/onedark.vim'
-"Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'rust-lang/rust.vim'
-Plug 'wfxr/minimap.vim'
+Plug 'fatih/vim-go'
+" Plug 'wfxr/minimap.vim'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'

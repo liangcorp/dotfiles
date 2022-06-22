@@ -13,11 +13,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:ubuntu-regular 12
+# font pango:ubuntu-regular 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 12
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -47,7 +47,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -211,20 +211,20 @@ bar {
 }
 
 exec --no-startup-id xdg-user-dirs-update
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper/IBM.png
+# exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper/IBM.png
 exec --no-startup-id volumeicon
 exec --no-startup-id ibus-daemon
 
-# exec --no-startup-id pkill -f volumeicon
+exec --no-startup-id pkill -f volumeicon
 exec --no-startup-id pkill -f blueman-applet
 exec --no-startup-id pkill -f nm-applet
 exec --no-startup-id pkill -f xscreensaver
 exec --no-startup-id pkill -f ibus-daemon
 
-# exec --no-startup-id volumeicon
+exec --no-startup-id volumeicon
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
-exec --no-startup-id xscreenserver --no-splash
+exec --no-startup-id xscreensaver --no-splash
 exec --no-startup-id ibus-daemon
 
 # Personal bindings
@@ -235,12 +235,17 @@ bindsym $mod+Ctrl+s exec "slack"
 bindsym $mod+Ctrl+p exec "pcmanfm"
 bindsym $mod+Ctrl+v exec "virt-manager"
 bindsym $mod+Ctrl+e exec "emacs"
+bindsym $mod+Ctrl+h exec "/opt/Webex/bin/CiscoCollabHost"
 
 bindsym $mod+Ctrl+w exec "scrot -u"
 bindsym $mod+Ctrl+a exec "scrot"
 bindsym --release $mod+Ctrl+r exec "scrot -s"
 
 bindsym --release $mod+Ctrl+l exec "xset dpms force off; xscreensaver-command -lock"
+# bindsym --release $mod+Ctrl+l exec "xset dpms force off; i3lock"
+
+bindsym Ctrl+F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym Ctrl+F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -248,9 +253,14 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
+# Keyboard layout
+# exec "setxkbmap -layout us,ie"
+# exec "setxkbmap -option 'grp:alt_shift_toggle'"
+
 # Flowing windows for specific apps
 for_window [class="Gimp"] floating enable
 for_window [class="com-wikidsystems-jw-JW"] floating enable
 for_window [class="Pcmanfm"] floating enable
 for_window [class="Virt-manager"] floating enable
 for_window [class="feh"] floating enable
+# for_window [class="CiscoCollabHost"] floating enable
