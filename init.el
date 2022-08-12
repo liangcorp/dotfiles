@@ -21,7 +21,7 @@
 (global-set-key (kbd "C-c C-s") 'window-swap-states)
 
 ;; TODO done with timestamp
-(setq org-log-done 'time)
+;; (setq org-log-done 'time)
 
 ;; Enable minimap
 (use-package minimap :ensure)
@@ -60,7 +60,7 @@
    '("1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" "76ed126dd3c3b653601ec8447f28d8e71a59be07d010cd96c55794c3008df4d7" "835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(minimap-minimum-width 7)
  '(package-selected-packages
-   '(go-mode minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(jenkinsfile-mode go-mode minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -109,6 +109,9 @@
 (use-package vimrc-mode :ensure)
 (add-to-list 'auto-mode-alist '("\\vimrc\\'" . vimrc-mode))
 
+(use-package jenkinsfile-mode :ensure)
+(add-to-list 'auto-mode-alist '("\\JenkinsFile\\'" . jenkinsfile-mode))
+
 (use-package flycheck
    :ensure t
    :init (global-flycheck-mode))
@@ -132,6 +135,7 @@
   (add-hook 'lsp-mode-hook 'company-mode)
   (add-hook 'lsp-mode-hook 'display-line-numbers-mode)
   (add-hook 'lsp-mode-hook 'hl-line-mode)
+  (add-hook 'lsp-mode-hook 'display-fill-column-indicator-mode)
   (add-hook 'lsp-mode-hook 'auto-complete-mode))
 
 (use-package lsp-ui
