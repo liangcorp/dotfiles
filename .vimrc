@@ -53,6 +53,7 @@ Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'puremourning/vimspector'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -114,6 +115,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " let g:minimap_auto_start_win_enter = 1
 " let g:minimap_block_filetypes = ['txt']
 " let g:minimap_highlight_search = 1
+
+" Debugger vimspector
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" let g:vimspector_configurations
 
 " LightLine
 set laststatus=2

@@ -60,7 +60,7 @@
    '("1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" "76ed126dd3c3b653601ec8447f28d8e71a59be07d010cd96c55794c3008df4d7" "835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(minimap-minimum-width 7)
  '(package-selected-packages
-   '(jenkinsfile-mode go-mode minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(git-gutter dap-cpptools dap-mode jenkinsfile-mode go-mode minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -120,6 +120,12 @@
 (use-package auto-complete :ensure)
 (setq auto-complete-idle-delay 1)
 
+;; (use-package git-gutter :ensure)
+;; (require 'git-gutter)
+
+(use-package diff-hl :ensure)
+(global-diff-hl-mode)
+
 (use-package lsp-mode
   :ensure
   :commands lsp
@@ -138,6 +144,9 @@
   (add-hook 'lsp-mode-hook 'display-fill-column-indicator-mode)
   (add-hook 'lsp-mode-hook 'auto-complete-mode))
 
+(add-hook 'magit-post-refresh-hook
+          #'git-gutter:update-all-windows)
+
 (use-package lsp-ui
   :ensure
   :commands lsp-ui-mode
@@ -145,6 +154,30 @@
   (lsp-ui-peek-always-show t)
   (lsp-ui-sideline-show-hover t)
   (lsp-ui-doc-enable t))
+
+;; optionally if you want to use debugger
+(use-package dap-mode :ensure)
+(require 'dap-utils)
+(require 'dap-dlv-go)
+(require 'dap-gdb-lldb)
+(require 'dap-cpptools)
+
+;; (with-eval-after-load 'lsp-rust (require 'dap-cpptools))
+
+;; Add a template specific for debugging Rust programs.
+;; It is used for new projects, where I can M-x dap-edit-debug-template
+(dap-register-debug-template "Rust::GDB Run Configuration"
+                             (list :type "gdb"
+                                   :request "launch"
+                                   :name "GDB::Run"
+                           :gdbpath "rust-gdb"
+                                   :target nil
+                                   :cwd nil))
+(with-eval-after-load 'dap-mode
+    (setq dap-default-terminal-kind "integrated") ;; Make sure that terminal programs open a term for I/O in an Emacs buffer
+    (dap-auto-configure-mode +1))
+
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 ;; (ac-config-default)
 
