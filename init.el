@@ -145,7 +145,7 @@
   (add-hook 'lsp-mode-hook 'auto-complete-mode))
 
 (add-hook 'magit-post-refresh-hook
-          #'git-gutter:update-all-windows)
+          #'diff-hl-reset-reference-rev)
 
 (use-package lsp-ui
   :ensure

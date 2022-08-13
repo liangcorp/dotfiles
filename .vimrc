@@ -97,7 +97,20 @@ let g:ale_fixers = {
 "let g:ale_sign_error = '❌'
 "let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_linters = { 'rust': ['analyzer'] }
 
+" let g:ale_rust_analyzer_executable = 'rust-analyzer'
+let g:ale_rust_analyzer_config = {
+      \ 'diagnostics': { 'disabled': ['unresolved-import'] },
+      \ 'cargo': { 'loadOutDirsFromCheck': v:true },
+      \ 'procMacro': { 'enable': v:true },
+      \ 'checkOnSave': { 'command': 'clippy', 'enable': v:true }
+      \ }
+
+" Prettier
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
@@ -118,6 +131,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Debugger vimspector
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve' ]
 " let g:vimspector_configurations
 
 " LightLine
