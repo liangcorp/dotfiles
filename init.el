@@ -20,11 +20,13 @@
 (global-set-key (kbd "C-c C-c") 'comment-line)
 (global-set-key (kbd "C-c C-s") 'window-swap-states)
 
+(set-default-coding-systems 'utf-8)
+
 ;; TODO done with timestamp
 ;; (setq org-log-done 'time)
 
 ;; Enable minimap
-(use-package minimap :ensure)
+;; (use-package minimap :ensure)
 ;; (minimap-mode +1)
 
 ;; Enable go-mode
@@ -141,7 +143,7 @@
   (add-hook 'lsp-mode-hook 'company-mode)
   (add-hook 'lsp-mode-hook 'display-line-numbers-mode)
   (add-hook 'lsp-mode-hook 'hl-line-mode)
-  (add-hook 'lsp-mode-hook 'display-fill-column-indicator-mode)
+  ;; (add-hook 'lsp-mode-hook 'display-fill-column-indicator-mode)
   (add-hook 'lsp-mode-hook 'auto-complete-mode))
 
 (add-hook 'magit-post-refresh-hook
