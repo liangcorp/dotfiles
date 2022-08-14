@@ -42,9 +42,7 @@ Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-" Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'preservim/nerdtree'
@@ -54,7 +52,12 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'puremourning/vimspector'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'Mofiqul/dracula.nvim'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -104,7 +107,6 @@ let NERDTreeShowHidden=1 " Show hidden files
 let g:ale_fixers = {
  \ 'javascript': ['eslint']
  \ }
-
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed = 'never'
@@ -131,12 +133,6 @@ let g:rustfmt_autosave = 1
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" let g:minimap_width = 10
-" let g:minimap_auto_start = 1
-" let g:minimap_auto_start_win_enter = 1
-" let g:minimap_block_filetypes = ['txt']
-" let g:minimap_highlight_search = 1
 
 " Debugger vimspector
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
