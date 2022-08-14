@@ -14,10 +14,11 @@ set ruler
 set wildmenu
 set mouse=a
 set mousemodel=popup
-set t_Co=256
+" set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
 set autowrite
+set encoding=UTF-8
 
 let g:indentLine_enabled = 1
 let g:indentLine_concealcursor = ''
@@ -37,7 +38,6 @@ call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'rust-lang/rust.vim'
@@ -45,19 +45,20 @@ Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'puremourning/vimspector'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'airblade/vim-gitgutter'
 
 Plug 'Mofiqul/dracula.nvim'
+Plug 'joshdick/onedark.vim'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -69,6 +70,53 @@ Plug 'honza/vim-snippets'
 call plug#end()
 
 colorscheme dracula
+
+" Lua scripts
+lua << EOF
+-- empty setup using defaults
+require("nvim-tree").setup()
+
+require('gitsigns').setup() 
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "c", "lua", "rust", "go", "bash", "python", "dockerfile", "java", "json", "latex", "make", "yaml", "vim"},
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  -- List of parsers to ignore installing (for "all")
+  ignore_install = { "javascript" },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    -- disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
+" Nvim Tree
+nmap <C-z> <cmd>NvimTreeToggle<cr>
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \ }
 
 " Telescope
 " Find files using Telescope command-line sugar.
@@ -98,10 +146,10 @@ let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
 
 " NERDTree
-map <C-z> :NERDTreeToggle<CR> “ Toggle side window with `CTRL+z`.
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let NERDTreeShowHidden=1 " Show hidden files
+" map <C-z> :NERDTreeToggle<CR> “ Toggle side window with `CTRL+z`.
+" let g:NERDTreeDirArrowExpandable = '▸'
+" let g:NERDTreeDirArrowCollapsible = '▾'
+" let NERDTreeShowHidden=1 " Show hidden files
 
 " Ale
 let g:ale_fixers = {
@@ -155,12 +203,9 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
       \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
-
-let g:lightline = {
-\ 'separator': { 'left': '', 'right': '' },
-\ 'subseparator': { 'left': '', 'right': '' }
-\ }
 
 " VIM Snippets
 " NOTE: You can use other key to expand snippet.
