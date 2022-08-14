@@ -184,14 +184,16 @@
 ;; (ac-config-default)
 
 ;; Rust mode with LSP support
-(use-package rust-mode :ensure)
+(use-package rust-mode
+  :mode "\\.rs\\'"
+  :init (setq rust-format-on-save t))
 ;; (require 'rust-mode)
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
-(setq rust-format-on-save t)
 (add-hook 'rust-mode-hook #'lsp)
 ;; (add-hook 'rust-mode-hook #'cargo-minor-mode)
 (use-package rustic :ensure)
+(use-package cargo :ensure)
 
 (define-key rust-mode-map (kbd "C-c C-r") 'rust-run)
 (define-key rust-mode-map (kbd "C-c C-t") 'rust-test)
@@ -288,8 +290,7 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; yaml-mode runs on .yaml files by default
-(use-package yaml-mode :ensure)
-(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(use-package yaml-mode :mode "\\.ya?ml\\'")
 
 ;; turn on semantic
 ;; (semantic-mode 1)
