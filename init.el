@@ -122,11 +122,11 @@
 (use-package auto-complete :ensure)
 (setq auto-complete-idle-delay 1)
 
-;; (use-package git-gutter :ensure)
-;; (require 'git-gutter)
+(use-package git-gutter :ensure)
+(require 'git-gutter)
 
-(use-package diff-hl :ensure)
-(global-diff-hl-mode)
+;; (use-package diff-hl :ensure)
+;; (global-diff-hl-mode)
 
 (use-package lsp-mode
   :ensure
