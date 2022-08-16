@@ -24,6 +24,7 @@
 
 ;; TODO done with timestamp
 ;; (setq org-log-done 'time)
+(global-tree-sitter-mode)
 
 ;; Enable minimap
 ;; (use-package minimap :ensure)
@@ -62,7 +63,7 @@
    '("443e2c3c4dd44510f0ea8247b438e834188dc1c6fb80785d83ad3628eadf9294" "aec7b55f2a13307a55517fdf08438863d694550565dee23181d2ebd973ebd6b8" "eca44f32ae038d7a50ce9c00693b8986f4ab625d5f2b4485e20f22c47f2634ae" "1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" "76ed126dd3c3b653601ec8447f28d8e71a59be07d010cd96c55794c3008df4d7" "835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(minimap-minimum-width 7)
  '(package-selected-packages
-   '(git-gutter dap-cpptools dap-mode jenkinsfile-mode go-mode minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep helm-ag atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(consult-flyspell docker docker-compose-mode consult git-gutter dap-cpptools dap-mode jenkinsfile-mode go-mode minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -320,14 +321,133 @@
 (global-set-key (kbd "M-<down>") 'move-region-down)
 
 ;; Ensure ibuffer opens with point at the current buffer's entry.
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; (global-set-key (kbd "C-x C-b") 'ibuffer)
+;;
+;; (defadvice ibuffer
+;;   (around ibuffer-point-to-most-recent)
+;;   "Open ibuffer with cursor pointed to most recent buffer name."
+;;   (let ((recent-buffer-name (buffer-name)))
+;;     ad-do-it
+;;     (ibuffer-jump-to-buffer recent-buffer-name)))
+;; (ad-activate 'ibuffer)
 
-(defadvice ibuffer
-  (around ibuffer-point-to-most-recent)
-  "Open ibuffer with cursor pointed to most recent buffer name."
-  (let ((recent-buffer-name (buffer-name)))
-    ad-do-it
-    (ibuffer-jump-to-buffer recent-buffer-name)))
-(ad-activate 'ibuffer)
+;; (use-package helm :straight t)
+;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
 
+;; Example configuration for Consult
+(use-package consult
+  ;; Replace bindings. Lazily loaded due by `use-package'.
+  :bind (;; C-c bindings (mode-specific-map)
+         ("C-c h" . consult-history)
+         ("C-c m" . consult-mode-command)
+         ("C-c k" . consult-kmacro)
+         ;; C-x bindings (ctl-x-map)
+         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+         ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+         ;; Custom M-# bindings for fast register access
+         ("M-#" . consult-register-load)
+         ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+         ("C-M-#" . consult-register)
+         ;; Other custom bindings
+         ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+         ("<help> a" . consult-apropos)            ;; orig. apropos-command
+         ;; M-g bindings (goto-map)
+         ("M-g e" . consult-compile-error)
+         ("M-g f" . consult-flyspell)               ;; Alternative: consult-flycheck
+         ("M-g g" . consult-goto-line)             ;; orig. goto-line
+         ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+         ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-imenu-multi)
+         ;; M-s bindings (search-map)
+         ("M-s d" . consult-find)
+         ("M-s D" . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ("M-s r" . consult-ripgrep)
+         ("M-s l" . consult-line)
+         ("M-s L" . consult-line-multi)
+         ("M-s m" . consult-multi-occur)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+         ;; Isearch integration
+         ("M-s e" . consult-isearch-history)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+         ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+         ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+         ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+         ;; Minibuffer history
+         :map minibuffer-local-map
+         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+         ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+
+  ;; Enable automatic preview at point in the *Completions* buffer. This is
+  ;; relevant when you use the default completion UI.
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+
+  ;; The :init configuration is always executed (Not lazy)
+  :init
+
+  ;; Optionally configure the register formatting. This improves the register
+  ;; preview for `consult-register', `consult-register-load',
+  ;; `consult-register-store' and the Emacs built-ins.
+  (setq register-preview-delay 0.5
+        register-preview-function #'consult-register-format)
+
+  ;; Optionally tweak the register preview window.
+  ;; This adds thin lines, sorting and hides the mode line of the window.
+  (advice-add #'register-preview :override #'consult-register-window)
+
+  ;; Use Consult to select xref locations with preview
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+
+  ;; Configure other variables and modes in the :config section,
+  ;; after lazily loading the package.
+  :config
+
+  ;; Optionally configure preview. The default value
+  ;; is 'any, such that any key triggers the preview.
+  ;; (setq consult-preview-key 'any)
+  ;; (setq consult-preview-key (kbd "M-."))
+  ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+  ;; For some commands and buffer sources it is useful to configure the
+  ;; :preview-key on a per-command basis using the `consult-customize' macro.
+  (consult-customize
+   consult-theme
+   :preview-key '(:debounce 0.2 any)
+   consult-ripgrep consult-git-grep consult-grep
+   consult-bookmark consult-recent-file consult-xref
+   consult--source-bookmark consult--source-recent-file
+   consult--source-project-recent-file
+   :preview-key (kbd "M-."))
+
+  ;; Optionally configure the narrowing key.
+  ;; Both < and C-+ work reasonably well.
+  (setq consult-narrow-key "<") ;; (kbd "C-+")
+
+  ;; Optionally make narrowing help available in the minibuffer.
+  ;; You may want to use `embark-prefix-help-command' or which-key instead.
+  ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+
+  ;; By default `consult-project-function' uses `project-root' from project.el.
+  ;; Optionally configure a different project root function.
+  ;; There are multiple reasonable alternatives to chose from.
+  ;;;; 1. project.el (the default)
+  ;; (setq consult-project-function #'consult--default-project--function)
+  ;;;; 2. projectile.el (projectile-project-root)
+  ;; (autoload 'projectile-project-root "projectile")
+  ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
+  ;;;; 3. vc.el (vc-root-dir)
+  ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
+  ;;;; 4. locate-dominating-file
+  ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
+)
 ;;; init.el ends here

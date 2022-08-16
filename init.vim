@@ -25,6 +25,8 @@ let g:indentLine_concealcursor = ''
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 
+autocmd BufWritePre * :%s/\s\+$//e
+
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -42,7 +44,7 @@ Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -54,6 +56,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'TimUntersberger/neogit'
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
@@ -73,10 +76,15 @@ colorscheme dracula
 
 " Lua scripts
 lua << EOF
+-- Neogit
+local neogit = require('neogit')
+
+neogit.setup {}
+
 -- empty setup using defaults
 require("nvim-tree").setup()
 
-require('gitsigns').setup() 
+require('gitsigns').setup()
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "c", "lua", "rust", "go", "bash", "python", "dockerfile", "java", "json", "latex", "make", "yaml", "vim"},
@@ -266,7 +274,7 @@ function! s:on_lsp_buffer_enabled() abort
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-    
+
     " refer to doc to add more commands
 endfunction
 

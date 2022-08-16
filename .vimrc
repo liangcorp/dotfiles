@@ -53,7 +53,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'puremourning/vimspector'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Track the engine.
