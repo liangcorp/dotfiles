@@ -24,33 +24,73 @@
 
 ;; TODO done with timestamp
 ;; (setq org-log-done 'time)
+(use-package tree-sitter :ensure t)
 (global-tree-sitter-mode)
 
-;; Enable minimap
-;; (use-package minimap :ensure)
-;; (minimap-mode +1)
-
 ;; Enable go-mode
-(use-package go-mode :ensure)
+(use-package go-mode
+  :ensure t
+  :hook ((go-mode . lsp-deferred)
+         (go-mode . company-mode)
+         (go-mode . yas-minor-mode))
+  :bind (:map go-mode-map
+              ("<f6>" . gofmt)
+              ("C-c 6" . gofmt))
+  :config
+  (require 'lsp-mode)
+  (setq lsp-go-analyses
+        '((fieldalignment . t)
+          (nilness        . t)
+          (unusedwrite    . t)
+          (unusedparams   . t)
+          (useany         . t)
+          (unusedvariable . t)))
+  (add-to-list 'exec-path "~/go/bin")
+  (setq gofmt-command "goimports"))
+
+(require 'go-mode)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
-(add-hook 'go-mode-hook #'lsp)
-(add-hook 'before-save-hook 'gofmt-before-save)
+(add-to-list 'auto-mode-alist '("\\go.mod\\'" . go-mode))
+;; (add-hook 'go-mode-hook #'lsp-mode)
+;;(add-hook 'before-save-hook 'gofmt-before-save)
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+;; Start LSP Mode and YASnippet mode
+;; (add-hook 'go-mode-hook #'lsp-deferred)
+;; (add-hook 'go-mode-hook #'yas-minor-mode)
+
+;; Powerline
+(use-package powerline :ensure t)
+(powerline-center-theme)
 
 ;; Add spell check to Org mode
-(add-hook 'org 'flyspell-mode)
+;; (add-hook 'org 'flycheck-mode)
+
+(package-install 'flycheck)
+(global-flycheck-mode)
 
 ;; Git support for Emacs
-(use-package magit :ensure)
+(use-package magit :ensure t)
+(require 'magit)
+;; (use-package diff-hl :ensure)
+;; (require 'diff-hl)
+
+(use-package helm :ensure t)
+(require 'helm)
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
 
 ;; wgrep package for string refactoring in multiple files
-(use-package wgrep :ensure)
+(use-package wgrep :ensure t)
 
-;; Support for haskell
-(use-package haskell-mode :ensure)
 ;; Remove trailing white space
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; (use-package evil :ensure)
+;; (use-package evil :ensure t)
 ;; (require 'evil)
 ;; (evil-mode 0)
 
@@ -60,10 +100,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("443e2c3c4dd44510f0ea8247b438e834188dc1c6fb80785d83ad3628eadf9294" "aec7b55f2a13307a55517fdf08438863d694550565dee23181d2ebd973ebd6b8" "eca44f32ae038d7a50ce9c00693b8986f4ab625d5f2b4485e20f22c47f2634ae" "1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" "76ed126dd3c3b653601ec8447f28d8e71a59be07d010cd96c55794c3008df4d7" "835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
- '(minimap-minimum-width 7)
+   '("7e377879cbd60c66b88e51fad480b3ab18d60847f31c435f15f5df18bdb18184" "a3e99dbdaa138996bb0c9c806bc3c3c6b4fd61d6973b946d750b555af8b7555b" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "5f128efd37c6a87cd4ad8e8b7f2afaba425425524a68133ac0efd87291d05874" "443e2c3c4dd44510f0ea8247b438e834188dc1c6fb80785d83ad3628eadf9294" "aec7b55f2a13307a55517fdf08438863d694550565dee23181d2ebd973ebd6b8" "eca44f32ae038d7a50ce9c00693b8986f4ab625d5f2b4485e20f22c47f2634ae" "1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" "76ed126dd3c3b653601ec8447f28d8e71a59be07d010cd96c55794c3008df4d7" "835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(package-selected-packages
-   '(consult-flyspell docker docker-compose-mode consult git-gutter dap-cpptools dap-mode jenkinsfile-mode go-mode minimap spacemacs-theme vimrc-mode doom-themes dracula-theme haskell-mode neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep atom-one-theme yaml-mode auto-complete one-theme js2-refactor xref-js2 js2-mode company flycheck lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(all-the-icons-completion octicons fontawesome all-the-icons godoctor flycheck-golangci-lint flycheck-gometalinter flymake-go git-gutter-fringe cargo-mode cargo evil zenburn-theme consult-flyspell docker docker-compose-mode consult git-gutter dap-cpptools dap-mode jenkinsfile-mode go-mode spacemacs-theme vimrc-mode doom-themes dracula-theme neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep atom-one-theme yaml-mode one-theme js2-refactor xref-js2 js2-mode company lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -72,11 +111,14 @@
  )
 
 (setq-default tab-width 4)
-;; (hl-line-mode +1)
-(use-package neotree :ensure)
+(hl-line-mode +1)
+
+(use-package neotree :ensure t)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-smart-open t)
-(setq projectile-switch-project-action 'neotree-projectile-action)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+;; (setq projectile-switch-project-action 'neotree-projectile-action)
 ;; (defun neotree-project-dir ()
 ;;     "Open NeoTree using the git root."
 ;;     (interactive)
@@ -90,18 +132,13 @@
 
 ;;   (define-key map (kbd "C-c C-p") 'neotree-project-dir)
 
-;; (use-package spacemacs-theme :ensure)
-
 (use-package atom-one-dark-theme
   :ensure t
   :load-path "themes"
   :init
   ;; (setq one-dark-theme-kit t)
   :config
-  ;; (load-theme 'atom-one-dark t))
-  (load-theme 'one-dark t))
-
-
+  (load-theme 'atom-one-dark t))
 
 ;; (use-package apheleia :ensure)
 ;; (apheleia-global-mode +1)
@@ -109,28 +146,38 @@
   :ensure t
   :init (apheleia-global-mode))
 
-(use-package vimrc-mode :ensure)
+(use-package vimrc-mode :ensure t)
 (add-to-list 'auto-mode-alist '("\\vimrc\\'" . vimrc-mode))
 
-(use-package jenkinsfile-mode :ensure)
+(use-package jenkinsfile-mode :ensure t)
 (add-to-list 'auto-mode-alist '("\\JenkinsFile\\'" . jenkinsfile-mode))
 
-(use-package flycheck
-   :ensure t
-   :init (global-flycheck-mode))
+(use-package docker-compose-mode :ensure t)
+(add-to-list 'auto-mode-alist '("\\Dockerfile\\'" . docker-compose-mode))
+
+;; (use-package flycheck
+;;    :ensure t
+;;    :init (global-flycheck-mode))
 
 ;; Load auto-complete
-(use-package auto-complete :ensure)
-(setq auto-complete-idle-delay 1)
+;; (use-package auto-complete :ensure)
+;; (setq auto-complete-idle-delay 1)
 
-(use-package git-gutter :ensure)
-(require 'git-gutter)
-
-;; (use-package diff-hl :ensure)
-;; (global-diff-hl-mode)
+(use-package git-gutter :ensure t)
+(use-package git-gutter-fringe :ensure t)
+(use-package git-gutter
+  :hook (prog-mode . git-gutter-mode)
+  :config
+  (setq git-gutter:update-interval 0.02))
+(define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+(define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+(define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil '(center repeated))
 
 (use-package lsp-mode
-  :ensure
+  :ensure t
+  :bind (:map lsp-mode-map
+              ("C-c d" . 'lsp-describe-thing-at-point)
+              ("C-c a" . 'lsp-execute-code-action))
   :commands lsp
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
@@ -143,23 +190,24 @@
   (add-hook 'lsp-mode-hook 'flyspell-prog-mode)
   (add-hook 'lsp-mode-hook 'company-mode)
   (add-hook 'lsp-mode-hook 'display-line-numbers-mode)
-  (add-hook 'lsp-mode-hook 'hl-line-mode)
+  (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+  (setq lsp-modeline-diagnostics-scope :workspace))
   ;; (add-hook 'lsp-mode-hook 'display-fill-column-indicator-mode)
-  (add-hook 'lsp-mode-hook 'auto-complete-mode))
+  ;; (add-hook 'lsp-mode-hook 'auto-complete-mode))
 
 (add-hook 'magit-post-refresh-hook
-          #'diff-hl-reset-reference-rev)
+          #'git-gutter:update-all-windows)
 
 (use-package lsp-ui
   :ensure
   :commands lsp-ui-mode
   :custom
   (lsp-ui-peek-always-show t)
-  (lsp-ui-sideline-show-hover t)
+  ;; (lsp-ui-sideline-show-hover t)
   (lsp-ui-doc-enable t))
 
 ;; optionally if you want to use debugger
-(use-package dap-mode :ensure)
+(use-package dap-mode :ensure t)
 (require 'dap-utils)
 (require 'dap-dlv-go)
 (require 'dap-gdb-lldb)
@@ -192,15 +240,15 @@
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
 (add-hook 'rust-mode-hook #'lsp)
-;; (add-hook 'rust-mode-hook #'cargo-minor-mode)
-(use-package rustic :ensure)
-(use-package cargo :ensure)
+(add-hook 'rust-mode-hook #'cargo-minor-mode)
+(use-package rustic :ensure t)
+(use-package cargo :ensure t)
 
 (define-key rust-mode-map (kbd "C-c C-r") 'rust-run)
 (define-key rust-mode-map (kbd "C-c C-t") 'rust-test)
 (define-key rust-mode-map (kbd "C-c C-c") 'rust-check)
 
-(use-package web-mode :ensure)
+(use-package web-mode :ensure t)
 ;; (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -228,8 +276,8 @@
 ;; (setq c-format-on-save t)
 
 ;; Javascript mode will run LSP at start
-(use-package js2-refactor :ensure)
-(use-package xref-js2 :ensure)
+(use-package js2-refactor :ensure t)
+(use-package xref-js2 :ensure t)
 
 (use-package js2-mode
   :ensure t
@@ -258,15 +306,17 @@
 ;; (add-hook 'js2-mode-hook (lambda ()
 ;; 			   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
-(use-package company :ensure)
+(use-package company :ensure t)
 (company-mode +1)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 1)
 
 ;; PYTHON support
-(use-package elpy :ensure)
+(use-package elpy :ensure t)
 (elpy-enable)
 ;; Enable autopep8
-(use-package py-autopep8 :ensure)
-(use-package blacken :ensure)
+(use-package py-autopep8 :ensure t)
+(use-package blacken :ensure t)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 ;; (add-to-list 'auto-mode-alist '("\\.py\\'" . elpy-mode))
 ;; (use-package lsp-python-ms
@@ -331,9 +381,6 @@
 ;;     (ibuffer-jump-to-buffer recent-buffer-name)))
 ;; (ad-activate 'ibuffer)
 
-;; (use-package helm :straight t)
-;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
-
 ;; Example configuration for Consult
 (use-package consult
   ;; Replace bindings. Lazily loaded due by `use-package'.
@@ -357,7 +404,7 @@
          ("<help> a" . consult-apropos)            ;; orig. apropos-command
          ;; M-g bindings (goto-map)
          ("M-g e" . consult-compile-error)
-         ("M-g f" . consult-flyspell)               ;; Alternative: consult-flycheck
+         ("M-g f" . consult-flyspell)               ;; Alternative: consult-flyspell
          ("M-g g" . consult-goto-line)             ;; orig. goto-line
          ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
          ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
@@ -406,8 +453,8 @@
   (advice-add #'register-preview :override #'consult-register-window)
 
   ;; Use Consult to select xref locations with preview
-  (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
+  ;;(setq xref-show-xrefs-function #'consult-xref
+  ;;      xref-show-definitions-function #'consult-xref)
 
   ;; Configure other variables and modes in the :config section,
   ;; after lazily loading the package.

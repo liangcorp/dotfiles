@@ -25,8 +25,6 @@ let g:indentLine_concealcursor = ''
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 
-autocmd BufWritePre * :%s/\s\+$//e
-
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -40,7 +38,9 @@ call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 Plug 'dense-analysis/ale'
+Plug 'rhysd/vim-lsp-ale'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
@@ -132,6 +132,10 @@ nmap <leader>fg <cmd>Telescope live_grep<cr>
 nmap <leader>fb <cmd>Telescope buffers<cr>
 nmap <leader>fh <cmd>Telescope help_tags<cr>
 
+"LSP
+nmap <leader>ne <cmd>LspNextError<cr>
+nmap <leader>nw <cmd>LspNextWarning<cr>
+
 " Golang related
 au filetype go inoremap <buffer> . .<C-x><C-o>
 let g:go_list_type = "quickfix"
@@ -160,10 +164,14 @@ let g:go_highlight_extra_types = 1
 
 " Ale
 let g:ale_fixers = {
- \ 'javascript': ['eslint']
+ \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+ \  'javascript': ['prettier', 'eslint']
  \ }
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_fix_on_save = 0
+let g:ale_completion_enabled = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_linters = { 'rust': ['analyzer'] }
@@ -175,6 +183,8 @@ let g:ale_rust_analyzer_config = {
       \ 'procMacro': { 'enable': v:true },
       \ 'checkOnSave': { 'command': 'clippy', 'enable': v:true }
       \ }
+
+" VIM LSP ALE
 
 " Prettier
 let g:prettier#autoformat = 1
@@ -214,6 +224,29 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+
+let g:lightline.component_type = {
+      \     'linter_checking': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
+
+let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]] }
+
+let g:lightline.active = {
+            \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+            \            [ 'lineinfo' ],
+	    \            [ 'percent' ],
+	    \            [ 'fileformat', 'fileencoding', 'filetype'] ] }
 " VIM Snippets
 " NOTE: You can use other key to expand snippet.
 
