@@ -69,7 +69,7 @@
 ;; Add spell check to Org mode
 ;; (add-hook 'org 'flycheck-mode)
 
-(package-install 'flycheck)
+(use-package flycheck :ensure t)
 (global-flycheck-mode)
 
 ;; Git support for Emacs
@@ -190,6 +190,7 @@
   (add-hook 'lsp-mode-hook 'flyspell-prog-mode)
   (add-hook 'lsp-mode-hook 'company-mode)
   (add-hook 'lsp-mode-hook 'display-line-numbers-mode)
+  (add-hook 'lsp-mode-hook 'hl-line-mode)
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
   (setq lsp-modeline-diagnostics-scope :workspace))
   ;; (add-hook 'lsp-mode-hook 'display-fill-column-indicator-mode)

@@ -12,13 +12,14 @@ set path+=**
 set wildmenu
 set ruler
 set wildmenu
-set mouse=a
-set mousemodel=popup
+set mouse=
+set mousemodel=extend
 " set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
 set autowrite
 set encoding=UTF-8
+set completeopt=longest
 
 let g:indentLine_enabled = 1
 let g:indentLine_concealcursor = ''
@@ -155,6 +156,8 @@ let g:go_highlight_space_tab_error = 0
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
+
+let g:go_auto_type_info = 1
 
 " NERDTree
 " map <C-z> :NERDTreeToggle<CR> “ Toggle side window with `CTRL+z`.
@@ -305,7 +308,7 @@ function! s:on_lsp_buffer_enabled() abort
     nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    " autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 
     " refer to doc to add more commands
 endfunction
