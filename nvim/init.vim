@@ -48,7 +48,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 Plug 'rust-lang/rust.vim'
 " Plug 'fatih/vim-go'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+" Plug 'mattn/vim-lsp-settings'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'
@@ -88,6 +88,7 @@ require("nvim-tree").setup()
 require("tree")
 
 -- LSP Configurations
+require'lspconfig'.pyright.setup{}
 require("lspmain")
 require("rust")
 require("go")
