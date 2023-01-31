@@ -1,4 +1,3 @@
--- Neovim configuration for rust in lua
 require'lspconfig'.rust_analyzer.setup {
   on_attach = on_attach,
   settings = {
@@ -20,5 +19,6 @@ require'lspconfig'.rust_analyzer.setup {
           command = "clippy"
       },
     }
-  }
+  },
+  flags = lsp_flags,
 }

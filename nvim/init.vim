@@ -46,12 +46,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'spywhere/lightline-lsp'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
+" Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'puremourning/vimspector'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -63,191 +63,46 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'tpope/vim-fugitive'
 
 Plug 'Mofiqul/dracula.nvim'
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
-
 Plug 'neovim/nvim-lspconfig'
 
 " Initialize plugin system
 call plug#end()
 
-colorscheme dracula
-
 " Lua scripts
 lua << EOF
 
--- empty setup using defaults
-require("nvim-tree").setup()
+vim.cmd("colorscheme dracula")
 
+-- Git signs
 require('gitsigns').setup()
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust", "go", "bash", "python", "dockerfile", "java", "json", "latex", "make", "yaml", "vim"},
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+-- Treesitter
+require("nvim-tree").setup()
+require("tree")
 
-  -- Automatically install missing parsers when entering buffer
-  auto_install = true,
-
-  -- List of parsers to ignore installing (for "all")
-  ignore_install = { "javascript" },
-
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    -- disable = { "c", "rust" },
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-
--- local nvim_lsp = require'lspconfig'
--- 
--- local on_attach = function(client)
---     require'completion'.on_attach(client)
--- end
-
+-- LSP Configurations
+require("lspmain")
 require("rust")
--- lspconfig = require "lspconfig"
--- util = require "lspconfig/util"
--- require'lspconfig'.gopls.setup {
---     cmd = {"gopls", "serve"},
---     filetypes = {"go", "gomod"},
---     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
---     settings = {
---       gopls = {
---         analyses = {
---           unusedparams = true,
---           fieldalignment = true
---         },
---         staticcheck = true,
---       },
---     },
---   }
-local nvim_lsp = require('lspconfig')
+require("go")
+require("python")
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
---   -- Mappings.
---   local opts = { noremap=true, silent=true }
---   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
---   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
---   buf_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
---   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
---   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
---   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
---   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
---   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
---   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
---   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
---   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
---   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
---   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
---   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
---   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
---   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
---   -- Set some keybinds conditional on server capabilities
---   if client.server_capabilities.document_formatting then
---     buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
---   elseif client.server_capabilities.document_range_formatting then
---     buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
---   end
-
-  -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=DarkMagenta guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=DarkMagenta guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=DarkMagenta guibg=LightYellow
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
-end
-
-nvim_lsp.gopls.setup{
-	cmd = {'gopls'},
-	-- for postfix snippets and analyzers
-	capabilities = capabilities,
-	    settings = {
-	      gopls = {
-		      experimentalPostfixCompletions = true,
-		      analyses = {
-                fieldalignment = true,
-		        unusedparams = true,
-		        shadow = true,
-		     },
-		     staticcheck = true,
-		    },
-	    },
-	on_attach = on_attach,
-}
-
-  function goimports(timeoutms)
-    local context = { source = { organizeImports = true } }
-    vim.validate { context = { context, "t", true } }
-
-    local params = vim.lsp.util.make_range_params()
-    params.context = context
-
-    -- See the implementation of the textDocument/codeAction callback
-    -- (lua/vim/lsp/handler.lua) for how to do this properly.
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
-    if not result or next(result) == nil then return end
-    local actions = result[1].result
-    if not actions then return end
-    local action = actions[1]
-
-    -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
-    -- is a CodeAction, it can have either an edit, a command or both. Edits
-    -- should be executed first.
-    if action.edit or type(action.command) == "table" then
-      if action.edit then
-        vim.lsp.util.apply_workspace_edit(action.edit)
-      end
-      if type(action.command) == "table" then
-        vim.lsp.buf.execute_command(action.command)
-      end
-    else
-      vim.lsp.buf.execute_command(action)
-    end
-  end
 EOF
 
 " Nvim Tree
-nmap <C-z> <cmd>NvimTreeToggle<cr>
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
+" nmap <C-z> <cmd>NvimTreeToggle<cr>
+" let g:nvim_tree_show_icons = {
+"     \ 'git': 1,
+"     \ 'folders': 1,
+"     \ 'files': 1,
+"     \ 'folder_arrows': 1,
+"     \ }
 
 " Telescope
 " Find files using Telescope command-line sugar.
@@ -256,37 +111,27 @@ nmap <leader>fg <cmd>Telescope live_grep<cr>
 nmap <leader>fb <cmd>Telescope buffers<cr>
 nmap <leader>fh <cmd>Telescope help_tags<cr>
 
-"LSP
-nmap <leader>ne <cmd>LspNextError<cr>
-nmap <leader>nw <cmd>LspNextWarning<cr>
-
 " vim-go related
-au filetype go inoremap <buffer> . .<C-x><C-o>
-let g:go_list_type = "quickfix"
-let g:go_fmt_autosave = 1
-let g:go_fmt_command = "goimports"
-let g:go_fmt_fail_silently = 1
-
-let g:go_auto_type_info = 1
-
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 1
-
-" NERDTree
-" map <C-z> :NERDTreeToggle<CR> “ Toggle side window with `CTRL+z`.
-" let g:NERDTreeDirArrowExpandable = '▸'
-" let g:NERDTreeDirArrowCollapsible = '▾'
-" let NERDTreeShowHidden=1 " Show hidden files
+" au filetype go inoremap <buffer> . .<C-x><C-o>
+" let g:go_list_type = "quickfix"
+" let g:go_fmt_autosave = 1
+" let g:go_fmt_command = "goimports"
+" let g:go_fmt_fail_silently = 1
+" 
+" let g:go_auto_type_info = 1
+" 
+" let g:go_highlight_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_generate_tags = 1
+" let g:go_highlight_space_tab_error = 1
+" let g:go_highlight_array_whitespace_error = 0
+" let g:go_highlight_trailing_whitespace_error = 0
+" let g:go_highlight_extra_types = 1
 
 " Ale
 " let g:ale_fixers = {
@@ -318,14 +163,12 @@ let g:go_highlight_extra_types = 1
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
-let g:rustfmt_autosave = 1
-
 " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Debugger vimspector
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
@@ -376,81 +219,11 @@ let g:lightline.component_type = {
       \     'linter_ok': 'right',
       \ }
 
-" let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]] }
-
 let g:lightline.active = {
             \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
             \            [ 'lineinfo' ],
 	    \            [ 'percent' ],
 	    \            [ 'fileformat', 'fileencoding', 'filetype'] ] }
-" VIM Snippets
-" NOTE: You can use other key to expand snippet.
-
-" Expand
-imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-
-" Expand or jump
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-
-" Jump forward or backward
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-
-" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
-" See https://github.com/hrsh7th/vim-vsnip/pull/50
-nmap        s   <Plug>(vsnip-select-text)
-xmap        s   <Plug>(vsnip-select-text)
-nmap        S   <Plug>(vsnip-cut-text)
-xmap        S   <Plug>(vsnip-cut-text)
-
-" If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
-let g:vsnip_filetypes = {}
-let g:vsnip_filetypes.javascriptreact = ['javascript']
-let g:vsnip_filetypes.typescriptreact = ['typescript']
-
-
-" LSP Registering Servers
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    " nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-    " nmap <buffer> gr <plug>(lsp-references)
-    " nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    " nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-    " nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-    let g:lsp_format_sync_timeout = 1000
-    " autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
-    " refer to doc to add more commands
-endfunction
-
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
 
 " Conquer of Completion
 " Some servers have issues with backup files, see #649.
@@ -505,13 +278,13 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
 " nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
+" function! ShowDocumentation()
+"   if CocAction('hasProvider', 'hover')
+"     call CocActionAsync('doHover')
+"   else
+"     call feedkeys('K', 'in')
+"   endif
+" endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -554,16 +327,6 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
