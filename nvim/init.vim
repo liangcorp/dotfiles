@@ -12,8 +12,9 @@ set path+=**
 set wildmenu
 set ruler
 set wildmenu
-set mouse=
-set mousemodel=extend
+set mouse=a
+set mousemodel=popup
+" set mousemodel=extend
 " set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
@@ -39,9 +40,10 @@ call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'dense-analysis/ale'
-Plug 'rhysd/vim-lsp-ale'
+" Plug 'maximbaz/lightline-ale'
+" Plug 'dense-analysis/ale'
+" Plug 'rhysd/vim-lsp-ale'
+Plug 'spywhere/lightline-lsp'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
@@ -56,9 +58,9 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'TimUntersberger/neogit'
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'tpope/vim-fugitive'
 
 Plug 'Mofiqul/dracula.nvim'
 Plug 'joshdick/onedark.vim'
@@ -69,6 +71,8 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
+Plug 'neovim/nvim-lspconfig'
+
 " Initialize plugin system
 call plug#end()
 
@@ -76,10 +80,6 @@ colorscheme dracula
 
 " Lua scripts
 lua << EOF
--- Neogit
-local neogit = require('neogit')
-
-neogit.setup {}
 
 -- empty setup using defaults
 require("nvim-tree").setup()
@@ -115,6 +115,129 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+-- local nvim_lsp = require'lspconfig'
+-- 
+-- local on_attach = function(client)
+--     require'completion'.on_attach(client)
+-- end
+
+require("rust")
+-- lspconfig = require "lspconfig"
+-- util = require "lspconfig/util"
+-- require'lspconfig'.gopls.setup {
+--     cmd = {"gopls", "serve"},
+--     filetypes = {"go", "gomod"},
+--     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+--     settings = {
+--       gopls = {
+--         analyses = {
+--           unusedparams = true,
+--           fieldalignment = true
+--         },
+--         staticcheck = true,
+--       },
+--     },
+--   }
+local nvim_lsp = require('lspconfig')
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+--   -- Mappings.
+--   local opts = { noremap=true, silent=true }
+--   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+--   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+--   buf_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+--   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+--   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+--   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+--   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+--   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+--   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+--   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+--   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+--   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+--   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+--   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+--   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+--   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+--   -- Set some keybinds conditional on server capabilities
+--   if client.server_capabilities.document_formatting then
+--     buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+--   elseif client.server_capabilities.document_range_formatting then
+--     buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+--   end
+
+  -- Set autocommands conditional on server_capabilities
+  if client.server_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+      hi LspReferenceRead cterm=bold ctermbg=DarkMagenta guibg=LightYellow
+      hi LspReferenceText cterm=bold ctermbg=DarkMagenta guibg=LightYellow
+      hi LspReferenceWrite cterm=bold ctermbg=DarkMagenta guibg=LightYellow
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]], false)
+  end
+end
+
+nvim_lsp.gopls.setup{
+	cmd = {'gopls'},
+	-- for postfix snippets and analyzers
+	capabilities = capabilities,
+	    settings = {
+	      gopls = {
+		      experimentalPostfixCompletions = true,
+		      analyses = {
+                fieldalignment = true,
+		        unusedparams = true,
+		        shadow = true,
+		     },
+		     staticcheck = true,
+		    },
+	    },
+	on_attach = on_attach,
+}
+
+  function goimports(timeoutms)
+    local context = { source = { organizeImports = true } }
+    vim.validate { context = { context, "t", true } }
+
+    local params = vim.lsp.util.make_range_params()
+    params.context = context
+
+    -- See the implementation of the textDocument/codeAction callback
+    -- (lua/vim/lsp/handler.lua) for how to do this properly.
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
+    if not result or next(result) == nil then return end
+    local actions = result[1].result
+    if not actions then return end
+    local action = actions[1]
+
+    -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
+    -- is a CodeAction, it can have either an edit, a command or both. Edits
+    -- should be executed first.
+    if action.edit or type(action.command) == "table" then
+      if action.edit then
+        vim.lsp.util.apply_workspace_edit(action.edit)
+      end
+      if type(action.command) == "table" then
+        vim.lsp.buf.execute_command(action.command)
+      end
+    else
+      vim.lsp.buf.execute_command(action)
+    end
+  end
 EOF
 
 " Nvim Tree
@@ -137,12 +260,14 @@ nmap <leader>fh <cmd>Telescope help_tags<cr>
 nmap <leader>ne <cmd>LspNextError<cr>
 nmap <leader>nw <cmd>LspNextWarning<cr>
 
-" Golang related
+" vim-go related
 au filetype go inoremap <buffer> . .<C-x><C-o>
 let g:go_list_type = "quickfix"
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
+
+let g:go_auto_type_info = 1
 
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -152,12 +277,10 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_generate_tags = 1
-let g:go_highlight_space_tab_error = 0
+let g:go_highlight_space_tab_error = 1
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
-
-let g:go_auto_type_info = 1
 
 " NERDTree
 " map <C-z> :NERDTreeToggle<CR> “ Toggle side window with `CTRL+z`.
@@ -166,28 +289,30 @@ let g:go_auto_type_info = 1
 " let NERDTreeShowHidden=1 " Show hidden files
 
 " Ale
-let g:ale_fixers = {
- \  '*': ['remove_trailing_lines', 'trim_whitespace'],
- \  'javascript': ['prettier', 'eslint']
- \ }
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_fix_on_save = 0
-let g:ale_completion_enabled = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_linters = { 'rust': ['analyzer'] }
+" let g:ale_fixers = {
+"  \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+"  \  'javascript': ['prettier', 'eslint']
+"  \ }
+" 
+" let g:ale_echo_msg_error_str = 'E'
+" let g:ale_echo_msg_warning_str = 'W'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_fix_on_save = 0
+" let g:ale_completion_enabled = 0
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_insert_leave = 0
+" let g:ale_lint_on_enter = 0
 
+" let g:ale_linters = {'go': ['gometalinter', 'gofmt']}
+" let g:ale_linters = { 'rust': ['analyzer'] }
+" 
 " let g:ale_rust_analyzer_executable = 'rust-analyzer'
-let g:ale_rust_analyzer_config = {
-      \ 'diagnostics': { 'disabled': ['unresolved-import'] },
-      \ 'cargo': { 'loadOutDirsFromCheck': v:true },
-      \ 'procMacro': { 'enable': v:true },
-      \ 'checkOnSave': { 'command': 'clippy', 'enable': v:true }
-      \ }
-
-" VIM LSP ALE
+" let g:ale_rust_analyzer_config = {
+"       \ 'diagnostics': { 'disabled': ['unresolved-import'] },
+"       \ 'cargo': { 'loadOutDirsFromCheck': v:true },
+"       \ 'procMacro': { 'enable': v:true },
+"       \ 'checkOnSave': { 'command': 'clippy', 'enable': v:true }
+"       \ }
 
 " Prettier
 let g:prettier#autoformat = 1
@@ -228,12 +353,20 @@ let g:lightline = {
       \ }
 
 let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_infos': 'lightline#ale#infos',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
+      \  'linter_checking': 'lightline#lsp#checking',
+      \  'linter_infos': 'lightline#lsp#infos',
+      \  'linter_warnings': 'lightline#lsp#warnings',
+      \  'linter_errors': 'lightline#lsp#errors',
+      \  'linter_ok': 'lightline#lsp#ok',
       \ }
+
+" let g:lightline.component_expand = {
+"       \  'linter_checking': 'lightline#ale#checking',
+"       \  'linter_infos': 'lightline#ale#infos',
+"       \  'linter_warnings': 'lightline#ale#warnings',
+"       \  'linter_errors': 'lightline#ale#errors',
+"       \  'linter_ok': 'lightline#ale#ok',
+"       \ }
 
 let g:lightline.component_type = {
       \     'linter_checking': 'right',
@@ -243,7 +376,7 @@ let g:lightline.component_type = {
       \     'linter_ok': 'right',
       \ }
 
-let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]] }
+" let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]] }
 
 let g:lightline.active = {
             \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
