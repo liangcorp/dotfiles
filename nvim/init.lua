@@ -17,7 +17,8 @@ vim.cmd([[
     set encoding=UTF-8
     set completeopt=longest
     
-    colorscheme dracula
+    " colorscheme dracula
+    colorscheme onedark
 
     augroup packer_user_config
         autocmd!
@@ -44,10 +45,12 @@ require("tree")
 
 -- LSP Configurations
 require'lspconfig'.pyright.setup{}
-require("lspmain")
-require("rust")
-require("go")
-require("python")
+require("lsp/lspmain")
+require("lsp/rust")
+require("lsp/go")
+require("lsp/python")
+require("lsp/groovy")
+
 
 -- Telescope
 require("telescopeconfig")
@@ -59,7 +62,7 @@ require("prettierconfig")
 require('lualine').setup()
 
 -- coc.nvim
-require('cocconfig')
+-- require('cocconfig')
 
 -- Debugger vimspector
 vim.cmd([[

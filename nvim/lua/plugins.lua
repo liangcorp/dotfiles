@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
   use('tpope/vim-fugitive')
 
   use('Mofiqul/dracula.nvim')
+  use('navarasu/onedark.nvim')
 
 -- lualine status line
   use('kyazdani42/nvim-web-devicons') -- optional, for file icons
