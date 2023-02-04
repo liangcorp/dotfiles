@@ -17,7 +17,7 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
-(global-set-key (kbd "C-c C-c") 'comment-line)
+;; (global-set-key (kbd "C-c C-c") 'comment-line)
 (global-set-key (kbd "C-c C-s") 'window-swap-states)
 
 (set-default-coding-systems 'utf-8)
@@ -37,7 +37,7 @@
               ("<f6>" . gofmt)
               ("C-c 6" . gofmt))
   :config
-  (require 'lsp-mode)
+  (use-package lsp-mode :ensure t)
   (setq lsp-go-analyses
         '((fieldalignment . t)
           (nilness        . t)
@@ -48,7 +48,7 @@
   (add-to-list 'exec-path "~/go/bin")
   (setq gofmt-command "goimports"))
 
-(require 'go-mode)
+;; (require 'go-mode)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 (add-to-list 'auto-mode-alist '("\\go.mod\\'" . go-mode))
 ;; (add-hook 'go-mode-hook #'lsp-mode)
@@ -75,13 +75,11 @@
 
 ;; Git support for Emacs
 (use-package magit :ensure t)
-(require 'magit)
 ;; (use-package diff-hl :ensure)
 ;; (require 'diff-hl)
 
 (use-package helm :ensure t)
-(require 'helm)
-(require 'helm-config)
+;; (use-package helm-config :ensure t)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 
@@ -92,7 +90,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; (use-package evil :ensure t)
-;; (require 'evil)
 ;; (evil-mode 1)
 
 (custom-set-variables

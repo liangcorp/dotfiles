@@ -42,6 +42,11 @@ require('plugins')
 -- Keyboard mappings
 require('mappings')
 
+-- Toggle comments
+-- "gcc" for line comment
+-- "gbc" for block comment
+require('Comment').setup()
+
 -- Git signs
 require('gitsigns').setup()
 
