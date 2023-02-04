@@ -65,6 +65,7 @@
 ;; Powerline
 (use-package powerline :ensure t)
 (powerline-center-theme)
+(powerline-raw mode-line-mule-info nil 'l)
 
 ;; Add spell check to Org mode
 ;; (add-hook 'org 'flycheck-mode)
@@ -117,7 +118,7 @@
 ;; (global-set-key [f8] 'neotree-toggle)
 ;; (setq neo-smart-open t)
 ;; (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-;; 
+;;
 ;; (setq projectile-switch-project-action 'neotree-projectile-action)
 ;; (defun neotree-project-dir ()
 ;;     "Open NeoTree using the git root."
