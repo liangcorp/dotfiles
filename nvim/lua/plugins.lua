@@ -27,8 +27,12 @@ return require('packer').startup(function(use)
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
 
+-- Magit for neovim
+use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
 -- Toggle comments
   use('numToStr/Comment.nvim')
+
 -- Debugger
   -- use('mfussenegger/nvim-dap')
   use('puremourning/vimspector')

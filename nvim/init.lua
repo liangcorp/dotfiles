@@ -54,6 +54,10 @@ require('gitsigns').setup()
 require("nvim-tree").setup()
 require("tree")
 
+-- Magit for neovim
+local neogit = require('neogit')
+neogit.setup {}
+
 -- LSP Configurations
 -- require'lspconfig'.pyright.setup{}
 -- require("lsp/lspmain")
