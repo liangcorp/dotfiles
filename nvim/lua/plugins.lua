@@ -36,19 +36,18 @@ return require('packer').startup(function(use)
 
 -- Grammar Guard
   use('brymer-meneses/grammar-guard.nvim')
-  use('williamboman/nvim-lsp-installer')
+  -- use('williamboman/nvim-lsp-installer')
 
 -- Magit for neovim
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
   -- Extra packages for rust
   use('rust-lang/rust.vim')
-  use 'simrat39/rust-tools.nvim'
 
 -- Toggle comments
   use('numToStr/Comment.nvim')
 
 -- Debugger
-  use('mfussenegger/nvim-dap')
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   -- use('puremourning/vimspector')
 end)

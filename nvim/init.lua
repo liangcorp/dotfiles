@@ -17,8 +17,8 @@ vim.cmd([[
     set ruler
     set wildmenu
 
-    " colorscheme dracula
-    colorscheme onedark
+    colorscheme dracula
+    " colorscheme onedark
 
     augroup packer_user_config
         autocmd!
@@ -62,12 +62,10 @@ neogit.setup {}
 require'lspconfig'.pyright.setup{}
 require("lsp/lspmain")
 require("lsp/rust")
-require("lsp/rust_extra")
 require("lsp/go")
 require("lsp/python")
 require("lsp/groovy")
 require("lsp/completion")
-
 require("lsp/grammar")
 
 -- Telescope
@@ -82,9 +80,12 @@ require('lualine').setup()
 -- coc.nvim
 -- require('cocconfig')
 
+-- Debugger nvim-dap
+require("dapui").setup()
+
 -- Debugger vimspector
-vim.cmd([[
-let g:vimspector_enable_mappings = 'HUMAN'
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve' ]
-]])
+-- vim.cmd([[
+-- let g:vimspector_enable_mappings = 'HUMAN'
+-- let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve' ]
+-- ]])
 

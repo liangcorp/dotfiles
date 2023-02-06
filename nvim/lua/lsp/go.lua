@@ -1,8 +1,10 @@
 lspconfig = require "lspconfig"
 util = require "lspconfig/util"
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.gopls.setup{
 	on_attach = on_attach,
+    capabilities = capabilities,
 	flags=lsp_flags,
 	cmd = {'gopls', 'serve'},
 	filetypes = {"go", "gomod", "gowork", "gotmpl"},
