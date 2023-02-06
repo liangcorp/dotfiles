@@ -1,9 +1,8 @@
 return require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
   use('sheerun/vim-polyglot')
-  use('rust-lang/rust.vim')
-  use('prabirshrestha/vim-lsp')
-  use('neoclide/coc.nvim')
+  -- use('prabirshrestha/vim-lsp')
+  -- use('neoclide/coc.nvim')
   use('nvim-lua/plenary.nvim')
   use('nvim-telescope/telescope.nvim')
   use('nvim-telescope/telescope-symbols.nvim')
@@ -35,13 +34,21 @@ return require('packer').startup(function(use)
   use('hrsh7th/cmp-vsnip')
   use('hrsh7th/vim-vsnip')
 
+-- Grammar Guard
+  use('brymer-meneses/grammar-guard.nvim')
+  use('williamboman/nvim-lsp-installer')
+
 -- Magit for neovim
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
+  -- Extra packages for rust
+  use('rust-lang/rust.vim')
+  use 'simrat39/rust-tools.nvim'
 
 -- Toggle comments
   use('numToStr/Comment.nvim')
 
 -- Debugger
-  -- use('mfussenegger/nvim-dap')
-  use('puremourning/vimspector')
+  use('mfussenegger/nvim-dap')
+  -- use('puremourning/vimspector')
 end)

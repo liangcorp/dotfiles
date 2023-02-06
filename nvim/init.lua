@@ -62,11 +62,13 @@ neogit.setup {}
 require'lspconfig'.pyright.setup{}
 require("lsp/lspmain")
 require("lsp/rust")
+require("lsp/rust_extra")
 require("lsp/go")
 require("lsp/python")
 require("lsp/groovy")
 require("lsp/completion")
 
+require("lsp/grammar")
 
 -- Telescope
 require("telescopeconfig")
@@ -78,7 +80,7 @@ require("prettierconfig")
 require('lualine').setup()
 
 -- coc.nvim
-require('cocconfig')
+-- require('cocconfig')
 
 -- Debugger vimspector
 vim.cmd([[
