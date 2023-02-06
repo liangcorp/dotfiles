@@ -100,7 +100,7 @@
  '(custom-safe-themes
    '("7e377879cbd60c66b88e51fad480b3ab18d60847f31c435f15f5df18bdb18184" "a3e99dbdaa138996bb0c9c806bc3c3c6b4fd61d6973b946d750b555af8b7555b" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "5f128efd37c6a87cd4ad8e8b7f2afaba425425524a68133ac0efd87291d05874" "443e2c3c4dd44510f0ea8247b438e834188dc1c6fb80785d83ad3628eadf9294" "aec7b55f2a13307a55517fdf08438863d694550565dee23181d2ebd973ebd6b8" "eca44f32ae038d7a50ce9c00693b8986f4ab625d5f2b4485e20f22c47f2634ae" "1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" "76ed126dd3c3b653601ec8447f28d8e71a59be07d010cd96c55794c3008df4d7" "835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(package-selected-packages
-   '(all-the-icons-completion octicons fontawesome all-the-icons godoctor flycheck-golangci-lint flycheck-gometalinter flymake-go git-gutter-fringe cargo-mode cargo evil zenburn-theme consult-flyspell docker docker-compose-mode consult git-gutter dap-cpptools dap-mode jenkinsfile-mode go-mode spacemacs-theme vimrc-mode doom-themes dracula-theme neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep atom-one-theme yaml-mode one-theme js2-refactor xref-js2 js2-mode company lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
+   '(markdown-preview-mode all-the-icons-completion octicons fontawesome all-the-icons godoctor flycheck-golangci-lint flycheck-gometalinter flymake-go git-gutter-fringe cargo-mode cargo evil zenburn-theme consult-flyspell docker docker-compose-mode consult git-gutter dap-cpptools dap-mode jenkinsfile-mode go-mode spacemacs-theme vimrc-mode doom-themes dracula-theme neotree atom-one-dark-theme atom-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep atom-one-theme yaml-mode one-theme js2-refactor xref-js2 js2-mode company lsp-ui apheleia lsp-mode flymake-aspell magit web-mode rust-mode one-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -338,6 +338,9 @@
 ;; mardown-mode runs on .md files by default
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(custom-set-variables
+  '(markdown-command "/usr/bin/pandoc"))
 
 ;; yaml-mode runs on .yaml files by default
 (use-package yaml-mode :mode "\\.ya?ml\\'")

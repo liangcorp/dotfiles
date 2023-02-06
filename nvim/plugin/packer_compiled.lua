@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
+  ["coc.nvim"] = {
+    loaded = true,
+    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
+  },
   ["dracula.nvim"] = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/dracula.nvim",
@@ -193,21 +198,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ultisnips = {
-    loaded = true,
-    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/ultisnips",
-    url = "https://github.com/SirVer/ultisnips"
-  },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-polyglot"] = {
-    loaded = true,
-    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/vim-polyglot",
-    url = "https://github.com/sheerun/vim-polyglot"
   },
   ["vim-vsnip"] = {
     loaded = true,

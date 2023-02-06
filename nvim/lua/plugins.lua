@@ -1,16 +1,20 @@
 return require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
-  use('sheerun/vim-polyglot')
+  -- use('sheerun/vim-polyglot')
   -- use('prabirshrestha/vim-lsp')
-  -- use('neoclide/coc.nvim')
+  use('neoclide/coc.nvim')
   use('nvim-lua/plenary.nvim')
+
+-- Telescope
   use('nvim-telescope/telescope.nvim')
   use('nvim-telescope/telescope-symbols.nvim')
-  use('nvim-treesitter/nvim-treesitter')
-  use('lewis6991/gitsigns.nvim')
-  use('kyazdani42/nvim-tree.lua')
-  use('tpope/vim-fugitive')
 
+-- Treesitter
+  use('nvim-treesitter/nvim-treesitter')
+  use('kyazdani42/nvim-tree.lua')
+  -- use('tpope/vim-fugitive')
+
+-- Themes
   use('Mofiqul/dracula.nvim')
   use('navarasu/onedark.nvim')
 
@@ -19,7 +23,7 @@ return require('packer').startup(function(use)
   use('nvim-lualine/lualine.nvim')
 
 -- Track the engine.
-  use('SirVer/ultisnips')
+  -- use('SirVer/ultisnips')
 
 -- Snippets are separated from the engine. Add this if you want them:
   use('neovim/nvim-lspconfig')
@@ -40,6 +44,7 @@ return require('packer').startup(function(use)
 
 -- Magit for neovim
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use('lewis6991/gitsigns.nvim')
 
   -- Extra packages for rust
   use('rust-lang/rust.vim')

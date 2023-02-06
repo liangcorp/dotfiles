@@ -78,7 +78,7 @@ require("prettierconfig")
 require('lualine').setup()
 
 -- coc.nvim
--- require('cocconfig')
+require('cocconfig')
 
 -- Debugger nvim-dap
 -- require("dapui").setup()
