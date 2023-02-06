@@ -17,8 +17,8 @@ vim.cmd([[
     set ruler
     set wildmenu
 
-    colorscheme dracula
-    " colorscheme onedark
+    " colorscheme dracula
+    colorscheme onedark
 
     augroup packer_user_config
         autocmd!
