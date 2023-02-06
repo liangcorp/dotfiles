@@ -48,6 +48,9 @@ return require('packer').startup(function(use)
   use('numToStr/Comment.nvim')
 
 -- Debugger
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-  -- use('puremourning/vimspector')
+  -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  -- use('leoluz/nvim-dap-go')
+  -- use("folke/neodev.nvim")
+
+  use('puremourning/vimspector')
 end)

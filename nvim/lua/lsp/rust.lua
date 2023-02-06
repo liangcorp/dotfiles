@@ -25,3 +25,4 @@ require'lspconfig'.rust_analyzer.setup {
   },
   flags = lsp_flags,
 }
+
