@@ -24,11 +24,19 @@ return require('packer').startup(function(use)
 
 -- Snippets are separated from the engine. Add this if you want them:
   use('neovim/nvim-lspconfig')
+  use('hrsh7th/cmp-nvim-lsp')
+  use('hrsh7th/cmp-buffer')
+  use('hrsh7th/cmp-path')
+  use('hrsh7th/cmp-cmdline')
+  use('hrsh7th/nvim-cmp')
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
 
+  use('hrsh7th/cmp-vsnip')
+  use('hrsh7th/vim-vsnip')
+
 -- Magit for neovim
-use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
 -- Toggle comments
   use('numToStr/Comment.nvim')

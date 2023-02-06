@@ -59,12 +59,13 @@ local neogit = require('neogit')
 neogit.setup {}
 
 -- LSP Configurations
--- require'lspconfig'.pyright.setup{}
--- require("lsp/lspmain")
--- require("lsp/rust")
--- require("lsp/go")
--- require("lsp/python")
--- require("lsp/groovy")
+require'lspconfig'.pyright.setup{}
+require("lsp/lspmain")
+require("lsp/rust")
+require("lsp/go")
+require("lsp/python")
+require("lsp/groovy")
+require("lsp/completion")
 
 
 -- Telescope
