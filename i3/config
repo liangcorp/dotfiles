@@ -227,13 +227,15 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xscreensaver --no-splash
 exec --no-startup-id ibus-daemon
 
+default_border pixel 1
+
 # Personal bindings
 bindsym $mod+Ctrl+c exec "chromium-freeworld"
 bindsym $mod+Ctrl+m exec "evolution"
 bindsym $mod+Ctrl+f exec "firefox"
 bindsym $mod+Ctrl+s exec "slack"
-# bindsym $mod+Ctrl+p exec "pcmanfm"
-bindsym $mod+Ctrl+p exec "nautilus"
+bindsym $mod+Ctrl+p exec "pcmanfm"
+# bindsym $mod+Ctrl+p exec "nautilus"
 bindsym $mod+Ctrl+v exec "virt-manager"
 bindsym $mod+Ctrl+e exec "emacs"
 bindsym $mod+Ctrl+h exec "/opt/Webex/bin/CiscoCollabHost"

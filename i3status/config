@@ -1,8 +1,11 @@
 general {
         # output_format = "dzen2"
 		# output_format = "xmobar"
+        output_format = "i3bar"
         colors = true
-		color_good = "#00FF00"
+		color_good = "#50FA7B"
+        color_degraded = "#F1FA8C"
+        color_bad = "#FF5555"
         interval = 5
 }
 
@@ -25,23 +28,23 @@ order += "battery 0"
 order += "tztime dublin"
 
 wireless wlp0s20f3 {
-        # format_up = "Wifi: (%quality at %essid, %bitrate) %ip"
-        format_up = "WiFi%quality at %essid"
-        format_down = "WiFidown"
+        # format_up = "wlp0s20f3: (%quality at %essid, %bitrate) %ip"
+        format_up = "wlp0s20f3:%quality at %essid"
+        format_down = "wlp0s20f3:down"
 }
 
 ethernet enp0s31f6 {
-        format_up = "🖧 %ip (%speed)"
-        format_down = "🖧 down"
+        format_up = "enp0s31f6 %ip (%speed)"
+        format_down = "enp0s31f6: down"
 }
 
 battery 0 {
         format = "%status %percentage %remaining %emptytime"
         format_down = "No battery"
-        status_chr = "⚡"
-        status_bat = "🔋"
-        status_unk = "?"
-        status_full = "☻"
+        status_chr = "BTRY:" # "⚡"
+        status_bat = "BTRY:" # "🔋"
+        status_unk = "BTRY:" # "?"
+        status_full = "BTRY:" # "☻"
         path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
 }
@@ -90,17 +93,17 @@ cpu_temperature 0 {
 }
 
 cpu_usage {
-        format = "⩩ %usage"
+        format = "CPU: %usage"
 }
 
 memory {
-        format = "⫴ %used"
+        format = "RAM: %used"
         threshold_degraded = "10%"
-        format_degraded = "⫴ %free"
+        format_degraded = "RAM: %free"
 }
 
 disk "/" {
-        format = "🖫 %percentage_used"
+        format = "/: %percentage_used"
 }
 
 read_file uptime {
@@ -108,8 +111,8 @@ read_file uptime {
 }
 
 volume master {
-        format = "♪: %volume"
-        format_muted = "♪: muted (%volume)"
+        format = "VOL: %volume"
+        format_muted = "VOL: muted (%volume)"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
