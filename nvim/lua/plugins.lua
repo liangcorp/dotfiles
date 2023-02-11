@@ -1,61 +1,66 @@
 return require('packer').startup(function(use)
-  use('wbthomason/packer.nvim')
-  -- use('sheerun/vim-polyglot')
-  -- use('prabirshrestha/vim-lsp')
-  use('neoclide/coc.nvim')
-  use('nvim-lua/plenary.nvim')
+        use('wbthomason/packer.nvim')
+        -- use('sheerun/vim-polyglot')
+        -- use('prabirshrestha/vim-lsp')
+        use('neoclide/coc.nvim')
+        use('nvim-lua/plenary.nvim')
 
--- Telescope
-  use('nvim-telescope/telescope.nvim')
-  use('nvim-telescope/telescope-symbols.nvim')
+        -- Telescope
+        use('nvim-telescope/telescope.nvim')
+        use('nvim-telescope/telescope-symbols.nvim')
 
--- Treesitter
-  use('nvim-treesitter/nvim-treesitter')
-  use('kyazdani42/nvim-tree.lua')
-  -- use('tpope/vim-fugitive')
+        -- Treesitter
+        use('nvim-treesitter/nvim-treesitter')
+        use('kyazdani42/nvim-tree.lua')
+        -- use('tpope/vim-fugitive')
 
--- Themes
-  use('Mofiqul/dracula.nvim')
-  use('navarasu/onedark.nvim')
+        -- Themes
+        use('Mofiqul/dracula.nvim')
+        use('navarasu/onedark.nvim')
 
--- lualine status line
-  use('kyazdani42/nvim-web-devicons') -- optional, for file icons
-  use('nvim-lualine/lualine.nvim')
+        -- lualine status line
+        use('kyazdani42/nvim-web-devicons') -- optional, for file icons
+        use('nvim-lualine/lualine.nvim')
 
--- Track the engine.
-  -- use('SirVer/ultisnips')
+        -- Track the engine.
+        -- use('SirVer/ultisnips')
 
--- Snippets are separated from the engine. Add this if you want them:
-  use('neovim/nvim-lspconfig')
-  use('hrsh7th/cmp-nvim-lsp')
-  use('hrsh7th/cmp-buffer')
-  use('hrsh7th/cmp-path')
-  use('hrsh7th/cmp-cmdline')
-  use('hrsh7th/nvim-cmp')
-  use('jose-elias-alvarez/null-ls.nvim')
-  use('MunifTanjim/prettier.nvim')
+        -- Snippets are separated from the engine. Add this if you want them:
+        use('neovim/nvim-lspconfig')
+        use('williamboman/mason.nvim')
+        use('williamboman/mason-lspconfig.nvim')
 
-  use('hrsh7th/cmp-vsnip')
-  use('hrsh7th/vim-vsnip')
+        use('hrsh7th/cmp-nvim-lsp')
+        use('hrsh7th/cmp-buffer')
+        use('hrsh7th/cmp-path')
+        use('hrsh7th/cmp-cmdline')
+        use('hrsh7th/nvim-cmp')
+        use('jose-elias-alvarez/null-ls.nvim')
+        use('MunifTanjim/prettier.nvim')
 
--- Grammar Guard
-  use('brymer-meneses/grammar-guard.nvim')
-  -- use('williamboman/nvim-lsp-installer')
+        use('hrsh7th/cmp-vsnip')
+        use('hrsh7th/vim-vsnip')
 
--- Magit for neovim
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-  use('lewis6991/gitsigns.nvim')
+        -- Grammar Guard
+        use('brymer-meneses/grammar-guard.nvim')
+        -- use('williamboman/nvim-lsp-installer')
 
-  -- Extra packages for rust
-  use('rust-lang/rust.vim')
+        -- Magit for neovim
+        use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+        use('lewis6991/gitsigns.nvim')
 
--- Toggle comments
-  use('numToStr/Comment.nvim')
+        -- Extra packages for rust
+        use('rust-lang/rust.vim')
 
--- Debugger
-  -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-  -- use('leoluz/nvim-dap-go')
-  -- use("folke/neodev.nvim")
+        -- Toggle comments
+        use('numToStr/Comment.nvim')
 
-  use('puremourning/vimspector')
-end)
+        -- Markdown
+        use('iamcco/markdown-preview.nvim')
+        -- Debugger
+        -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+        -- use('leoluz/nvim-dap-go')
+        -- use("folke/neodev.nvim")
+
+        use('puremourning/vimspector')
+    end)

@@ -17,6 +17,9 @@ vim.cmd([[
     set ruler
     set wildmenu
 
+    set spelllang=en_gb
+    " set spell
+
     " colorscheme dracula
     colorscheme onedark
 
@@ -27,6 +30,8 @@ vim.cmd([[
 
     " Remove trailing space
     autocmd BufWritePre * :%s/\s\+$//e
+
+    autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
 ]])
 
 vim.opt.number = true
@@ -34,7 +39,7 @@ vim.opt.number = true
 -- Packer
 local use = require('packer').use
 require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim'
 end)
 
 require('plugins')
@@ -58,15 +63,33 @@ require("tree")
 local neogit = require('neogit')
 neogit.setup {}
 
+-- Mason Installer
+require("masonconfig")
+require("mason-lspconfig").setup {
+    ensure_installed = { "sumneko_lua", "rust_analyzer", "clangd", "dockerls", "tsserver", "gopls", "groovyls", "jsonls" },
+}
+
 -- LSP Configurations
-require'lspconfig'.pyright.setup{}
+-- require 'lspconfig'.pyright.setup {}
+-- require 'lspconfig'.clangd.setup {}
+-- require 'lspconfig'.neocmake.setup {}
+-- require 'lspconfig'.yamlls.setup {}
+-- require 'lspconfig'.dockerls.setup {}
+-- require 'lspconfig'.marksman.setup {}
+-- require 'lspconfig'.remark_ls.setup {}
+-- require 'lspconfig'.tsserver.setup {}
+-- require 'lspconfig'.java_language_server.setup {}
+-- require 'lspconfig'.groovyls.setup {}
+--
 require("lsp/lspmain")
 require("lsp/rust")
 require("lsp/go")
 require("lsp/python")
-require("lsp/groovy")
+-- require("lsp/groovy")
 require("lsp/completion")
 require("lsp/grammar")
+require("lsp/jsonls")
+-- require("lsp/sumnekolua")
 
 -- Telescope
 require("telescopeconfig")
@@ -75,7 +98,14 @@ require("telescopeconfig")
 require("prettierconfig")
 
 -- Status line using lualine
-require('lualine').setup()
+require('lualine').setup {
+    sections = {
+        lualine_b = {
+            {'branch'},
+            {'diagnostics', sources={ 'coc' }}
+        }
+    }
+}
 
 -- coc.nvim
 require('cocconfig')
@@ -90,4 +120,3 @@ vim.cmd([[
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve' ]
 ]])
-
