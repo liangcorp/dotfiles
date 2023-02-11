@@ -20,8 +20,8 @@ vim.cmd([[
     set spelllang=en_gb
     " set spell
 
-    colorscheme dracula
-    " colorscheme onedark
+    " colorscheme dracula
+    colorscheme onedark
 
     augroup packer_user_config
         autocmd!
@@ -66,29 +66,29 @@ neogit.setup {}
 -- Mason Installer
 require("masonconfig")
 require("mason-lspconfig").setup {
-    ensure_installed = { "rust_analyzer", "clangd", "gopls" },
+    ensure_installed = { "rust_analyzer", "clangd", "gopls", "tsserver", "pyright" },
 }
 
 -- LSP Configurations
--- require 'lspconfig'.pyright.setup {}
 require 'lspconfig'.clangd.setup {}
--- require 'lspconfig'.neocmake.setup {}
--- require 'lspconfig'.yamlls.setup {}
--- require 'lspconfig'.dockerls.setup {}
--- require 'lspconfig'.marksman.setup {}
+require 'lspconfig'.yamlls.setup {}
+require 'lspconfig'.dockerls.setup {}
+require 'lspconfig'.marksman.setup {}
 -- require 'lspconfig'.remark_ls.setup {}
--- require 'lspconfig'.tsserver.setup {}
--- require 'lspconfig'.java_language_server.setup {}
+require 'lspconfig'.tsserver.setup {}
+require 'lspconfig'.java_language_server.setup {}
 -- require 'lspconfig'.groovyls.setup {}
+
 --
 require("lsp/lspmain")
 require("lsp/rust")
 require("lsp/go")
 require("lsp/python")
--- require("lsp/groovy")
+require("lsp/groovy")
 require("lsp/completion")
 require("lsp/grammar")
 require("lsp/jsonls")
+require("lsp/bash")
 -- require("lsp/sumnekolua")
 
 -- Telescope

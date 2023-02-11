@@ -38,6 +38,7 @@ return require('packer').startup(function(use)
         use('jose-elias-alvarez/null-ls.nvim')
         use('MunifTanjim/prettier.nvim')
 
+        -- use('neomake/neomake')
         use('hrsh7th/cmp-vsnip')
         use('hrsh7th/vim-vsnip')
 
