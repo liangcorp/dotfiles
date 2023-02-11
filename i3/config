@@ -227,6 +227,7 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id xscreensaver --no-splash
 exec --no-startup-id ibus-daemon
+exec --no-startup-id compton --config ~/.config/compton.conf -b
 
 default_border pixel 1
 
