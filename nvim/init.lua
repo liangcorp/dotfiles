@@ -66,7 +66,7 @@ neogit.setup {}
 -- Mason Installer
 require("masonconfig")
 require("mason-lspconfig").setup {
-    ensure_installed = { "sumneko_lua", "rust_analyzer", "clangd", "dockerls", "tsserver", "gopls", "groovyls", "jsonls" },
+    ensure_installed = { "rust_analyzer", "clangd", "gopls" },
 }
 
 -- LSP Configurations
@@ -95,13 +95,14 @@ require("lsp/jsonls")
 require("telescopeconfig")
 
 -- Prettier
-require("prettierconfig")
+-- require("prettierconfig")
 
 -- Status line using lualine
 require('lualine').setup {
     sections = {
         lualine_b = {
             {'branch'},
+            {'diff'},
             {'diagnostics', sources={ 'coc' }}
         }
     }
