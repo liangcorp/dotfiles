@@ -1,7 +1,7 @@
 return require('packer').startup(function(use)
         use('wbthomason/packer.nvim')
         -- use('sheerun/vim-polyglot')
-        -- use('prabirshrestha/vim-lsp')
+        -- use('fatih/vim-go')
         use('neoclide/coc.nvim')
         use('nvim-lua/plenary.nvim')
 

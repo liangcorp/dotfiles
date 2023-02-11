@@ -20,8 +20,8 @@ vim.cmd([[
     set spelllang=en_gb
     " set spell
 
-    " colorscheme dracula
-    colorscheme onedark
+    colorscheme dracula
+    " colorscheme onedark
 
     augroup packer_user_config
         autocmd!
@@ -71,7 +71,7 @@ require("mason-lspconfig").setup {
 
 -- LSP Configurations
 -- require 'lspconfig'.pyright.setup {}
--- require 'lspconfig'.clangd.setup {}
+require 'lspconfig'.clangd.setup {}
 -- require 'lspconfig'.neocmake.setup {}
 -- require 'lspconfig'.yamlls.setup {}
 -- require 'lspconfig'.dockerls.setup {}

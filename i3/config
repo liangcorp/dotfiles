@@ -212,7 +212,7 @@ bar {
 }
 
 exec --no-startup-id xdg-user-dirs-update
-# exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper/IBM.png
+exec --no-startup-id feh --bg-fill "~/Pictures/wallpaper/2022-06-16-102214_1348x706_scrot.png"
 exec --no-startup-id volumeicon
 exec --no-startup-id ibus-daemon
 
