@@ -51,9 +51,6 @@ end)
 
 require('plugins')
 
--- Keyboard mappings
-require('mappings')
-
 -- Toggle comments
 -- "gcc" for line comment
 -- "gbc" for block comment
@@ -62,26 +59,11 @@ require('Comment').setup()
 -- Git signs
 require('gitsigns').setup()
 
--- Directory Tree
-require("tree")
-
--- Treesitter
-require("treesitter")
-
--- Aerial line
-require("aerialline")
-
 -- Magit for neovim
-local neogit = require('neogit')
-neogit.setup {}
-
--- Mason Installer
-require("masonconfig")
-require("mason-lspconfig").setup {
-    ensure_installed = { "rust_analyzer", "clangd", "gopls", "tsserver", "pyright" },
-}
+require('neogit').setup()
 
 -- LSP Configurations
+-- Configurations with defaults
 require 'lspconfig'.clangd.setup {}
 require 'lspconfig'.yamlls.setup {}
 require 'lspconfig'.dockerls.setup {}
@@ -91,7 +73,7 @@ require 'lspconfig'.tsserver.setup {}
 require 'lspconfig'.java_language_server.setup {}
 -- require 'lspconfig'.groovyls.setup {}
 
---
+-- Configurations with modifications
 require("lsp/lspmain")
 require("lsp/rust")
 require("lsp/go")
@@ -101,34 +83,41 @@ require("lsp/completion")
 require("lsp/grammar")
 require("lsp/jsonls")
 require("lsp/bash")
--- require("lsp/sumnekolua")
+-- require("lsp/sumnekolua") -- lua lsp
 
--- Telescope
-require("telescopeconfig")
+-- Keyboard mappings
+require('config/mappings')
 
--- Prettier
--- require("prettierconfig")
+-- Directory Tree
+require("config/tree")
+
+-- Treesitter for better highlighting
+require("config/treesitter")
+
+-- Aerial for indexing/traversing definitions
+require("config/aerialline")
+
+-- Mason Installer for LSP servers
+require("config/masonconfig")
+
+-- Telescope for fuzzy finding
+require("config/telescopeconfig")
+
+-- Prettier for better code formatting
+require("config/prettierconfig")
 
 -- Status line using lualine
-require('lualine').setup {
-    sections = {
-        lualine_b = {
-            {'branch'},
-            {'diff'},
-            {'diagnostics', sources={ 'coc' }}
-        }
-    }
-}
+require('config/lualineconfig')
 
--- coc.nvim
-require('cocconfig')
+-- coc.nvim: an all in one coding tools
+require('config/cocconfig')
 
 -- Debugger nvim-dap
 -- require("dapui").setup()
 -- require("dap/dapconfig")
 -- require("dap/daprust")
 
--- Debugger vimspector
+-- Debugging with vimspector
 vim.cmd([[
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve' ]
