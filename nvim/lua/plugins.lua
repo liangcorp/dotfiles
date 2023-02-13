@@ -11,6 +11,8 @@ return require('packer').startup(function(use)
 
         -- Treesitter
         use('nvim-treesitter/nvim-treesitter')
+
+        -- Directory Tree
         use('kyazdani42/nvim-tree.lua')
         -- use('tpope/vim-fugitive')
 
@@ -21,6 +23,9 @@ return require('packer').startup(function(use)
         -- lualine status line
         use('kyazdani42/nvim-web-devicons') -- optional, for file icons
         use('nvim-lualine/lualine.nvim')
+
+        -- Arie line
+        use('stevearc/aerial.nvim')
 
         -- Track the engine.
         -- use('SirVer/ultisnips')

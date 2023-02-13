@@ -1,3 +1,10 @@
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
 vim.cmd([[
     syntax on
     filetype plugin indent on
@@ -55,9 +62,14 @@ require('Comment').setup()
 -- Git signs
 require('gitsigns').setup()
 
--- Treesitter
-require("nvim-tree").setup()
+-- Directory Tree
 require("tree")
+
+-- Treesitter
+require("treesitter")
+
+-- Aerial line
+require("aerialline")
 
 -- Magit for neovim
 local neogit = require('neogit')

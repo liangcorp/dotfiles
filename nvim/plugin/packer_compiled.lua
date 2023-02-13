@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  ["aerial.nvim"] = {
+    loaded = true,
+    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/aerial.nvim",
+    url = "https://github.com/stevearc/aerial.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -148,11 +153,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/neogit",
     url = "https://github.com/TimUntersberger/neogit"
-  },
-  neomake = {
-    loaded = true,
-    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/neomake",
-    url = "https://github.com/neomake/neomake"
   },
   ["null-ls.nvim"] = {
     loaded = true,
