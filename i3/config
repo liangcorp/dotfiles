@@ -53,8 +53,8 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
-# bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -249,6 +249,7 @@ bindsym $mod+Ctrl+p exec "pcmanfm"
 bindsym $mod+Ctrl+v exec "virt-manager"
 bindsym $mod+Ctrl+e exec "emacs"
 bindsym $mod+Ctrl+h exec "/opt/Webex/bin/CiscoCollabHost"
+bindsym $mod+Ctrl+o exec "alacritty --working-directory ~/cloudpak/TNC/tnc-o-operator -e tmux new -n operator"
 
 bindsym $mod+Ctrl+w exec "scrot -u"
 bindsym $mod+Ctrl+a exec "scrot"

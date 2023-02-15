@@ -77,6 +77,7 @@ require 'lspconfig'.java_language_server.setup {}
 require("lsp/lspmain")
 require("lsp/rust")
 require("lsp/go")
+-- require("lsp/vim-go")
 require("lsp/python")
 require("lsp/groovy")
 require("lsp/completion")
