@@ -38,7 +38,8 @@
         "/home/cliang/.local/share/nvim/site/pack/packer/start/rust.vim/after",
         "/usr/share/vim/vimfiles/",
         "${3rd}/luassert/library",
-        "${3rd}/love2d/library"
+        "${3rd}/love2d/library",
+        "${3rd}/luv/library"
     ],
     "runtime.special": {
         "love.filesystem.load": "loadfile"

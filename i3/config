@@ -53,8 +53,8 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 # start a terminal
-# bindsym $mod+Return exec gnome-terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec gnome-terminal
+# bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
