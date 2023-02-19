@@ -112,7 +112,7 @@ require("config/prettierconfig")
 require('config/lualineconfig')
 
 -- coc.nvim: an all in one coding tools
-require('config/cocconfig')
+-- require('config/cocconfig')
 
 -- Debugger nvim-dap
 -- require("dapui").setup()

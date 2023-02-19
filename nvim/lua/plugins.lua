@@ -2,7 +2,7 @@ return require('packer').startup(function(use)
     use('wbthomason/packer.nvim')
     -- use('sheerun/vim-polyglot')
     -- use('fatih/vim-go')
-    use('neoclide/coc.nvim')
+    -- use('neoclide/coc.nvim')
     use('nvim-lua/plenary.nvim')
 
     -- Telescope
