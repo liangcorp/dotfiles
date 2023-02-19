@@ -358,7 +358,10 @@
   (add-hook 'text-mode-hook 'yas-minor-mode))
 
 ;; mardown-mode runs on .md files by default
-(require 'markdown-mode)
+(use-package markdown-mode
+  :hook (markdown-mode . lsp)
+  :config
+  (require 'lsp-marksman))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 

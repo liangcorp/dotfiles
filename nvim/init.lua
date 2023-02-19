@@ -68,7 +68,7 @@ require('neogit').setup()
 require 'lspconfig'.clangd.setup {}
 require 'lspconfig'.yamlls.setup {}
 require 'lspconfig'.dockerls.setup {}
--- require 'lspconfig'.marksman.setup {}
+require 'lspconfig'.marksman.setup {}
 -- require 'lspconfig'.remark_ls.setup {}
 require 'lspconfig'.tsserver.setup {}
 require 'lspconfig'.java_language_server.setup {}
