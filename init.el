@@ -30,6 +30,7 @@
 ;; (setq org-log-done 'time)
 (use-package tree-sitter :ensure t)
 (global-tree-sitter-mode)
+(setq tree-sitter-hl-mode t)
 
 ;; Enable go-mode
 (use-package go-mode
