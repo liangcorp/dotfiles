@@ -135,3 +135,4 @@ vim.cmd([[
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve' ]
 ]])
+vim.keymap.set("n", "<leader>rs", "<cmd>VimspectorReset<CR>")
