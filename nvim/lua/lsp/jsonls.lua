@@ -2,6 +2,9 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require'lspconfig'.jsonls.setup {
-  capabilities = capabilities,
+local on_attach = require("lsp-format").on_attach
+
+require 'lspconfig'.jsonls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
 }

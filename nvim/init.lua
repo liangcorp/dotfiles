@@ -63,13 +63,15 @@ require('neogit').setup()
 
 -- LSP Configurations
 -- Configurations with defaults
-require 'lspconfig'.clangd.setup {}
-require 'lspconfig'.yamlls.setup {}
-require 'lspconfig'.dockerls.setup {}
-require 'lspconfig'.marksman.setup {}
-require 'lspconfig'.tsserver.setup {}
-require 'lspconfig'.java_language_server.setup {}
-require 'lspconfig'.neocmake.setup {}
+require("lsp-format").setup {}
+
+require 'lspconfig'.clangd.setup { on_attach = require("lsp-format").on_attach }
+require 'lspconfig'.yamlls.setup { on_attach = require("lsp-format").on_attach }
+require 'lspconfig'.dockerls.setup { on_attach = require("lsp-format").on_attach }
+require 'lspconfig'.marksman.setup { on_attach = require("lsp-format").on_attach }
+require 'lspconfig'.tsserver.setup { on_attach = require("lsp-format").on_attach }
+require 'lspconfig'.java_language_server.setup { on_attach = require("lsp-format").on_attach }
+require 'lspconfig'.neocmake.setup { on_attach = require("lsp-format").on_attach }
 
 
 -- Configurations with modifications
@@ -84,13 +86,12 @@ require("lsp/grammar")
 require("lsp/jsonls")
 require("lsp/bash")
 require("lsp/luaconfig") -- lua lsp
-require("lsp/lspformat")
 
 -- Markdown Preview
 require("config/markdownpreview")
 
 -- Markdown Linting
-require("config/markdownlint")
+require("config/linter")
 
 -- Keyboard mappings
 require('config/mappings')

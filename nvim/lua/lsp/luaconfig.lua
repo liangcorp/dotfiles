@@ -1,4 +1,7 @@
+local on_attach = require("lsp-format").on_attach
+
 require 'lspconfig'.lua_ls.setup {
+    on_attach = on_attach,
     settings = {
         Lua = {
             runtime = {
