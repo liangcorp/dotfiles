@@ -1,7 +1,5 @@
 return require('packer').startup(function(use)
     use('wbthomason/packer.nvim')
-    -- use('sheerun/vim-polyglot')
-    -- use('fatih/vim-go')
     -- use('neoclide/coc.nvim')
     use('nvim-lua/plenary.nvim')
 
@@ -14,7 +12,6 @@ return require('packer').startup(function(use)
 
     -- Directory Tree
     use('kyazdani42/nvim-tree.lua')
-    -- use('tpope/vim-fugitive')
 
     -- Themes
     use('Mofiqul/dracula.nvim')
@@ -55,7 +52,7 @@ return require('packer').startup(function(use)
     use('folke/trouble.nvim')
 
     -- Prettier
-    -- use('jose-elias-alvarez/null-ls.nvim')
+    use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
 
     -- Make
@@ -67,7 +64,6 @@ return require('packer').startup(function(use)
 
     -- Grammar Guard
     use('brymer-meneses/grammar-guard.nvim')
-    -- use('williamboman/nvim-lsp-installer')
 
     -- Magit for neovim
     use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
@@ -86,18 +82,10 @@ return require('packer').startup(function(use)
         run = function() vim.fn["mkdp#util#install"]() end,
     })
 
-    -- use({
-    --     "iamcco/markdown-preview.nvim",
-    --     run = "cd app && npm install",
-    --     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    --     ft = { "markdown" },
-    -- })
-
     -- Debugger
-    use('mfussenegger/nvim-dap')
-    -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-    -- use('leoluz/nvim-dap-go')
-    -- use("folke/neodev.nvim")
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+    use('leoluz/nvim-dap-go')
+    use("folke/neodev.nvim")
 
     use('puremourning/vimspector')
 end)

@@ -85,7 +85,7 @@ require("lsp/completion")
 require("lsp/grammar")
 require("lsp/jsonls")
 require("lsp/bash")
-require("lsp/luaconfig") -- lua lsp
+-- require("lsp/luaconfig") -- lua lsp
 
 -- Markdown Preview
 require("config/markdownpreview")
@@ -112,7 +112,7 @@ require("config/masonconfig")
 require("config/telescopeconfig")
 
 -- Prettier for better code formatting
--- require("config/nullls")
+require("config/nullls")
 require("config/prettierconfig")
 
 -- Status line using lualine
@@ -125,8 +125,9 @@ require('config/trouble')
 -- require('config/cocconfig')
 
 -- Debugger nvim-dap
--- require("dapui").setup()
--- require("dap/dapconfig")
+require("dapui").setup{}
+require("dap/dapconfig")
+require("dap/dapgo")
 -- require("dap/daprust")
 
 -- Debugging with vimspector
