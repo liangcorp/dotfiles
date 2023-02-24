@@ -69,12 +69,9 @@ require 'lspconfig'.clangd.setup {}
 require 'lspconfig'.yamlls.setup {}
 require 'lspconfig'.dockerls.setup {}
 require 'lspconfig'.marksman.setup {}
--- require 'lspconfig'.remark_ls.setup {}
 require 'lspconfig'.tsserver.setup {}
 require 'lspconfig'.java_language_server.setup {}
--- require 'lspconfig'.groovyls.setup {}
 require'lspconfig'.neocmake.setup{}
--- require'lspconfig'.cmake.setup{}
 
 
 -- Configurations with modifications

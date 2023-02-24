@@ -149,6 +149,11 @@ _G.packer_plugins = {
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/neogit",
     url = "https://github.com/TimUntersberger/neogit"
   },
+  neomake = {
+    loaded = true,
+    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/neomake",
+    url = "https://github.com/neomake/neomake"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
