@@ -66,13 +66,21 @@ return require('packer').startup(function(use)
     use('numToStr/Comment.nvim')
 
     -- Markdown
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
     -- use({
-    --     'iamcco/markdown-preview.nvim',
+    --     "iamcco/markdown-preview.nvim",
     --     run = "cd app && npm install",
     --     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     --     ft = { "markdown" },
     -- })
+
     -- Debugger
+    use('mfussenegger/nvim-dap')
     -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
     -- use('leoluz/nvim-dap-go')
     -- use("folke/neodev.nvim")

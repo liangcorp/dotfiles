@@ -72,7 +72,10 @@ require 'lspconfig'.marksman.setup {}
 -- require 'lspconfig'.remark_ls.setup {}
 require 'lspconfig'.tsserver.setup {}
 require 'lspconfig'.java_language_server.setup {}
-require 'lspconfig'.groovyls.setup {}
+-- require 'lspconfig'.groovyls.setup {}
+require'lspconfig'.neocmake.setup{}
+-- require'lspconfig'.cmake.setup{}
+
 
 -- Configurations with modifications
 require("lsp/lspmain")
@@ -85,7 +88,13 @@ require("lsp/completion")
 require("lsp/grammar")
 require("lsp/jsonls")
 require("lsp/bash")
-require("lsp/luaconfig") -- lua lsp
+-- require("lsp/luaconfig") -- lua lsp
+
+-- Markdown Preview
+require("config/markdownpreview")
+
+-- Markdown Linting
+require("config/markdownlint")
 
 -- Keyboard mappings
 require('config/mappings')
