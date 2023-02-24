@@ -28,26 +28,37 @@ return require('packer').startup(function(use)
     -- NVIM Lint
     use('mfussenegger/nvim-lint')
 
-    -- Arie line
+    -- Arie (list and move between functions)
     use('stevearc/aerial.nvim')
 
     -- Track the engine.
     -- use('SirVer/ultisnips')
 
-    -- Snippets are separated from the engine. Add this if you want them:
+    --  Neovim Language Server Protocol client
     use('neovim/nvim-lspconfig')
+
+    -- LSP server installer and manager
     use('williamboman/mason.nvim')
     use('williamboman/mason-lspconfig.nvim')
 
+    -- Text and code completions
     use('hrsh7th/cmp-nvim-lsp')
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-cmdline')
     use('hrsh7th/nvim-cmp')
+
+    -- Show Error in Trouble Window
+    use('folke/trouble.nvim')
+
+    -- Prettier
     use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
 
+    -- Make
     use('neomake/neomake')
+
+    -- Snippets
     use('hrsh7th/cmp-vsnip')
     use('hrsh7th/vim-vsnip')
 
@@ -65,7 +76,7 @@ return require('packer').startup(function(use)
     -- Toggle comments
     use('numToStr/Comment.nvim')
 
-    -- Markdown
+    -- Markdown preview
     -- install without yarn or npm
     use({
         "iamcco/markdown-preview.nvim",

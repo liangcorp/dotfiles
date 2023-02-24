@@ -39,7 +39,7 @@ vim.cmd([[
     " Remove trailing space
     autocmd BufWritePre * :%s/\s\+$//e
 
-    autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
+    " autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
 ]])
 
 vim.opt.number = true
@@ -71,7 +71,7 @@ require 'lspconfig'.dockerls.setup {}
 require 'lspconfig'.marksman.setup {}
 require 'lspconfig'.tsserver.setup {}
 require 'lspconfig'.java_language_server.setup {}
-require'lspconfig'.neocmake.setup{}
+require 'lspconfig'.neocmake.setup {}
 
 
 -- Configurations with modifications
@@ -85,7 +85,7 @@ require("lsp/completion")
 require("lsp/grammar")
 require("lsp/jsonls")
 require("lsp/bash")
--- require("lsp/luaconfig") -- lua lsp
+require("lsp/luaconfig") -- lua lsp
 
 -- Markdown Preview
 require("config/markdownpreview")
@@ -112,10 +112,14 @@ require("config/masonconfig")
 require("config/telescopeconfig")
 
 -- Prettier for better code formatting
+require("config/nullls")
 require("config/prettierconfig")
 
 -- Status line using lualine
 require('config/lualineconfig')
+
+-- Trouble window
+require('config/trouble')
 
 -- coc.nvim: an all in one coding tools
 -- require('config/cocconfig')
