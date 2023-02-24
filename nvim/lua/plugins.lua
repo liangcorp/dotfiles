@@ -37,6 +37,9 @@ return require('packer').startup(function(use)
     --  Neovim Language Server Protocol client
     use('neovim/nvim-lspconfig')
 
+    -- LSP format
+    use('lukas-reineke/lsp-format.nvim')
+
     -- LSP server installer and manager
     use('williamboman/mason.nvim')
     use('williamboman/mason-lspconfig.nvim')
@@ -52,7 +55,7 @@ return require('packer').startup(function(use)
     use('folke/trouble.nvim')
 
     -- Prettier
-    use('jose-elias-alvarez/null-ls.nvim')
+    -- use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
 
     -- Make

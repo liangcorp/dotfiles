@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/grammar-guard.nvim",
     url = "https://github.com/brymer-meneses/grammar-guard.nvim"
   },
+  ["lsp-format.nvim"] = {
+    loaded = true,
+    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/lsp-format.nvim",
+    url = "https://github.com/lukas-reineke/lsp-format.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -153,11 +158,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/neomake",
     url = "https://github.com/neomake/neomake"
-  },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,

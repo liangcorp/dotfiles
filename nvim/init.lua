@@ -17,14 +17,14 @@ vim.cmd([[
     set mouse=a
     set mousemodel=popup
     set guioptions=egmrti
-    set gfn=Monospace\ 10
+    " set gfn=Monospace\ 10
     set autowrite
     set encoding=UTF-8
     set completeopt=longest
     set ruler
     set wildmenu
 
-    set spelllang=en_gb
+    " set spelllang=en_gb
     " set spell
 
     " colorscheme dracula
@@ -38,8 +38,6 @@ vim.cmd([[
 
     " Remove trailing space
     autocmd BufWritePre * :%s/\s\+$//e
-
-    " autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
 ]])
 
 vim.opt.number = true
@@ -86,6 +84,7 @@ require("lsp/grammar")
 require("lsp/jsonls")
 require("lsp/bash")
 require("lsp/luaconfig") -- lua lsp
+require("lsp/lspformat")
 
 -- Markdown Preview
 require("config/markdownpreview")
@@ -112,7 +111,7 @@ require("config/masonconfig")
 require("config/telescopeconfig")
 
 -- Prettier for better code formatting
-require("config/nullls")
+-- require("config/nullls")
 require("config/prettierconfig")
 
 -- Status line using lualine
