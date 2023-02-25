@@ -131,6 +131,7 @@ require('config/vimtest')
 
 -- Debugger nvim-dap
 require("dap/dapconfig")
+require("nvim-dap-virtual-text").setup {}
 require("dap/dappython")
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 require('dap-python').test_runner = 'pytest'
