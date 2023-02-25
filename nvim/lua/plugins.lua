@@ -1,12 +1,13 @@
 return require('packer').startup(function(use)
     use('wbthomason/packer.nvim')
-    -- use('neoclide/coc.nvim')
-    -- use('fatih/vim-go')
     use('nvim-lua/plenary.nvim')
 
     -- Telescope
     use('nvim-telescope/telescope.nvim')
     use('nvim-telescope/telescope-symbols.nvim')
+
+    -- Indent Blanline
+    use("lukas-reineke/indent-blankline.nvim")
 
     -- Treesitter
     use('nvim-treesitter/nvim-treesitter')
@@ -17,7 +18,6 @@ return require('packer').startup(function(use)
     -- Themes
     use('Mofiqul/dracula.nvim')
     use('navarasu/onedark.nvim')
-    use 'folke/tokyonight.nvim'
 
     -- lualine status line
     use('kyazdani42/nvim-web-devicons') -- optional, for file icons
@@ -28,9 +28,6 @@ return require('packer').startup(function(use)
 
     -- Arie (list and move between functions)
     use('stevearc/aerial.nvim')
-
-    -- Track the engine.
-    -- use('SirVer/ultisnips')
 
     --  Neovim Language Server Protocol client
     use('neovim/nvim-lspconfig')
@@ -90,6 +87,4 @@ return require('packer').startup(function(use)
     use('theHamsta/nvim-dap-virtual-text')
     use('nvim-telescope/telescope-dap.nvim')
     use("folke/neodev.nvim")
-
-    use('puremourning/vimspector')
 end)

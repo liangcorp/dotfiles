@@ -28,7 +28,7 @@ vim.cmd([[
     " set spell
 
     " colorscheme dracula
-    colorscheme onedark
+    " colorscheme onedark
     " colorscheme tokyonight-storm
 
     augroup packer_user_config
@@ -49,6 +49,8 @@ require('packer').startup(function()
 end)
 
 require('plugins')
+
+require('onedark').load()
 
 -- Toggle comments
 -- "gcc" for line comment
@@ -130,9 +132,8 @@ require("dap/dapconfig")
 -- require("dap/dapgo")
 -- require("dap/daprust")
 
--- Debugging with vimspector
--- vim.cmd([[
--- let g:vimspector_enable_mappings = 'HUMAN'
--- let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve' ]
--- ]])
--- vim.keymap.set("n", "<leader>rs", "<cmd>VimspectorReset<CR>")
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = true,
+}
