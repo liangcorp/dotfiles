@@ -136,6 +136,7 @@ require("dap/dappython")
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 require('dap-python').test_runner = 'pytest'
 require("dap/dapgo")
+require("dap/dapjavascript")
 
 require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on
