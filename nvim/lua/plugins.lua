@@ -1,6 +1,7 @@
 return require('packer').startup(function(use)
     use('wbthomason/packer.nvim')
     -- use('neoclide/coc.nvim')
+    -- use('fatih/vim-go')
     use('nvim-lua/plenary.nvim')
 
     -- Telescope
@@ -71,6 +72,7 @@ return require('packer').startup(function(use)
 
     -- Extra packages for rust
     use('rust-lang/rust.vim')
+    use('simrat39/rust-tools.nvim')
 
     -- Toggle comments
     use('numToStr/Comment.nvim')
@@ -85,6 +87,8 @@ return require('packer').startup(function(use)
     -- Debugger
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     use('leoluz/nvim-dap-go')
+    use('theHamsta/nvim-dap-virtual-text')
+    use('nvim-telescope/telescope-dap.nvim')
     use("folke/neodev.nvim")
 
     use('puremourning/vimspector')

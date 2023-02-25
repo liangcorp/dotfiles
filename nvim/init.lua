@@ -125,14 +125,14 @@ require('config/trouble')
 -- require('config/cocconfig')
 
 -- Debugger nvim-dap
-require("dapui").setup{}
+-- require("dapui").setup{}
 require("dap/dapconfig")
-require("dap/dapgo")
--- require("dap/daprust")
+-- require("dap/dapgo")
+require("dap/daprust")
 
 -- Debugging with vimspector
-vim.cmd([[
-let g:vimspector_enable_mappings = 'HUMAN'
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve' ]
-]])
-vim.keymap.set("n", "<leader>rs", "<cmd>VimspectorReset<CR>")
+-- vim.cmd([[
+-- let g:vimspector_enable_mappings = 'HUMAN'
+-- let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve' ]
+-- ]])
+-- vim.keymap.set("n", "<leader>rs", "<cmd>VimspectorReset<CR>")
