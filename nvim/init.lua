@@ -85,7 +85,7 @@ require("lsp/completion")
 require("lsp/grammar")
 require("lsp/jsonls")
 require("lsp/bash")
--- require("lsp/luaconfig") -- lua lsp
+require("lsp/luaconfig") -- lua lsp
 
 -- Markdown Preview
 require("config/markdownpreview")
@@ -128,7 +128,7 @@ require('config/trouble')
 -- require("dapui").setup{}
 require("dap/dapconfig")
 -- require("dap/dapgo")
-require("dap/daprust")
+-- require("dap/daprust")
 
 -- Debugging with vimspector
 -- vim.cmd([[
