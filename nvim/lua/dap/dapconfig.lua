@@ -1,15 +1,15 @@
 local dap, dapui = require("dap"), require("dapui")
-dapui.setup{}
+dapui.setup {}
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-    dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-    dapui.close()
-end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--     dapui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--     dapui.close()
+-- end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require("neodev").setup({
@@ -17,7 +17,7 @@ require("neodev").setup({
     capabilities = capabilities,
 })
 
-require("nvim-dap-virtual-text").setup()
+require("nvim-dap-virtual-text").setup {}
 
 vim.keymap.set("n", "<F3>", ":lua require'dap'.close()<CR>")
 vim.keymap.set("n", "<F4>", ":lua require'dap'.restart()<CR>")
@@ -29,9 +29,4 @@ vim.keymap.set("n", "<F10>", ":lua require'dap'.step_over()<CR>")
 vim.keymap.set("n", "<F11>", ":lua require'dap'.step_into()<CR>")
 vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
 vim.keymap.set("n", "<F6>", ":lua require'dap'.repl.open()<CR>")
-vim.keymap.set("n", "<leader>tc", ":lua require'dapui'.close()<CR>")
-
--- Debug golang
-require('dap-go').setup {}
--- Debug go test
-vim.keymap.set("n", "<leader>td", "<cmd>lua require('dap-go').debug_test()<CR>")
+vim.keymap.set("n", "<leader><F5>", ":lua require'dapui'.close()<CR>")

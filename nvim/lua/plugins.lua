@@ -88,12 +88,12 @@ return require('packer').startup(function(use)
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     use('leoluz/nvim-dap-go')
     use('mfussenegger/nvim-dap-python')
-    -- use("mxsdev/nvim-dap-vscode-js")
-    -- use {
-    --     "microsoft/vscode-js-debug",
-    --     opt = true,
-    --     run = "npm install --legacy-peer-deps && npm run compile"
-    -- }
+    use("mxsdev/nvim-dap-vscode-js")
+    use {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        run = "npm install --legacy-peer-deps && npm run compile"
+    }
     use('theHamsta/nvim-dap-virtual-text')
     use('nvim-telescope/telescope-dap.nvim')
     use("folke/neodev.nvim")

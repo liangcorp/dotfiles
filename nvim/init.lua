@@ -131,13 +131,12 @@ require('config/vimtest')
 
 -- Debugger nvim-dap
 require("dap/dapconfig")
-require("nvim-dap-virtual-text").setup {}
 require("dap/dappython")
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 require('dap-python').test_runner = 'pytest'
 require("dap/dapgo")
 require("dap/dapcodellb")
--- require("dap/dapjavascript")
+require("dap/dapjavascript")
 
 require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on
