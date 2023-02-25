@@ -1,9 +1,5 @@
-vim.cmd([[
-
-nmap <silent> <leader>tt :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ts :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tv :TestVisit<CR>
-
-]])
+vim.keymap.set("n", "<leader>tt", ":TestNearest<CR>")
+vim.keymap.set("n", "<leader>tf", ":TestFile<CR>")
+vim.keymap.set("n", "<leader>ts", ":TestSuite<CR>")
+vim.keymap.set("n", "<leader>tl", ":TestLast<CR>")
+vim.keymap.set("n", "<leader>tv", ":TestVisit<CR>")

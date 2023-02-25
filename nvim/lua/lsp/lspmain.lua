@@ -32,8 +32,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
--- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format { async = false }]]
-
 -- this is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
 -- !important nerdfonts needs to be setup for this to work in your terminal
@@ -55,5 +53,10 @@ end
 vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 -- Show line diagnostics automatically in hover window
 -- vim.o.updatetime = 250
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
+-- local autocmd = vim.api.nvim_create_autocmd
+--
+-- autocmd({ 'CursorHold', 'CursorHoldI' }, {
+--     pattern = '',
+--     command = ":lua vim.diagnostic.open_float(nil, {focus=false})"
+-- })

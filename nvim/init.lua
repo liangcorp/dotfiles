@@ -5,42 +5,35 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-vim.cmd([[
-    syntax on
-    filetype plugin indent on
-    set tabstop=4
-    set nocompatible
-    set softtabstop=0
-    set shiftwidth=4
-    set expandtab
-    set path+=**
-    set mouse=a
-    set mousemodel=popup
-    set guioptions=egmrti
-    " set gfn=Monospace\ 10
-    set autowrite
-    set encoding=UTF-8
-    set completeopt=longest
-    set ruler
-    set wildmenu
+vim.o.nocompatible = true
+vim.o.autowrite = true
+vim.o.encoding = "UTF-8"
+vim.o.mouse = "a"
+vim.o.mousemodel = "popup"
+vim.o.guioptions = "egmrti"
+vim.o.completeopt = "longest"
+vim.o.ruler = true
+vim.o.wildmenu = true
+vim.opt.path = vim.opt.path + '**'
+-- vim.o.gfn = "Source Code Pro 13"
+-- vim.o.spelllang = en_GB
+-- vim.o.spell = true
 
-    " set spelllang=en_gb
-    " set spell
-
-    " colorscheme dracula
-    " colorscheme onedark
-    " colorscheme tokyonight-storm
-
-    augroup packer_user_config
-        autocmd!
-        autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-    augroup end
-
-    " Remove trailing space
-    autocmd BufWritePre * :%s/\s\+$//e
-]])
+vim.bo.tabstop = 4
+vim.bo.softtabstop = 0
+vim.bo.shiftwidth = 4
+vim.bo.expandtab = true
+vim.bo.smartindent = true
 
 vim.opt.number = true
+
+local autocmd = vim.api.nvim_create_autocmd
+
+-- Remove whitespace on save
+autocmd('BufWritePre', {
+    pattern = '',
+    command = ":%s/\\s\\+$//e"
+})
 
 -- Packer
 local use = require('packer').use
