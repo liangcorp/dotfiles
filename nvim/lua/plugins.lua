@@ -74,6 +74,9 @@ return require('packer').startup(function(use)
     -- Toggle comments
     use('numToStr/Comment.nvim')
 
+    -- Vim Test
+    use('vim-test/vim-test')
+
     -- Markdown preview
     -- install without yarn or npm
     use({
@@ -84,6 +87,7 @@ return require('packer').startup(function(use)
     -- Debugger
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     use('leoluz/nvim-dap-go')
+    use('mfussenegger/nvim-dap-python')
     use('theHamsta/nvim-dap-virtual-text')
     use('nvim-telescope/telescope-dap.nvim')
     use("folke/neodev.nvim")

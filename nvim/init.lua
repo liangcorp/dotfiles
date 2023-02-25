@@ -126,11 +126,15 @@ require('config/trouble')
 -- coc.nvim: an all in one coding tools
 -- require('config/cocconfig')
 
+-- Vim Test
+require('config/vimtest')
+
 -- Debugger nvim-dap
--- require("dapui").setup{}
 require("dap/dapconfig")
--- require("dap/dapgo")
--- require("dap/daprust")
+require("dap/dappython")
+require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+require('dap-python').test_runner = 'pytest'
+require("dap/dapgo")
 
 require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on
