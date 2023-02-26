@@ -1,19 +1,28 @@
--- Mappings.
+-- Useful mappings for all
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+
+local lspconfig = require "lspconfig"
+local util = require "lspconfig/util"
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lsp_flags = {
+    -- This is the default in Nvim 0.7+
+    debounce_text_changes = 150,
+}
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    require("lsp-format").on_attach(_)
 
-    -- Mappings.
+    -- Useful mappings for programming
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -32,6 +41,138 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+-- Go configurations
+lspconfig.gopls.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    cmd = { 'gopls', 'serve' },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    single_file_support = true,
+    -- for postfix snippets and analyzers
+    capabilities = capabilities,
+    settings = {
+        gopls = {
+            experimentalPostfixCompletions = true,
+            analyses = {
+                fieldalignment = true,
+                unusedparams = true,
+                shadow = true,
+            },
+            staticcheck = true,
+        },
+    },
+}
+
+-- Python configurations
+lspconfig['pyright'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags,
+    root_dir = util.root_pattern(".git"),
+}
+
+-- Javascript configurations
+lspconfig.tsserver.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags,
+    root_dir = util.root_pattern(".git"),
+}
+
+-- Java language configurations
+lspconfig.java_language_server.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags,
+    root_dir = util.root_pattern(".git, main.java"),
+}
+
+-- C and CPP configurations
+lspconfig.clangd.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags,
+    root_dir = util.root_pattern("Makefile", ".git"),
+}
+
+-- Rust configurations
+local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.8.1/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.so' -- MacOS: This may be .dylib
+
+local rt = require("rust-tools")
+
+rt.setup({
+    capabilities = capabilities,
+    server = {
+        settings = {
+            ['rust-analyzer'] = {
+                cargo = {
+                    autoReload = true,
+                },
+                checkOnSave = {
+                    command = "clippy"
+                }
+            }
+        },
+        on_attach = function(_, bufnr)
+            on_attach(_, bufnr)
+            -- Hover actions
+            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+            -- Code action groups
+            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+        end,
+    },
+    dap = {
+        adapter = require('rust-tools.dap').get_codelldb_adapter(
+            codelldb_path, liblldb_path)
+    },
+    flags = lsp_flags,
+})
+
+-- Groovy configurations
+lspconfig.groovyls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags,
+    cmd = { "java", "-jar", "/home/cliang/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar" },
+}
+
+-- JSON configurations
+lspconfig.jsonls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags
+}
+
+-- Lua configurations
+lspconfig.lua_ls.setup {
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+    capabilities = capabilities,
+    flag = lsp_flags
+}
+
 -- this is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
 -- !important nerdfonts needs to be setup for this to work in your terminal
@@ -41,6 +182,7 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+-- Manage the display of line diagnostic
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --     vim.lsp.diagnostic.on_publish_diagnostics,
 --     {
@@ -50,7 +192,10 @@ end
 --       underline = true,
 --     }
 -- )
+
+-- Show line diagnostic in hover window
 vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+
 -- Show line diagnostics automatically in hover window
 -- vim.o.updatetime = 250
 

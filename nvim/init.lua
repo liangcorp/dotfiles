@@ -15,7 +15,7 @@ vim.o.completeopt = "longest"
 vim.o.ruler = true
 vim.o.wildmenu = true
 vim.opt.path = vim.opt.path + '**'
--- vim.o.gfn = "Source Code Pro 13"
+-- vim.o.gfn = "Source Code Pro Regular 13"
 -- vim.o.spelllang = en_GB
 -- vim.o.spell = true
 
@@ -60,27 +60,18 @@ require('neogit').setup()
 -- Configurations with defaults
 require("lsp-format").setup {}
 
-require 'lspconfig'.clangd.setup { on_attach = require("lsp-format").on_attach }
 require 'lspconfig'.yamlls.setup { on_attach = require("lsp-format").on_attach }
 require 'lspconfig'.dockerls.setup { on_attach = require("lsp-format").on_attach }
 require 'lspconfig'.marksman.setup { on_attach = require("lsp-format").on_attach }
-require 'lspconfig'.tsserver.setup { on_attach = require("lsp-format").on_attach }
-require 'lspconfig'.java_language_server.setup { on_attach = require("lsp-format").on_attach }
 require 'lspconfig'.neocmake.setup { on_attach = require("lsp-format").on_attach }
-
 
 -- Configurations with modifications
 require("lsp/lspmain")
-require("lsp/rust")
 require("lsp/go")
 -- require("lsp/vim-go")
-require("lsp/python")
-require("lsp/groovy")
 require("lsp/completion")
 require("lsp/grammar")
-require("lsp/jsonls")
 require("lsp/bash")
-require("lsp/luaconfig") -- lua lsp
 
 -- Markdown Preview
 require("config/markdownpreview")
@@ -92,7 +83,7 @@ require("config/linter")
 require('config/mappings')
 
 -- Directory Tree
-require("config/tree")
+require("nvim-tree").setup()
 
 -- Treesitter for better highlighting
 require("config/treesitter")
@@ -111,28 +102,30 @@ require("config/nullls")
 require("config/prettierconfig")
 
 -- Status line using lualine
-require('config/lualineconfig')
+require('lualine').setup {}
 
 -- Trouble window
 require('config/trouble')
 
--- coc.nvim: an all in one coding tools
--- require('config/cocconfig')
-
--- Vim Test
-require('config/vimtest')
-
--- Debugger nvim-dap
-require("dap/dapconfig")
-require("dap/dappython")
-require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-require('dap-python').test_runner = 'pytest'
-require("dap/dapgo")
-require("dap/dapcodellb")
-require("dap/dapjavascript")
-
+-- Display horizontal lines for indentations
 require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on
     show_current_context = true,
     show_current_context_start = true,
 }
+
+-- Debugger nvim-dap
+require("dap/dapconfig")
+
+-- DAP for python
+require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+require('dap-python').test_runner = 'pytest'
+
+-- DAP for c/cpp/rust
+require("dap/dapcodellb")
+
+-- DAP for javascript and typescript
+require("dap/dapjavascript")
+
+-- DAP for golang
+require('dap-go').setup {}

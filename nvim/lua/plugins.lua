@@ -57,8 +57,8 @@ return require('packer').startup(function(use)
     use('neomake/neomake')
 
     -- Snippets
-    use('hrsh7th/cmp-vsnip')
-    use('hrsh7th/vim-vsnip')
+    use('L3MON4D3/LuaSnip')
+    use('saadparwaiz1/cmp_luasnip')
 
     -- Grammar Guard
     use('brymer-meneses/grammar-guard.nvim')
