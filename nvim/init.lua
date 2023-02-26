@@ -50,6 +50,12 @@ require('onedark').load()
 require('Comment').setup()
 
 -- Git signs
+local neogit = require('neogit')
+neogit.setup {
+    use_magit_keybindings = true,
+    refresh_manually = true
+}
+
 require('gitsigns').setup()
 
 -- LSP Configurations
