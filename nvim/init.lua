@@ -52,18 +52,8 @@ require('Comment').setup()
 -- Git signs
 require('gitsigns').setup()
 
--- Magit for neovim
--- require('neogit').setup()
-
 -- LSP Configurations
 -- Configurations with defaults
--- require("lsp-format").setup {}
-
--- require 'lspconfig'.yamlls.setup { on_attach = require("lsp-format").on_attach }
--- require 'lspconfig'.dockerls.setup { on_attach = require("lsp-format").on_attach }
--- require 'lspconfig'.marksman.setup { on_attach = require("lsp-format").on_attach }
--- require 'lspconfig'.neocmake.setup { on_attach = require("lsp-format").on_attach }
-
 require 'lspconfig'.yamlls.setup {}
 require 'lspconfig'.dockerls.setup {}
 require 'lspconfig'.marksman.setup {}
