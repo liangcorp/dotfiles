@@ -19,12 +19,11 @@ vim.opt.path = vim.opt.path + '**'
 -- vim.o.spelllang = en_GB
 -- vim.o.spell = true
 
-vim.bo.tabstop = 4
-vim.bo.softtabstop = 0
-vim.bo.shiftwidth = 4
-vim.bo.expandtab = true
-vim.bo.smartindent = true
-
+vim.o.tabstop = 4
+vim.o.softtabstop = 0
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smartindent = true
 vim.opt.number = true
 
 local autocmd = vim.api.nvim_create_autocmd

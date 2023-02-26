@@ -59,7 +59,7 @@ end
 lspconfig.gopls.setup {
     on_attach = function(_, bufnr)
         on_attach(_, bufnr)
-        go_org_import(3000)
+        go_org_import(300)
     end,
     flags = lsp_flags,
     cmd = { 'gopls', 'serve' },
