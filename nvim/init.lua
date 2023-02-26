@@ -67,8 +67,6 @@ require 'lspconfig'.neocmake.setup { on_attach = require("lsp-format").on_attach
 
 -- Configurations with modifications
 require("lsp/lspmain")
-require("lsp/go")
--- require("lsp/vim-go")
 require("lsp/completion")
 require("lsp/grammar")
 require("lsp/bash")

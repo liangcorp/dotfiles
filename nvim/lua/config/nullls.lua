@@ -32,7 +32,7 @@
 -- })
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-require("null-ls").setup({
+require("null-ls").setup {
     -- you can reuse a shared lspconfig on_attach callback here
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
@@ -47,4 +47,4 @@ require("null-ls").setup({
             })
         end
     end,
-})
+}
