@@ -99,11 +99,6 @@ require('lualine').setup {}
 -- Trouble window
 require('config/trouble')
 
--- VIM Test strategy
-vim.cmd([[
-    let test#strategy = "neovim"
-]])
-
 -- Display horizontal lines for indentations
 require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on

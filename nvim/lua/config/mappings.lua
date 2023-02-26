@@ -32,10 +32,10 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- VIM Test related
-vim.keymap.set("n", "<leader>tt", ":TestNearest<CR>")
-vim.keymap.set("n", "<leader>tf", ":TestFile<CR>")
-vim.keymap.set("n", "<leader>ts", ":TestSuite<CR>")
-vim.keymap.set("n", "<leader>tl", ":TestLast<CR>")
+vim.keymap.set("n", "<leader>tt", ":TestNearest -strategy=neovim<CR>")
+vim.keymap.set("n", "<leader>tf", ":TestFile -strategy=neovim<CR>")
+vim.keymap.set("n", "<leader>ts", ":TestSuite -strategy=neovim<CR>")
+vim.keymap.set("n", "<leader>tl", ":TestLast -strategy=neovim<CR>")
 vim.keymap.set("n", "<leader>tv", ":TestVisit<CR>")
 
 -- Trouble
