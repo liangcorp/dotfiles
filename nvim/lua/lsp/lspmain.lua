@@ -20,7 +20,7 @@ local lsp_flags = {
 local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    require("lsp-format").on_attach(_)
+    -- require("lsp-format").on_attach(_)
 
     -- Useful mappings for programming
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -210,8 +210,15 @@ end
 --     }
 -- )
 
+-- Formatting file
+-- local autocmd = vim.api.nvim_create_autocmd
+-- autocmd({ 'BufWritePre' }, {
+--     pattern = '',
+--     command = ":lua vim.lsp.buf.formatting()"
+-- })
+
 -- Show line diagnostic in hover window
-vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>e', ':lua vim.diagnostic.open_float()<CR>', opts)
 
 -- Show line diagnostics automatically in hover window
 -- vim.o.updatetime = 250

@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["dracula.nvim"] = {
-    loaded = true,
-    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/dracula.nvim",
-    url = "https://github.com/Mofiqul/dracula.nvim"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -133,11 +128,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
-  ["lsp-format.nvim"] = {
-    loaded = true,
-    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/lsp-format.nvim",
-    url = "https://github.com/lukas-reineke/lsp-format.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -163,11 +153,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
-  },
-  neogit = {
-    loaded = true,
-    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/neogit",
-    url = "https://github.com/TimUntersberger/neogit"
   },
   neomake = {
     loaded = true,
@@ -264,11 +249,6 @@ _G.packer_plugins = {
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
   },
-  ["rust.vim"] = {
-    loaded = true,
-    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/rust.vim",
-    url = "https://github.com/rust-lang/rust.vim"
-  },
   ["telescope-dap.nvim"] = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
@@ -288,6 +268,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/cliang/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/cliang/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-test"] = {
     loaded = true,

@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
     use('kyazdani42/nvim-tree.lua')
 
     -- Themes
-    use('Mofiqul/dracula.nvim')
+    -- use('Mofiqul/dracula.nvim')
     use('navarasu/onedark.nvim')
 
     -- lualine status line
@@ -33,7 +33,7 @@ return require('packer').startup(function(use)
     use('neovim/nvim-lspconfig')
 
     -- LSP format
-    use('lukas-reineke/lsp-format.nvim')
+    -- use('lukas-reineke/lsp-format.nvim')
 
     -- LSP server installer and manager
     use('williamboman/mason.nvim')
@@ -64,11 +64,12 @@ return require('packer').startup(function(use)
     use('brymer-meneses/grammar-guard.nvim')
 
     -- Magit for neovim
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use('tpope/vim-fugitive')
     use('lewis6991/gitsigns.nvim')
 
     -- Extra packages for rust
-    use('rust-lang/rust.vim')
+    -- use('rust-lang/rust.vim')
     use('simrat39/rust-tools.nvim')
 
     -- Toggle comments
