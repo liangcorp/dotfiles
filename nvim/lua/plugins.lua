@@ -84,9 +84,6 @@ require("lazy").setup({
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
 
-    -- Grammar Guard
-    'brymer-meneses/grammar-guard.nvim',
-
     -- Magit for neovim
     -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     'tpope/vim-fugitive',

@@ -190,6 +190,13 @@ lspconfig.lua_ls.setup {
     flag = lsp_flags
 }
 
+lspconfig.ltex.setup{
+  on_attach = on_attach,
+  cmd = { "ltex-ls" },
+  filetypes = { "markdown", "text", "latex", "tex", "txt", "org" },
+  flags = lsp_flags,
+}
+
 -- this is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
 -- !important nerdfonts needs to be setup for this to work in your terminal

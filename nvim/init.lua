@@ -60,7 +60,6 @@ require 'lspconfig'.neocmake.setup {}
 -- Configurations with modifications
 require("lsp/lspmain")
 require("lsp/completion")
-require("lsp/grammar")
 require("lsp/bash")
 
 -- Markdown Preview
