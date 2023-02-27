@@ -70,8 +70,12 @@ require("lazy").setup({
     'folke/trouble.nvim',
 
     -- Prettier
-    'jose-elias-alvarez/null-ls.nvim',
-    'MunifTanjim/prettier.nvim',
+    { 'MunifTanjim/prettier.nvim',
+        dependencies = {
+            'jose-elias-alvarez/null-ls.nvim',
+            'neovim/nvim-lspconfig'
+        },
+    },
 
     -- Make
     'neomake/neomake',
