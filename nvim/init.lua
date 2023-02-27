@@ -34,12 +34,6 @@ autocmd('BufWritePre', {
     command = ":%s/\\s\\+$//e"
 })
 
--- Packer
-local use = require('packer').use
-require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
-end)
-
 require('plugins')
 
 require('onedark').load()
@@ -49,8 +43,6 @@ require('onedark').load()
 -- "gbc" for block comment
 require('Comment').setup()
 
--- Git signs
-require('gitsigns').setup()
 -- local neogit = require('neogit')
 -- neogit.setup {
 --     use_magit_keybindings = true,
@@ -79,9 +71,6 @@ require("config/linter")
 
 -- Keyboard mappings
 require('config/mappings')
-
--- Directory Tree
-require("nvim-tree").setup()
 
 -- Treesitter for better highlighting
 require("config/treesitter")

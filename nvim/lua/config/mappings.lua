@@ -67,9 +67,6 @@ vim.keymap.set("n", "gR", ":TroubleToggle lsp_references<cr>",
     { silent = true, noremap = true }
 )
 
--- Nvim Tree
-vim.keymap.set('n', '<leader>zz', ':NvimTreeToggle<CR>')
-
 -- Arial related shortcuts
 vim.keymap.set('n', '<leader>ae', ':AerialToggle!right<CR>')
 

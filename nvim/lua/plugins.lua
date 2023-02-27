@@ -1,83 +1,105 @@
-return require('packer').startup(function(use)
-    use('wbthomason/packer.nvim')
-    use('nvim-lua/plenary.nvim')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
 
+require("lazy").setup({
     -- Telescope
-    use('nvim-telescope/telescope.nvim')
-    use('nvim-telescope/telescope-symbols.nvim')
+    { 'nvim-telescope/telescope.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' } },
+    'nvim-telescope/telescope-symbols.nvim',
 
     -- Indent Blanline
-    use("lukas-reineke/indent-blankline.nvim")
+    "lukas-reineke/indent-blankline.nvim",
 
     -- Treesitter
-    use('nvim-treesitter/nvim-treesitter')
+    { 'nvim-treesitter/nvim-treesitter',
+        build = ":TSUpdate" },
 
     -- Directory Tree
-    use('kyazdani42/nvim-tree.lua')
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        keys = {
+            { "<leader>zz", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+        },
+        dependencies = {
+            'kyazdani42/nvim-web-devicons',
+            "MunifTanjim/nui.nvim" },
+        config = function()
+            require("neo-tree").setup()
+        end },
 
     -- Themes
-    -- use('Mofiqul/dracula.nvim')
-    use('navarasu/onedark.nvim')
+    -- 'Mofiqul/dracula.nvim'
+    'navarasu/onedark.nvim',
 
     -- lualine status line
-    use('kyazdani42/nvim-web-devicons') -- optional, for file icons
-    use('nvim-lualine/lualine.nvim')
+    { 'nvim-lualine/lualine.nvim',
+        dependencies = { 'kyazdani42/nvim-web-devicons' }
+    },
 
     -- NVIM Lint
-    use('mfussenegger/nvim-lint')
+    'mfussenegger/nvim-lint',
 
-    -- Arie (list and move between functions)
-    use('stevearc/aerial.nvim')
-
-    --  Neovim Language Server Protocol client
-    use('neovim/nvim-lspconfig')
-
-    -- LSP format
-    -- use('lukas-reineke/lsp-format.nvim')
+    -- Arie (list and move between functions
+    'stevearc/aerial.nvim',
 
     -- LSP server installer and manager
-    use('williamboman/mason.nvim')
-    use('williamboman/mason-lspconfig.nvim')
+    { 'williamboman/mason-lspconfig.nvim',
+        dependencies = {
+            'williamboman/mason.nvim',
+            'neovim/nvim-lspconfig' }
+    },
 
     -- Text and code completions
-    use('hrsh7th/cmp-nvim-lsp')
-    use('hrsh7th/cmp-buffer')
-    use('hrsh7th/cmp-path')
-    use('hrsh7th/cmp-cmdline')
-    use('hrsh7th/nvim-cmp')
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
 
     -- Show Error in Trouble Window
-    use('folke/trouble.nvim')
+    'folke/trouble.nvim',
 
     -- Prettier
-    use('jose-elias-alvarez/null-ls.nvim')
-    use('MunifTanjim/prettier.nvim')
+    'jose-elias-alvarez/null-ls.nvim',
+    'MunifTanjim/prettier.nvim',
 
     -- Make
-    use('neomake/neomake')
+    'neomake/neomake',
 
     -- Snippets
-    use('L3MON4D3/LuaSnip')
-    use('saadparwaiz1/cmp_luasnip')
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
 
     -- Grammar Guard
-    use('brymer-meneses/grammar-guard.nvim')
+    'brymer-meneses/grammar-guard.nvim',
 
     -- Magit for neovim
     -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-    use('tpope/vim-fugitive')
-    use('lewis6991/gitsigns.nvim')
+    'tpope/vim-fugitive',
+    { 'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end },
 
     -- Extra packages for rust
-    -- use('rust-lang/rust.vim')
-    use('simrat39/rust-tools.nvim')
+    -- 'rust-lang/rust.vim'
+    'simrat39/rust-tools.nvim',
 
     -- Toggle comments
-    use('numToStr/Comment.nvim')
+    'numToStr/Comment.nvim',
 
     -- Vim Test
-    use('vim-test/vim-test')
-
+    'vim-test/vim-test',
     -- Neotest
     -- use {
     --     "nvim-neotest/neotest",
@@ -93,22 +115,21 @@ return require('packer').startup(function(use)
 
     -- Markdown preview
     -- install without yarn or npm
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
+    { "iamcco/markdown-preview.nvim",
+        build = ":lua vim.fn[\"mkdp#util#install\"]" },
 
     -- Debugger
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-    use('leoluz/nvim-dap-go')
-    use('mfussenegger/nvim-dap-python')
-    use("mxsdev/nvim-dap-vscode-js")
-    use {
-        "microsoft/vscode-js-debug",
-        opt = true,
-        run = "npm install --legacy-peer-deps && npm run compile"
-    }
-    use('theHamsta/nvim-dap-virtual-text')
-    use('nvim-telescope/telescope-dap.nvim')
-    use("folke/neodev.nvim")
-end)
+    { "rcarriga/nvim-dap-ui",
+        dependencies = {
+            "folke/neodev.nvim",
+            "mfussenegger/nvim-dap" }
+    },
+    'leoluz/nvim-dap-go',
+    'mfussenegger/nvim-dap-python',
+    "mxsdev/nvim-dap-vscode-js",
+    { "microsoft/vscode-js-debug",
+        dependencies = { "mfussenegger/nvim-dap" },
+        build = "npm install --legacy-peer-deps && npm run compile" },
+    'theHamsta/nvim-dap-virtual-text',
+    'nvim-telescope/telescope-dap.nvim',
+})
