@@ -105,6 +105,9 @@ require('lualine').setup {}
 -- Trouble window
 require('config/trouble')
 
+-- Neotest
+-- require("config/neotest")
+
 -- Display horizontal lines for indentations
 require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on

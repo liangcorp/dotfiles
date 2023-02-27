@@ -78,6 +78,19 @@ return require('packer').startup(function(use)
     -- Vim Test
     use('vim-test/vim-test')
 
+    -- Neotest
+    -- use {
+    --     "nvim-neotest/neotest",
+    --     requires = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-treesitter/nvim-treesitter",
+    --         "nvim-neotest/neotest-python",
+    --         "nvim-neotest/neotest-plenary",
+    --         "nvim-neotest/neotest-vim-test",
+    --         -- "rouge8/neotest-rust",
+    --     },
+    -- }
+
     -- Markdown preview
     -- install without yarn or npm
     use({

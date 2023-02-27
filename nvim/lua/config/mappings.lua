@@ -31,12 +31,21 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
--- VIM Test related
+-- -- VIM Test related
 vim.keymap.set("n", "<leader>tt", ":TestNearest -strategy=neovim<CR>")
 vim.keymap.set("n", "<leader>tf", ":TestFile -strategy=neovim<CR>")
 vim.keymap.set("n", "<leader>ts", ":TestSuite -strategy=neovim<CR>")
 vim.keymap.set("n", "<leader>tl", ":TestLast -strategy=neovim<CR>")
 vim.keymap.set("n", "<leader>tv", ":TestVisit<CR>")
+
+-- Neotest
+-- vim.keymap.set("n", "<leader>tt", ":lua require('neotest').run.run()<CR>")
+-- vim.keymap.set("n", "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand(\"%\"))<CR>")
+-- vim.keymap.set("n", "<leader>ts", ":lua require('neotest').run.stop()<CR>")
+-- vim.keymap.set("n", "<leader>ta", ":lua require('neotest').run.attach()<CR>")
+-- vim.keymap.set("n", "<leader>to", ":lua require('neotest').output.open({ enter = false })<CR>")
+-- vim.keymap.set("n", "<leader>tp", ":lua require('neotest').output_panel.open()<CR>")
+-- vim.keymap.set("n", "<leader>tP", ":lua require('neotest').output_panel.close()<CR>")
 
 -- Trouble
 vim.keymap.set("n", "<leader>xx", ":TroubleToggle<cr>",
