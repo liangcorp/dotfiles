@@ -64,8 +64,8 @@ return require('packer').startup(function(use)
     use('brymer-meneses/grammar-guard.nvim')
 
     -- Magit for neovim
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-    -- use('tpope/vim-fugitive')
+    -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use('tpope/vim-fugitive')
     use('lewis6991/gitsigns.nvim')
 
     -- Extra packages for rust
