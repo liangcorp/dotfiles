@@ -13,16 +13,20 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- Telescope
-    { 'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' } },
+    {
+        'nvim-telescope/telescope.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' }
+    },
     'nvim-telescope/telescope-symbols.nvim',
 
     -- Indent Blanline
     "lukas-reineke/indent-blankline.nvim",
 
     -- Treesitter
-    { 'nvim-treesitter/nvim-treesitter',
-        build = ":TSUpdate" },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ":TSUpdate"
+    },
 
     -- Directory Tree
     {
@@ -32,17 +36,20 @@ require("lazy").setup({
         },
         dependencies = {
             'kyazdani42/nvim-web-devicons',
-            "MunifTanjim/nui.nvim" },
+            "MunifTanjim/nui.nvim"
+        },
         config = function()
             require("neo-tree").setup()
-        end },
+        end
+    },
 
     -- Themes
     -- 'Mofiqul/dracula.nvim'
     'navarasu/onedark.nvim',
 
-    -- lualine status line
-    { 'nvim-lualine/lualine.nvim',
+    -- Lualine status line
+    {
+        'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons' }
     },
 
@@ -53,10 +60,12 @@ require("lazy").setup({
     'stevearc/aerial.nvim',
 
     -- LSP server installer and manager
-    { 'williamboman/mason-lspconfig.nvim',
+    {
+        'williamboman/mason-lspconfig.nvim',
         dependencies = {
             'williamboman/mason.nvim',
-            'neovim/nvim-lspconfig' }
+            'neovim/nvim-lspconfig'
+        }
     },
 
     -- Text and code completions
@@ -70,7 +79,8 @@ require("lazy").setup({
     'folke/trouble.nvim',
 
     -- Prettier
-    { 'MunifTanjim/prettier.nvim',
+    {
+        'MunifTanjim/prettier.nvim',
         dependencies = {
             'jose-elias-alvarez/null-ls.nvim',
             'neovim/nvim-lspconfig'
@@ -87,10 +97,12 @@ require("lazy").setup({
     -- Magit for neovim
     -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     'tpope/vim-fugitive',
-    { 'lewis6991/gitsigns.nvim',
+    {
+        'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup()
-        end },
+        end
+    },
 
     -- Extra packages for rust
     -- 'rust-lang/rust.vim'
@@ -116,21 +128,27 @@ require("lazy").setup({
 
     -- Markdown preview
     -- install without yarn or npm
-    { "iamcco/markdown-preview.nvim",
-        build = ":lua vim.fn[\"mkdp#util#install\"]" },
+    {
+        "iamcco/markdown-preview.nvim",
+        build = ":lua vim.fn[\"mkdp#util#install\"]"
+    },
 
     -- Debugger
-    { "rcarriga/nvim-dap-ui",
+    {
+        "rcarriga/nvim-dap-ui",
         dependencies = {
             "folke/neodev.nvim",
-            "mfussenegger/nvim-dap" }
+            "mfussenegger/nvim-dap"
+        }
     },
     'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
     "mxsdev/nvim-dap-vscode-js",
-    { "microsoft/vscode-js-debug",
+    {
+        "microsoft/vscode-js-debug",
         dependencies = { "mfussenegger/nvim-dap" },
-        build = "npm install --legacy-peer-deps && npm run compile" },
+        build = "npm install --legacy-peer-deps && npm run compile"
+    },
     'theHamsta/nvim-dap-virtual-text',
     'nvim-telescope/telescope-dap.nvim',
 })
