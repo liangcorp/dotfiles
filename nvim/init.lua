@@ -132,7 +132,7 @@ require('lualine').setup {}
 require('config/trouble')
 
 -- Neotest
--- require("config/neotest")
+require("config/neotest")
 
 -- Display horizontal lines for indentations
 require("indent_blankline").setup {

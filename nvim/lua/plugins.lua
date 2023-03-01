@@ -116,26 +116,27 @@ require("lazy").setup({
     -- Toggle comments
     'numToStr/Comment.nvim',
 
-    -- Vim Test
-    'vim-test/vim-test',
     -- Neotest
-    -- use {
-    --     "nvim-neotest/neotest",
-    --     requires = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-treesitter/nvim-treesitter",
-    --         "nvim-neotest/neotest-python",
-    --         "nvim-neotest/neotest-plenary",
-    --         "nvim-neotest/neotest-vim-test",
-    --         -- "rouge8/neotest-rust",
-    --     },
-    -- }
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-neotest/neotest-python",
+            "nvim-neotest/neotest-plenary",
+            "nvim-neotest/neotest-vim-test",
+            "nvim-neotest/neotest-go",
+            "rouge8/neotest-rust",
+            -- "haydenmeade/neotest-jest",
+        },
+        build = "cargo install cargo-nextest"
+    },
 
     -- Markdown preview
     -- install without yarn or npm
     {
         "iamcco/markdown-preview.nvim",
-        build = "call mkdp#util#install()",
+        build = ":call mkdp#util#install()",
     },
 
     -- Debugger
