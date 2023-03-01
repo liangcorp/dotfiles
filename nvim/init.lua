@@ -43,12 +43,11 @@ require('onedark').load()
 -- "gbc" for block comment
 require('Comment').setup()
 
--- local neogit = require('neogit')
--- neogit.setup {
---     use_magit_keybindings = true,
---     refresh_manually = true
--- }
-
+local neogit = require('neogit')
+neogit.setup {
+    use_magit_keybindings = true,
+    refresh_manually = true
+}
 
 -- LSP Configurations
 -- Configurations with defaults

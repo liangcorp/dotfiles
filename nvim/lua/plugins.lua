@@ -95,8 +95,11 @@ require("lazy").setup({
     'saadparwaiz1/cmp_luasnip',
 
     -- Magit for neovim
-    -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-    'tpope/vim-fugitive',
+    {
+        'TimUntersberger/neogit',
+        dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+    -- 'tpope/vim-fugitive',
     {
         'lewis6991/gitsigns.nvim',
         config = function()
@@ -130,7 +133,7 @@ require("lazy").setup({
     -- install without yarn or npm
     {
         "iamcco/markdown-preview.nvim",
-        build = ":lua vim.fn[\"mkdp#util#install\"]"
+        build = "call mkdp#util#install()",
     },
 
     -- Debugger
