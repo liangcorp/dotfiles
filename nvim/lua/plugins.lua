@@ -46,6 +46,8 @@ require("lazy").setup({
     -- Themes
     -- 'Mofiqul/dracula.nvim'
     'navarasu/onedark.nvim',
+    "rebelot/kanagawa.nvim",
+    { "catppuccin/nvim", name = "catppuccin" },
 
     -- Lualine status line
     {
