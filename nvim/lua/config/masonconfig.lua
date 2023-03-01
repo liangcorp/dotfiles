@@ -1,6 +1,3 @@
-require("mason-lspconfig").setup {
-}
-
 require("mason").setup({
     ui = {
         icons = {
@@ -10,3 +7,21 @@ require("mason").setup({
         }
     }
 })
+
+require("mason-lspconfig").setup {
+    ensure_installed = {
+        "clangd",
+        "rust_analyzer",
+        "gopls",
+        "pyright",
+        "clangd",
+        "marksman",
+        "ltex",
+        "tsserver",
+        "lua_ls",
+        "jsonls",
+        "groovyls",
+        "dockerls",
+        "bashls",
+    },
+}
