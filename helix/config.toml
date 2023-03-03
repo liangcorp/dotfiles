@@ -1,8 +1,9 @@
-theme = "onedark"
+# theme = "onedark"
+theme = "catppuccin_mocha"
 
 [editor]
 true-color = true
-line-number = "relative"
+# line-number = "relative"
 color-modes = true
 
 [editor.cursor-shape]
@@ -11,8 +12,7 @@ normal = "block"
 select = "underline"
 
 [editor.statusline]
-left = ["mode", "spinner"]
-center = ["file-name"]
+left = ["mode", "spinner", "file-name"]
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
 separator = "|"
 mode.normal = "NORMAL"

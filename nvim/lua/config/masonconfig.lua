@@ -20,7 +20,6 @@ require("mason-lspconfig").setup {
         "tsserver",
         "lua_ls",
         "jsonls",
-        "groovyls",
         "dockerls",
         "bashls",
     },
