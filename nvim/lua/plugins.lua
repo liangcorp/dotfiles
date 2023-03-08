@@ -46,7 +46,6 @@ require("lazy").setup({
     -- Themes
     -- 'Mofiqul/dracula.nvim'
     'navarasu/onedark.nvim',
-    "rebelot/kanagawa.nvim",
     { "catppuccin/nvim", name = "catppuccin" },
 
     -- Lualine status line
@@ -97,11 +96,11 @@ require("lazy").setup({
     'saadparwaiz1/cmp_luasnip',
 
     -- Magit for neovim
-    {
-        'TimUntersberger/neogit',
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-    -- 'tpope/vim-fugitive',
+    -- {
+    --     'TimUntersberger/neogit',
+    --     dependencies = { 'nvim-lua/plenary.nvim' }
+    -- },
+    'tpope/vim-fugitive',
     {
         'lewis6991/gitsigns.nvim',
         config = function()

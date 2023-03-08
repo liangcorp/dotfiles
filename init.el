@@ -81,7 +81,7 @@
 ;; (powerline-default-theme)
 ;; (powerline-raw mode-line-mule-info nil 'l)
 
-(require 'telephone-line)
+(use-package telephone-line :ensure t)
 (telephone-line-mode 1)
 
 ;; (require 'doom-modeline)
@@ -171,7 +171,8 @@
 
 (use-package apheleia
   :ensure t
-  :init (apheleia-global-mode))
+  :init
+  (apheleia-global-mode))
 
 (use-package vimrc-mode :ensure t)
 (add-to-list 'auto-mode-alist '("\\vimrc\\'" . vimrc-mode))
@@ -200,6 +201,7 @@
   :commands lsp
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
+  ;; (setq lsp-rust-analyzer-cargo-watch-command "clippy")
   (lsp-rust-analyzer-cargo-watch-command "clippy")
   (lsp-eldoc-render-all t)
   (lsp-idle-delay 0.6)
@@ -333,8 +335,8 @@
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js2-mode))
 (use-package js2-mode :ensure)
 (add-hook 'js2-mode-hook #'lsp)
-(add-hook 'js2-mode-hook
-		  (lambda () (flycheck-add-next-checker 'javascript-eslint 'lsp-ui)))
+;; (add-hook 'js2-mode-hook
+;; 		  (lambda () (flycheck-add-next-checker 'javascript-eslint 'lsp-ui)))
 
 ;; Better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)

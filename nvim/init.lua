@@ -37,7 +37,6 @@ autocmd('BufWritePre', {
 require('plugins')
 
 -- require('onedark').load()
--- require('kanagawa').load()
 require('catppuccin').load()
 
 require("catppuccin").setup({
@@ -46,7 +45,7 @@ require("catppuccin").setup({
         gitsigns = true,
         cmp = true,
         mason = true,
-        neogit = true,
+        -- neogit = true,
         neotree = true,
         telescope = true,
         treesitter = true,
@@ -82,11 +81,11 @@ require("catppuccin").setup({
 -- "gbc" for block comment
 require('Comment').setup()
 
-local neogit = require('neogit')
-neogit.setup {
-    use_magit_keybindings = true,
-    refresh_manually = true
-}
+-- local neogit = require('neogit')
+-- neogit.setup {
+--     use_magit_keybindings = true,
+--     refresh_manually = true
+-- }
 
 -- LSP Configurations
 -- Configurations with defaults
