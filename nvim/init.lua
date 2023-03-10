@@ -1,6 +1,6 @@
 -- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+loaded_netrw = 1
+loaded_netrwPlugin = 1
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
@@ -36,45 +36,10 @@ autocmd('BufWritePre', {
 
 require('plugins')
 
+-- Themes
+require("themes/doom")
+-- require("themes/catppuccin")
 -- require('onedark').load()
--- require('catppuccin').load()
---
--- require("catppuccin").setup({
---     integrations = {
---         aerial = true,
---         gitsigns = true,
---         cmp = true,
---         mason = true,
---         -- neogit = true,
---         neotree = true,
---         telescope = true,
---         treesitter = true,
---         treesitter_context = true,
---         dap = {
---             enabled = true,
---             enable_ui = true,
---         },
---         indent_blankline = {
---             enabled = true,
---             colored_indent_levels = false,
---         },
---         native_lsp = {
---             enabled = true,
---             virtual_text = {
---                 errors = { "italic" },
---                 hints = { "italic" },
---                 warnings = { "italic" },
---                 information = { "italic" },
---             },
---             underlines = {
---                 errors = { "underline" },
---                 hints = { "underline" },
---                 warnings = { "underline" },
---                 information = { "underline" },
---             },
---         },
---     }
--- })
 
 -- Toggle comments
 -- "gcc" for line comment
