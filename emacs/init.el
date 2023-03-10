@@ -100,7 +100,6 @@
 ;; Git support for Emacs
 (use-package magit :ensure t)
 (use-package diff-hl :ensure)
-(require 'diff-hl)
 
 (add-hook 'magit-post-refresh-hook
           #'git-gutter:update-all-windows)
