@@ -151,6 +151,7 @@ require("lazy").setup({
         }
     },
     'leoluz/nvim-dap-go',
+    "jay-babu/mason-nvim-dap.nvim",
     'mfussenegger/nvim-dap-python',
     "mxsdev/nvim-dap-vscode-js",
     {

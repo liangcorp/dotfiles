@@ -14,7 +14,6 @@ vim.o.guioptions = "egmrti"
 vim.o.completeopt = "longest"
 vim.o.ruler = true
 vim.o.wildmenu = true
-vim.opt.path = vim.opt.path + '**'
 -- vim.o.gfn = "Source Code Pro Regular 13"
 -- vim.o.spelllang = en_GB
 -- vim.o.spell = true
@@ -25,6 +24,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.opt.number = true
+vim.opt.path = vim.opt.path + '**'
 
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -37,8 +37,8 @@ autocmd('BufWritePre', {
 require('plugins')
 
 -- Themes
-require("themes/doom")
--- require("themes/catppuccin")
+-- require("themes/doom")
+require("themes/catppuccin")
 -- require('onedark').load()
 
 -- Toggle comments
@@ -84,6 +84,11 @@ require("config/aerialline")
 
 -- Mason Installer for LSP servers
 require("config/masonconfig")
+require("mason-nvim-dap").setup({
+    automatic_setup = true,
+    ensure_installed = { "python", "delve", "codelldb" }
+})
+require 'mason-nvim-dap'.setup_handlers {}
 
 -- Telescope for fuzzy finding
 require("config/telescopeconfig")
