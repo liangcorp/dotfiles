@@ -22,9 +22,6 @@ require("lazy").setup({
     -- Indent Blanline
     "lukas-reineke/indent-blankline.nvim",
 
-    -- Leap
-    -- "ggandor/leap.nvim",
-
     -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
@@ -75,11 +72,11 @@ require("lazy").setup({
     },
 
     -- Text and code completions
+    'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
-    'hrsh7th/nvim-cmp',
 
     -- Show Error in Trouble Window
     'folke/trouble.nvim',

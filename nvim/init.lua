@@ -47,9 +47,6 @@ vim.cmd("colorscheme tokyonight-moon")
 -- "gbc" for block comment
 require('Comment').setup()
 
--- Leap nvim
--- require('leap').add_default_mappings()
-
 -- local neogit = require('neogit')
 -- neogit.setup {
 --     use_magit_keybindings = true,
