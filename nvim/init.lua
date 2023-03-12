@@ -53,6 +53,8 @@ require('Comment').setup()
 --     refresh_manually = true
 -- }
 
+require('gitsigns').setup()
+
 -- LSP Configurations
 -- Configurations with defaults
 require 'lspconfig'.yamlls.setup {}

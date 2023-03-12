@@ -103,12 +103,9 @@ require("lazy").setup({
     --     dependencies = { 'nvim-lua/plenary.nvim' }
     -- },
     'tpope/vim-fugitive',
-    {
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup()
-        end
-    },
+
+    -- Git signes
+    'lewis6991/gitsigns.nvim',
 
     -- Extra packages for rust
     -- 'rust-lang/rust.vim'
