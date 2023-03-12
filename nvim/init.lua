@@ -37,9 +37,10 @@ autocmd('BufWritePre', {
 require('plugins')
 
 -- Themes
--- require("themes/doom")
-require("themes/catppuccin")
+-- require("themes/catppuccin")
+-- require("themes/nightfox")
 -- require('onedark').load()
+vim.cmd("colorscheme tokyonight-moon")
 
 -- Toggle comments
 -- "gcc" for line comment
