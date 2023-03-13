@@ -181,6 +181,8 @@ require("lazy").setup({
         build = ":call mkdp#util#install()",
     },
 
+    -- Copilot - pay subscription
+
     -- Debugger
     {
         "rcarriga/nvim-dap-ui",
