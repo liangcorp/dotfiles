@@ -5,7 +5,7 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-vim.o.nocompatible = true
+-- vim.o.nocompatible = true
 vim.o.autowrite = true
 vim.o.encoding = "UTF-8"
 vim.o.mouse = "a"
@@ -18,6 +18,8 @@ vim.o.wildmenu = true
 -- vim.o.spelllang = en_GB
 -- vim.o.spell = true
 
+-- Set highlight on search
+vim.o.hlsearch = false
 vim.o.tabstop = 4
 vim.o.softtabstop = 0
 vim.o.shiftwidth = 4
@@ -25,6 +27,9 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.opt.number = true
 vim.opt.path = vim.opt.path + '**'
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
 
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -102,6 +107,9 @@ require('lualine').setup {}
 
 -- Trouble window
 require('config/trouble')
+
+-- TODOs highlight
+require("todo-comments").setup {}
 
 -- Neotest
 require("config/neotest")
