@@ -33,7 +33,6 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
 vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]ind [O]old files' })
 vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
-vim.keymap.set('n', '<leader>fa', ':Telescope aerial<CR>', { desc = '[F]ind [A]erial' })
 
 -- Neotest
 -- local neotest = require("neotest")

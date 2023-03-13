@@ -4,5 +4,6 @@ require('aerial').setup({
         -- Jump forwards/backwards with '{' and '}'
         vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
         vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
+        vim.keymap.set('n', '<leader>fa', ':Telescope aerial<CR>', { buffer = bufnr })
     end
 })
