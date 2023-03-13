@@ -84,6 +84,9 @@ require('config/mappings')
 -- Treesitter for better highlighting
 require("config/treesitter")
 
+-- nvim-tree empty setup using defaults
+require("nvim-tree").setup()
+
 -- Aerial for indexing/traversing definitions
 require("config/aerialline")
 
@@ -99,7 +102,6 @@ require 'mason-nvim-dap'.setup_handlers {}
 require("config/telescopeconfig")
 
 -- Prettier for better code formatting
-require("config/nullls")
 require("config/prettierconfig")
 
 -- Status line using lualine

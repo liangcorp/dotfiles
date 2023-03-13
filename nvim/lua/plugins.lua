@@ -35,19 +35,12 @@ require("lazy").setup({
         end,
     },
 
-    -- Directory Tree
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        keys = {
-            { "<leader>zz", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
-        },
+        'nvim-tree/nvim-tree.lua',
         dependencies = {
-            'kyazdani42/nvim-web-devicons',
-            "MunifTanjim/nui.nvim"
+            'nvim-tree/nvim-web-devicons',
         },
-        config = function()
-            require("neo-tree").setup()
-        end
+        tag = 'nightly'
     },
 
     -- Themes
@@ -60,7 +53,7 @@ require("lazy").setup({
     -- Lualine status line
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         -- See `:help lualine.txt`
         opts = {
             options = {

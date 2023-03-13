@@ -16,9 +16,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("x", "<leader>p", "\"_dP", { desc = '[P]aste Over' })
 
 -- User system clip board
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
+vim.keymap.set("n", "<leader>y", "\"+y", { desc = "System Paste" })
+vim.keymap.set("v", "<leader>y", "\"+y", { desc = "System Paste" })
+vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = "System Paste" })
 
 -- Search terms stay on the middle line
 vim.keymap.set("n", "n", "nzzzv")
@@ -33,6 +33,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
 vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]ind [O]old files' })
 vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
+vim.keymap.set('n', '<leader>fa', ':Telescope aerial<CR>', { desc = '[F]ind [A]erial' })
 
 -- Neotest
 -- local neotest = require("neotest")
@@ -59,23 +60,23 @@ vim.keymap.set("n", "<leader>tP", ":lua require('neotest').output_panel.close()<
 )
 
 -- Trouble
-vim.keymap.set("n", "<leader>xx", ":TroubleToggle<cr>",
-    { silent = true, noremap = true }
+vim.keymap.set("n", "<leader>xx", ":TroubleToggle<CR>",
+    { desc = "Trouble Toggle" }
 )
-vim.keymap.set("n", "<leader>xw", ":TroubleToggle workspace_diagnostics<cr>",
-    { silent = true, noremap = true }
+vim.keymap.set("n", "<leader>xw", ":TroubleToggle workspace_diagnostics<CR>",
+    { desc = "Trouble Toggle in Workspace" }
 )
-vim.keymap.set("n", "<leader>xd", ":TroubleToggle document_diagnostics<cr>",
-    { silent = true, noremap = true }
+vim.keymap.set("n", "<leader>xd", ":TroubleToggle document_diagnostics<CR>",
+    { desc = "Trouble Toggle in Document" }
 )
-vim.keymap.set("n", "<leader>xl", ":TroubleToggle loclist<cr>",
-    { silent = true, noremap = true }
+vim.keymap.set("n", "<leader>xl", ":TroubleToggle loclist<CR>",
+    { desc = "Trouble Toggle Loclist" }
 )
-vim.keymap.set("n", "<leader>xq", ":TroubleToggle quickfix<cr>",
-    { silent = true, noremap = true }
+vim.keymap.set("n", "<leader>xq", ":TroubleToggle quickfix<CR>",
+    { desc = "Trouble Toggle Quickfix" }
 )
-vim.keymap.set("n", "gR", ":TroubleToggle lsp_references<cr>",
-    { silent = true, noremap = true }
+vim.keymap.set("n", "gR", ":TroubleToggle lsp_references<CR>",
+    { desc = "Trouble Toggle LSP References" }
 )
 
 -- Arial related shortcuts
@@ -83,6 +84,9 @@ vim.keymap.set('n', '<leader>ae', ':AerialToggle!right<CR>', { desc = '[A]erial 
 
 -- Prettier
 vim.keymap.set('n', '<space>p', ':Prettier<CR>', { desc = '[P]rettier' })
+
+-- NVIM Tree
+vim.keymap.set('n', "<leader>zz", ":NvimTreeToggle<CR>", { desc = "Nvim Tree" })
 
 -- Debugger related shortcuts
 vim.keymap.set("n", "<F3>", ":lua require'dap'.close()<CR>", { desc = 'Close Debugger' })
