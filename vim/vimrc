@@ -24,6 +24,8 @@ let g:indentLine_concealcursor = ''
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 
+let mapleader="\\"
+
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -49,6 +51,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " File tree
 Plug 'preservim/nerdtree'
 
+" Fuzzy finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 " Debug
 Plug 'puremourning/vimspector'
 
@@ -59,6 +64,24 @@ Plug 'joshdick/onedark.vim'
 call plug#end()
 
 colorscheme onedark
+
+" Fuzzy finder
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Path completion with custom source command
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+
+" Word completion with custom spec with popup layout option
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
 
 " NERDTree
 map <C-z> :NERDTreeToggle<CR> “ Toggle side window with `CTRL+z`.
