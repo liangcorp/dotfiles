@@ -36,7 +36,7 @@ vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagno
 
 -- Neotest
 -- local neotest = require("neotest")
-vim.keymap.set("n", "<leader>tt", ":lua require('neotest'.run.run()<CR>)",
+vim.keymap.set("n", "<leader>tt", ":lua require('neotest').run.run()<CR>)",
     { desc = 'Run Nearest [T]est' }
 )
 vim.keymap.set("n", "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand(\"%\"))<CR>",
@@ -97,7 +97,7 @@ vim.keymap.set("n", "<F10>", ":lua require'dap'.step_over()<CR>", { desc = 'Step
 vim.keymap.set("n", "<F11>", ":lua require'dap'.step_into()<CR>", { desc = 'Step Into' })
 vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>", { desc = 'Step Out' })
 vim.keymap.set("n", "<F6>", ":lua require'dap'.repl.open()<CR>", { desc = 'Replay Open' })
-vim.keymap.set("n", "<leader>tc", ":lua require'dapui'.close()<CR>", { desc = 'Close Debugger UI' })
+vim.keymap.set("n", "<leader>dc", ":lua require'dapui'.close()<CR>", { desc = 'Close Debugger UI' })
 
 -- Debugger go
 vim.keymap.set("n", "<leader>dg", ":lua require('dap-go').debug_test()<CR>",
