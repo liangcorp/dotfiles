@@ -181,7 +181,8 @@ require("lazy").setup({
         build = ":call mkdp#util#install()",
     },
 
-    'github/copilot.vim',
+    -- Copilot - disabled due to pay subscription
+    -- 'github/copilot.vim',
 
     -- Debugger
     {
