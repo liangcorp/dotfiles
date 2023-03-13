@@ -181,7 +181,7 @@ require("lazy").setup({
         build = ":call mkdp#util#install()",
     },
 
-    -- Copilot - pay subscription
+    -- Copilot - Need to pay
 
     -- Debugger
     {
