@@ -13,7 +13,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Paste over the highlighted word with copied word
-vim.keymap.set("x", "<leader>p", "\"_dP")
+vim.keymap.set("x", "<leader>p", "\"_dP", { desc = '[P]aste Over' })
 
 -- User system clip board
 vim.keymap.set("n", "<leader>y", "\"+y")
@@ -26,20 +26,37 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind by [B]uffer' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
+vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]ind [O]old files' })
+vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
 
 -- Neotest
-vim.keymap.set("n", "<leader>tt", ":lua require('neotest').run.run()<CR>")
-vim.keymap.set("n", "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand(\"%\"))<CR>")
-vim.keymap.set("n", "<leader>ts", ":lua require('neotest').run.stop()<CR>")
-vim.keymap.set("n", "<leader>ta", ":lua require('neotest').run.attach()<CR>")
-vim.keymap.set("n", "<leader>to", ":lua require('neotest').output.open({ enter = false })<CR>")
-vim.keymap.set("n", "<leader>tp", ":lua require('neotest').output_panel.open()<CR>")
-vim.keymap.set("n", "<leader>tP", ":lua require('neotest').output_panel.close()<CR>")
+-- local neotest = require("neotest")
+vim.keymap.set("n", "<leader>tt", ":lua require('neotest'.run.run()<CR>)",
+    { desc = 'Run Nearest [T]est' }
+)
+vim.keymap.set("n", "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand(\"%\"))<CR>",
+    { desc = '[T]est Current File' }
+)
+vim.keymap.set("n", "<leader>ts", ":lua require('neotest').run.stop()<CR>",
+    { desc = '[S]top [T]est' }
+)
+vim.keymap.set("n", "<leader>ta", ":lua require('neotest').run.attach()<CR>",
+    { desc = '[T]est [A]ttrach' }
+)
+vim.keymap.set("n", "<leader>to", ":lua require('neotest').output.open({ enter = false })<CR>",
+    { desc = '[O]pen Output' }
+)
+vim.keymap.set("n", "<leader>tp", ":lua require('neotest').output_panel.open()<CR>",
+    { desc = 'Open [T]est [P]anel' }
+)
+vim.keymap.set("n", "<leader>tP", ":lua require('neotest').output_panel.close()<CR>",
+    { desc = 'Close [T]est [P]anel' }
+)
 
 -- Trouble
 vim.keymap.set("n", "<leader>xx", ":TroubleToggle<cr>",
@@ -62,25 +79,38 @@ vim.keymap.set("n", "gR", ":TroubleToggle lsp_references<cr>",
 )
 
 -- Arial related shortcuts
-vim.keymap.set('n', '<leader>ae', ':AerialToggle!right<CR>')
+vim.keymap.set('n', '<leader>ae', ':AerialToggle!right<CR>', { desc = '[A]erial Toggle' })
+
+-- Prettier
+vim.keymap.set('n', '<space>p', ':Prettier<CR>', { desc = '[P]rettier' })
 
 -- Debugger related shortcuts
-vim.keymap.set("n", "<F3>", ":lua require'dap'.close()<CR>")
-vim.keymap.set("n", "<F4>", ":lua require'dap'.restart()<CR>")
+vim.keymap.set("n", "<F3>", ":lua require'dap'.close()<CR>", { desc = 'Close Debugger' })
+vim.keymap.set("n", "<F4>", ":lua require'dap'.restart()<CR>", { desc = 'Restart Debugger' })
 
-vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
-vim.keymap.set("n", "<F9>", ":lua require'dap'.toggle_breakpoint()<CR>")
-vim.keymap.set("n", "<leader><F9>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-vim.keymap.set("n", "<F10>", ":lua require'dap'.step_over()<CR>")
-vim.keymap.set("n", "<F11>", ":lua require'dap'.step_into()<CR>")
-vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
-vim.keymap.set("n", "<F6>", ":lua require'dap'.repl.open()<CR>")
-vim.keymap.set("n", "<leader>tc", ":lua require'dapui'.close()<CR>")
+vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>", { desc = 'Continue Debugger' })
+vim.keymap.set("n", "<F9>", ":lua require'dap'.toggle_breakpoint()<CR>", { desc = 'Set Breakpoint' })
+vim.keymap.set("n", "<leader><F9>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+    { desc = 'Set Breakpoint with Condition' }
+)
+vim.keymap.set("n", "<F10>", ":lua require'dap'.step_over()<CR>", { desc = 'Step Over' })
+vim.keymap.set("n", "<F11>", ":lua require'dap'.step_into()<CR>", { desc = 'Step Into' })
+vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>", { desc = 'Step Out' })
+vim.keymap.set("n", "<F6>", ":lua require'dap'.repl.open()<CR>", { desc = 'Replay Open' })
+vim.keymap.set("n", "<leader>tc", ":lua require'dapui'.close()<CR>", { desc = 'Close Debugger UI' })
 
 -- Debugger go
-vim.keymap.set("n", "<leader>td", ":lua require('dap-go').debug_test()<CR>")
+vim.keymap.set("n", "<leader>dg", ":lua require('dap-go').debug_test()<CR>",
+    { desc = "[D]ebug [G]o Test" }
+)
 
 -- Debugger python
-vim.keymap.set("n", "<leader>pt", ":lua require('dap-python').test_method()<CR>")
-vim.keymap.set("n", "<leader>pc", ":lua require('dap-python').test_class()<CR>")
-vim.keymap.set("n", "<leader>ps", ":lua require('dap-python').debug_selection()<CR>")
+vim.keymap.set("n", "<leader>pt", ":lua require('dap-python').test_method()<CR>",
+    { desc = "Debug [P]ythong [T]est" }
+)
+vim.keymap.set("n", "<leader>pc", ":lua require('dap-python').test_class()<CR>",
+    { desc = "Debug [P]ythong [C]lass" }
+)
+vim.keymap.set("n", "<leader>ps", ":lua require('dap-python').debug_selection()<CR>",
+    { desc = "Debug [P]ythong [S]election" }
+)

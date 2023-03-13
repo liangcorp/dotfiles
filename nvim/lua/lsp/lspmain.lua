@@ -37,7 +37,10 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
+    vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols, bufopts)
+    vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
@@ -153,7 +156,8 @@ lspconfig.groovyls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
-    cmd = { "java", "-jar", "/home/cliang/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar" },
+    cmd = { "java", "-jar",
+        "/home/cliang/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar" },
 }
 
 -- JSON configurations
@@ -190,11 +194,11 @@ lspconfig.lua_ls.setup {
     flag = lsp_flags
 }
 
-lspconfig.ltex.setup{
-  on_attach = on_attach,
-  cmd = { "ltex-ls" },
-  filetypes = { "markdown", "text", "latex", "tex", "txt", "org" },
-  flags = lsp_flags,
+lspconfig.ltex.setup {
+    on_attach = on_attach,
+    cmd = { "ltex-ls" },
+    filetypes = { "markdown", "text", "latex", "tex", "txt", "org" },
+    flags = lsp_flags,
 }
 
 -- this is for diagnositcs signs on the line number column
