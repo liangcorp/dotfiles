@@ -15,6 +15,7 @@ require("lazy").setup({
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
+        version = '*',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     'nvim-telescope/telescope-symbols.nvim',
@@ -25,7 +26,13 @@ require("lazy").setup({
     -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
-        build = ":TSUpdate"
+        build = ":TSUpdate",
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
+        config = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+        end,
     },
 
     -- Directory Tree
@@ -53,7 +60,14 @@ require("lazy").setup({
     -- Lualine status line
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons' }
+        dependencies = { 'kyazdani42/nvim-web-devicons' },
+        -- See `:help lualine.txt`
+        opts = {
+            options = {
+                component_separators = '|',
+                section_separators = '',
+            },
+        },
     },
 
     -- NVIM Lint
@@ -64,22 +78,55 @@ require("lazy").setup({
 
     -- LSP server installer and manager
     {
-        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
         dependencies = {
             'williamboman/mason.nvim',
-            'neovim/nvim-lspconfig'
+            'williamboman/mason-lspconfig.nvim',
         }
     },
 
     -- Text and code completions
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp',
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            -- Snippets
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+        }
+    },
+
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
 
     -- Show Error in Trouble Window
     'folke/trouble.nvim',
+
+    -- Show TODO in highlight
+    {
+        "folke/todo-comments.nvim",
+        config = function()
+            require("todo-comments").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    },
+
+    {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup({
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            })
+        end,
+    },
 
     -- Prettier
     {
@@ -93,16 +140,14 @@ require("lazy").setup({
     -- Make
     'neomake/neomake',
 
-    -- Snippets
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-
     -- Magit for neovim
     -- {
     --     'TimUntersberger/neogit',
     --     dependencies = { 'nvim-lua/plenary.nvim' }
     -- },
+    -- Git related
     'tpope/vim-fugitive',
+    'tpope/vim-rhubarb',
 
     -- Git signes
     'lewis6991/gitsigns.nvim',
@@ -119,7 +164,6 @@ require("lazy").setup({
         "nvim-neotest/neotest",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
             "nvim-neotest/neotest-python",
             "nvim-neotest/neotest-plenary",
             "nvim-neotest/neotest-vim-test",
