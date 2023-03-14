@@ -14,12 +14,12 @@ vim.o.guioptions = "egmrti"
 vim.o.completeopt = "longest"
 vim.o.ruler = true
 vim.o.wildmenu = true
--- vim.o.gfn = "Source Code Pro Regular 13"
 -- vim.o.spelllang = en_GB
 -- vim.o.spell = true
 
 -- Set highlight on search
-vim.o.hlsearch = false
+-- vim.o.hlsearch = false
+
 vim.o.tabstop = 4
 vim.o.softtabstop = 0
 vim.o.shiftwidth = 4
@@ -43,9 +43,10 @@ require('plugins')
 
 -- Themes
 -- require("themes/catppuccin")
+require("themes/doom")
 -- require("themes/nightfox")
 -- require('onedark').load()
-vim.cmd("colorscheme tokyonight-moon")
+-- vim.cmd("colorscheme tokyonight-moon")
 
 -- Toggle comments
 -- "gcc" for line comment
