@@ -43,10 +43,10 @@ require('plugins')
 
 -- Themes
 -- require("themes/catppuccin")
-require("themes/doom")
+-- require("themes/doom")
 -- require("themes/nightfox")
 -- require('onedark').load()
--- vim.cmd("colorscheme tokyonight-moon")
+vim.cmd("colorscheme tokyonight-moon")
 
 -- Toggle comments
 -- "gcc" for line comment
