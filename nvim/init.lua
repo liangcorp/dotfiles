@@ -49,7 +49,6 @@ require('plugins')
 
 -- Themes
 -- require("themes/catppuccin")
--- require("themes/doom")
 -- require("themes/nightfox")
 -- require('onedark').load()
 vim.cmd("colorscheme tokyonight-moon")
@@ -76,8 +75,26 @@ require 'lspconfig'.dockerls.setup {}
 require 'lspconfig'.marksman.setup {}
 require 'lspconfig'.neocmake.setup {}
 
+-- Status line using lualine
+require('lualine').setup {}
+
 -- Configurations with modifications
 require('luasnip').config.setup {}
+
+-- TODOs highlight
+require("todo-comments").setup {}
+
+-- Display horizontal lines for indentations
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = true,
+}
+
+-- nvim-tree empty setup using defaults
+require("nvim-tree").setup()
+
+-- LSP configurations
 require("lsp/lspmain")
 require("lsp/completion")
 require("lsp/bash")
@@ -94,18 +111,11 @@ require('config/mappings')
 -- Treesitter for better highlighting
 require("config/treesitter")
 
--- nvim-tree empty setup using defaults
-require("nvim-tree").setup()
-
 -- Aerial for indexing/traversing definitions
 require("config/aerialline")
 
 -- Mason Installer for LSP servers
 require("config/masonconfig")
-require("mason-nvim-dap").setup({
-    automatic_setup = true,
-    ensure_installed = { "python", "delve", "codelldb" }
-})
 
 -- Telescope for fuzzy finding
 require("config/telescopeconfig")
@@ -113,31 +123,14 @@ require("config/telescopeconfig")
 -- Prettier for better code formatting
 require("config/prettierconfig")
 
--- Status line using lualine
-require('lualine').setup {}
-
 -- Trouble window
 require('config/trouble')
-
--- TODOs highlight
-require("todo-comments").setup {}
 
 -- Neotest
 require("config/neotest")
 
--- Display horizontal lines for indentations
-require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
-    show_current_context = true,
-    show_current_context_start = true,
-}
-
 -- Debugger nvim-dap
 require("dap/dapconfig")
-
--- DAP for python
-require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-require('dap-python').test_runner = 'pytest'
 
 -- DAP for c/cpp/rust
 require("dap/dapcodellb")
@@ -145,5 +138,10 @@ require("dap/dapcodellb")
 -- DAP for javascript and typescript
 require("dap/dapjavascript")
 
+-- DAP for python
+require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+require('dap-python').test_runner = 'pytest'
+
 -- DAP for golang
 require('dap-go').setup {}
+

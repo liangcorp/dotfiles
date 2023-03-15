@@ -34,6 +34,7 @@ require('mason-nvim-dap').setup {
         "codelldb"
     },
 }
+
 require('mason-nvim-dap').setup_handlers()
 
 dap.listeners.after.event_initialized["dapui_config"] = dapui.open()

@@ -49,7 +49,6 @@ require("lazy").setup({
     'folke/tokyonight.nvim',
     'EdenEast/nightfox.nvim',
     { "catppuccin/nvim", name = "catppuccin" },
-    'NTBBloodbath/doom-one.nvim',
 
     -- Lualine status line
     {
