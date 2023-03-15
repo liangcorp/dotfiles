@@ -1,30 +1,36 @@
 -- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- set termguicolors to enable highlight groups
-vim.opt.termguicolors = true
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- vim.o.nocompatible = true
 vim.o.autowrite = true
-vim.o.encoding = "UTF-8"
 vim.o.mouse = "a"
 vim.o.mousemodel = "popup"
 vim.o.guioptions = "egmrti"
 vim.o.completeopt = "longest"
 vim.o.ruler = true
 vim.o.wildmenu = true
+vim.o.expandtab = true
 -- vim.o.spelllang = en_GB
 -- vim.o.spell = true
+vim.scriptencoding = 'UTF-8'
 
--- Set highlight on search
+-- highlight on search
 -- vim.o.hlsearch = false
 
-vim.o.tabstop = 4
-vim.o.softtabstop = 0
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.smartindent = true
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 0
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
+vim.opt.encoding = "UTF-8"
+vim.opt.autoindent = true
+vim.opt.showcmd = true
+vim.opt.cmdheight = 1
+vim.opt.ignorecase = true
+vim.opt.smarttab = true
+vim.opt.breakindent = true
 vim.opt.number = true
 vim.opt.path = vim.opt.path + '**'
 
@@ -60,6 +66,8 @@ require('Comment').setup()
 -- }
 
 require('gitsigns').setup()
+
+vim.cmd("let g:github_enterprise_urls = ['https://github.ibm.com']")
 
 -- LSP Configurations
 -- Configurations with defaults
