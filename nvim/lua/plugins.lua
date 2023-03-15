@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+require('lazy').setup({
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
@@ -21,12 +21,15 @@ require("lazy").setup({
     'nvim-telescope/telescope-symbols.nvim',
 
     -- Indent Blanline
-    "lukas-reineke/indent-blankline.nvim",
+    'lukas-reineke/indent-blankline.nvim',
+
+    -- Illuminate same words
+    'RRethy/vim-illuminate',
 
     -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
-        build = ":TSUpdate",
+        build = ':TSUpdate',
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
@@ -48,7 +51,7 @@ require("lazy").setup({
     'navarasu/onedark.nvim',
     'folke/tokyonight.nvim',
     'EdenEast/nightfox.nvim',
-    { "catppuccin/nvim", name = "catppuccin" },
+    { 'catppuccin/nvim', name = 'catppuccin' },
 
     -- Lualine status line
     {
@@ -99,7 +102,7 @@ require("lazy").setup({
 
     -- Show TODO in highlight
     {
-        "folke/todo-comments.nvim",
+        'folke/todo-comments.nvim',
         config = function()
             require("todo-comments").setup {
                 -- your configuration comes here
@@ -142,24 +145,24 @@ require("lazy").setup({
 
     -- Neotest
     {
-        "nvim-neotest/neotest",
+        'nvim-neotest/neotest',
         dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-neotest/neotest-python",
-            "nvim-neotest/neotest-plenary",
-            "nvim-neotest/neotest-vim-test",
-            "nvim-neotest/neotest-go",
-            "rouge8/neotest-rust",
+            'nvim-lua/plenary.nvim',
+            'nvim-neotest/neotest-python',
+            'nvim-neotest/neotest-plenary',
+            'nvim-neotest/neotest-vim-test',
+            'nvim-neotest/neotest-go',
+            'rouge8/neotest-rust',
             -- "haydenmeade/neotest-jest",
         },
-        build = "cargo install cargo-nextest"
+        build = 'cargo install cargo-nextest'
     },
 
     -- Markdown preview
     -- install without yarn or npm
     {
-        "iamcco/markdown-preview.nvim",
-        build = ":call mkdp#util#install()",
+        'iamcco/markdown-preview.nvim',
+        build = ':call mkdp#util#install()',
     },
 
     -- Copilot - disabled due to pay subscription
@@ -167,20 +170,20 @@ require("lazy").setup({
 
     -- Debugger
     {
-        "rcarriga/nvim-dap-ui",
+        'rcarriga/nvim-dap-ui',
         dependencies = {
-            "folke/neodev.nvim",
-            "mfussenegger/nvim-dap"
+            'folke/neodev.nvim',
+            'mfussenegger/nvim-dap'
         }
     },
     'leoluz/nvim-dap-go',
-    "jay-babu/mason-nvim-dap.nvim",
+    'jay-babu/mason-nvim-dap.nvim',
     'mfussenegger/nvim-dap-python',
-    "mxsdev/nvim-dap-vscode-js",
+    'mxsdev/nvim-dap-vscode-js',
     {
-        "microsoft/vscode-js-debug",
+        'microsoft/vscode-js-debug',
         dependencies = { "mfussenegger/nvim-dap" },
-        build = "npm install --legacy-peer-deps && npm run compile"
+        build = 'npm install --legacy-peer-deps && npm run compile'
     },
     'theHamsta/nvim-dap-virtual-text',
     'nvim-telescope/telescope-dap.nvim',
