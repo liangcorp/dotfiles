@@ -1,6 +1,4 @@
 local dap, dapui = require("dap"), require("dapui")
-dapui.setup {}
-
 
 -- Dap UI setup
 -- For more information, see |:help nvim-dap-ui|
@@ -31,7 +29,9 @@ require('mason-nvim-dap').setup {
     -- online, please don't ask me how to install them :)
     ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
+        "python",
+        "delve",
+        "codelldb"
     },
 }
 require('mason-nvim-dap').setup_handlers()

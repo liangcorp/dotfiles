@@ -7,7 +7,7 @@ vim.o.autowrite = true
 vim.o.mouse = "a"
 vim.o.mousemodel = "popup"
 vim.o.guioptions = "egmrti"
-vim.o.completeopt = "longest"
+-- vim.o.completeopt = "longest"
 vim.o.ruler = true
 vim.o.wildmenu = true
 vim.o.expandtab = true
@@ -77,6 +77,7 @@ require 'lspconfig'.marksman.setup {}
 require 'lspconfig'.neocmake.setup {}
 
 -- Configurations with modifications
+require('luasnip').config.setup {}
 require("lsp/lspmain")
 require("lsp/completion")
 require("lsp/bash")
@@ -105,7 +106,6 @@ require("mason-nvim-dap").setup({
     automatic_setup = true,
     ensure_installed = { "python", "delve", "codelldb" }
 })
-require 'mason-nvim-dap'.setup_handlers {}
 
 -- Telescope for fuzzy finding
 require("config/telescopeconfig")
