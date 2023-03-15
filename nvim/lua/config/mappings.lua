@@ -24,6 +24,9 @@ keymap.set('n', '<C-a>', 'gg<S-v>G')
 -- Do not yank with x
 keymap.set('n', 'x', '"_x')
 
+-- Search Toggle Highlight
+keymap.set('n', '<leader>ht', ':set hlsearch!<cr>', { desc = "[H]ighlight [T]oggle"  })
+
 -- Split panels
 keymap.set('n', '<leader>sh', ':split<Return><C-w>w', { desc = "[S]plit [H]orizontal" })
 keymap.set('n', '<leader>sv', ':vsplit<Return><C-w>w', { desc = "[S]plit [V]ertical" })

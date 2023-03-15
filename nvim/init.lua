@@ -15,9 +15,6 @@ vim.o.expandtab = true
 -- vim.o.spell = true
 vim.scriptencoding = 'UTF-8'
 
--- highlight on search
--- vim.o.hlsearch = false
-
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 vim.opt.tabstop = 4
