@@ -34,3 +34,10 @@ let g:indentLine_faster = 1
 
 colorscheme onedark
 
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+autocmd BufWritePre * call TrimWhitespace()
+

@@ -18,8 +18,10 @@ xnoremap <Leader>p "\"_dP
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" Formatting using Coc
+" Formatting
 nnoremap <space>f :Format<CR>
+nnoremap <space>p :Prettier<CR>
+
 " Fuzzy finder
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fb :Buffers<CR>
