@@ -85,7 +85,7 @@ lspconfig.gopls.setup {
 }
 
 -- Python configurations
-lspconfig['pyright'].setup {
+lspconfig['pylsp'].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,

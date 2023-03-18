@@ -22,14 +22,17 @@ vim.opt.softtabstop = 0
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
 vim.opt.encoding = "UTF-8"
-vim.opt.autoindent = true
+-- vim.opt.autoindent = true
 vim.opt.showcmd = true
 vim.opt.cmdheight = 1
 vim.opt.ignorecase = true
 vim.opt.smarttab = true
-vim.opt.breakindent = true
+-- vim.opt.breakindent = true
 vim.opt.number = true
 vim.opt.path = vim.opt.path + '**'
+
+-- Disable search highlight
+vim.opt.hlsearch = false
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'

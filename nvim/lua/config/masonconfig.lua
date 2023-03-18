@@ -13,7 +13,7 @@ require("mason-lspconfig").setup {
         "clangd",
         "rust_analyzer",
         "gopls",
-        "pyright",
+        "pylsp",
         "clangd",
         "marksman",
         "ltex",
