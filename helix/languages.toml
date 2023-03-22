@@ -11,8 +11,7 @@ config = {}
 
 [[language]]
 name = "python"
-# roots = ["pyproject.toml"]
-# language-server = { command = "pyright-langserver", args = ["--stdio"] }
+language-server = { command = "pylsp" }
 config = {} # <- this is the important line
 
 

@@ -179,6 +179,10 @@ require('lazy').setup({
 
     -- Copilot - disabled due to pay subscription
     -- 'github/copilot.vim',
+    {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    },
 
     -- Debugger
     {
