@@ -35,7 +35,7 @@ require('mason-nvim-dap').setup {
     },
 }
 
-require('mason-nvim-dap').setup_handlers()
+require('mason-nvim-dap').setup()
 
 dap.listeners.after.event_initialized["dapui_config"] = dapui.open()
 dap.listeners.before.event_terminated["dapui_config"] = dapui.close()
