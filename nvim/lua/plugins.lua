@@ -197,11 +197,11 @@ require('lazy').setup({
     'jay-babu/mason-nvim-dap.nvim',
     'mfussenegger/nvim-dap-python',
     'mxsdev/nvim-dap-vscode-js',
-    {
-        'microsoft/vscode-js-debug',
-        dependencies = { "mfussenegger/nvim-dap" },
-        build = 'npm install --legacy-peer-deps && npm run compile'
-    },
+    'mfussenegger/nvim-dap',
+    -- {
+    --     'microsoft/vscode-js-debug',
+    --     build = 'npm install --legacy-peer-deps && npm run compile'
+    -- },
     'theHamsta/nvim-dap-virtual-text',
     'nvim-telescope/telescope-dap.nvim',
 })
