@@ -14,11 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
     -- Telescope
     {
+        'nvim-telescope/telescope-symbols.nvim',
         'nvim-telescope/telescope.nvim',
         version = '*',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        lazy = true
     },
-    'nvim-telescope/telescope-symbols.nvim',
 
     -- Indent Blanline
     'lukas-reineke/indent-blankline.nvim',
@@ -64,6 +65,7 @@ require('lazy').setup({
                 section_separators = '',
             },
         },
+        lazy = true
     },
 
     -- NVIM Lint
@@ -83,6 +85,7 @@ require('lazy').setup({
         opts = {
             -- configurations go here
         },
+        lazy = true
     },
     -- LSP server installer and manager
     {
@@ -121,7 +124,8 @@ require('lazy').setup({
                 -- or leave it empty to use the default settings
                 -- refer to the configuration section below
             }
-        end
+        end,
+        lazy = true
     },
 
     -- Prettier
@@ -131,6 +135,7 @@ require('lazy').setup({
             'jose-elias-alvarez/null-ls.nvim',
             'neovim/nvim-lspconfig'
         },
+        lazy = true
     },
 
     -- Make
@@ -167,7 +172,8 @@ require('lazy').setup({
             'rouge8/neotest-rust',
             -- "haydenmeade/neotest-jest",
         },
-        build = 'cargo install cargo-nextest'
+        -- build = 'cargo install cargo-nextest',
+        lazy = true
     },
 
     -- Markdown preview
@@ -175,6 +181,7 @@ require('lazy').setup({
     {
         'iamcco/markdown-preview.nvim',
         build = ':call mkdp#util#install()',
+        lazy = true
     },
 
     -- Copilot - disabled due to pay subscription
@@ -187,21 +194,22 @@ require('lazy').setup({
 
     -- Debugger
     {
+        'leoluz/nvim-dap-go',
+        'jay-babu/mason-nvim-dap.nvim',
+        'mfussenegger/nvim-dap-python',
+        'mxsdev/nvim-dap-vscode-js',
+        'mfussenegger/nvim-dap',
+        -- {
+        --     'microsoft/vscode-js-debug',
+        --     build = 'npm install --legacy-peer-deps && npm run compile'
+        -- },
+        'theHamsta/nvim-dap-virtual-text',
+        'nvim-telescope/telescope-dap.nvim',
         'rcarriga/nvim-dap-ui',
         dependencies = {
             'folke/neodev.nvim',
             'mfussenegger/nvim-dap'
-        }
+        },
+        lazy = true
     },
-    'leoluz/nvim-dap-go',
-    'jay-babu/mason-nvim-dap.nvim',
-    'mfussenegger/nvim-dap-python',
-    'mxsdev/nvim-dap-vscode-js',
-    'mfussenegger/nvim-dap',
-    -- {
-    --     'microsoft/vscode-js-debug',
-    --     build = 'npm install --legacy-peer-deps && npm run compile'
-    -- },
-    'theHamsta/nvim-dap-virtual-text',
-    'nvim-telescope/telescope-dap.nvim',
 })
