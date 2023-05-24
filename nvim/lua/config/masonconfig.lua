@@ -14,7 +14,6 @@ require("mason-lspconfig").setup {
         "rust_analyzer",
         "gopls",
         "pylsp",
-        "clangd",
         "marksman",
         "ltex",
         "tsserver",
@@ -22,5 +21,9 @@ require("mason-lspconfig").setup {
         "jsonls",
         "dockerls",
         "bashls",
+        "jdtls",
+        "bash-lsp",
+        "codelldb",
+        "debugpy",
     },
 }
