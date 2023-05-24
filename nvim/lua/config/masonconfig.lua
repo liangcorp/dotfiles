@@ -22,8 +22,5 @@ require("mason-lspconfig").setup {
         "dockerls",
         "bashls",
         "jdtls",
-        "bash-lsp",
-        "codelldb",
-        "debugpy",
     },
 }
