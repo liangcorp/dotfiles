@@ -101,7 +101,7 @@ lspconfig.tsserver.setup {
 }
 
 -- Java language configurations
-lspconfig.java_language_server.setup {
+lspconfig.jdtls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,

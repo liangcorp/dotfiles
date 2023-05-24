@@ -71,6 +71,8 @@ require('lazy').setup({
     -- NVIM Lint
     'mfussenegger/nvim-lint',
 
+    'mfussenegger/nvim-jdtls',
+
     -- Arie (list and move between functions
     'stevearc/aerial.nvim',
 
