@@ -52,6 +52,7 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     'folke/tokyonight.nvim',
     'EdenEast/nightfox.nvim',
+    'rebelot/kanagawa.nvim',
     { 'catppuccin/nvim', name = 'catppuccin' },
 
     -- Lualine status line
@@ -59,12 +60,12 @@ require('lazy').setup({
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         -- See `:help lualine.txt`
-        opts = {
-            options = {
-                component_separators = '|',
-                section_separators = '',
-            },
-        },
+        -- opts = {
+        --     options = {
+        --         component_separators = '|',
+        --         section_separators = '',
+        --     },
+        -- },
         lazy = true
     },
 

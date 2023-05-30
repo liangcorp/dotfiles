@@ -26,6 +26,9 @@ keymap.set('n', '-', '<C-x>')
 -- Select all
 keymap.set('n', '<C-a>', 'gg<S-v>G')
 
+-- Copy all
+keymap.set('n', '<C-y>', '99999yy')
+
 -- Do not yank with x
 keymap.set('n', 'x', '"_x')
 
