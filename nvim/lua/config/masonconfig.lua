@@ -22,5 +22,8 @@ require("mason-lspconfig").setup {
         "dockerls",
         "bashls",
         "jdtls",
+        "groovyls",
+        "yamlls",
+        "jdtls",
     },
 }

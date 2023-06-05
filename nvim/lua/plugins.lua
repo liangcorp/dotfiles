@@ -53,6 +53,7 @@ require('lazy').setup({
     'folke/tokyonight.nvim',
     'EdenEast/nightfox.nvim',
     'rebelot/kanagawa.nvim',
+    'sainnhe/everforest',
     { 'catppuccin/nvim', name = 'catppuccin' },
 
     -- Lualine status line
