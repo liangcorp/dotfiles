@@ -61,8 +61,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
-# bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity 85 -bw 0 -bc #2F343F -bg #2F343F -fg #F3F4F5 -hlbg #2F343F -hlfg #9575CD -font "DejaVu Sans Mono 13"
+bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
+# bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity 85 -bw 0 -bc #2F343F -bg #2F343F -fg #F3F4F5 -hlbg #2F343F -hlfg #9575CD -font "DejaVu Sans Mono 13"
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -240,7 +240,7 @@ exec --no-startup-id compton --config ~/.config/compton.conf -b
 default_border pixel 1
 
 # Personal bindings
-bindsym $mod+Ctrl+c exec "chromium-freeworld"
+bindsym $mod+Ctrl+c exec "flatpak run io.gitlab.librewolf-community"
 bindsym $mod+Ctrl+m exec "evolution"
 bindsym $mod+Ctrl+f exec "firefox"
 bindsym $mod+Ctrl+s exec "slack"
@@ -255,7 +255,7 @@ bindsym $mod+Ctrl+w exec "scrot -u"
 bindsym $mod+Ctrl+a exec "scrot"
 bindsym --release $mod+Ctrl+r exec "scrot -s"
 
-bindsym --release $mod+Ctrl+l exec "xset dpms force off; xscreensaver-command -lock"
+bindsym --release $mod+l exec "xset dpms force off; xscreensaver-command -lock"
 # bindsym --release $mod+Ctrl+l exec "xset dpms force off; i3lock"
 
 bindsym Ctrl+F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
