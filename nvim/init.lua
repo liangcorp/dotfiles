@@ -48,11 +48,11 @@ autocmd('BufWritePre', {
 require('plugins')
 
 -- Themes
--- require("themes/catppuccin")
+require("themes/catppuccin")
 -- require("themes/nightfox")
 -- require('onedark').load()
 -- vim.cmd("colorscheme everforest")
-vim.cmd("colorscheme tokyonight-moon")
+-- vim.cmd("colorscheme tokyonight-moon")
 
 -- Toggle comments
 -- "gcc" for line comment
