@@ -18,7 +18,6 @@ require('lazy').setup({
         'nvim-telescope/telescope.nvim',
         version = '*',
         dependencies = { 'nvim-lua/plenary.nvim' },
-        lazy = true
     },
 
     -- Indent Blanline
@@ -26,6 +25,10 @@ require('lazy').setup({
 
     -- Illuminate same words
     'RRethy/vim-illuminate',
+
+    -- if some code requires a module from an unloaded plugin, it will be automatically loaded.
+    -- So for api plugins like devicons, we can always set lazy=true
+    { "nvim-tree/nvim-web-devicons", lazy = true },
 
     -- Treesitter
     {
@@ -41,9 +44,6 @@ require('lazy').setup({
 
     {
         'nvim-tree/nvim-tree.lua',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-        },
         tag = 'nightly'
     },
 
@@ -54,7 +54,12 @@ require('lazy').setup({
     'EdenEast/nightfox.nvim',
     'rebelot/kanagawa.nvim',
     'sainnhe/everforest',
-    { 'catppuccin/nvim', name = 'catppuccin' },
+    {
+        'catppuccin/nvim',
+        name = 'catppuccin',
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+    },
 
     -- Lualine status line
     {
@@ -67,7 +72,6 @@ require('lazy').setup({
         --         section_separators = '',
         --     },
         -- },
-        lazy = true
     },
 
     -- NVIM Lint
@@ -89,7 +93,6 @@ require('lazy').setup({
         opts = {
             -- configurations go here
         },
-        lazy = true
     },
     -- LSP server installer and manager
     {
@@ -129,7 +132,6 @@ require('lazy').setup({
                 -- refer to the configuration section below
             }
         end,
-        lazy = true
     },
 
     -- Prettier
@@ -139,7 +141,6 @@ require('lazy').setup({
             'jose-elias-alvarez/null-ls.nvim',
             'neovim/nvim-lspconfig'
         },
-        lazy = true
     },
 
     -- Make
@@ -177,7 +178,6 @@ require('lazy').setup({
             -- "haydenmeade/neotest-jest",
         },
         -- build = 'cargo install cargo-nextest',
-        lazy = true
     },
 
     -- Markdown preview
@@ -185,7 +185,6 @@ require('lazy').setup({
     {
         'iamcco/markdown-preview.nvim',
         build = ':call mkdp#util#install()',
-        lazy = true
     },
 
     -- Copilot - disabled due to pay subscription
@@ -214,6 +213,5 @@ require('lazy').setup({
             'folke/neodev.nvim',
             'mfussenegger/nvim-dap'
         },
-        lazy = true
     },
 })
