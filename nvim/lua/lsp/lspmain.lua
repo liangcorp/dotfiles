@@ -85,11 +85,12 @@ lspconfig.gopls.setup {
 }
 
 -- Python configurations
-lspconfig['pylsp'].setup {
+lspconfig.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
     root_dir = util.root_pattern(".git"),
+    filetypes = {"python"},
 }
 
 -- Javascript configurations

@@ -13,7 +13,6 @@ require("mason-lspconfig").setup {
         "clangd",
         "rust_analyzer",
         "gopls",
-        "pylsp",
         "marksman",
         "ltex",
         "tsserver",
@@ -25,5 +24,6 @@ require("mason-lspconfig").setup {
         "groovyls",
         "yamlls",
         "jdtls",
+        "pyright",
     },
 }
