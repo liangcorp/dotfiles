@@ -10,20 +10,27 @@ require("mason").setup({
 
 require("mason-lspconfig").setup {
     ensure_installed = {
-        "clangd",
-        "rust_analyzer",
-        "gopls",
-        "marksman",
-        "ltex",
-        "tsserver",
-        "lua_ls",
-        "jsonls",
-        "dockerls",
         "bashls",
-        "jdtls",
+        -- "black",
+        "clangd",
+        -- "codelldb"
+        -- "debugpy"
+        -- "delve"
+        "dockerls",
+        "gopls",
         "groovyls",
-        "yamlls",
         "jdtls",
+        "jsonls",
+        "ltex",
+        "lua_ls",
+        -- "markdownlint"
+        "marksman",
+        -- "mypy",
+        -- "prettier"
         "pyright",
+        -- "ruff",
+        "rust_analyzer",
+        "tsserver",
+        "yamlls",
     },
 }

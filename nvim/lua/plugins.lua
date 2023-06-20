@@ -57,7 +57,7 @@ require('lazy').setup({
     {
         'catppuccin/nvim',
         name = 'catppuccin',
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
     },
 
@@ -134,11 +134,19 @@ require('lazy').setup({
         end,
     },
 
+    -- null-ls
+    {
+        'jose-elias-alvarez/null-ls.nvim',
+        ft = {"python"},
+        opts = function()
+            return require('lsp/nullls')
+        end,
+    },
+
     -- Prettier
     {
         'MunifTanjim/prettier.nvim',
         dependencies = {
-            'jose-elias-alvarez/null-ls.nvim',
             'neovim/nvim-lspconfig'
         },
     },
