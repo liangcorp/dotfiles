@@ -137,7 +137,7 @@ require('lazy').setup({
     -- null-ls
     {
         'jose-elias-alvarez/null-ls.nvim',
-        ft = {"python"},
+        ft = { "python" },
         opts = function()
             return require('lsp/nullls')
         end,
@@ -205,9 +205,7 @@ require('lazy').setup({
 
     -- Debugger
     {
-        'leoluz/nvim-dap-go',
         'jay-babu/mason-nvim-dap.nvim',
-        'mfussenegger/nvim-dap-python',
         'mxsdev/nvim-dap-vscode-js',
         'mfussenegger/nvim-dap',
         -- {
@@ -216,10 +214,51 @@ require('lazy').setup({
         -- },
         'theHamsta/nvim-dap-virtual-text',
         'nvim-telescope/telescope-dap.nvim',
-        'rcarriga/nvim-dap-ui',
         dependencies = {
             'folke/neodev.nvim',
             'mfussenegger/nvim-dap'
         },
+    },
+    {
+        'rcarriga/nvim-dap-ui',
+        dependencies = {
+            'mfussenegger/nvim-dap'
+        },
+        -- config = function()
+        --     local dap = require("dap")
+        --     local dapui = require("dapui")
+        --     dapui.setup()
+        --     dap.listeners.after.event_initialized["dapui_config"] = function()
+        --         dapui.open()
+        --     end
+        --     dap.listeners.before.event_terminated["dapui_config"] = function()
+        --         dapui.close()
+        --     end
+        --     dap.listeners.before.event_exited["dapui_config"] = function()
+        --         dapui.close()
+        --     end
+        -- end
+    },
+    {
+        'leoluz/nvim-dap-go',
+        dependencies = {
+            'mfussenegger/nvim-dap'
+        },
+        config = function()
+            require('dap-go').setup {}
+        end,
+    },
+    {
+        'mfussenegger/nvim-dap-python',
+        ft = "python",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "rcarriga/nvim-dap-ui",
+        },
+        config = function()
+            local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+            require("dap-python").setup(path)
+            require("dap-python").test_runner = 'pytest'
+        end,
     },
 })
