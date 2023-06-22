@@ -11,7 +11,6 @@ require("mason").setup({
 require("mason-lspconfig").setup {
     ensure_installed = {
         "bashls",
-        -- "black",
         "clangd",
         -- "codelldb"
         -- "debugpy"
@@ -25,10 +24,8 @@ require("mason-lspconfig").setup {
         "lua_ls",
         -- "markdownlint"
         "marksman",
-        -- "mypy",
         -- "prettier"
-        "pyright",
-        -- "ruff",
+        "pylsp",
         "rust_analyzer",
         "tsserver",
         "yamlls",
