@@ -33,7 +33,7 @@ keymap.set('n', '<C-y>', '99999yy')
 keymap.set('n', 'x', '"_x')
 
 -- Search Toggle Highlight
-keymap.set('n', '<leader>ht', ':set hlsearch!<cr>', { desc = "[H]ighlight [T]oggle"  })
+keymap.set('n', '<leader>hl', ':set hlsearch!<cr>', { desc = "[H]ighlight [T]oggle"  })
 
 -- Split panels
 keymap.set('n', '<leader>sh', ':split<Return><C-w>w', { desc = "[S]plit [H]orizontal" })
