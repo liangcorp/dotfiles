@@ -134,6 +134,15 @@ require('lazy').setup({
         end,
     },
 
+    -- null-ls
+    -- {
+    --     'jose-elias-alvarez/null-ls.nvim',
+    --     ft = { "python" },
+    --     opts = function()
+    --         return require('config/null_ls')
+    --     end,
+    -- },
+
     -- Prettier
     {
         'MunifTanjim/prettier.nvim',
