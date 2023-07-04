@@ -34,6 +34,8 @@ vim.opt.path = vim.opt.path + '**'
 -- Disable search highlight
 vim.opt.hlsearch = false
 
+vim.opt.cursorline = true
+
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
