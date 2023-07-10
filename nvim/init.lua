@@ -146,5 +146,5 @@ require("dap/dapjavascript")
 -- require('dap-python').test_runner = 'pytest'
 
 -- DAP for golang
--- require('dap-go').setup {}
+require('dap-go').setup {}
 
