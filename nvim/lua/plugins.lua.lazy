@@ -42,10 +42,10 @@ require('lazy').setup({
         end,
     },
 
-    {
-        'nvim-tree/nvim-tree.lua',
-        tag = 'nightly'
-    },
+    -- {
+    --     'nvim-tree/nvim-tree.lua',
+    --     tag = 'nightly'
+    -- },
 
     -- Themes
     -- 'Mofiqul/dracula.nvim'
@@ -72,7 +72,7 @@ require('lazy').setup({
         --         section_separators = '',
         --     },
         -- },
-        config = function() require("lualine").setup {} end
+        config = function() require('lualine').setup {} end
     },
 
     -- NVIM Lint
@@ -84,12 +84,12 @@ require('lazy').setup({
     'stevearc/aerial.nvim',
 
     {
-        "utilyre/barbecue.nvim",
-        name = "barbecue",
+        'utilyre/barbecue.nvim',
+        name = 'barbecue',
         version = "*",
         dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons", -- optional dependency
+            'SmiteshP/nvim-navic',
+            'nvim-tree/nvim-web-devicons', -- optional dependency
         },
         opts = {
             -- configurations go here
@@ -114,7 +114,7 @@ require('lazy').setup({
             'saadparwaiz1/cmp_luasnip',
         },
 
-        config = function() require("luasnip").setup {} end
+        config = function() require('luasnip').setup {} end
     },
 
     'hrsh7th/cmp-buffer',
@@ -199,8 +199,8 @@ require('lazy').setup({
     -- 'github/copilot.vim',
 
     {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
+        'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup {} end
     },
 
     -- Debugger
@@ -239,6 +239,7 @@ require('lazy').setup({
         --     end
         -- end
     },
+
     {
         'leoluz/nvim-dap-go',
         dependencies = {
@@ -248,12 +249,13 @@ require('lazy').setup({
             require('dap-go').setup {}
         end,
     },
+
     {
         'mfussenegger/nvim-dap-python',
         ft = "python",
         dependencies = {
-            "mfussenegger/nvim-dap",
-            "rcarriga/nvim-dap-ui",
+            'mfussenegger/nvim-dap',
+            'rcarriga/nvim-dap-ui',
         },
         config = function()
             local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"

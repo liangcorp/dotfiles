@@ -54,6 +54,7 @@ require('themes/catppuccin')
 -- require("themes/nightfox")
 -- require('onedark').load()
 -- vim.cmd("colorscheme everforest")
+vim.cmd("colorscheme catppuccin")
 -- vim.cmd("colorscheme tokyonight-moon")
 
 -- local neogit = require('neogit')
@@ -75,7 +76,7 @@ require 'lspconfig'.neocmake.setup {}
 -- require('luasnip').config.setup {}
 
 -- Display horizontal lines for indentations
-require("indent_blankline").setup {
+require('indent_blankline').setup {
     -- for example, context is off by default, use this to turn it on
     show_current_context = true,
     show_current_context_start = true,
@@ -130,5 +131,4 @@ require('dap/dapjavascript')
 -- require('dap-python').test_runner = 'pytest'
 
 -- DAP for golang
-require('dap-go').setup {}
-
+-- require('dap-go').setup {}
