@@ -28,7 +28,7 @@ require('lazy').setup({
 
     -- if some code requires a module from an unloaded plugin, it will be automatically loaded.
     -- So for api plugins like devicons, we can always set lazy=true
-    { "nvim-tree/nvim-web-devicons", lazy = true },
+    -- { "nvim-tree/nvim-web-devicons", lazy = true },
 
     -- Treesitter
     {
@@ -72,6 +72,7 @@ require('lazy').setup({
         --         section_separators = '',
         --     },
         -- },
+        config = function() require("lualine").setup {} end
     },
 
     -- NVIM Lint
@@ -111,7 +112,9 @@ require('lazy').setup({
             -- Snippets
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
-        }
+        },
+
+        config = function() require("luasnip").setup {} end
     },
 
     'hrsh7th/cmp-buffer',
@@ -134,15 +137,6 @@ require('lazy').setup({
         end,
     },
 
-    -- null-ls
-    -- {
-    --     'jose-elias-alvarez/null-ls.nvim',
-    --     ft = { "python" },
-    --     opts = function()
-    --         return require('config/null_ls')
-    --     end,
-    -- },
-
     -- Prettier
     {
         'MunifTanjim/prettier.nvim',
@@ -164,14 +158,20 @@ require('lazy').setup({
     'tpope/vim-rhubarb',
 
     -- Git signes
-    'lewis6991/gitsigns.nvim',
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function() require("gitsigns").setup {} end
+    },
 
     -- Extra packages for rust
     -- 'rust-lang/rust.vim'
     'simrat39/rust-tools.nvim',
 
     -- Toggle comments
-    'numToStr/Comment.nvim',
+    {
+        'numToStr/Comment.nvim',
+        config = function() require("Comment").setup {} end
+    },
 
     -- Neotest
     {

@@ -28,10 +28,6 @@ return require('packer').startup(function(use)
     -- Illuminate same words
     use 'RRethy/vim-illuminate'
 
-    -- if some code requires a module from an unloaded plugin, it will be automatically loaded.
-    -- So for api plugins like devicons, we can always set lazy=true
-    use "nvim-tree/nvim-web-devicons"
-
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -42,12 +38,33 @@ return require('packer').startup(function(use)
     }
 
     -- Nvim Tree
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        },
-    }
+    -- use {
+    --     'nvim-tree/nvim-tree.lua',
+    --     requires = {
+    --         'nvim-tree/nvim-web-devicons', -- optional
+    --     },
+    --
+    --     config = function()
+    --         local function my_on_attach(bufnr)
+    --             local api = require "nvim-tree.api"
+    --
+    --             local function opts(desc)
+    --                 return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    --             end
+    --
+    --             -- default mappings
+    --             api.config.mappings.default_on_attach(bufnr)
+    --
+    --             -- custom mappings
+    --             vim.keymap.set('n', "<leader>zz", api.tree.toggle(), { desc = "Nvim Tree" })
+    --             vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Up'))
+    --             vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+    --         end
+    --         require('nvim-tree').setup {
+    --             on_attach = my_on_attach
+    --         }
+    --     end,
+    -- }
 
     -- Themes
     -- 'Mofiqul/dracula.nvim'
@@ -62,7 +79,8 @@ return require('packer').startup(function(use)
     -- Lualine status line
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+        requires = { 'nvim-tree/nvim-web-devicons' },
+        config = function() require('lualine').setup() end
     }
 
     -- NVIM Lint
@@ -73,7 +91,7 @@ return require('packer').startup(function(use)
     -- Arie (list and move between functions
     use 'stevearc/aerial.nvim'
 
-    use({
+    use {
         "utilyre/barbecue.nvim",
         tag = "*",
         requires = {
@@ -84,7 +102,7 @@ return require('packer').startup(function(use)
         config = function()
             require("barbecue").setup()
         end,
-    })
+    }
 
     -- LSP server installer and manager
     use {
@@ -101,7 +119,11 @@ return require('packer').startup(function(use)
             -- Snippets
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
-        }
+        },
+
+        config = function()
+            require("luasnip").setup {}
+        end,
     }
 
     use 'hrsh7th/cmp-buffer'
@@ -113,7 +135,12 @@ return require('packer').startup(function(use)
     use 'folke/trouble.nvim'
 
     -- Show TODO in highlight
-    use 'folke/todo-comments.nvim'
+    use {
+        'folke/todo-comments.nvim',
+        config = function()
+            require('todo-comments').setup {}
+        end,
+    }
 
     -- null-ls
     -- {
@@ -145,14 +172,26 @@ return require('packer').startup(function(use)
     use 'tpope/vim-rhubarb'
 
     -- Git signes
-    use 'lewis6991/gitsigns.nvim'
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end,
+    }
 
     -- Extra packages for rust
     -- 'rust-lang/rust.vim'
     use 'simrat39/rust-tools.nvim'
 
     -- Toggle comments
-    use 'numToStr/Comment.nvim'
+    -- "gcc" for line comment
+    -- "gbc" for block comment
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup {}
+        end,
+    }
 
     -- Neotest
     use {
@@ -174,13 +213,13 @@ return require('packer').startup(function(use)
     -- Markdown preview
     -- install without yarn or npm
     use({
-        "iamcco/markdown-preview.nvim",
+        'iamcco/markdown-preview.nvim',
         run = function() vim.fn["mkdp#util#install"]() end,
     })
 
     use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
+        'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup {} end
     }
 
     -- Debugger
@@ -206,16 +245,16 @@ return require('packer').startup(function(use)
             'mfussenegger/nvim-dap'
         },
         config = function()
-            local dap = require("dap")
-            local dapui = require("dapui")
+            local dap = require('dap')
+            local dapui = require('dapui')
             dapui.setup()
-            dap.listeners.after.event_initialized["dapui_config"] = function()
+            dap.listeners.after.event_initialized['dapui_config'] = function()
                 dapui.open()
             end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
+            dap.listeners.before.event_terminated['dapui_config'] = function()
                 dapui.close()
             end
-            dap.listeners.before.event_exited["dapui_config"] = function()
+            dap.listeners.before.event_exited['dapui_config'] = function()
                 dapui.close()
             end
         end
@@ -231,13 +270,13 @@ return require('packer').startup(function(use)
     use {
         'mfussenegger/nvim-dap-python',
         requires = {
-            "mfussenegger/nvim-dap",
-            "rcarriga/nvim-dap-ui",
+            'mfussenegger/nvim-dap',
+            'rcarriga/nvim-dap-ui',
         },
         config = function()
             local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-            require("dap-python").setup(path)
-            require("dap-python").test_runner = 'pytest'
+            require('dap-python').setup(path)
+            require('dap-python').test_runner = 'pytest'
         end
     }
     -- Automatically set up your configuration after cloning packer.nvim
