@@ -101,8 +101,8 @@ local prettier = require('prettier')
 keymap.set('n', '<space>p', function() prettier.format() end, { desc = '[P]rettier' })
 
 -- NVIM Tree
-local nvim_tree = require('nvim-tree')
-keymap.set('n', "<leader>zz", function() nvim_tree.toggle() end, { desc = "Nvim Tree" })
+-- local nvim_tree = require('nvim-tree')
+-- keymap.set('n', "<leader>zz", function() nvim_tree.toggle() end, { desc = "Nvim Tree" })
 
 -- Debugger related shortcuts
 local dap = require('dap')

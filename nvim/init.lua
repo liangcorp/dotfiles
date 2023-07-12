@@ -4,9 +4,9 @@
 
 vim.o.nocompatible = true
 vim.o.autowrite = true
-vim.o.mouse = "a"
-vim.o.mousemodel = "popup"
-vim.o.guioptions = "egmrti"
+vim.o.mouse = 'a'
+vim.o.mousemodel = 'popup'
+vim.o.guioptions = 'egmrti'
 -- vim.o.completeopt = "longest"
 vim.o.ruler = true
 vim.o.wildmenu = true
@@ -21,7 +21,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 0
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
-vim.opt.encoding = "UTF-8"
+vim.opt.encoding = 'UTF-8'
 -- vim.opt.autoindent = true
 vim.opt.showcmd = true
 vim.opt.cmdheight = 1
@@ -50,24 +50,17 @@ autocmd('BufWritePre', {
 require('plugins')
 
 -- Themes
-require("themes/catppuccin")
+require('themes/catppuccin')
 -- require("themes/nightfox")
 -- require('onedark').load()
 -- vim.cmd("colorscheme everforest")
 -- vim.cmd("colorscheme tokyonight-moon")
-
--- Toggle comments
--- "gcc" for line comment
--- "gbc" for block comment
-require('Comment').setup()
 
 -- local neogit = require('neogit')
 -- neogit.setup {
 --     use_magit_keybindings = true,
 --     refresh_manually = true
 -- }
-
-require('gitsigns').setup()
 
 vim.cmd("let g:github_enterprise_urls = ['https://github.ibm.com']")
 
@@ -78,14 +71,8 @@ require 'lspconfig'.dockerls.setup {}
 require 'lspconfig'.marksman.setup {}
 require 'lspconfig'.neocmake.setup {}
 
--- Status line using lualine
-require('lualine').setup {}
-
 -- Configurations with modifications
-require('luasnip').config.setup {}
-
--- TODOs highlight
-require("todo-comments").setup {}
+-- require('luasnip').config.setup {}
 
 -- Display horizontal lines for indentations
 require("indent_blankline").setup {
@@ -94,52 +81,49 @@ require("indent_blankline").setup {
     show_current_context_start = true,
 }
 
--- nvim-tree empty setup using defaults
-require("nvim-tree").setup()
-
 -- LSP configurations
-require("lsp/lspmain")
-require("lsp/completion")
-require("lsp/bash")
+require('lsp/lspmain')
+require('lsp/completion')
+require('lsp/bash')
 
 -- Markdown Preview
-require("config/markdownpreview")
+require('config/markdownpreview')
 
 -- Markdown Linting
-require("config/linter")
+require('config/linter')
 
 -- Keyboard mappings
 require('config/mappings')
 
 -- Treesitter for better highlighting
-require("config/treesitter")
+require('config/treesitter')
 
 -- Aerial for indexing/traversing definitions
-require("config/aerialline")
+require('config/aerialline')
 
 -- Mason Installer for LSP servers
-require("config/masonconfig")
+require('config/masonconfig')
 
 -- Telescope for fuzzy finding
-require("config/telescopeconfig")
+require('config/telescopeconfig')
 
 -- Prettier for better code formatting
-require("config/prettierconfig")
+require('config/prettierconfig')
 
 -- Trouble window
 require('config/trouble')
 
 -- Neotest
-require("config/neotest")
+require('config/neotest')
 
 -- Debugger nvim-dap
-require("dap/dapconfig")
+require('dap/dapconfig')
 
 -- DAP for c/cpp/rust
-require("dap/dapcodellb")
+require('dap/dapcodellb')
 
 -- DAP for javascript and typescript
-require("dap/dapjavascript")
+require('dap/dapjavascript')
 
 -- DAP for python
 -- require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
