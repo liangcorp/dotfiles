@@ -75,13 +75,6 @@ require 'lspconfig'.neocmake.setup {}
 -- Configurations with modifications
 -- require('luasnip').config.setup {}
 
--- Display horizontal lines for indentations
-require('indent_blankline').setup {
-    -- for example, context is off by default, use this to turn it on
-    show_current_context = true,
-    show_current_context_start = true,
-}
-
 -- LSP configurations
 require('lsp/lspmain')
 require('lsp/completion')
@@ -89,9 +82,6 @@ require('lsp/bash')
 
 -- Markdown Preview
 require('config/markdownpreview')
-
--- Markdown Linting
-require('config/linter')
 
 -- Keyboard mappings
 require('config/mappings')

@@ -1,266 +1,307 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
-    -- Telescope
-    {
-        'nvim-telescope/telescope-symbols.nvim',
-        'nvim-telescope/telescope.nvim',
-        version = '*',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-    },
+require("lazy").setup({
+	-- Telescope
+	{
+		"nvim-telescope/telescope-symbols.nvim",
+		"nvim-telescope/telescope.nvim",
+		version = "*",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 
-    -- Indent Blanline
-    'lukas-reineke/indent-blankline.nvim',
+	-- Configurations with modifications
+	-- Indent Blanline
+	{
+		"lukas-reineke/indent-blankline.nvim",
 
-    -- Illuminate same words
-    'RRethy/vim-illuminate',
+		config = function()
+			require("indent_blankline").setup({
+				-- for example, context is off by default, use this to turn it on
+				show_current_context = true,
+				show_current_context_start = true,
+			})
+		end,
+	},
 
-    -- if some code requires a module from an unloaded plugin, it will be automatically loaded.
-    -- So for api plugins like devicons, we can always set lazy=true
-    -- { "nvim-tree/nvim-web-devicons", lazy = true },
+	-- Illuminate same words
+	"RRethy/vim-illuminate",
 
-    -- Treesitter
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
-        config = function()
-            pcall(require('nvim-treesitter.install').update { with_sync = true })
-        end,
-    },
+	-- if some code requires a module from an unloaded plugin, it will be automatically loaded.
+	-- So for api plugins like devicons, we can always set lazy=true
+	-- { "nvim-tree/nvim-web-devicons", lazy = true },
 
-    -- {
-    --     'nvim-tree/nvim-tree.lua',
-    --     tag = 'nightly'
-    -- },
+	-- Treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+		config = function()
+			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+		end,
+	},
 
-    -- Themes
-    -- 'Mofiqul/dracula.nvim'
-    'navarasu/onedark.nvim',
-    'folke/tokyonight.nvim',
-    'EdenEast/nightfox.nvim',
-    'rebelot/kanagawa.nvim',
-    'sainnhe/everforest',
-    {
-        'catppuccin/nvim',
-        name = 'catppuccin',
-        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-    },
+	-- {
+	--     'nvim-tree/nvim-tree.lua',
+	--     tag = 'nightly'
+	-- },
 
-    -- Lualine status line
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        -- See `:help lualine.txt`
-        -- opts = {
-        --     options = {
-        --         component_separators = '|',
-        --         section_separators = '',
-        --     },
-        -- },
-        config = function() require('lualine').setup {} end
-    },
+	-- Themes
+	-- 'Mofiqul/dracula.nvim'
+	"navarasu/onedark.nvim",
+	"folke/tokyonight.nvim",
+	"EdenEast/nightfox.nvim",
+	"rebelot/kanagawa.nvim",
+	"sainnhe/everforest",
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+	},
 
-    -- NVIM Lint
-    'mfussenegger/nvim-lint',
+	-- Lualine status line
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- See `:help lualine.txt`
+		-- opts = {
+		--     options = {
+		--         component_separators = '|',
+		--         section_separators = '',
+		--     },
+		-- },
+		config = function()
+			require("lualine").setup({})
+		end,
+	},
 
-    'mfussenegger/nvim-jdtls',
+	-- NVIM Lint
+	{
+		"mfussenegger/nvim-lint",
+		config = function()
+			require("lint").linters_by_ft = {
+				markdown = { "markdownlint" },
+			}
 
-    -- Arie (list and move between functions
-    'stevearc/aerial.nvim',
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				callback = function()
+					require("lint").try_lint()
+				end,
+			})
 
-    {
-        'utilyre/barbecue.nvim',
-        name = 'barbecue',
-        version = "*",
-        dependencies = {
-            'SmiteshP/nvim-navic',
-            'nvim-tree/nvim-web-devicons', -- optional dependency
-        },
-        opts = {
-            -- configurations go here
-        },
-    },
-    -- LSP server installer and manager
-    {
-        'neovim/nvim-lspconfig',
-        dependencies = {
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
-        }
-    },
+			vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+				callback = function()
+					require("lint").try_lint()
+				end,
+			})
+		end,
+	},
 
-    -- Text and code completions
-    {
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            -- Snippets
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-        },
+	"mfussenegger/nvim-jdtls",
 
-        config = function() require('luasnip').setup {} end
-    },
+	-- Arie (list and move between functions
+	"stevearc/aerial.nvim",
 
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'petertriho/cmp-git',
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		opts = {
+			-- configurations go here
+		},
+	},
+	-- LSP server installer and manager
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
+	},
 
-    -- Show Error in Trouble Window
-    'folke/trouble.nvim',
+	-- Text and code completions
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			-- Snippets
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+		},
 
-    -- Show TODO in highlight
-    {
-        'folke/todo-comments.nvim',
-        config = function()
-            require("todo-comments").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end,
-    },
+		config = function()
+			require("luasnip").setup({})
+		end,
+	},
 
-    -- Prettier
-    {
-        'MunifTanjim/prettier.nvim',
-        dependencies = {
-            'neovim/nvim-lspconfig'
-        },
-    },
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-cmdline",
+	"petertriho/cmp-git",
 
-    -- Make
-    'neomake/neomake',
+	-- Show Error in Trouble Window
+	"folke/trouble.nvim",
 
-    -- Magit for neovim
-    -- {
-    --     'TimUntersberger/neogit',
-    --     dependencies = { 'nvim-lua/plenary.nvim' }
-    -- },
-    -- Git related
-    'tpope/vim-fugitive',
-    'tpope/vim-rhubarb',
+	-- Show TODO in highlight
+	{
+		"folke/todo-comments.nvim",
+		config = function()
+			require("todo-comments").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	},
 
-    -- Git signes
-    {
-        'lewis6991/gitsigns.nvim',
-        config = function() require("gitsigns").setup {} end
-    },
+	-- Prettier
+	{
+		"MunifTanjim/prettier.nvim",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			'jose-elias-alvarez/null-ls.nvim'
+		},
+	},
 
-    -- Extra packages for rust
-    -- 'rust-lang/rust.vim'
-    'simrat39/rust-tools.nvim',
+	-- Make
+	"neomake/neomake",
 
-    -- Toggle comments
-    {
-        'numToStr/Comment.nvim',
-        config = function() require("Comment").setup {} end
-    },
+	-- Magit for neovim
+	-- {
+	--     'TimUntersberger/neogit',
+	--     dependencies = { 'nvim-lua/plenary.nvim' }
+	-- },
+	-- Git related
+	"tpope/vim-fugitive",
+	"tpope/vim-rhubarb",
 
-    -- Neotest
-    {
-        'nvim-neotest/neotest',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-neotest/neotest-python',
-            'nvim-neotest/neotest-plenary',
-            'nvim-neotest/neotest-vim-test',
-            'nvim-neotest/neotest-go',
-            'rouge8/neotest-rust',
-            -- "haydenmeade/neotest-jest",
-        },
-        -- build = 'cargo install cargo-nextest',
-    },
+	-- Git signes
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup({})
+		end,
+	},
 
-    -- Markdown preview
-    -- install without yarn or npm
-    {
-        'iamcco/markdown-preview.nvim',
-        build = ':call mkdp#util#install()',
-    },
+	-- Extra packages for rust
+	-- 'rust-lang/rust.vim'
+	"simrat39/rust-tools.nvim",
 
-    -- Copilot - disabled due to pay subscription
-    -- 'github/copilot.vim',
+	-- Toggle comments
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup({})
+		end,
+	},
 
-    {
-        'windwp/nvim-autopairs',
-        config = function() require('nvim-autopairs').setup {} end
-    },
+	-- Neotest
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-neotest/neotest-python",
+			"nvim-neotest/neotest-plenary",
+			"nvim-neotest/neotest-vim-test",
+			"nvim-neotest/neotest-go",
+			"rouge8/neotest-rust",
+			-- "haydenmeade/neotest-jest",
+		},
+		-- build = 'cargo install cargo-nextest',
+	},
 
-    -- Debugger
-    {
-        'jay-babu/mason-nvim-dap.nvim',
-        'mxsdev/nvim-dap-vscode-js',
-        'mfussenegger/nvim-dap',
-        -- {
-        --     'microsoft/vscode-js-debug',
-        --     build = 'npm install --legacy-peer-deps && npm run compile'
-        -- },
-        'theHamsta/nvim-dap-virtual-text',
-        'nvim-telescope/telescope-dap.nvim',
-        dependencies = {
-            'folke/neodev.nvim',
-            'mfussenegger/nvim-dap'
-        },
-    },
-    {
-        'rcarriga/nvim-dap-ui',
-        dependencies = {
-            'mfussenegger/nvim-dap'
-        },
-        -- config = function()
-        --     local dap = require("dap")
-        --     local dapui = require("dapui")
-        --     dapui.setup()
-        --     dap.listeners.after.event_initialized["dapui_config"] = function()
-        --         dapui.open()
-        --     end
-        --     dap.listeners.before.event_terminated["dapui_config"] = function()
-        --         dapui.close()
-        --     end
-        --     dap.listeners.before.event_exited["dapui_config"] = function()
-        --         dapui.close()
-        --     end
-        -- end
-    },
+	-- Markdown preview
+	-- install without yarn or npm
+	{
+		"iamcco/markdown-preview.nvim",
+		build = ":call mkdp#util#install()",
+	},
 
-    {
-        'leoluz/nvim-dap-go',
-        dependencies = {
-            'mfussenegger/nvim-dap'
-        },
-        config = function()
-            require('dap-go').setup {}
-        end,
-    },
+	-- Copilot - disabled due to pay subscription
+	-- 'github/copilot.vim',
 
-    {
-        'mfussenegger/nvim-dap-python',
-        ft = "python",
-        dependencies = {
-            'mfussenegger/nvim-dap',
-            'rcarriga/nvim-dap-ui',
-        },
-        config = function()
-            local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-            require("dap-python").setup(path)
-            require("dap-python").test_runner = 'pytest'
-        end,
-    },
+	{
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	},
+
+	-- Debugger
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		"mxsdev/nvim-dap-vscode-js",
+		"mfussenegger/nvim-dap",
+		-- {
+		--     'microsoft/vscode-js-debug',
+		--     build = 'npm install --legacy-peer-deps && npm run compile'
+		-- },
+		"theHamsta/nvim-dap-virtual-text",
+		"nvim-telescope/telescope-dap.nvim",
+		dependencies = {
+			"folke/neodev.nvim",
+			"mfussenegger/nvim-dap",
+		},
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+		-- config = function()
+		--     local dap = require("dap")
+		--     local dapui = require("dapui")
+		--     dapui.setup()
+		--     dap.listeners.after.event_initialized["dapui_config"] = function()
+		--         dapui.open()
+		--     end
+		--     dap.listeners.before.event_terminated["dapui_config"] = function()
+		--         dapui.close()
+		--     end
+		--     dap.listeners.before.event_exited["dapui_config"] = function()
+		--         dapui.close()
+		--     end
+		-- end
+	},
+
+	{
+		"leoluz/nvim-dap-go",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+		config = function()
+			require("dap-go").setup({})
+		end,
+	},
+
+	{
+		"mfussenegger/nvim-dap-python",
+		ft = "python",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"rcarriga/nvim-dap-ui",
+		},
+		config = function()
+			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+			require("dap-python").setup(path)
+			require("dap-python").test_runner = "pytest"
+		end,
+	},
 })

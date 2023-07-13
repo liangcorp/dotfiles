@@ -2,3 +2,7 @@
 .luarc.json
 lazy-lock.json
 packer_compiled.lua
+node_modules
+plugin
+package-lock.json
+package.json
