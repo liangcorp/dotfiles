@@ -57,6 +57,8 @@ require('themes/catppuccin')
 vim.cmd("colorscheme catppuccin")
 -- vim.cmd("colorscheme tokyonight-moon")
 
+require("ibl").setup()
+
 -- local neogit = require('neogit')
 -- neogit.setup {
 --     use_magit_keybindings = true,
