@@ -41,6 +41,8 @@ vim.o.completeopt = 'menuone,noselect'
 
 local autocmd = vim.api.nvim_create_autocmd
 
+vim.g.loaded_perl_provider = 0
+
 -- Remove whitespace on save
 autocmd('BufWritePre', {
     pattern = '',
