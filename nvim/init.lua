@@ -1,43 +1,44 @@
 -- disable netrw at the very start of your init.lua (strongly advised)
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
-
-vim.o.nocompatible = true
-vim.o.autowrite = true
-vim.o.mouse = 'a'
-vim.o.mousemodel = 'popup'
-vim.o.guioptions = 'egmrti'
+local o = vim.o
+o.nocompatible = true
+o.autowrite = true
+o.mouse = 'a'
+o.mousemodel = 'popup'
+o.guioptions = 'egmrti'
 -- vim.o.completeopt = "longest"
-vim.o.ruler = true
-vim.o.wildmenu = true
-vim.o.expandtab = true
+o.ruler = true
+o.wildmenu = true
+o.expandtab = true
+-- Set completeopt to have a better completion experience
+o.completeopt = 'menuone,noselect'
 -- vim.o.spelllang = en_GB
 -- vim.o.spell = true
 vim.scriptencoding = 'UTF-8'
 
+local opt=vim.opt
 -- set termguicolors to enable highlight groups
-vim.opt.termguicolors = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 0
-vim.opt.shiftwidth = 4
-vim.opt.smartindent = true
-vim.opt.encoding = 'UTF-8'
+opt.termguicolors = true
+opt.tabstop = 4
+opt.softtabstop = 0
+opt.shiftwidth = 4
+opt.smartindent = true
+opt.encoding = 'UTF-8'
 -- vim.opt.autoindent = true
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
+opt.showcmd = true
+opt.cmdheight = 1
 -- vim.opt.ignorecase = true
-vim.opt.smarttab = true
+opt.smarttab = true
 -- vim.opt.breakindent = true
-vim.opt.number = true
-vim.opt.path = vim.opt.path + '**'
+opt.number = true
+opt.path = vim.opt.path + '**'
 
 -- Disable search highlight
-vim.opt.hlsearch = false
+opt.hlsearch = false
 
-vim.opt.cursorline = true
+opt.cursorline = true
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
 
 local autocmd = vim.api.nvim_create_autocmd
 
