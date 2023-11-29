@@ -90,7 +90,7 @@ lspconfig.pylsp.setup {
     capabilities = capabilities,
     flags = lsp_flags,
     root_dir = util.root_pattern(".git"),
-    filetypes = {"python"},
+    filetypes = { "python" },
 }
 
 -- Javascript configurations

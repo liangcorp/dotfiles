@@ -6,7 +6,7 @@ npairs.setup({
     ts_config = {
         lua = { 'string' }, -- it will not add a pair on that treesitter node
         javascript = { 'template_string' },
-        java = false,     -- don't check treesitter on java
+        java = false,       -- don't check treesitter on java
     }
 })
 
@@ -22,8 +22,10 @@ npairs.add_rules({
 
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
-    ensure_installed = { "c", "cpp", "lua", "rust", "go", "bash", "python", "dockerfile", "java", "json", "latex",
-        "make", "yaml", "javascript", "typescript", "markdown", "markdown_inline" },
+    ensure_installed = { "c", "cpp", "lua", "rust",
+        "go", "bash", "python", "dockerfile",
+        "java", "json", "latex", "make", "yaml",
+        "javascript", "typescript", "markdown", "markdown_inline" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -32,7 +34,7 @@ require 'nvim-treesitter.configs'.setup {
     auto_install = true,
 
     -- List of parsers to ignore installing (for "all")
-    -- ignore_install = { "javascript" },
+    ignore_install = { "javascript" },
 
     highlight = {
         -- `false` will disable the whole extension
@@ -42,6 +44,15 @@ require 'nvim-treesitter.configs'.setup {
         -- the name of the parser)
         -- list of language that will be disabled
         -- disable = { "c", "rust" },
+
+        -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+        disable = function(lang, buf)
+            local max_filesize = 100 * 1024 -- 100 KB
+            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            if ok and stats and stats.size > max_filesize then
+                return true
+            end
+        end,
 
         -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
         -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).

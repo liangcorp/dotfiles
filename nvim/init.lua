@@ -108,6 +108,7 @@ require('config/prettierconfig')
 
 -- Trouble window
 require('config/trouble')
+require('config/diagnostics')
 
 -- Neotest
 require('config/neotest')
