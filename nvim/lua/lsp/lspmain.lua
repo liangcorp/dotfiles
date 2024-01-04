@@ -134,8 +134,17 @@ rt.setup({
                 },
                 checkOnSave = {
                     command = "clippy"
-                }
-            }
+                },
+                procMacro = {
+                    ignored = {
+                        leptos_macro = {
+                            -- optional: --
+                            -- "component",
+                            "server",
+                        },
+                    },
+                },
+            },
         },
         on_attach = function(_, bufnr)
             on_attach(_, bufnr)
