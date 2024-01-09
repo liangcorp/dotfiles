@@ -32,6 +32,8 @@ let g:indentLine_concealcursor = ''
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 
+let g:airline_powerline_fonts = 1
+
 colorscheme onedark
 
 fun! TrimWhitespace()
