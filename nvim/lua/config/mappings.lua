@@ -8,10 +8,6 @@ keymap.set('t', "<Esc>", "<C-\\><C-n>")
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Insert and delete brackets
-keymap.set("n", "<leader>m", "bve")
-keymap.set("n", "<leader>M", "bvE")
-
 -- Keep curser in the same position
 keymap.set("n", "J", "mzJ`z")
 
