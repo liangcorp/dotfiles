@@ -18,6 +18,7 @@
 ;; Disable tool bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; (use-package all-the-icons
 ;;   :ensure t)
@@ -75,21 +76,6 @@
 ;; Start LSP Mode and YASnippet mode
 ;; (add-hook 'go-mode-hook #'lsp-deferred)
 ;; (add-hook 'go-mode-hook #'yas-minor-mode)
-
-;; Powerline
-;; (use-package powerline :ensure t)
-;; (powerline-default-theme)
-;; (powerline-raw mode-line-mule-info nil 'l)
-
-;; (use-package telephone-line :ensure t)
-;; (telephone-line-mode 1)
-
-;; (require 'doom-modeline)
-;; (doom-modeline-mode 1)
-;;
-;; (use-package doom-modeline
-;;   :ensure t
-;;   :init (doom-modeline-mode 1))
 
 ;; Add spell check to Org mode
 ;; (add-hook 'org 'flycheck-mode)
