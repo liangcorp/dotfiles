@@ -118,7 +118,7 @@ require('dap/dapconfig')
 require("dapui").setup()
 
 -- DAP for c/cpp/rust
-require('dap/dapcodellb')
+require('dap/dapadapters')
 
 -- DAP for javascript and typescript
 require('dap/dapjavascript')

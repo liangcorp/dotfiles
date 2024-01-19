@@ -1,5 +1,6 @@
 local dap = require('dap')
 
+-- adapters
 dap.adapters.codelldb = {
     type = 'server',
     port = "${port}",
@@ -9,7 +10,8 @@ dap.adapters.codelldb = {
     },
 }
 
-dap.configurations.cpp = {
+-- configurations
+dap.configurations.c = {
     {
         name = "Launch file",
         type = "codelldb",
@@ -22,18 +24,5 @@ dap.configurations.cpp = {
     },
 }
 
-dap.configurations.c = dap.configurations.cpp
--- dap.configurations.rust = dap.configurations.cpp
-
-dap.configurations.rust = {
-    {
-        name = "Launch file",
-        type = "codelldb",
-        request = "launch",
-        program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = false,
-    },
-}
+dap.configurations.cpp = dap.configurations.c
+dap.configurations.rust = dap.configurations.c
