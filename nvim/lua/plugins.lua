@@ -194,8 +194,11 @@ require("lazy").setup({
     },
 
     -- Extra packages for rust
-    -- 'rust-lang/rust.vim'
-    "simrat39/rust-tools.nvim",
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^3', -- Recommended
+        ft = { 'rust' },
+    },
 
     -- Toggle comments
     {
