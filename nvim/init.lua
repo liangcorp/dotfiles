@@ -115,6 +115,7 @@ require('config/neotest')
 
 -- Debugger nvim-dap
 require('dap/dapconfig')
+require("dapui").setup()
 
 -- DAP for c/cpp/rust
 require('dap/dapcodellb')
@@ -123,8 +124,8 @@ require('dap/dapcodellb')
 require('dap/dapjavascript')
 
 -- DAP for python
--- require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
--- require('dap-python').test_runner = 'pytest'
+require('dap-python').setup('~/.local/share/nvim/mason/packages/debugpy/venv/bin/python')
+require('dap-python').test_runner = 'pytest'
 
 -- DAP for golang
--- require('dap-go').setup {}
+require('dap-go').setup {}

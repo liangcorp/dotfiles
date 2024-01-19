@@ -1,58 +1,9 @@
 use-grammars = { except = [ "yaml", "json" ] }
 
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
 [[language]]
 name = "markdown"
-language-server = { command = "ltex-ls" }
-config = {}
+language-servers = [ "marksman", "ltex-ls" ]
 
-[[language]]
-name = "json"
-config = {}
-
-[[language]]
-name = "python"
-language-server = { command = "pylsp" }
-config = {} # <- this is the important line
-
-
-[[language]]
-name = "rust"
-
-[language.config]
-checkOnSave = { command = "clippy" }
-
-[[language]]
-name = "go"
-config = { "analyses" = { "fieldalignment" = true } }
-
-[[language]]
-name = "javascript"
-auto-format = true
-language-server = { command = "typescript-language-server" }
-config = {}
-
-[[language]]
-name = "typescript"
-auto-format = true
-language-server = { command = "typescript-language-server" }
-# pass format options according to https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration omitting the "[language].format." prefix.
-config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = true } }
-
-[[language]]
-name = "c"
-language-server = { command = "clangd" }
-config = {}
-
-[[language]]
-name = "cpp"
-language-server = { command = "clangd" }
-config = {}
-
-[[language]]
-name = "yaml"
-config = {}
-
-[[language]]
-name = "lua"
-language-server = { command = "/home/cliang/.local/share/nvim/mason/bin/lua-language-server" }
-config = {}
