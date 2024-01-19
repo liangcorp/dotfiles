@@ -59,11 +59,35 @@ end
 --     end
 -- end
 
+lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags,
+    root_dir = util.root_pattern(".git"),
+    -- Server-specific settings. See `:help lspconfig-setup`
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                autoReload = true,
+            },
+            checkOnSave = {
+                command = "clippy"
+            },
+            procMacro = {
+                ignored = {
+                    leptos_macro = {
+                        -- optional: --
+                        -- "component",
+                        "server",
+                    },
+                },
+            },
+        },
+    },
+}
+
 lspconfig.gopls.setup {
-    on_attach = function(_, bufnr)
-        on_attach(_, bufnr)
-        -- go_org_import(300)
-    end,
+    on_attach = on_attach,
     flags = lsp_flags,
     cmd = { 'gopls', 'serve' },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },

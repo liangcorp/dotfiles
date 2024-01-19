@@ -193,13 +193,6 @@ require("lazy").setup({
         end,
     },
 
-    -- Extra packages for rust
-    {
-        'mrcjkb/rustaceanvim',
-        version = '^3', -- Recommended
-        ft = { 'rust' },
-    },
-
     -- Toggle comments
     {
         "numToStr/Comment.nvim",

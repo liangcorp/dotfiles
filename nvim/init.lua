@@ -82,7 +82,6 @@ require 'lspconfig'.neocmake.setup {}
 
 -- LSP configurations
 require('lsp/lspmain')
-require('lsp/lsprust')
 require('lsp/completion')
 require('lsp/bash')
 
