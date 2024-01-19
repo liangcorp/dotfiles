@@ -88,6 +88,9 @@ require('lsp/bash')
 -- Markdown Preview
 require('config/markdownpreview')
 
+-- Markdown Linter
+require('config/markdownlint')
+
 -- Keyboard mappings
 require('config/mappings')
 
@@ -105,6 +108,7 @@ require('config/telescopeconfig')
 
 -- Prettier for better code formatting
 require('config/prettierconfig')
+require('config/none_ls')
 
 -- Trouble window
 require('config/trouble')

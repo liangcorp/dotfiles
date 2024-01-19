@@ -9,6 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
@@ -73,9 +74,9 @@ require("lazy").setup({
         --         section_separators = '',
         --     },
         -- },
-        config = function()
-            require("lualine").setup({})
-        end,
+        -- config = function()
+        --     require("lualine").setup({})
+        -- end,
     },
 
     -- NVIM Lint
@@ -169,12 +170,15 @@ require("lazy").setup({
         "MunifTanjim/prettier.nvim",
         dependencies = {
             "neovim/nvim-lspconfig",
-            'jose-elias-alvarez/null-ls.nvim'
+            -- 'jose-elias-alvarez/null-ls.nvim'
+            "nvimtools/none-ls.nvim",
         },
     },
 
     -- Make
-    "neomake/neomake",
+    {
+        "neomake/neomake",
+    },
 
     -- Magit for neovim
     -- {
@@ -182,8 +186,10 @@ require("lazy").setup({
     --     dependencies = { 'nvim-lua/plenary.nvim' }
     -- },
     -- Git related
-    "tpope/vim-fugitive",
-    "tpope/vim-rhubarb",
+    {
+        "tpope/vim-fugitive",
+        "tpope/vim-rhubarb",
+    },
 
     -- Git signes
     {
@@ -226,6 +232,7 @@ require("lazy").setup({
     -- Copilot - disabled due to pay subscription
     -- 'github/copilot.vim',
 
+    -- Create pairing brackets and quotation marks
     {
         "windwp/nvim-autopairs",
         config = function()
@@ -236,44 +243,19 @@ require("lazy").setup({
     -- Debugger
     {
         "jay-babu/mason-nvim-dap.nvim",
-        "mxsdev/nvim-dap-vscode-js",
-        "mfussenegger/nvim-dap",
-        -- {
-        --     'microsoft/vscode-js-debug',
-        --     build = 'npm install --legacy-peer-deps && npm run compile'
-        -- },
         "theHamsta/nvim-dap-virtual-text",
         "nvim-telescope/telescope-dap.nvim",
-        dependencies = {
-            "folke/neodev.nvim",
-            "mfussenegger/nvim-dap",
-        },
-    },
-    {
         "rcarriga/nvim-dap-ui",
         dependencies = {
-            "mfussenegger/nvim-dap",
             "folke/neodev.nvim",
+            "mfussenegger/nvim-dap",
         },
-        -- config = function()
-        --     local dap = require("dap")
-        --     local dapui = require("dapui")
-        --     dapui.setup()
-        --     dap.listeners.after.event_initialized["dapui_config"] = function()
-        --         dapui.open()
-        --     end
-        --     dap.listeners.before.event_terminated["dapui_config"] = function()
-        --         dapui.close()
-        --     end
-        --     dap.listeners.before.event_exited["dapui_config"] = function()
-        --         dapui.close()
-        --     end
-        -- end
     },
 
     {
         "leoluz/nvim-dap-go",
         dependencies = {
+            "folke/neodev.nvim",
             "mfussenegger/nvim-dap",
         },
         config = function()
@@ -292,6 +274,49 @@ require("lazy").setup({
             local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
             require("dap-python").setup(path)
             require("dap-python").test_runner = "pytest"
+        end,
+    },
+
+    {
+        "microsoft/vscode-js-debug",
+        -- After install, build it and rename the dist directory to out
+        build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
+        version = "1.*",
+    },
+
+    {
+        "mxsdev/nvim-dap-vscode-js",
+        config = function()
+            ---@diagnostic disable-next-line: missing-fields
+            require("dap-vscode-js").setup({
+                -- Path of node executable. Defaults to $NODE_PATH, and then "node"
+                -- node_path = "node",
+
+                -- Path to vscode-js-debug installation.
+                debugger_path = vim.fn.expand(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
+
+                -- Command to use to launch the debug server. Takes precedence over "node_path" and "debugger_path"
+                -- debugger_cmd = { "js-debug-adapter" },
+
+                -- which adapters to register in nvim-dap
+                adapters = {
+                    "chrome",
+                    "pwa-node",
+                    "pwa-chrome",
+                    "pwa-msedge",
+                    "pwa-extensionHost",
+                    "node-terminal",
+                },
+
+                -- Path for file logging
+                -- log_file_path = "(stdpath cache)/dap_vscode_js.log",
+
+                -- Logging level for output to file. Set to false to disable logging.
+                -- log_file_level = false,
+
+                -- Logging level for output to console. Set to false to disable console output.
+                -- log_console_level = vim.log.levels.ERROR,
+            })
         end,
     },
 })

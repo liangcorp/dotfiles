@@ -1,6 +1,7 @@
 local prettier = require("prettier")
 
 prettier.setup({
+    -- command = vim.fn.expand("$HOME/.local/share/nvim/mason/bin/prettier"), -- or `'prettierd'` (v0.22+)
     bin = "prettier", -- or `'prettierd'` (v0.22+)
     filetypes = {
         "html",
