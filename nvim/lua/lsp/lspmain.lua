@@ -59,6 +59,7 @@ end
 --     end
 -- end
 
+-- rust
 lspconfig.rust_analyzer.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -86,6 +87,7 @@ lspconfig.rust_analyzer.setup {
     },
 }
 
+-- golang
 lspconfig.gopls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
@@ -108,7 +110,7 @@ lspconfig.gopls.setup {
     },
 }
 
--- Python configurations
+-- python
 lspconfig.pylsp.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -117,7 +119,9 @@ lspconfig.pylsp.setup {
     filetypes = { "python" },
 }
 
--- Javascript configurations
+-- javascript
+-- Run the following command if received tsserver error:
+--      sudo npm install -g typescript
 lspconfig.tsserver.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -125,7 +129,7 @@ lspconfig.tsserver.setup {
     root_dir = util.root_pattern(".git"),
 }
 
--- Java language configurations
+-- java
 lspconfig.jdtls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -133,7 +137,7 @@ lspconfig.jdtls.setup {
     root_dir = util.root_pattern(".git, main.java"),
 }
 
--- C and CPP configurations
+-- c and cpp
 lspconfig.clangd.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -141,7 +145,7 @@ lspconfig.clangd.setup {
     root_dir = util.root_pattern("Makefile", ".git"),
 }
 
--- Groovy configurations
+-- groovy
 lspconfig.groovyls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -150,14 +154,14 @@ lspconfig.groovyls.setup {
         vim.fn.expand("$HOME/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar") },
 }
 
--- JSON configurations
+-- json
 lspconfig.jsonls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags
 }
 
--- Lua configurations
+-- lua
 lspconfig.lua_ls.setup {
     on_attach = on_attach,
     settings = {
@@ -185,6 +189,7 @@ lspconfig.lua_ls.setup {
     flag = lsp_flags
 }
 
+-- markdown
 lspconfig.ltex.setup {
     on_attach = on_attach,
     cmd = { "ltex-ls" },
