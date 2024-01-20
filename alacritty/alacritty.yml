@@ -859,4 +859,4 @@ key_bindings:
   - { key: PageDown, mods: None, action: ScrollPageDown, mode: ~Alt }
   - { key: Home, mods: Shift, action: ScrollToTop, mode: ~Alt }
   - { key: End, mods: Shift, action: ScrollToBottom, mode: ~Alt }
-  - { key: O, mods: Control|Shift, command: {program: /home/cliang/dev_setup.sh, args: [op]}}
+  - { key: O, mods: Control|Shift, command: {program: ~/dev_setup.sh, args: [op]}}

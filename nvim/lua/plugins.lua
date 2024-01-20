@@ -54,13 +54,21 @@ require("lazy").setup({
     "navarasu/onedark.nvim",
     "folke/tokyonight.nvim",
     "EdenEast/nightfox.nvim",
-    "rebelot/kanagawa.nvim",
     "sainnhe/everforest",
     {
         "catppuccin/nvim",
         name = "catppuccin",
         lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
+    },
+    {
+        'uloco/bluloco.nvim',
+        lazy = false,
+        priority = 1000,
+        dependencies = { 'rktjmp/lush.nvim' },
+        config = function()
+            -- your optional config goes here, see below.
+        end,
     },
 
     -- Lualine status line

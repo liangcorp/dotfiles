@@ -55,10 +55,12 @@ require('plugins')
 -- Themes
 -- require('themes/catppuccin')
 -- require("themes/nightfox")
-require("themes/onedark")
+-- require("themes/onedark")
 -- vim.cmd("colorscheme everforest")
--- vim.cmd("colorscheme catppuccin")
+-- vim.cmd("colorscheme catppuccin-macchiato")
 -- vim.cmd("colorscheme tokyonight-moon")
+-- vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme bluloco")
 
 require("ibl").setup()
 
