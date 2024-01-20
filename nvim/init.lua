@@ -56,10 +56,10 @@ autocmd('BufWritePre', {
 require('plugins')
 
 -- Themes
-require('themes/catppuccin')
+-- require('themes/catppuccin')
 -- require("themes/onedark")
 -- vim.cmd("colorscheme catppuccin-macchiato")
--- vim.cmd("colorscheme tokyonight-moon")
+vim.cmd("colorscheme tokyonight-moon")
 
 require("ibl").setup()
 
