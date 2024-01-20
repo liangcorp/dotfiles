@@ -220,7 +220,7 @@ bar {
 }
 
 exec --no-startup-id xdg-user-dirs-update
-exec --no-startup-id feh --bg-fill $HOME/Pictures/1193036.jpg
+exec --no-startup-id feh --bg-fill $HOME/Pictures/cyberpunk.png
 exec --no-startup-id volumeicon
 exec --no-startup-id ibus-daemon
 
@@ -240,16 +240,15 @@ exec --no-startup-id compton --config ~/.config/compton.conf -b
 default_border pixel 1
 
 # Personal bindings
-bindsym $mod+Ctrl+c exec "flatpak run io.gitlab.librewolf-community"
+bindsym $mod+Ctrl+l exec "flatpak run io.gitlab.librewolf-community"
+bindsym $mod+Ctrl+c exec "chromium-browser"
 bindsym $mod+Ctrl+m exec "evolution"
 bindsym $mod+Ctrl+f exec "firefox"
-bindsym $mod+Ctrl+s exec "slack"
 bindsym $mod+Ctrl+p exec "pcmanfm"
 # bindsym $mod+Ctrl+p exec "nautilus"
 bindsym $mod+Ctrl+v exec "virt-manager"
 bindsym $mod+Ctrl+e exec "emacs"
-bindsym $mod+Ctrl+h exec "/opt/Webex/bin/CiscoCollabHost"
-bindsym $mod+Ctrl+o exec "alacritty --working-directory ~/cloudpak/TNC/tnc-o-operator -e tmux new -n operator"
+bindsym $mod+Ctrl+o exec "alacritty -e tmux new -n base"
 
 bindsym $mod+Ctrl+w exec "scrot -u"
 bindsym $mod+Ctrl+a exec "scrot"
