@@ -1,6 +1,7 @@
 -- disable netrw at the very start of your init.lua (strongly advised)
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local o = vim.o
 o.nocompatible = true
 o.autowrite = true
@@ -17,7 +18,7 @@ o.completeopt = 'menuone,noselect'
 -- vim.o.spell = true
 vim.scriptencoding = 'UTF-8'
 
-local opt=vim.opt
+local opt = vim.opt
 -- set termguicolors to enable highlight groups
 opt.termguicolors = true
 opt.tabstop = 4
@@ -39,6 +40,8 @@ opt.hlsearch = false
 
 opt.cursorline = true
 
+-- set termguicolors to enable highlight groups
+opt.termguicolors = true
 
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -53,16 +56,25 @@ autocmd('BufWritePre', {
 require('plugins')
 
 -- Themes
--- require('themes/catppuccin')
--- require("themes/nightfox")
+require('themes/catppuccin')
 -- require("themes/onedark")
--- vim.cmd("colorscheme everforest")
 -- vim.cmd("colorscheme catppuccin-macchiato")
 -- vim.cmd("colorscheme tokyonight-moon")
--- vim.cmd("colorscheme nightfox")
-vim.cmd("colorscheme bluloco")
 
 require("ibl").setup()
+
+-- nvim-tree
+require("nvim-tree").setup({
+    view = {
+        width = 30,
+    },
+    renderer = {
+        group_empty = true,
+    },
+    filters = {
+        dotfiles = true,
+    },
+})
 
 -- local neogit = require('neogit')
 -- neogit.setup {

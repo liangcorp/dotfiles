@@ -147,7 +147,7 @@ end, { desc = "Previous todo comment" })
 
 -- NVIM Tree
 -- local nvim_tree = require('nvim-tree')
--- keymap.set('n', "<leader>zz", function() nvim_tree.toggle() end, { desc = "Nvim Tree" })
+keymap.set('n', "<leader>zz", function() require("nvim-tree").toggle() end, { desc = "Nvim Tree" })
 
 -- Debugger related shortcuts
 local dap = require('dap')
