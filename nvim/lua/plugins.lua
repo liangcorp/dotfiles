@@ -46,7 +46,8 @@ require("lazy").setup({
 
     {
         'nvim-tree/nvim-tree.lua',
-        tag = 'nightly'
+        tag = 'nightly',
+        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
 
     -- Themes
