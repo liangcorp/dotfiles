@@ -154,12 +154,15 @@ lspconfig.groovyls.setup {
         vim.fn.expand("$HOME/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar") },
 }
 
--- json
-lspconfig.jsonls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags
-}
+-- json and zig
+local servers = { 'zls', 'jsonls' }
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        flags = lsp_flags
+    }
+end
 
 -- lua
 lspconfig.lua_ls.setup {

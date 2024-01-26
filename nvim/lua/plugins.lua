@@ -208,6 +208,7 @@ require("lazy").setup({
     {
         "nvim-neotest/neotest",
         dependencies = {
+            "lawrence-laz/neotest-zig",
             "nvim-lua/plenary.nvim",
             "nvim-neotest/neotest-python",
             "nvim-neotest/neotest-plenary",
@@ -316,4 +317,6 @@ require("lazy").setup({
             })
         end,
     },
+
+    { 'ziglang/zig.vim' },
 })

@@ -5,6 +5,7 @@ require("neotest").setup({
         }),
         require("neotest-plenary"),
         require("neotest-rust"),
+        require("neotest-zig"),
         require("neotest-go"),
         require("neotest-vim-test")({
             ignore_file_types = { "python", "vim", "lua" },
