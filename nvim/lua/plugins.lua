@@ -20,6 +20,7 @@ require("lazy").setup({
         version = "*",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
+    'ThePrimeagen/harpoon',
 
     -- Configurations with modifications
     -- Indent Blanline

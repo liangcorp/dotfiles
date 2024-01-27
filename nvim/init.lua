@@ -77,6 +77,9 @@ require("nvim-tree").setup({
     },
 })
 
+-- Lua line
+require('lualine').setup {}
+
 -- local neogit = require('neogit')
 -- neogit.setup {
 --     use_magit_keybindings = true,
@@ -96,21 +99,29 @@ require 'lspconfig'.neocmake.setup {}
 -- require('luasnip').config.setup {}
 
 -- LSP configurations
-require('lsp/lspmain')
+require('lsp/config')
 require('lsp/completion')
 require('lsp/bash')
 
+-- Keyboard mappings
+require('mappings/aerial')
+require('mappings/basic')
+require('mappings/debugger')
+require('mappings/neotest')
+require('mappings/nvimtree')
+require('mappings/prettier')
+require('mappings/telescope')
+require('mappings/trouble')
+
+-- Prettier for better code formatting
+require('null/none_ls')
+require('null/prettierconfig')
+
 -- Markdown Preview
-require('config/markdownpreview')
+require('null/markdownpreview')
 
 -- Markdown Linter
-require('config/markdownlint')
-
--- Keyboard mappings
-require('config/mappings')
-
--- Treesitter for better highlighting
-require('config/treesitter')
+require('null/markdownlint')
 
 -- Aerial for indexing/traversing definitions
 require('config/aerialline')
@@ -118,29 +129,28 @@ require('config/aerialline')
 -- Mason Installer for LSP servers
 require('config/masonconfig')
 
--- Telescope for fuzzy finding
-require('config/telescopeconfig')
-
--- Prettier for better code formatting
-require('config/prettierconfig')
-require('config/none_ls')
-
--- Trouble window
-require('config/trouble')
-require('config/diagnostics')
-
 -- Neotest
 require('config/neotest')
 
+-- Treesitter for better highlighting
+require('config/treesitter')
+
+-- Telescope for fuzzy finding
+require('navigation/telescopeconfig')
+
+-- Trouble window
+require('navigation/trouble')
+require('navigation/diagnostics')
+
 -- Debugger nvim-dap
-require('dap/dapconfig')
+require('dap/config')
 require("dapui").setup()
 
 -- DAP for c/cpp/rust
-require('dap/dapadapters')
+require('dap/adapters')
 
 -- DAP for javascript and typescript
-require('dap/dapjavascript')
+require('dap/javascript')
 
 -- DAP for python
 require('dap-python').setup('~/.local/share/nvim/mason/packages/debugpy/venv/bin/python')
