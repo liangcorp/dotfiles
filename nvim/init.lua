@@ -88,6 +88,18 @@ require('lualine').setup {}
 
 vim.cmd("let g:github_enterprise_urls = ['https://github.ibm.com']")
 
+-- Neodev
+require('config/neodev')
+
+-- Mason Installer for LSP servers
+require('config/masonconfig')
+
+-- Neotest
+require('config/neotest')
+
+-- Treesitter for better highlighting
+require('config/treesitter')
+
 -- LSP Configurations
 -- Configurations with defaults
 require 'lspconfig'.yamlls.setup {}
@@ -124,16 +136,7 @@ require('null/markdownpreview')
 require('null/markdownlint')
 
 -- Aerial for indexing/traversing definitions
-require('config/aerialline')
-
--- Mason Installer for LSP servers
-require('config/masonconfig')
-
--- Neotest
-require('config/neotest')
-
--- Treesitter for better highlighting
-require('config/treesitter')
+require('navigation/aerialline')
 
 -- Telescope for fuzzy finding
 require('navigation/telescopeconfig')
