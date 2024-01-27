@@ -318,5 +318,5 @@ require("lazy").setup({
         end,
     },
 
-    { 'ziglang/zig.vim' },
+    -- { 'ziglang/zig.vim' },
 })
