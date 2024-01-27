@@ -124,6 +124,7 @@ require('mappings/nvimtree')
 require('mappings/prettier')
 require('mappings/telescope')
 require('mappings/trouble')
+require('mappings/harpoon')
 
 -- Prettier for better code formatting
 require('null/none_ls')
