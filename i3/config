@@ -248,7 +248,7 @@ bindsym $mod+Ctrl+p exec "pcmanfm"
 # bindsym $mod+Ctrl+p exec "nautilus"
 bindsym $mod+Ctrl+v exec "virt-manager"
 bindsym $mod+Ctrl+e exec "emacs"
-bindsym $mod+Ctrl+o exec "alacritty -e tmux new -n base"
+bindsym $mod+Ctrl+o exec "alacritty"
 
 bindsym $mod+Ctrl+w exec "scrot -u"
 bindsym $mod+Ctrl+a exec "scrot"

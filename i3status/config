@@ -19,8 +19,8 @@ order += "disk /"
 # order += "run_watch VPNC"
 order += "path_exists KVM"
 # order += "path_exists NOSQL"
-order += "wireless wlp3s0"
-order += "ethernet enp0s25"
+# order += "wireless wlp3s0"
+# order += "ethernet enp0s25"
 order += "volume_master"
 order += "battery 0"
 # order += "tztime local"
@@ -55,16 +55,6 @@ run_watch DHCP {
 run_watch VPNC {
         # file containing the PID of a vpnc process
         pidfile = "/var/run/vpnc/pid"
-}
-
-path_exists NOSQL {
-          # path exists when a VPN tunnel launched by nmcli/nm-applet is active
-          path = "/proc/sys/net/ipv4/conf/tun0"
- }
-
-path_exists IBM {
-        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
-        path = "/proc/sys/net/ipv4/conf/vpn0"
 }
 
 path_exists KVM {
@@ -102,7 +92,7 @@ memory {
 }
 
 disk "/" {
-        format = "/: %percentage_used"
+        format = "DISK: %percentage_used"
 }
 
 read_file uptime {
