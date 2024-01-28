@@ -119,16 +119,6 @@ lspconfig.pylsp.setup {
     filetypes = { "python" },
 }
 
--- javascript
--- Run the following command if received tsserver error:
---      sudo npm install -g typescript
-lspconfig.tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags,
-    root_dir = util.root_pattern(".git"),
-}
-
 -- java
 lspconfig.jdtls.setup {
     on_attach = on_attach,
@@ -154,13 +144,14 @@ lspconfig.groovyls.setup {
         vim.fn.expand("$HOME/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar") },
 }
 
--- json and zig
-local servers = { 'zls', 'jsonls' }
+-- javascript, json and zig
+local servers = { 'zls', 'jsonls', 'tsserver' }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
         capabilities = capabilities,
-        flags = lsp_flags
+        flags = lsp_flags,
+        root_dir = util.root_pattern(".git"),
     }
 end
 
