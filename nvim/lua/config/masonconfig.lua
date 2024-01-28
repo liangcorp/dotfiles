@@ -12,9 +12,6 @@ require("mason-lspconfig").setup {
     ensure_installed = {
         "bashls",
         "clangd",
-        -- "codelldb"
-        -- "debugpy"
-        -- "delve"
         "dockerls",
         "gopls",
         "groovyls",
@@ -22,13 +19,14 @@ require("mason-lspconfig").setup {
         "jsonls",
         "ltex",
         "lua_ls",
-        -- "markdownlint"
         "marksman",
-        -- "prettier"
         "pylsp",
         "rust_analyzer",
         "tsserver",
         "yamlls",
         "zls",
+        -- "markdownlint",
+        -- "debugpy",
+        -- "prettier",
     },
 }
