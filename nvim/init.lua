@@ -119,10 +119,10 @@ require('navigation/telescopeconfig')
 require('navigation/diagnostics')
 
 -- Debugger nvim-dap
--- require('dap/config')
+require('dap/config')
 
 -- DAP for c/cpp/rust
--- require('dap/adapters')
+require('dap/adapters')
 
 -- DAP for javascript and typescript
 -- require('dap/javascript')

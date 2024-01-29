@@ -1,5 +1,4 @@
 local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
 
 -- Debugger related shortcuts
 local dap = require('dap')
@@ -47,18 +46,4 @@ end, { desc = 'Close Debugger UI' })
 keymap.set("n", "<leader>dg", function()
     require('dap-go').debug_test()
 end, { desc = "[D]ebug [G]o Test" })
-
--- Debugger python
-local dap_python = require('dap-python')
-keymap.set("n", "<leader>pt", function()
-    dap_python.test_method()
-end, { desc = "Debug [P]ythong [T]est" })
-
-keymap.set("n", "<leader>pc", function()
-    dap_python.test_class()
-end, { desc = "Debug [P]ythong [C]lass" })
-
-keymap.set("n", "<leader>ps", function()
-    dap_python.debug_selection(opts)
-end, { desc = "Debug [P]ythong [S]election" })
 
