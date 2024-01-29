@@ -76,6 +76,7 @@ require("lazy").setup({
     -- NVIM Lint
     {
         "mfussenegger/nvim-lint",
+        ft = { "markdown" },
         config = function()
             require("lint").linters_by_ft = {
                 markdown = { "markdownlint" },
@@ -95,7 +96,10 @@ require("lazy").setup({
         end,
     },
 
-    "mfussenegger/nvim-jdtls",
+    {
+        "mfussenegger/nvim-jdtls",
+        ft = { "java" },
+    },
 
     -- Arie (list and move between functions
     "stevearc/aerial.nvim",
@@ -152,6 +156,13 @@ require("lazy").setup({
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        ft = { "c",
+            "cpp",
+            "python",
+            "go",
+            "rust",
+            "javascript",
+            "typescript" }
     },
 
     -- Show TODO in highlight
@@ -169,6 +180,11 @@ require("lazy").setup({
     -- Prettier
     {
         "MunifTanjim/prettier.nvim",
+        ft = { "markdown",
+            "javascript",
+            "typescript",
+            "yaml",
+            "json" },
         dependencies = {
             "neovim/nvim-lspconfig",
             -- 'jose-elias-alvarez/null-ls.nvim'
@@ -223,6 +239,7 @@ require("lazy").setup({
             "rouge8/neotest-rust",
             -- "haydenmeade/neotest-jest",
         },
+        ft = { "go", "zig", "rust", "python" },
         -- build = 'cargo install cargo-nextest',
     },
 
@@ -253,6 +270,14 @@ require("lazy").setup({
             "folke/neodev.nvim",
             "mfussenegger/nvim-dap",
         },
+        ft = { "go",
+            "python",
+            "rust",
+            "java",
+            "c",
+            "cpp",
+            "javascript",
+            "typescript" },
     },
 
     {
@@ -261,6 +286,7 @@ require("lazy").setup({
             "folke/neodev.nvim",
             "mfussenegger/nvim-dap",
         },
+        ft = { "go" },
         config = function()
             require("dap-go").setup({})
         end,
@@ -268,7 +294,7 @@ require("lazy").setup({
 
     {
         "mfussenegger/nvim-dap-python",
-        ft = "python",
+        ft = { "python" },
         dependencies = {
             "mfussenegger/nvim-dap",
             "rcarriga/nvim-dap-ui",
@@ -289,6 +315,7 @@ require("lazy").setup({
 
     {
         "mxsdev/nvim-dap-vscode-js",
+        ft = { "javascript", "typescript" },
         config = function()
             ---@diagnostic disable-next-line: missing-fields
             require("dap-vscode-js").setup({
