@@ -53,13 +53,6 @@ require("lazy").setup({
 
     -- Themes
     "navarasu/onedark.nvim",
-    "folke/tokyonight.nvim",
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-    },
 
     -- Lualine status line
     {
@@ -183,8 +176,14 @@ require("lazy").setup({
 
     -- Magit for neovim
     -- {
-    --     'TimUntersberger/neogit',
-    --     dependencies = { 'nvim-lua/plenary.nvim' }
+    --     "NeogitOrg/neogit",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim", -- required
+    --         "sindrets/diffview.nvim", -- optional - Diff integration
+    --
+    --         "nvim-telescope/telescope.nvim", -- optional
+    --     },
+    --     config = true
     -- },
     -- Git related
     {
