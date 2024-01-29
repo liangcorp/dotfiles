@@ -19,12 +19,26 @@ require("lazy").setup({
         "nvim-telescope/telescope.nvim",
         version = "*",
         dependencies = { "nvim-lua/plenary.nvim" },
+        lazy = true,
+        config = function()
+            require("mappings.telescope")
+            require("navigation.telescopeconfig")
+        end,
     },
+
     'ThePrimeagen/harpoon',
 
     -- Configurations with modifications
     -- Indent Blanline
-    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+        config = function()
+            require("ibl").setup()
+        end,
+        lazy = true,
+    },
 
     -- Illuminate same words
     "RRethy/vim-illuminate",
@@ -46,14 +60,19 @@ require("lazy").setup({
 
     -- Nvim-tree
     {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
-        lazy = false,
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
         dependencies = {
-            "nvim-tree/nvim-web-devicons",
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        },
+        keys = {
+            { "<leader>zz", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
         },
         config = function()
-            require("nvim-tree").setup {}
+            require("neo-tree").setup()
         end,
     },
 
@@ -68,9 +87,9 @@ require("lazy").setup({
         --         section_separators = '',
         --     },
         -- },
-        -- config = function()
-        --     require("lualine").setup({})
-        -- end,
+        config = function()
+            require("lualine").setup({})
+        end,
     },
 
     -- NVIM Lint
@@ -125,11 +144,27 @@ require("lazy").setup({
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
         },
+        ft = {},
+        config = function()
+            require 'lspconfig'.yamlls.setup {}
+            require 'lspconfig'.dockerls.setup {}
+            require 'lspconfig'.marksman.setup {}
+            require 'lspconfig'.neocmake.setup {}
+            require("config.masonconfig")
+        end,
+        lazy = true,
     },
 
     -- Neovim plugin to manage global and project-local settings.
     {
-        "folke/neoconf.nvim"
+        "folke/neoconf.nvim",
+
+        config = function()
+            -- Neoconf differentiate between local and global project setting
+            require("neoconf").setup({
+                -- override any of the default settings here
+            })
+        end,
     },
 
     -- Text and code completions
@@ -162,7 +197,12 @@ require("lazy").setup({
             "go",
             "rust",
             "javascript",
-            "typescript" }
+            "typescript" },
+        lazy = true,
+        config = function()
+            require('mappings.trouble')
+            require('navigation.trouble')
+        end
     },
 
     -- Show TODO in highlight
@@ -175,6 +215,7 @@ require("lazy").setup({
                 -- refer to the configuration section below
             })
         end,
+        lazy = true,
     },
 
     -- Prettier
@@ -190,24 +231,19 @@ require("lazy").setup({
             -- 'jose-elias-alvarez/null-ls.nvim'
             "nvimtools/none-ls.nvim",
         },
+        lazy = true,
+        config = function ()
+            require("null.none_ls")
+            require("null.prettierconfig")
+            require("mappings.prettier")
+        end,
     },
-
-    -- Magit for neovim
-    -- {
-    --     "NeogitOrg/neogit",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim", -- required
-    --         "sindrets/diffview.nvim", -- optional - Diff integration
-    --
-    --         "nvim-telescope/telescope.nvim", -- optional
-    --     },
-    --     config = true
-    -- },
 
     -- Git related
     {
         "tpope/vim-fugitive",
         "tpope/vim-rhubarb",
+        lazy = true,
     },
 
     -- Git signes
@@ -230,16 +266,43 @@ require("lazy").setup({
     {
         "nvim-neotest/neotest",
         dependencies = {
-            "lawrence-laz/neotest-zig",
             "nvim-lua/plenary.nvim",
-            "nvim-neotest/neotest-python",
             "nvim-neotest/neotest-plenary",
             "nvim-neotest/neotest-vim-test",
-            "nvim-neotest/neotest-go",
             "rouge8/neotest-rust",
+            "nvim-neotest/neotest-go",
+            "nvim-neotest/neotest-python",
+            "lawrence-laz/neotest-zig",
             -- "haydenmeade/neotest-jest",
         },
-        ft = { "go", "zig", "rust", "python" },
+        ft = { "zig", "rust", "python", "go" },
+        lazy = true,
+        config = function()
+            require("mappings.neotest")
+            require("neotest").setup({
+                adapters = {
+                    require("neotest-python")({
+                        dap = { justMyCode = false },
+                    }),
+                    require("neotest-plenary"),
+                    require("neotest-rust"),
+                    require("neotest-zig"),
+                    require("neotest-go"),
+                    require("neotest-vim-test")({
+                        ignore_file_types = { "python", "vim", "lua" },
+                    }),
+                    -- Testing for javascript in the future
+                    -- require('neotest-jest')({
+                    --     jestCommand = "npm test --",
+                    --     jestConfigFile = "custom.jest.config.ts",
+                    --     env = { CI = true },
+                    --     cwd = function(path)
+                    --         return vim.fn.getcwd()
+                    --     end,
+                    -- }),
+                },
+            })
+        end
         -- build = 'cargo install cargo-nextest',
     },
 
@@ -270,14 +333,19 @@ require("lazy").setup({
             "folke/neodev.nvim",
             "mfussenegger/nvim-dap",
         },
-        ft = { "go",
-            "python",
-            "rust",
+        ft = { "rust",
             "java",
             "c",
             "cpp",
             "javascript",
             "typescript" },
+        config = function()
+            require("dapui").setup()
+            require("dap.config")
+            require("dap.adapters")
+            require("config.neodev")
+        end,
+        lazy = true,
     },
 
     {
@@ -290,20 +358,22 @@ require("lazy").setup({
         config = function()
             require("dap-go").setup({})
         end,
+        lazy = true,
     },
 
     {
         "mfussenegger/nvim-dap-python",
-        ft = { "python" },
         dependencies = {
             "mfussenegger/nvim-dap",
             "rcarriga/nvim-dap-ui",
         },
+        ft = { "python" },
         config = function()
             local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
             require("dap-python").setup(path)
             require("dap-python").test_runner = "pytest"
         end,
+        lazy = true,
     },
 
     -- {
@@ -317,6 +387,7 @@ require("lazy").setup({
         "mxsdev/nvim-dap-vscode-js",
         ft = { "javascript", "typescript" },
         config = function()
+            require("dap.javascript")
             ---@diagnostic disable-next-line: missing-fields
             require("dap-vscode-js").setup({
                 -- Path of node executable. Defaults to $NODE_PATH, and then "node"
@@ -348,5 +419,6 @@ require("lazy").setup({
                 -- log_console_level = vim.log.levels.ERROR,
             })
         end,
+        lazy = true,
     },
 })

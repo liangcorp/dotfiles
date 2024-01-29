@@ -59,57 +59,26 @@ require('plugins')
 -- Themes
 require('themes/onedark')
 
-require("ibl").setup()
-
--- nvim-tree
-require("nvim-tree").setup()
-
--- require("nvim-tree").setup({
---     view = {
---         width = 30,
---     },
---     renderer = {
---         group_empty = true,
---     },
---     filters = {
---         dotfiles = true,
---     },
--- })
-
--- Lua line
-require('lualine').setup {}
-
--- local neogit = require('neogit')
--- neogit.setup {
---     use_magit_keybindings = true,
---     refresh_manually = true
--- }
-
 vim.cmd("let g:github_enterprise_urls = ['https://github.ibm.com']")
 
 -- Neodev
-require('config/neodev')
+-- require('config/neodev')
 
 -- Mason Installer for LSP servers
-require('config/masonconfig')
+-- require('config/masonconfig')
 
 -- Neotest
-require('config/neotest')
+-- require('config/neotest')
 
 -- Treesitter for better highlighting
 require('config/treesitter')
 
--- Neoconf differentiate between local and global project setting
-require("neoconf").setup({
-    -- override any of the default settings here
-})
-
 -- LSP Configurations
 -- Configurations with defaults
-require 'lspconfig'.yamlls.setup {}
-require 'lspconfig'.dockerls.setup {}
-require 'lspconfig'.marksman.setup {}
-require 'lspconfig'.neocmake.setup {}
+-- require 'lspconfig'.yamlls.setup {}
+-- require 'lspconfig'.dockerls.setup {}
+-- require 'lspconfig'.marksman.setup {}
+-- require 'lspconfig'.neocmake.setup {}
 
 -- Configurations with modifications
 -- require('luasnip').config.setup {}
@@ -123,16 +92,15 @@ require('lsp/bash')
 require('mappings/aerial')
 require('mappings/basic')
 require('mappings/debugger')
-require('mappings/neotest')
-require('mappings/nvimtree')
-require('mappings/prettier')
-require('mappings/telescope')
-require('mappings/trouble')
+-- require('mappings/neotest')
+-- require('mappings/prettier')
+-- require('mappings/telescope')
+-- require('mappings/trouble')
 require('mappings/harpoon')
 
 -- Prettier for better code formatting
-require('null/none_ls')
-require('null/prettierconfig')
+-- require('null/none_ls')
+-- require('null/prettierconfig')
 
 -- Markdown Preview
 require('null/markdownpreview')
@@ -144,25 +112,17 @@ require('null/markdownlint')
 require('navigation/aerialline')
 
 -- Telescope for fuzzy finding
-require('navigation/telescopeconfig')
+-- require('navigation/telescopeconfig')
 
 -- Trouble window
-require('navigation/trouble')
+-- require('navigation/trouble')
 require('navigation/diagnostics')
 
 -- Debugger nvim-dap
-require('dap/config')
-require("dapui").setup()
+-- require('dap/config')
 
 -- DAP for c/cpp/rust
-require('dap/adapters')
+-- require('dap/adapters')
 
 -- DAP for javascript and typescript
-require('dap/javascript')
-
--- DAP for python
-require('dap-python').setup('~/.local/share/nvim/mason/packages/debugpy/venv/bin/python')
-require('dap-python').test_runner = 'pytest'
-
--- DAP for golang
-require('dap-go').setup {}
+-- require('dap/javascript')
