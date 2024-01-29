@@ -18,3 +18,6 @@ keymap.set('n', '<leader>fd', builtin.diagnostics,
     { desc = '[F]ind [D]iagnostics' })
 keymap.set('n', '<leader>fr', builtin.lsp_references,
     { desc = '[F]ind [R]eferences' })
+
+keymap.set('n', '<leader>fm', "<cmd>Telescope make<cr>",
+    { desc = '[F]ind [M]ake' })

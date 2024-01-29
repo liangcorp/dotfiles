@@ -1,5 +1,6 @@
 require('telescope').load_extension('aerial')
 require("telescope").load_extension('harpoon')
+require("telescope").load_extension('make')
 
 require('telescope').setup({
     -- defaults = {

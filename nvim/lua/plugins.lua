@@ -171,8 +171,9 @@ require("lazy").setup({
 
     -- Make
     {
-        "neomake/neomake",
+        "sopa0/telescope-makefile",
     },
+    {'akinsho/toggleterm.nvim', version = "*", config = true},
 
     -- Magit for neovim
     -- {
@@ -231,9 +232,6 @@ require("lazy").setup({
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
     },
-
-    -- Copilot - disabled due to pay subscription
-    -- 'github/copilot.vim',
 
     -- Create pairing brackets and quotation marks
     {
@@ -322,6 +320,4 @@ require("lazy").setup({
             })
         end,
     },
-
-    -- { 'ziglang/zig.vim' },
 })
