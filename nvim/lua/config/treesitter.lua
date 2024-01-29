@@ -25,7 +25,7 @@ require 'nvim-treesitter.configs'.setup {
     ensure_installed = { "c", "cpp", "lua", "rust",
         "go", "bash", "python", "dockerfile",
         "java", "json", "latex", "make", "yaml",
-        "javascript", "typescript", "markdown", "markdown_inline" },
+        "typescript", "zig" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -34,7 +34,7 @@ require 'nvim-treesitter.configs'.setup {
     auto_install = true,
 
     -- List of parsers to ignore installing (for "all")
-    -- ignore_install = { "javascript" },
+    ignore_install = { "javascript" },
 
     highlight = {
         -- `false` will disable the whole extension
