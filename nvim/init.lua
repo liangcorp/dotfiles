@@ -62,7 +62,7 @@ require('themes/onedark')
 vim.cmd("let g:github_enterprise_urls = ['https://github.ibm.com']")
 
 -- Neodev
--- require('config/neodev')
+require('config/neodev')
 
 -- Mason Installer for LSP servers
 -- require('config/masonconfig')
@@ -81,7 +81,6 @@ require('config/treesitter')
 -- require 'lspconfig'.neocmake.setup {}
 
 -- Configurations with modifications
--- require('luasnip').config.setup {}
 
 -- LSP configurations
 require('lsp/config')
@@ -105,9 +104,6 @@ require('keymaps/harpoon')
 -- Markdown Preview
 require('null/markdownpreview')
 
--- Markdown Linter
-require('null/markdownlint')
-
 -- Aerial for indexing/traversing definitions
 require('navigation/aerialline')
 
@@ -120,6 +116,7 @@ require('navigation/diagnostics')
 
 -- Debugger nvim-dap
 require('dap/config')
+require("dapui").setup()
 
 -- DAP for c/cpp/rust
 require('dap/adapters')
