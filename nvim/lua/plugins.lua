@@ -45,12 +45,6 @@ require("lazy").setup({
         end,
     },
 
-    {
-        'nvim-tree/nvim-tree.lua',
-        tag = 'nightly',
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-    },
-
     -- Themes
     "navarasu/onedark.nvim",
 
@@ -97,6 +91,7 @@ require("lazy").setup({
     -- Arie (list and move between functions
     "stevearc/aerial.nvim",
 
+    -- This is a VS Code like winbar
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
@@ -109,6 +104,7 @@ require("lazy").setup({
             -- configurations go here
         },
     },
+
     -- LSP server installer and manager
     {
         "neovim/nvim-lspconfig",
@@ -117,6 +113,8 @@ require("lazy").setup({
             "williamboman/mason-lspconfig.nvim",
         },
     },
+
+    -- Neovim plugin to manage global and project-local settings.
     {
         "folke/neoconf.nvim"
     },
@@ -180,6 +178,7 @@ require("lazy").setup({
     --     },
     --     config = true
     -- },
+
     -- Git related
     {
         "tpope/vim-fugitive",
@@ -272,12 +271,12 @@ require("lazy").setup({
         end,
     },
 
-    {
-        "microsoft/vscode-js-debug",
-        -- After install, build it and rename the dist directory to out
-        build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
-        version = "1.*",
-    },
+    -- {
+    --     "microsoft/vscode-js-debug",
+    --     -- After install, build it and rename the dist directory to out
+    --     build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
+    --     version = "1.*",
+    -- },
 
     {
         "mxsdev/nvim-dap-vscode-js",
