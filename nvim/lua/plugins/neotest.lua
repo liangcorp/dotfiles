@@ -10,8 +10,13 @@ return {
         "lawrence-laz/neotest-zig",
         -- "haydenmeade/neotest-jest",
     },
-    ft = { "zig", "rust", "python", "go" },
+    -- ft = { "zig", "rust", "python", "go" },
     lazy = true,
+    keys = {
+        { "<leader>tt", function()
+            require("neotest").run.run()
+        end, { desc = 'Run Nearest [T]est' } }
+    },
     config = function()
         require("keymaps.neotest")
         require("neotest").setup({

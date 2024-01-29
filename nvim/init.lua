@@ -116,7 +116,6 @@ require('navigation/diagnostics')
 
 -- Debugger nvim-dap
 require('dap/config')
-require("dapui").setup()
 
 -- DAP for c/cpp/rust
 require('dap/adapters')

@@ -17,8 +17,17 @@ return {
         "typescript",
         "zig" },
 
+    -- keys = {
+    --     { "<F9>", function()
+    --         require("dap").toggle_breakpoint()
+    --     end, { desc = 'Set Breakpoint' } }
+    -- },
+
     config = function()
-        require("dapui").setup()
+        require("keymaps.debugger")
+        -- require("dap.adapters")
+        -- require("dap.config")
         require("config.neodev")
     end,
+    lazy = true,
 }
