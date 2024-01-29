@@ -75,6 +75,7 @@ lspconfig.rust_analyzer.setup {
                 command = "clippy"
             },
             procMacro = {
+                enable = true,
                 ignored = {
                     leptos_macro = {
                         -- optional: --

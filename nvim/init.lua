@@ -100,6 +100,11 @@ require('config/neotest')
 -- Treesitter for better highlighting
 require('config/treesitter')
 
+-- Neoconf differentiate between local and global project setting
+require("neoconf").setup({
+  -- override any of the default settings here
+})
+
 -- LSP Configurations
 -- Configurations with defaults
 require 'lspconfig'.yamlls.setup {}

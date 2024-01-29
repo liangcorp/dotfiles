@@ -124,6 +124,9 @@ require("lazy").setup({
             "williamboman/mason-lspconfig.nvim",
         },
     },
+    {
+        "folke/neoconf.nvim"
+    },
 
     -- Text and code completions
     {
