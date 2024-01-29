@@ -169,12 +169,6 @@ require("lazy").setup({
         },
     },
 
-    -- Make
-    {
-        "sopa0/telescope-makefile",
-    },
-    {'akinsho/toggleterm.nvim', version = "*", config = true},
-
     -- Magit for neovim
     -- {
     --     "NeogitOrg/neogit",
