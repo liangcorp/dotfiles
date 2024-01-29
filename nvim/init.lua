@@ -71,7 +71,7 @@ require('config/neodev')
 -- require('config/neotest')
 
 -- Treesitter for better highlighting
-require('config/treesitter')
+-- require('config/treesitter')
 
 -- LSP Configurations
 -- Configurations with defaults
