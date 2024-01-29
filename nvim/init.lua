@@ -61,17 +61,19 @@ require('themes/onedark')
 require("ibl").setup()
 
 -- nvim-tree
-require("nvim-tree").setup({
-    view = {
-        width = 30,
-    },
-    renderer = {
-        group_empty = true,
-    },
-    filters = {
-        dotfiles = true,
-    },
-})
+require("nvim-tree").setup()
+
+-- require("nvim-tree").setup({
+--     view = {
+--         width = 30,
+--     },
+--     renderer = {
+--         group_empty = true,
+--     },
+--     filters = {
+--         dotfiles = true,
+--     },
+-- })
 
 -- Lua line
 require('lualine').setup {}
@@ -98,7 +100,7 @@ require('config/treesitter')
 
 -- Neoconf differentiate between local and global project setting
 require("neoconf").setup({
-  -- override any of the default settings here
+    -- override any of the default settings here
 })
 
 -- LSP Configurations

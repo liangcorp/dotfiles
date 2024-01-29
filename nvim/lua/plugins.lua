@@ -29,10 +29,6 @@ require("lazy").setup({
     -- Illuminate same words
     "RRethy/vim-illuminate",
 
-    -- if some code requires a module from an unloaded plugin, it will be automatically loaded.
-    -- So for api plugins like devicons, we can always set lazy=true
-    -- { "nvim-tree/nvim-web-devicons", lazy = true },
-
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
@@ -47,6 +43,19 @@ require("lazy").setup({
 
     -- Themes
     "navarasu/onedark.nvim",
+
+    -- Nvim-tree
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            require("nvim-tree").setup {}
+        end,
+    },
 
     -- Lualine status line
     {
