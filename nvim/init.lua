@@ -33,6 +33,7 @@ opt.cmdheight = 1
 opt.smarttab = true
 -- vim.opt.breakindent = true
 opt.number = true
+opt.relativenumber = true
 opt.path = vim.opt.path + '**'
 
 -- Disable search highlight
