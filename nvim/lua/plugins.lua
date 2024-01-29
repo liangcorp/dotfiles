@@ -14,83 +14,28 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- Telescope
-    {
-        "nvim-telescope/telescope-symbols.nvim",
-        "nvim-telescope/telescope.nvim",
-        version = "*",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        lazy = true,
-        config = function()
-            require("mappings.telescope")
-            require("navigation.telescopeconfig")
-        end,
-    },
+    require("plugins.telescope"),
 
-    'ThePrimeagen/harpoon',
-
-    -- Configurations with modifications
     -- Indent Blanline
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
-        config = function()
-            require("ibl").setup()
-        end,
-        lazy = true,
-    },
+    require("plugins.indent"),
+
+    -- Treesitter
+    require("plugins.treesitter"),
+
+    -- Nvim-tree
+    require("plugins.nvim-tree"),
+
+    -- Harpoon
+    'ThePrimeagen/harpoon',
 
     -- Illuminate same words
     "RRethy/vim-illuminate",
 
-    -- Treesitter
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-        },
-        config = function()
-            pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-        end,
-    },
-
     -- Themes
     "navarasu/onedark.nvim",
 
-    -- Nvim-tree
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-        },
-        keys = {
-            { "<leader>zz", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
-        },
-        config = function()
-            require("neo-tree").setup()
-        end,
-    },
-
     -- Lualine status line
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        -- See `:help lualine.txt`
-        -- opts = {
-        --     options = {
-        --         component_separators = '|',
-        --         section_separators = '',
-        --     },
-        -- },
-        config = function()
-            require("lualine").setup({})
-        end,
-    },
+    require("plugins.lualine"),
 
     -- NVIM Lint
     {
@@ -200,7 +145,7 @@ require("lazy").setup({
             "typescript" },
         lazy = true,
         config = function()
-            require('mappings.trouble')
+            require('keymaps.trouble')
             require('navigation.trouble')
         end
     },
@@ -232,10 +177,10 @@ require("lazy").setup({
             "nvimtools/none-ls.nvim",
         },
         lazy = true,
-        config = function ()
+        config = function()
             require("null.none_ls")
             require("null.prettierconfig")
-            require("mappings.prettier")
+            require("keymaps.prettier")
         end,
     },
 
@@ -278,7 +223,7 @@ require("lazy").setup({
         ft = { "zig", "rust", "python", "go" },
         lazy = true,
         config = function()
-            require("mappings.neotest")
+            require("keymaps.neotest")
             require("neotest").setup({
                 adapters = {
                     require("neotest-python")({

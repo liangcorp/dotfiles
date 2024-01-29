@@ -88,15 +88,15 @@ require('lsp/config')
 require('lsp/completion')
 require('lsp/bash')
 
--- Keyboard mappings
-require('mappings/aerial')
-require('mappings/basic')
-require('mappings/debugger')
--- require('mappings/neotest')
--- require('mappings/prettier')
--- require('mappings/telescope')
--- require('mappings/trouble')
-require('mappings/harpoon')
+-- Keyboard keymaps
+require('keymaps/aerial')
+require('keymaps/basic')
+require('keymaps/debugger')
+-- require('keymaps/neotest')
+-- require('keymaps/prettier')
+require('keymaps/telescope')
+-- require('keymaps/trouble')
+require('keymaps/harpoon')
 
 -- Prettier for better code formatting
 -- require('null/none_ls')
@@ -112,7 +112,7 @@ require('null/markdownlint')
 require('navigation/aerialline')
 
 -- Telescope for fuzzy finding
--- require('navigation/telescopeconfig')
+require('navigation/telescopeconfig')
 
 -- Trouble window
 -- require('navigation/trouble')
