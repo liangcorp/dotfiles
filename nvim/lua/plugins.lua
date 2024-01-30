@@ -28,6 +28,9 @@ require("lazy").setup({
     -- Telescope
     require("plugins.telescope"),
 
+    -- Noice to modify neovim command prompt
+    require("plugins.noice"),
+
     -- Indent Blanline
     require("plugins.indent"),
 
