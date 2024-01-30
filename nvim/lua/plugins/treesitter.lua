@@ -9,6 +9,7 @@ return {
         "cpp",
         "rust",
         "go",
+        "lua",
         "javascript",
         "typescript",
         "zig",
