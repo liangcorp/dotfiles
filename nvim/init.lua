@@ -37,7 +37,7 @@ opt.relativenumber = true
 opt.path = vim.opt.path + '**'
 
 -- Disable search highlight
-opt.hlsearch = false
+-- opt.hlsearch = false
 
 opt.cursorline = true
 
