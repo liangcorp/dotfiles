@@ -1,6 +1,17 @@
 return {
 
     "RRethy/vim-illuminate",
+    ft = {
+        "go",
+        "rust",
+        "c",
+        "cpp",
+        "html",
+        "java",
+        "css",
+        "javascript",
+        "typescript",
+    },
     keys = {
         {
             "<leader>it",
