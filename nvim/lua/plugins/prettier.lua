@@ -4,6 +4,9 @@ return {
         "javascript",
         "typescript",
         "yaml",
+        "yml",
+        "html",
+        "css",
         "json" },
     dependencies = {
         "neovim/nvim-lspconfig",
