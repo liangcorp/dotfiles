@@ -12,7 +12,7 @@ general {
 # order += "ipv6"
 # order += "cpu_usage"
 # order += "cpu_temperature 0"
-order += "memory"
+# order += "memory"
 # order += "load"
 order += "disk /"
 # order += "run_watch DHCP"
@@ -21,8 +21,8 @@ order += "path_exists KVM"
 # order += "path_exists NOSQL"
 # order += "wireless wlp3s0"
 # order += "ethernet enp0s25"
-order += "volume_master"
 order += "battery 0"
+order += "volume_master"
 # order += "tztime local"
 order += "tztime dublin"
 
@@ -40,10 +40,10 @@ ethernet enp0s25 {
 battery 0 {
         format = "%status %percentage %remaining %emptytime"
         format_down = "No battery"
-        status_chr = "BTRY:" # "⚡"
-        status_bat = "BTRY:" # "🔋"
-        status_unk = "BTRY:" # "?"
-        status_full = "BTRY:" # "☻"
+        status_chr = "BATTERY:" # "⚡"
+        status_bat = "BATTERY:" # "🔋"
+        status_unk = "BATTERY:" # "?"
+        status_full = "BATTERY:" # "☻"
         path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
 }
