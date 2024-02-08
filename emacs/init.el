@@ -29,6 +29,8 @@
 
 (menu-bar-mode -1)            ; Disable the menu bar
 
+(setq warning-minimum-level :emergency)
+
 ;; Set up the visible bell
 (setq visible-bell t)
 
