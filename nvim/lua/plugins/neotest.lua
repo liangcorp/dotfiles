@@ -42,6 +42,6 @@ return {
                 -- }),
             },
         })
-    end
-    -- build = 'cargo install cargo-nextest',
+    end,
+    build = 'cargo install cargo-nextest --locked',
 }
