@@ -133,6 +133,14 @@ lspconfig.clangd.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=bundled",
+        "--cross-file-rename",
+        "--header-insertion=iwyu",
+    },
     root_dir = util.root_pattern("Makefile", ".git"),
 }
 
