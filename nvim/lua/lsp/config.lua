@@ -136,6 +136,7 @@ lspconfig.clangd.setup {
     cmd = {
         "clangd",
         "--background-index",
+        "--pretty",
         "--clang-tidy",
         "--completion-style=bundled",
         "--cross-file-rename",
