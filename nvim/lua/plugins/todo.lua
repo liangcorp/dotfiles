@@ -14,6 +14,7 @@ return {
         "c",
         "cpp",
         "rust",
-        "zig" },
+        "zig",
+        "markdown" },
     lazy = true,
 }

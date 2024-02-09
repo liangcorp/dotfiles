@@ -22,6 +22,9 @@ require("lazy").setup({
     -- Arie (list and move between functions
     "stevearc/aerial.nvim",
 
+    -- Zig
+    'ziglang/zig.vim',
+
     -- Illuminate same words
     require("plugins.illuminate"),
 
@@ -44,7 +47,7 @@ require("lazy").setup({
     require("plugins.nvim-lint"),
 
     -- NVIM Java
-    require("plugins.nvim-java"),
+    -- require("plugins.nvim-java"),
 
     -- This is a VS Code like winbar
     require("plugins.barbecue"),

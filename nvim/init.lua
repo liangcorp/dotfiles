@@ -33,7 +33,7 @@ opt.cmdheight = 1
 opt.smarttab = true
 -- vim.opt.breakindent = true
 opt.number = true
-opt.relativenumber = true
+-- opt.relativenumber = true
 opt.path = vim.opt.path + '**'
 
 -- Disable search highlight
@@ -43,6 +43,8 @@ opt.cursorline = true
 
 -- set termguicolors to enable highlight groups
 opt.termguicolors = true
+
+vim.g.zig_fmt_autosave = 0
 
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -120,5 +122,6 @@ require('dap/config')
 -- DAP for c/cpp/rust
 require('dap/adapters')
 
+require('gitsigns').setup()
 -- DAP for javascript and typescript
 -- require('dap/javascript')

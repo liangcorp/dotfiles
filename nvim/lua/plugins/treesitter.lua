@@ -22,7 +22,7 @@ return {
         pcall(require("nvim-treesitter.install").update({ with_sync = true }))
         require("config.treesitter")
     end,
-    lazy = true,
+    -- lazy = true,
     -- keys = {
     --     { "<leader>ts", "TSEnable highlight", { desc = '[T]ree[Sitter] Enable' } },
     -- }
