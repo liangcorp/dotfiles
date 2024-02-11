@@ -23,6 +23,24 @@ local on_attach = function(client, bufnr)
     -- require("lsp-format").on_attach(_)
     client.server_capabilities.semanticTokensProvider = nil
 
+    --  automatic highlighting of references for the current text position
+    if client.server_capabilities.documentHighlightProvider then
+        vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+        vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
+        vim.api.nvim_create_autocmd("CursorHold", {
+            callback = vim.lsp.buf.document_highlight,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Document Highlight",
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            callback = vim.lsp.buf.clear_references,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Clear All the References",
+        })
+    end
+
 
     -- Useful mappings for programming
     -- See `:help vim.lsp.*` for documentation on any of the below functions
