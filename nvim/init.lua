@@ -48,8 +48,6 @@ local autocmd = vim.api.nvim_create_autocmd
 
 vim.g.loaded_perl_provider = 0
 
-vim.cmd("syntax off")
-
 -- Remove whitespace on save
 autocmd('BufWritePre', {
     pattern = '',
