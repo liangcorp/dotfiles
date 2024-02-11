@@ -42,7 +42,7 @@ require("lazy").setup({
     require("plugins.treesitter"),
 
     -- Nvim-tree
-    require("plugins.nvim-tree"),
+    -- require("plugins.nvim-tree"),
 
     -- Lualine status line
     -- require("plugins.lualine"),
