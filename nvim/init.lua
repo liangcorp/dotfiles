@@ -66,24 +66,6 @@ vim.cmd("let g:github_enterprise_urls = ['https://github.ibm.com']")
 -- Neodev
 require('config/neodev')
 
--- Mason Installer for LSP servers
--- require('config/masonconfig')
-
--- Neotest
--- require('config/neotest')
-
--- Treesitter for better highlighting
--- require('config/treesitter')
-
--- LSP Configurations
--- Configurations with defaults
--- require 'lspconfig'.yamlls.setup {}
--- require 'lspconfig'.dockerls.setup {}
--- require 'lspconfig'.marksman.setup {}
--- require 'lspconfig'.neocmake.setup {}
-
--- Configurations with modifications
-
 -- LSP configurations
 require('lsp/config')
 require('lsp/completion')
@@ -93,15 +75,8 @@ require('lsp/bash')
 require('keymaps/aerial')
 require('keymaps/basic')
 require('keymaps/debugger')
--- require('keymaps/neotest')
--- require('keymaps/prettier')
 require('keymaps/telescope')
--- require('keymaps/trouble')
 require('keymaps/harpoon')
-
--- Prettier for better code formatting
--- require('null/none_ls')
--- require('null/prettierconfig')
 
 -- Markdown Preview
 require('null/markdownpreview')
@@ -113,7 +88,6 @@ require('navigation/aerialline')
 require('navigation/telescopeconfig')
 
 -- Trouble window
--- require('navigation/trouble')
 require('navigation/diagnostics')
 
 -- Debugger nvim-dap
@@ -123,5 +97,6 @@ require('dap/config')
 require('dap/adapters')
 
 require('gitsigns').setup()
+
 -- DAP for javascript and typescript
 -- require('dap/javascript')
