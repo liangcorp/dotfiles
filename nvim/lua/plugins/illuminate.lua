@@ -1,18 +1,18 @@
 return {
 
     "RRethy/vim-illuminate",
-    ft = {
-        "go",
-        "rust",
-        "c",
-        "cpp",
-        "html",
-        "java",
-        "css",
-        "javascript",
-        "typescript",
-        "yaml",
-    },
+    -- ft = {
+    --     "go",
+    --     "rust",
+    --     "c",
+    --     "cpp",
+    --     "html",
+    --     "java",
+    --     "css",
+    --     "javascript",
+    --     "typescript",
+    --     "yaml",
+    -- },
     keys = {
         {
             "<leader>it",
@@ -22,4 +22,5 @@ return {
             desc = { "[I]lluminate [T]oggle" }
         },
     },
+    lazy=true,
 }

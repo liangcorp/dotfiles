@@ -22,8 +22,12 @@ require("lazy").setup({
     -- Arie (list and move between functions
     "stevearc/aerial.nvim",
 
-    -- Zig
-    'ziglang/zig.vim',
+    {
+        -- Zig
+        'ziglang/zig.vim',
+        ft = {"zig"},
+        lazy = true,
+    },
 
     -- Illuminate same words
     require("plugins.illuminate"),
