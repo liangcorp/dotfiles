@@ -30,7 +30,7 @@ require("lazy").setup({
     },
 
     -- Illuminate same words
-    require("plugins.illuminate"),
+    -- require("plugins.illuminate"),
 
     -- Telescope
     require("plugins.telescope"),
