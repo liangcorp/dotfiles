@@ -29,9 +29,6 @@ require("lazy").setup({
         lazy = true,
     },
 
-    -- Illuminate same words
-    -- require("plugins.illuminate"),
-
     -- Telescope
     require("plugins.telescope"),
 
@@ -43,9 +40,6 @@ require("lazy").setup({
 
     -- Nvim-tree
     -- require("plugins.nvim-tree"),
-
-    -- Lualine status line
-    -- require("plugins.lualine"),
 
     -- NVIM Lint
     require("plugins.nvim-lint"),
