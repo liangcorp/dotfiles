@@ -53,6 +53,7 @@ local function gitinfo()
         return ""
     end
 end
+
 local function lineinfo()
     if vim.bo.filetype == "alpha" then
         return ""
@@ -123,7 +124,7 @@ Statusline.active = function()
         update_mode_colors(),
         mode(),
         "%#Normal# ",
-        " ",
+        " ",
         gitinfo(),
         " |",
         filepath(),
