@@ -39,7 +39,7 @@ require("lazy").setup({
     require("plugins.indent"),
 
     -- Treesitter
-    require("plugins.treesitter"),
+    -- require("plugins.treesitter"),
 
     -- Nvim-tree
     require("plugins.nvim-tree"),
@@ -60,7 +60,7 @@ require("lazy").setup({
     require("plugins.nvim-lspconfig"),
 
     -- Neovim plugin to manage global and project-local settings.
-    require("plugins.neoconf"),
+    -- require("plugins.neoconf"),
 
     -- Text and code completions
     require("plugins.cmp"),

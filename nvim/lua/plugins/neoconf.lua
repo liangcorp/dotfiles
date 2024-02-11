@@ -7,4 +7,5 @@ return {
             -- override any of the default settings here
         })
     end,
+    lazy=true,
 }

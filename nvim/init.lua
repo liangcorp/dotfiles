@@ -19,8 +19,6 @@ o.completeopt = 'menuone,noselect'
 vim.scriptencoding = 'UTF-8'
 
 local opt = vim.opt
--- set termguicolors to enable highlight groups
-opt.termguicolors = true
 opt.tabstop = 4
 opt.softtabstop = 0
 opt.shiftwidth = 4
@@ -49,6 +47,8 @@ vim.g.zig_fmt_autosave = 0
 local autocmd = vim.api.nvim_create_autocmd
 
 vim.g.loaded_perl_provider = 0
+
+vim.cmd("syntax off")
 
 -- Remove whitespace on save
 autocmd('BufWritePre', {
