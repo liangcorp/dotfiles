@@ -45,7 +45,7 @@ require("lazy").setup({
     require("plugins.nvim-tree"),
 
     -- Lualine status line
-    require("plugins.lualine"),
+    -- require("plugins.lualine"),
 
     -- NVIM Lint
     require("plugins.nvim-lint"),
