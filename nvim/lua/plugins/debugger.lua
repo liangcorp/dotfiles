@@ -7,6 +7,8 @@ return {
         "jay-babu/mason-nvim-dap.nvim",
         "rcarriga/nvim-dap-ui",
         "folke/neodev.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-treesitter/nvim-treesitter-textobjects",
     },
 
     -- ft = {

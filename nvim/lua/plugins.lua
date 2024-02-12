@@ -50,7 +50,7 @@ require("lazy").setup({
     require("plugins.indent"),
 
     -- Treesitter
-    require("plugins.treesitter"),
+    -- require("plugins.treesitter"),
 
     -- Nvim-tree
     -- require("plugins.nvim-tree"),
