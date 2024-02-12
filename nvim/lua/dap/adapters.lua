@@ -16,7 +16,7 @@ dap.adapters.codelldb = {
     },
 }
 
--- configurations
+-- c/cpp configurations
 dap.configurations.c = {
     {
         name = "Launch",
@@ -30,6 +30,18 @@ dap.configurations.c = {
         stopAtBeginningOfMainSubprogram = false,
     },
 }
-
+-- rust configurations
+dap.configurations.rust = {
+    {
+        name = "Launch",
+        type = "gdb",
+        request = "launch",
+        program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        -- stopOnEntry = false,
+        stopAtBeginningOfMainSubprogram = false,
+    },
+}
 dap.configurations.cpp = dap.configurations.c
-dap.configurations.rust = dap.configurations.c
