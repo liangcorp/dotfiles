@@ -13,7 +13,6 @@ return {
     --     end, { desc = 'Run Nearest [T]est' } }
     -- },
     config = function()
-        require("keymaps.neotest")
         require("neotest").setup({
             adapters = {
                 -- require("neotest-plenary"),

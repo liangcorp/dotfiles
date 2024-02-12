@@ -3,8 +3,6 @@ return {
     dependencies = {
         "nvim-neotest/neotest-plenary",
         "nvim-neotest/neotest-vim-test",
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-treesitter/nvim-treesitter-textobjects",
     },
     lazy = true,
     -- keys = {
@@ -20,7 +18,7 @@ return {
                 require("neotest-vim-test")({
                     ignore_file_types = { "python", "vim", "lua" },
                 }),
-                require("neotest-go"),
+                -- require("neotest-go"),
 
                 -- Testing for javascript in the future
                 -- require('neotest-jest')({

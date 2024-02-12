@@ -7,14 +7,17 @@ return {
             -- refer to the configuration section below
         })
     end,
-    ft = { "pytyon",
-        "go",
-        "javascript",
-        "typescript",
+    ft = {
+        "bash",
         "c",
         "cpp",
+        "go",
+        "javascript",
+        "markdown",
+        "pytyon",
         "rust",
+        "typescript",
         "zig",
-        "markdown" },
+    },
     lazy = true,
 }
