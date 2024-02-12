@@ -20,6 +20,9 @@ return ({
                     end,
                 }),
             },
+            discovery = {
+                enabled = false,
+            },
         })
     end,
 })
