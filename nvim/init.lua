@@ -69,7 +69,7 @@ require('config/statusline')
 -- require('lsp/bash')
 
 -- Keyboard keymaps
-require('keymaps/aerial')
+-- require('keymaps/aerial')
 require('keymaps/basic')
 -- require('keymaps/debugger')
 require('keymaps/telescope')
@@ -79,7 +79,7 @@ require('keymaps/harpoon')
 require('null/markdownpreview')
 
 -- Aerial for indexing/traversing definitions
-require('navigation/aerialline')
+-- require('navigation/aerialline')
 
 -- Telescope for fuzzy finding
 require('navigation/telescopeconfig')

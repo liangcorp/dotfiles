@@ -23,6 +23,9 @@ return {
         require('lsp.config')
         require('lsp.completion')
         require('lsp.bash')
+        require('keymaps.aerial')
+        require('navigation.aerialline')
+        require('telescope').load_extension('aerial')
     end,
     lazy = true,
 }
