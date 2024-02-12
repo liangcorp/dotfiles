@@ -9,13 +9,15 @@ return {
         "mfussenegger/nvim-dap",
     },
 
-    ft = { "rust",
+    ft = {
+        "rust",
         "java",
         "c",
         "cpp",
         "javascript",
         "typescript",
-        "zig" },
+        "zig"
+    },
 
     -- keys = {
     --     { "<F9>", function()

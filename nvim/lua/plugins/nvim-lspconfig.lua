@@ -4,7 +4,16 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
     },
-    ft = {},
+    ft = {
+        "rust",
+        "c",
+        "cpp",
+        "lua",
+        "go",
+        "javascript",
+        "typescript",
+        "bash",
+    },
     config = function()
         require 'lspconfig'.yamlls.setup {}
         require 'lspconfig'.dockerls.setup {}

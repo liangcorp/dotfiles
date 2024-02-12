@@ -6,8 +6,10 @@ return {
         "python",
         "go",
         "rust",
+        "lua",
         "javascript",
-        "typescript" },
+        "typescript"
+    },
     lazy = true,
     config = function()
         require('keymaps.trouble')
