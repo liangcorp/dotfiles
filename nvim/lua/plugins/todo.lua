@@ -8,7 +8,6 @@ return {
         })
     end,
     ft = {
-        "bash",
         "c",
         "cpp",
         "go",
@@ -16,6 +15,7 @@ return {
         "markdown",
         "pytyon",
         "rust",
+        "sh",
         "typescript",
         "zig",
     },
