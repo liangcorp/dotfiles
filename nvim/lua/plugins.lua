@@ -32,7 +32,7 @@ require("lazy").setup({
             "javascript",
             "typescript",
             "java",
-            "bash",
+            "sh",
         },
         lazy = true,
     },

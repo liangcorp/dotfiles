@@ -1,15 +1,15 @@
 return {
     "numToStr/Comment.nvim",
     ft = {
-        "rust",
-        "go",
-        "bash",
-        "lua",
         "c",
         "cpp",
-        "javascript",
-        "typescript",
+        "go",
+        "lua",
         "java",
+        "javascript",
+        "rust",
+        "sh",
+        "typescript",
     },
     config = function()
         require("Comment").setup({})

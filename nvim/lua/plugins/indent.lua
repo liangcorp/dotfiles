@@ -10,7 +10,7 @@ return {
         "lua",
         "javascript",
         "typescript",
-        "bash"
+        "sh"
     },
     config = function()
         require("ibl").setup()
