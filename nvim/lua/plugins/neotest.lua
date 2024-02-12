@@ -1,7 +1,6 @@
 return {
     "nvim-neotest/neotest",
     dependencies = {
-        "nvim-lua/plenary.nvim",
         "nvim-neotest/neotest-plenary",
         "nvim-neotest/neotest-vim-test",
         "rouge8/neotest-rust",
