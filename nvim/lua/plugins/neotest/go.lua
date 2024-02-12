@@ -2,8 +2,6 @@ return {
     "nvim-neotest/neotest-go",
     dependencies = {
         "nvim-neotest/neotest",
-        "nvim-neotest/neotest-plenary",
-        "nvim-neotest/neotest-vim-test",
     },
     lazy = true,
     ft = { "go" },

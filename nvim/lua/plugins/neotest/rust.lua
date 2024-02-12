@@ -2,8 +2,6 @@ return {
     "rouge8/neotest-rust",
     dependencies = {
         "nvim-neotest/neotest",
-        "nvim-neotest/neotest-plenary",
-        "nvim-neotest/neotest-vim-test",
     },
     lazy = true,
     ft = { "rust" },

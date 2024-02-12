@@ -2,16 +2,9 @@ return {
     "lawrence-laz/neotest-zig",
     dependencies = {
         "nvim-neotest/neotest",
-        "nvim-neotest/neotest-plenary",
-        "nvim-neotest/neotest-vim-test",
     },
     lazy = true,
     ft = { "zig" },
-    -- keys = {
-    --     { "<leader>tt", function()
-    --         require("neotest").run.run()
-    --     end, { desc = 'Run Nearest [T]est' } }
-    -- },
     config = function()
         require("neotest").setup({
             adapters = {
