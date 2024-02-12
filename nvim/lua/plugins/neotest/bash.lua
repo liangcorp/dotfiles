@@ -4,7 +4,7 @@ return {
         "nvim-neotest/neotest",
     },
     lazy = true,
-    ft = { "bash" },
+    ft = { "sh" },
     config = function()
         require("neotest").setup({
             adapters = {

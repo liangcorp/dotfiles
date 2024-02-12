@@ -12,7 +12,7 @@ return {
         "go",
         "javascript",
         "typescript",
-        "bash",
+        "sh",
     },
     config = function()
         require 'lspconfig'.yamlls.setup {}
