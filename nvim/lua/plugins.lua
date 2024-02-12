@@ -91,7 +91,7 @@ require("lazy").setup({
     -- Neotest
     require("plugins.neotest"),
     require("plugins.neotest.rust"),
-    require("plugins.neotest.go"),
+    require("plugins.neotest.golang"),
     require("plugins.neotest.python"),
     require("plugins.neotest.zig"),
 
