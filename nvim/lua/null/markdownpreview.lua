@@ -1,5 +1,5 @@
 -- default: 0
-local g=vim.g
+local g = vim.g
 g.mkdp_auto_start = 0
 
 -- set to 1, the nvim will auto close current preview window when change
