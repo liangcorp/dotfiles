@@ -1,12 +1,12 @@
 return {
-    "jay-babu/mason-nvim-dap.nvim",
-    "theHamsta/nvim-dap-virtual-text",
-    "nvim-telescope/telescope-dap.nvim",
-    "rcarriga/nvim-dap-ui",
+    "mfussenegger/nvim-dap",
 
     dependencies = {
+        "nvim-telescope/telescope-dap.nvim",
+        "theHamsta/nvim-dap-virtual-text",
+        "jay-babu/mason-nvim-dap.nvim",
+        "rcarriga/nvim-dap-ui",
         "folke/neodev.nvim",
-        "mfussenegger/nvim-dap",
     },
 
     ft = {
@@ -27,9 +27,9 @@ return {
     -- },
 
     config = function()
-        -- require("keymaps.debugger")
-        -- require("dap.adapters")
-        -- require("dap.config")
+        require("keymaps.debugger")
+        require("dap.adapters")
+        require("dap.config")
     end,
     lazy = true,
 }

@@ -71,7 +71,7 @@ require('lsp/bash')
 -- Keyboard keymaps
 require('keymaps/aerial')
 require('keymaps/basic')
-require('keymaps/debugger')
+-- require('keymaps/debugger')
 require('keymaps/telescope')
 require('keymaps/harpoon')
 
@@ -88,10 +88,10 @@ require('navigation/telescopeconfig')
 require('navigation/diagnostics')
 
 -- Debugger nvim-dap
-require('dap/config')
+-- require('dap/config')
 
 -- DAP for c/cpp/rust
-require('dap/adapters')
+-- require('dap/adapters')
 
 require('gitsigns').setup()
 
