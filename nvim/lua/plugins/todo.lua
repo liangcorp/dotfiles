@@ -11,6 +11,7 @@ return {
         "c",
         "cpp",
         "go",
+        "java",
         "javascript",
         "markdown",
         "pytyon",

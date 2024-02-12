@@ -33,6 +33,7 @@ require("lazy").setup({
             "typescript",
             "java",
             "sh",
+            "zig",
         },
         lazy = true,
     },

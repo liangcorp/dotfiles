@@ -10,6 +10,7 @@ return {
         "rust",
         "sh",
         "typescript",
+        "zig",
     },
     config = function()
         require("Comment").setup({})

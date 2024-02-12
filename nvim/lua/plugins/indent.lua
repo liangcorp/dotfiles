@@ -3,14 +3,16 @@ return {
     main = "ibl",
     opts = {},
     ft = {
-        "rust",
-        "go",
         "c",
         "cpp",
         "lua",
+        "go",
+        "java",
         "javascript",
+        "rust",
+        "sh",
         "typescript",
-        "sh"
+        "zig",
     },
     config = function()
         require("ibl").setup()
