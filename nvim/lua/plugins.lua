@@ -95,7 +95,6 @@ require("lazy").setup({
     require("plugins.neotest.golang"),
     require("plugins.neotest.python"),
     require("plugins.neotest.zig"),
-    -- require("plugins.neotest.jest"),
 
     -- Markdown preview
     -- install without yarn or npm
