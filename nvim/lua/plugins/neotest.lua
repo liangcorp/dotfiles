@@ -3,6 +3,8 @@ return {
     dependencies = {
         "nvim-neotest/neotest-plenary",
         "nvim-neotest/neotest-vim-test",
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-treesitter/nvim-treesitter-textobjects",
     },
     lazy = true,
     -- keys = {

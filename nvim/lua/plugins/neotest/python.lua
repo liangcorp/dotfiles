@@ -6,12 +6,12 @@ return {
         "nvim-neotest/neotest-vim-test",
     },
     lazy = true,
-    -- ft = { "python" },
-    keys = {
-        { "<leader>tt", function()
-            require("neotest").run.run()
-        end, { desc = 'Run Nearest [T]est' } }
-    },
+    ft = { "python" },
+    -- keys = {
+    --     { "<leader>tt", function()
+    --         require("neotest").run.run()
+    --     end, { desc = 'Run Nearest [T]est' } }
+    -- },
     config = function()
         require("keymaps.neotest")
         require("neotest").setup({
