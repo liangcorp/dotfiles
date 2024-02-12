@@ -21,6 +21,7 @@ return {
                     ignore_file_types = { "python", "vim", "lua" },
                 }),
                 require("neotest-go"),
+
                 -- Testing for javascript in the future
                 -- require('neotest-jest')({
                 --     jestCommand = "npm test --",
