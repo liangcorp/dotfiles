@@ -11,8 +11,6 @@ return {
     --     end, { desc = 'Run Nearest [T]est' } }
     -- },
     config = function()
-        -- require("keymaps.neotest")
-
         -- get neotest namespace (api call creates or returns namespace)
         local neotest_ns = vim.api.nvim_create_namespace("neotest")
         vim.diagnostic.config({
@@ -26,14 +24,8 @@ return {
         }, neotest_ns)
 
         require("neotest").setup({
-            -- your neotest config here
             adapters = {
-                require("neotest-vim-test")({
-                    ignore_file_types = { "python", "vim", "lua" },
-                }),
-                require("neotest-go")({
-                    recursive_run = true
-                }),
+                require("neotest-go"),
             },
         })
     end,

@@ -13,7 +13,6 @@ return {
     config = function()
         require("neotest").setup({
             adapters = {
-                -- require("neotest-plenary"),
                 require("neotest-rust"),
             },
         })
