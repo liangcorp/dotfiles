@@ -10,6 +10,10 @@ keymap.set("n", "<leader>tf", function()
     neotest.run.run(vim.fn.expand("%"))
 end, { desc = '[T]est Current File' })
 
+keymap.set("n", "<leader>td", function()
+    neotest.run.run({strategy = "dap"})
+end, { desc = '[T]est [D]ebug' })
+
 keymap.set("n", "<leader>ts", function()
     neotest.run.stop()
 end, { desc = '[S]top [T]est' })
