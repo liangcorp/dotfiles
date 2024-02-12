@@ -3,9 +3,10 @@ return {
     dependencies = {
         "nvim-neotest/neotest",
         "nvim-neotest/neotest-plenary",
+        "nvim-neotest/neotest-vim-test",
     },
     lazy = true,
-    ft = { "zig" },
+    -- ft = { "zig" },
     keys = {
         { "<leader>tt", function()
             require("neotest").run.run()
