@@ -16,7 +16,7 @@ return {
         require("keymaps.neotest")
         require("neotest").setup({
             adapters = {
-                require("neotest-plenary"),
+                -- require("neotest-plenary"),
                 require("neotest-rust"),
             },
         })
