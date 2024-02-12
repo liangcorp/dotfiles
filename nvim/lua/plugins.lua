@@ -90,10 +90,12 @@ require("lazy").setup({
 
     -- Neotest
     require("plugins.neotest"),
+    require("plugins.neotest.bash"),
     require("plugins.neotest.rust"),
     require("plugins.neotest.golang"),
     require("plugins.neotest.python"),
     require("plugins.neotest.zig"),
+    require("plugins.neotest.jest"),
 
     -- Markdown preview
     -- install without yarn or npm
