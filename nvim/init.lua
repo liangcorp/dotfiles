@@ -61,9 +61,6 @@ require('themes/onedark')
 
 vim.cmd("let g:github_enterprise_urls = ['https://github.ibm.com']")
 
--- Neodev
-require('config/neodev')
-
 require('config/statusline')
 
 -- LSP configurations
