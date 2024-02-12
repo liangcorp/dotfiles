@@ -4,7 +4,6 @@ return {
         "nvim-neotest/neotest-plenary",
         "nvim-neotest/neotest-vim-test",
         "antoinemadec/FixCursorHold.nvim",
-
     },
     lazy = true,
     -- keys = {
