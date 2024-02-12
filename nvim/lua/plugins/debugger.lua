@@ -14,6 +14,7 @@ return {
         "java",
         "c",
         "cpp",
+        "go",
         "javascript",
         "typescript",
         "zig"
@@ -26,10 +27,9 @@ return {
     -- },
 
     config = function()
-        require("keymaps.debugger")
+        -- require("keymaps.debugger")
         -- require("dap.adapters")
         -- require("dap.config")
-        require("config.neodev")
     end,
     lazy = true,
 }
