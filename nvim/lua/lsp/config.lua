@@ -93,7 +93,6 @@ lspconfig.rust_analyzer.setup {
     },
 }
 
--- golang
 -- local go_org_import = function(wait_ms)
 --     local params = vim.lsp.util.make_range_params()
 --     params.context = { only = { "source.organizeImports" } }
@@ -108,6 +107,7 @@ lspconfig.rust_analyzer.setup {
 --     end
 -- end
 
+-- golang
 lspconfig.gopls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
