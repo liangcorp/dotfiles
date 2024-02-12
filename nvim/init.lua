@@ -64,9 +64,9 @@ vim.cmd("let g:github_enterprise_urls = ['https://github.ibm.com']")
 require('config/statusline')
 
 -- LSP configurations
-require('lsp/config')
-require('lsp/completion')
-require('lsp/bash')
+-- require('lsp/config')
+-- require('lsp/completion')
+-- require('lsp/bash')
 
 -- Keyboard keymaps
 require('keymaps/aerial')

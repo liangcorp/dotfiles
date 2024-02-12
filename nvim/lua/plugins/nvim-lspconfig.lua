@@ -20,6 +20,9 @@ return {
         require 'lspconfig'.marksman.setup {}
         require 'lspconfig'.neocmake.setup {}
         require("config.masonconfig")
+        require('lsp.config')
+        require('lsp.completion')
+        require('lsp.bash')
     end,
     lazy = true,
 }
