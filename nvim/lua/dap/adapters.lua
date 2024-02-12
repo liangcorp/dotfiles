@@ -19,14 +19,14 @@ dap.adapters.codelldb = {
 -- configurations
 dap.configurations.c = {
     {
-        name = "Launch file",
+        name = "Launch",
         type = "gdb",
         request = "launch",
         program = function()
             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
         cwd = '${workspaceFolder}',
-        stopOnEntry = false,
+        -- stopOnEntry = false,
         stopAtBeginningOfMainSubprogram = false,
     },
 }
