@@ -9,22 +9,22 @@ return {
         "folke/neodev.nvim",
     },
 
-    ft = {
-        "rust",
-        "java",
-        "c",
-        "cpp",
-        "go",
-        "javascript",
-        "typescript",
-        "zig"
-    },
-
-    -- keys = {
-    --     { "<F9>", function()
-    --         require("dap").toggle_breakpoint()
-    --     end, { desc = 'Set Breakpoint' } }
+    -- ft = {
+    --     "rust",
+    --     "java",
+    --     "c",
+    --     "cpp",
+    --     "go",
+    --     "javascript",
+    --     "typescript",
+    --     "zig"
     -- },
+
+    keys = {
+        { "<F9>", function()
+            require("dap").toggle_breakpoint()
+        end, { desc = 'Set Breakpoint' } }
+    },
 
     config = function()
         require("keymaps.debugger")
