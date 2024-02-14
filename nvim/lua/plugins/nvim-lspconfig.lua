@@ -13,6 +13,7 @@ return {
         "javascript",
         "typescript",
         "sh",
+        "zig",
     },
     config = function()
         require 'lspconfig'.yamlls.setup {}
