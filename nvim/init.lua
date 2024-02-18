@@ -35,7 +35,7 @@ opt.number = true
 opt.path = vim.opt.path + '**'
 
 -- Disable search highlight
-opt.hlsearch = false
+-- opt.hlsearch = false
 
 opt.cursorline = true
 
@@ -73,7 +73,7 @@ require('config/statusline')
 require('keymaps/basic')
 -- require('keymaps/debugger')
 require('keymaps/telescope')
-require('keymaps/harpoon')
+-- require('keymaps/harpoon')
 
 -- Markdown Preview
 require('null/markdownpreview')
