@@ -6,7 +6,8 @@ require 'nvim-treesitter.configs'.setup {
         "rust",
         "go",
         "python",
-        "zig"
+        "zig",
+        "make"
     },
 
     modules = {},
