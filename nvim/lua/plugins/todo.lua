@@ -14,7 +14,7 @@ return {
         "java",
         "javascript",
         "markdown",
-        "pytyon",
+        "python",
         "rust",
         "sh",
         "typescript",

@@ -1,7 +1,8 @@
 return {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    ft = { "c",
+    ft = {
+        "c",
         "cpp",
         "python",
         "go",
