@@ -11,6 +11,8 @@ return {
         "c",
         "cpp",
         "go",
+        "lua",
+        "tex",
         "java",
         "javascript",
         "markdown",

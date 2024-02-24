@@ -33,22 +33,23 @@ require("lazy").setup({
             "typescript",
             "java",
             "sh",
+            "tex",
             "zig",
         },
         lazy = true,
     },
-    {
-        -- Zig
-        'ziglang/zig.vim',
-        ft = { "zig" },
-        lazy = true,
-    },
+    -- {
+    --     -- Zig
+    --     'ziglang/zig.vim',
+    --     ft = { "zig" },
+    --     lazy = true,
+    -- },
 
     -- Telescope
     require("plugins.telescope"),
 
     -- Indent Blanline
-    require("plugins.indent"),
+    -- require("plugins.indent"),
 
     -- Treesitter
     require("plugins.treesitter"),
@@ -91,11 +92,11 @@ require("lazy").setup({
 
     -- Neotest
     require("plugins.neotest"),
-    require("plugins.neotest.bash"),
+    -- require("plugins.neotest.bash"),
     require("plugins.neotest.rust"),
     require("plugins.neotest.golang"),
     require("plugins.neotest.python"),
-    require("plugins.neotest.zig"),
+    -- require("plugins.neotest.zig"),
 
     -- Markdown preview
     -- install without yarn or npm
@@ -111,7 +112,7 @@ require("lazy").setup({
 
     require("plugins.dap-python"),
 
-    require("plugins.dap-js"),
+    -- require("plugins.dap-js"),
 
     -- {
     --     "microsoft/vscode-js-debug",
