@@ -59,8 +59,6 @@ require('plugins')
 -- Themes
 require('themes/onedark')
 
-vim.cmd("let g:github_enterprise_urls = ['https://github.ibm.com']")
-
 require('config/statusline')
 
 -- LSP configurations
