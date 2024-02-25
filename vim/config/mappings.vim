@@ -23,10 +23,10 @@ nnoremap <space>f :Format<CR>
 nnoremap <space>p :Prettier<CR>
 
 " Fuzzy finder
-nnoremap <Leader>ff :Files<CR>
-nnoremap <Leader>fb :Buffers<CR>
-nnoremap <leader>ft :Tags<CR>
-nnoremap <Leader>fh :Helptags<CR>
+" nnoremap <Leader>ff :Files<CR>
+" nnoremap <Leader>fb :Buffers<CR>
+" nnoremap <leader>ft :Tags<CR>
+" nnoremap <Leader>fh :Helptags<CR>
 
 " VIM Test
 nmap <silent> <leader>t :TestNearest<CR>

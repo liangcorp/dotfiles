@@ -1,10 +1,8 @@
 " Make sure to source this file
 
 source $HOME/.config/vim/config/plugins.vim
-source $HOME/.config/vim/config/nerdtree.vim
 source $HOME/.config/vim/config/coc.vim
 source $HOME/.config/vim/config/mappings.vim
-source $HOME/.config/vim/config/debugger.vim
 
 syntax on
 " filetype plugin on

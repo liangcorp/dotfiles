@@ -13,8 +13,8 @@ call plug#begin()
 Plug 'sheerun/vim-polyglot'
 
 " Status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
 " Rust lang related
 Plug 'rust-lang/rust.vim'
@@ -27,14 +27,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " File tree
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 
 " Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Fuzzy finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 
 " VIM Test
 Plug 'vim-test/vim-test'
@@ -46,7 +46,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Debug
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 
 " Themes
 Plug 'joshdick/onedark.vim'
