@@ -8,14 +8,14 @@ o.autowrite = true
 o.mouse = 'a'
 o.mousemodel = 'popup'
 o.guioptions = 'egmrti'
--- vim.o.completeopt = "longest"
+-- o.completeopt = "longest"
 o.ruler = true
 o.wildmenu = true
 o.expandtab = true
 -- Set completeopt to have a better completion experience
 o.completeopt = 'menuone,noselect'
--- vim.o.spelllang = en_GB
--- vim.o.spell = true
+-- o.spelllang = en_GB
+-- o.spell = true
 vim.scriptencoding = 'UTF-8'
 
 local opt = vim.opt
@@ -59,6 +59,7 @@ require('plugins')
 -- Themes
 require('themes/onedark')
 
+-- Statusline without Plugins
 require('config/statusline')
 
 -- LSP configurations
