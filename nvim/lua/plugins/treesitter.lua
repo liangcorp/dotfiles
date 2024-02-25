@@ -6,7 +6,7 @@ return {
     },
     config = function()
         pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-        require("config.autopair")
+        -- require("config.autopair")
         require("config.treesitter")
     end,
 }

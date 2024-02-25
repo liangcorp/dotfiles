@@ -103,7 +103,7 @@ require("lazy").setup({
     require("plugins.markdown-preview"),
 
     -- Create pairing brackets and quotation marks
-    require("plugins.autopairs"),
+    -- require("plugins.autopairs"),
 
     -- Debugger
     require("plugins.debugger"),
