@@ -69,7 +69,7 @@ lspconfig.rust_analyzer.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
-    root_dir = util.root_pattern(".git"),
+    root_dir = util.root_pattern("Cargo.toml", ".git", "Cargo.lock"),
     -- Server-specific settings. See `:help lspconfig-setup`
     settings = {
         ['rust-analyzer'] = {
