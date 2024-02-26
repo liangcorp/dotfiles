@@ -18,7 +18,7 @@ require("lazy").setup({
     -- 'ThePrimeagen/harpoon',
 
     -- Themes
-    -- "navarasu/onedark.nvim",
+    "navarasu/onedark.nvim",
 
     -- Arie (list and move between functions
     {
