@@ -57,7 +57,9 @@ autocmd('BufWritePre', {
 require('plugins')
 
 -- Themes
-require('themes/onedark')
+o.background = "dark"
+vim.cmd 'colorscheme habamax'
+-- require('themes/onedark')
 
 -- Statusline without Plugins
 require('config/statusline')

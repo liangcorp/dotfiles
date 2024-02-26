@@ -9,4 +9,5 @@ return {
         require("config.autopair")
         require("config.treesitter")
     end,
+    lazy = true,
 }
