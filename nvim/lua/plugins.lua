@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "nvim-lua/plenary.nvim",
+    -- "nvim-lua/plenary.nvim",
     -- Harpoon
     -- 'ThePrimeagen/harpoon',
 
@@ -71,6 +71,7 @@ require("lazy").setup({
 
     -- Git related
     require("plugins.git"),
+    "lewis6991/gitsigns.nvim",
 
     -- Toggle comments
     require("plugins.comment"),

@@ -1,8 +1,10 @@
 return {
-    "tpope/vim-fugitive",
     "tpope/vim-rhubarb",
-    "lewis6991/gitsigns.nvim",
-    config = function()
-        require("gitsigns").setup({})
-    end,
+    dependencies = {
+        "tpope/vim-fugitive",
+    },
+    cmd = {
+        "G",
+    },
+    lazy = true,
 }
