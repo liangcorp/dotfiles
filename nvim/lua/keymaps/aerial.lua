@@ -1,4 +1,3 @@
-
 local keymap = vim.keymap
 
 -- Arial related shortcuts

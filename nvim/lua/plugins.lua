@@ -21,23 +21,7 @@ require("lazy").setup({
     "navarasu/onedark.nvim",
 
     -- Arie (list and move between functions
-    {
-        "stevearc/aerial.nvim",
-        ft = {
-            "rust",
-            "go",
-            "c",
-            "cpp",
-            "lua",
-            "javascript",
-            "typescript",
-            "java",
-            "sh",
-            "tex",
-            "zig",
-        },
-        lazy = true,
-    },
+    require("plugins.aerial"),
     -- {
     --     -- Zig
     --     'ziglang/zig.vim',
