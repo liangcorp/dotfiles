@@ -4,6 +4,7 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "stevearc/aerial.nvim",
+        "folke/neoconf.nvim",
     },
     cmd = {
         "LspStart"

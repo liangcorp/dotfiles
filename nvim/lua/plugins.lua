@@ -22,6 +22,7 @@ require("lazy").setup({
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
+
     -- {
     --     -- Zig
     --     'ziglang/zig.vim',
@@ -54,7 +55,7 @@ require("lazy").setup({
     require("plugins.nvim-lspconfig"),
 
     -- Neovim plugin to manage global and project-local settings.
-    -- require("plugins.neoconf"),
+    require("plugins.neoconf"),
 
     -- Text and code completions
     require("plugins.cmp"),
