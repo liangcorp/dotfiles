@@ -8,20 +8,18 @@ return {
         })
         require("keymaps.todo")
     end,
-    ft = {
-        "c",
-        "cpp",
-        "go",
-        "lua",
-        "tex",
-        "java",
-        "javascript",
-        "markdown",
-        "python",
-        "rust",
-        "sh",
-        "typescript",
-        "zig",
-    },
     lazy = true,
+    keys = {
+        {
+            "]t", function()
+            require("todo-comments").jump_next()
+        end, { desc = "Next todo comment" }
+        },
+
+        {
+            "[t", function()
+            require("todo-comments").jump_prev()
+        end, { desc = "Previous todo comment" }
+        },
+    }
 }
