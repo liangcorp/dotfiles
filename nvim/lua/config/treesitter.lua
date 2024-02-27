@@ -1,13 +1,13 @@
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
     ensure_installed = {
-        "c",
-        "cpp",
-        "rust",
-        "go",
-        "python",
-        "zig",
-        "make"
+        -- "c",
+        -- "cpp",
+        -- "rust",
+        -- "go",
+        -- "python",
+        -- "zig",
+        -- "make"
     },
 
     modules = {},
@@ -15,14 +15,14 @@ require 'nvim-treesitter.configs'.setup {
     sync_install = false,
 
     -- Automatically install missing parsers when entering buffer
-    auto_install = true,
+    -- auto_install = true,
 
     -- List of parsers to ignore installing (for "all")
-    ignore_install = { "javascript" },
+    -- ignore_install = { "javascript" },
 
     highlight = {
         -- `false` will disable the whole extension
-        enable = true,
+        enable = false,
         -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
         -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
         -- the name of the parser)
