@@ -4,12 +4,12 @@ return {
         "nvim-neotest/neotest",
     },
     lazy = true,
-    ft = { "go" },
-    -- keys = {
-    --     { "<leader>tt", function()
-    --         require("neotest").run.run()
-    --     end, { desc = 'Run Nearest [T]est' } }
-    -- },
+    -- ft = { "go" },
+    keys = {
+        { "<leader>tg", function()
+            require("neotest").run.run()
+        end, { desc = 'Run Nearest [T]est' } }
+    },
     config = function()
         -- get neotest namespace (api call creates or returns namespace)
         local neotest_ns = vim.api.nvim_create_namespace("neotest")

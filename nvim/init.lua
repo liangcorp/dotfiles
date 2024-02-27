@@ -72,6 +72,7 @@ require('config/statusline')
 -- Keyboard keymaps
 -- require('keymaps/aerial')
 require('keymaps/basic')
+require('keymaps/lsp')
 -- require('keymaps/debugger')
 require('keymaps/telescope')
 -- require('keymaps/harpoon')
