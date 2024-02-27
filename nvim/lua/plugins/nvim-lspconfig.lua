@@ -6,6 +6,7 @@ return {
         "stevearc/aerial.nvim",
         "folke/neoconf.nvim",
         "hrsh7th/nvim-cmp",
+        "numToStr/Comment.nvim",
     },
     cmd = {
         "LspStart"
