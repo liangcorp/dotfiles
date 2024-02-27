@@ -14,8 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- "nvim-lua/plenary.nvim",
+
     -- Harpoon
-    -- 'ThePrimeagen/harpoon',
+    require("plugins.harpoon"),
 
     -- Themes
     "navarasu/onedark.nvim",
