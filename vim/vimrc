@@ -51,8 +51,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Fuzzy finder
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " VIM Test
 Plug 'vim-test/vim-test'
@@ -126,10 +126,10 @@ nnoremap <space>f :Format<CR>
 nnoremap <space>p :Prettier<CR>
 
 " Fuzzy finder
-" nnoremap <Leader>ff :Files<CR>
-" nnoremap <Leader>fb :Buffers<CR>
-" nnoremap <leader>ft :Tags<CR>
-" nnoremap <Leader>fh :Helptags<CR>
+nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>fb :Buffers<CR>
+nnoremap <leader>ft :Tags<CR>
+nnoremap <Leader>fh :Helptags<CR>
 
 " VIM Test
 nmap <silent> <leader>t :TestNearest<CR>
