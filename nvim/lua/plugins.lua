@@ -77,11 +77,12 @@ require("lazy").setup({
     require("plugins.comment"),
 
     -- Neotest
-    require("plugins.neotest"),
+    require("plugins.vim-test"),
+    -- require("plugins.neotest"),
     -- require("plugins.neotest.bash"),
-    require("plugins.neotest.rust"),
-    require("plugins.neotest.golang"),
-    require("plugins.neotest.python"),
+    -- require("plugins.neotest.rust"),
+    -- require("plugins.neotest.golang"),
+    -- require("plugins.neotest.python"),
     -- require("plugins.neotest.zig"),
 
     -- Markdown preview
