@@ -34,7 +34,7 @@ require("lazy").setup({
     require("plugins.telescope"),
 
     -- Indent Blanline
-    -- require("plugins.indent"),
+    require("plugins.indent"),
 
     -- Treesitter
     require("plugins.treesitter"),
