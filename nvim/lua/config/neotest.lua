@@ -7,9 +7,10 @@ require("neotest").setup({
         require("neotest-rust"),
         require("neotest-zig"),
         require("neotest-go"),
-        require("neotest-vim-test")({
-            ignore_file_types = { "python", "vim", "lua" },
-        }),
+
+        -- require("neotest-vim-test")({
+        --     ignore_file_types = { "python", "vim", "lua" },
+        -- }),
         -- Testing for javascript in the future
         -- require('neotest-jest')({
         --     jestCommand = "npm test --",
