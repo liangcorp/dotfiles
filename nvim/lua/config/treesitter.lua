@@ -1,13 +1,13 @@
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
     ensure_installed = {
-        -- "c",
+        "c",
         -- "cpp",
-        -- "rust",
+        "rust",
         -- "go",
         -- "python",
-        -- "zig",
-        -- "make"
+        "zig",
+        "make"
     },
 
     modules = {},
