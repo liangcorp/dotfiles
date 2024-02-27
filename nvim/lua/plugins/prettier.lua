@@ -10,9 +10,13 @@ return {
         "json" },
     dependencies = {
         "neovim/nvim-lspconfig",
-        -- 'jose-elias-alvarez/null-ls.nvim'
         "nvimtools/none-ls.nvim",
     },
+    -- keys = {
+    --     '<space>p', function()
+    --         require('prettier').format()
+    --     end, { desc = '[P]rettier' }
+    -- },
     lazy = true,
     config = function()
         require("null.none_ls")
