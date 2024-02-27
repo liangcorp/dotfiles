@@ -17,7 +17,7 @@ require('mason-nvim-dap').setup({
 
     ensure_installed = {
         "debugpy",
-        -- "python",
+        "python",
         "delve",
         "codelldb",
         "js-debug-adapter"
