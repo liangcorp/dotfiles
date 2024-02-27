@@ -1,13 +1,15 @@
 return {
     "MunifTanjim/prettier.nvim",
-    ft = { "markdown",
+    ft = {
+        "markdown",
         "javascript",
         "typescript",
         "yaml",
         "yml",
         "html",
         "css",
-        "json" },
+        "json"
+    },
     dependencies = {
         "neovim/nvim-lspconfig",
         "nvimtools/none-ls.nvim",
