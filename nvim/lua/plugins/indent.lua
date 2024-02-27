@@ -1,20 +1,23 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+    },
     main = "ibl",
     opts = {},
-    ft = {
-        "c",
-        "cpp",
-        "lua",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "rust",
-        "sh",
-        "typescript",
-        "zig",
-    },
+    -- ft = {
+    --     "c",
+    --     "cpp",
+    --     "lua",
+    --     "go",
+    --     "java",
+    --     "javascript",
+    --     "python",
+    --     "rust",
+    --     "sh",
+    --     "typescript",
+    --     "zig",
+    -- },
     config = function()
         require("ibl").setup()
     end,
