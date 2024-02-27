@@ -75,7 +75,7 @@ require('config/statusline')
 require('keymaps/basic')
 require('keymaps/lsp')
 -- require('keymaps/debugger')
-require('keymaps/telescope')
+-- require('keymaps/telescope')
 -- require('keymaps/harpoon')
 
 -- Markdown Preview
@@ -85,7 +85,7 @@ require('null/markdownpreview')
 -- require('navigation/aerialline')
 
 -- Telescope for fuzzy finding
-require('navigation/telescopeconfig')
+-- require('navigation/telescopeconfig')
 
 -- Trouble window
 require('navigation/diagnostics')
