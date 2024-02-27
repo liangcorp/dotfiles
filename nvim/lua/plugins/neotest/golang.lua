@@ -4,11 +4,10 @@ return {
         "nvim-neotest/neotest",
     },
     lazy = true,
-    -- ft = { "go" },
     keys = {
         { "<leader>tg", function()
-            require("neotest").run.run()
-        end, { desc = 'Run Nearest [T]est' } }
+            require("neotest").run.run(vim.fn.expand('%'))
+        end, { desc = '[T]est [G]o' } }
     },
     config = function()
         -- get neotest namespace (api call creates or returns namespace)
@@ -23,10 +22,6 @@ return {
             },
         }, neotest_ns)
 
-        require("neotest").setup({
-            adapters = {
-                require("neotest-go"),
-            },
-        })
+        require("neotest-go")
     end,
 }

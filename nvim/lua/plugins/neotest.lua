@@ -6,11 +6,6 @@ return {
         "antoinemadec/FixCursorHold.nvim",
     },
     lazy = true,
-    -- keys = {
-    --     { "<leader>tt", function()
-    --         require("neotest").run.run()
-    --     end, { desc = 'Run Nearest [T]est' } }
-    -- },
     config = function()
         require("keymaps.neotest")
 
@@ -21,7 +16,6 @@ return {
                     ignore_file_types = { "python", "vim", "lua" },
                 }),
                 require("neotest-go"),  -- This doesn't support lazy load
-
             },
         })
     end,

@@ -1,6 +1,6 @@
 return {
     "mxsdev/nvim-dap-vscode-js",
-    ft = { "javascript", "typescript" },
+    -- ft = { "javascript", "typescript" },
     config = function()
         require("dap.javascript")
         ---@diagnostic disable-next-line: missing-fields
@@ -35,4 +35,9 @@ return {
         })
     end,
     lazy = true,
+    keys = {
+        { "<F9>", function()
+            require("dap").toggle_breakpoint()
+        end, { desc = 'Set Breakpoint' } }
+    },
 }

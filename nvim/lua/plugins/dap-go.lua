@@ -4,9 +4,14 @@ return {
         "folke/neodev.nvim",
         "mfussenegger/nvim-dap",
     },
-    ft = { "go" },
+    -- ft = { "go" },
     config = function()
         require("dap-go").setup({})
     end,
     lazy = true,
+    keys = {
+        { "<F9>", function()
+            require("dap").toggle_breakpoint()
+        end, { desc = 'Set Breakpoint' } }
+    },
 }

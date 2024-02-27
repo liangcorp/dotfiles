@@ -4,11 +4,10 @@ return {
         "nvim-neotest/neotest",
     },
     lazy = true,
-    -- ft = { "rust" },
     keys = {
         { "<leader>tr", function()
-            require("neotest").run.run()
-        end, { desc = 'Run Nearest [T]est' } }
+            require("neotest").run.run(vim.fn.expand('%'))
+        end, { desc = '[T]est [R]ust' } }
     },
     config = function()
         require("neotest").setup({
