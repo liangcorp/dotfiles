@@ -13,10 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- "nvim-lua/plenary.nvim",
-
     -- Harpoon
-    require("plugins.harpoon"),
+    -- require("plugins.harpoon"),
 
     -- Themes
     "navarasu/onedark.nvim",
@@ -68,11 +66,12 @@ require("lazy").setup({
     require("plugins.todo"),
 
     -- Prettier
-    require("plugins.prettier"),
+    -- require("plugins.prettier"),
+    require("plugins.conform"),
 
     -- Git related
-    require("plugins.git"),
     "lewis6991/gitsigns.nvim",
+    require("plugins.git"),
 
     -- Toggle comments
     require("plugins.comment"),
