@@ -63,7 +63,7 @@ require("lazy").setup({
     require("plugins.trouble"),
 
     -- Show TODO in highlight
-    require("plugins.todo"),
+    -- require("plugins.todo"),
 
     -- Prettier
     -- require("plugins.prettier"),
