@@ -25,10 +25,11 @@ return {
     --     "zig",
     -- },
     config = function()
-        require 'lspconfig'.yamlls.setup {}
-        require 'lspconfig'.dockerls.setup {}
-        require 'lspconfig'.marksman.setup {}
-        require 'lspconfig'.neocmake.setup {}
+        local lspconfig = require("lspconfig")
+        lspconfig.yamlls.setup {}
+        lspconfig.dockerls.setup {}
+        lspconfig.marksman.setup {}
+        -- lspconfig.neocmake.setup {}
         require("config.masonconfig")
         require('lsp.config')
         require('lsp.completion')
