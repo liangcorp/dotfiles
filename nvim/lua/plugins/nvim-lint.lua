@@ -7,6 +7,7 @@ return {
             c = { "codespell" },
             cpp = { "codespell" },
             go = { "codespell", "golangcilint" },
+            python = { "flake8" },
             rust = { "codespell" },
             json = { "jsonlint" },
             yaml = { "yamllint", },

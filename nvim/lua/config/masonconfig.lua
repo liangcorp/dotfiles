@@ -25,14 +25,15 @@ require("mason-lspconfig").setup {
         "tsserver",
         "yamlls",
         "zls",
+        -- "flake8",
         -- "black",
         -- "isort",
         -- "markdownlint",
         -- "debugpy",
         -- "prettier",
-        -- "jsonlint"
-        -- "yamllint"
-        -- "codespell"
-        -- "golangcilint"
+        -- "jsonlint",
+        -- "yamllint",
+        -- "codespell",
+        -- "golangcilint",
     },
 }
