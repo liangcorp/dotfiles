@@ -4,6 +4,13 @@ return {
     config = function()
         require("lint").linters_by_ft = {
             markdown = { "markdownlint" },
+            c = { "codespell" },
+            cpp = { "codespell" },
+            go = { "codespell", "golangcilint" },
+            rust = { "codespell" },
+            json = { "jsonlint" },
+            yaml = { "yamllint", },
+            zig = { "codespell" },
         }
 
         vim.api.nvim_create_autocmd({ "BufWritePost" }, {

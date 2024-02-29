@@ -30,5 +30,9 @@ require("mason-lspconfig").setup {
         -- "markdownlint",
         -- "debugpy",
         -- "prettier",
+        -- "jsonlint"
+        -- "yamllint"
+        -- "codespell"
+        -- "golangcilint"
     },
 }

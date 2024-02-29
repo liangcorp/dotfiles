@@ -37,7 +37,7 @@ opt.path = vim.opt.path + '**'
 -- Disable search highlight
 -- opt.hlsearch = false
 
--- opt.cursorcolumn=true
+opt.cursorcolumn=true
 opt.cursorline = true
 
 -- set termguicolors to enable highlight groups
