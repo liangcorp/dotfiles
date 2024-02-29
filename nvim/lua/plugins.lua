@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- Harpoon
-    -- require("plugins.harpoon"),
+    require("plugins.harpoon"),
 
     -- Themes
     "navarasu/onedark.nvim",
@@ -33,10 +33,13 @@ require("lazy").setup({
     require("plugins.telescope"),
 
     -- Indent Blankline
-    -- require("plugins.indent"),
+    require("plugins.indent"),
 
     -- Treesitter
     require("plugins.treesitter"),
+
+    -- Code snap
+    require("plugins.codesnap"),
 
     -- Nvim-tree
     -- require("plugins.nvim-tree"),
