@@ -4,9 +4,9 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-                -- lua = { "stylua" },
+                lua = { "stylua" },
                 -- Conform will run multiple formatters sequentially
-                -- python = { "isort", "black" },
+                python = { "isort", "black" },
                 -- Use a sub-list to run only the first available formatter
                 javascript = { { "prettierd", "prettier" } },
                 typescript = { { "prettierd", "prettier" } },
@@ -15,13 +15,12 @@ return {
                 json = { { "prettierd", "prettier" } },
                 go = { { "gofmt" } },
                 rust = { { "rustfmt" } },
-                python = { "isort", "black" },
             },
         })
     end,
     keys = {
-        { '<space>cf', function ()
+        { '<space>p', function ()
            require("conform").format()
-        end, desc = "[C]onform [F]ormat" },
+        end, desc = "Conform [P]rettier" },
     },
 }

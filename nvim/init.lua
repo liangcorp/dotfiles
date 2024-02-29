@@ -53,6 +53,7 @@ autocmd('BufWritePre', {
     command = ":%s/\\s\\+$//e"
 })
 
+-- NOTE: commented out configs are lazy loaded via plugins
 require('plugins')
 
 -- Themes
@@ -60,7 +61,6 @@ require('plugins')
 -- vim.cmd 'colorscheme habamax'
 require('themes/onedark')
 
--- NOTE: commented out configs are lazy loaded via plugins
 -- Statusline without Plugins
 require('config/statusline')
 
