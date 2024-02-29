@@ -22,6 +22,7 @@ return {
         "lua",
         "groovy",
         "xml",
+        "git",
     },
     config = function()
         pcall(require("nvim-treesitter.install").update({ with_sync = true }))
