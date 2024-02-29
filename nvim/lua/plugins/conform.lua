@@ -9,15 +9,19 @@ return {
                 -- python = { "isort", "black" },
                 -- Use a sub-list to run only the first available formatter
                 javascript = { { "prettierd", "prettier" } },
+                typescript = { { "prettierd", "prettier" } },
                 markdown = { { "prettierd", "prettier" } },
                 yaml = { { "prettierd", "prettier" } },
                 json = { { "prettierd", "prettier" } },
+                go = { { "gofmt" } },
+                rust = { { "rustfmt" } },
+                python = { "isort", "black" },
             },
         })
     end,
     keys = {
         { '<space>cf', function ()
            require("conform").format()
-        end, desc = "[P]rettier" },
+        end, desc = "[C]onform [F]ormat" },
     },
 }

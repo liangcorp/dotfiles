@@ -8,6 +8,18 @@ return {
         })
         require("keymaps.todo")
     end,
+    ft = {
+        "c",
+        "cpp",
+        "markdown",
+        "rust",
+        "javascript",
+        "typescript",
+        "go",
+        "sh",
+        "python",
+        "java",
+    },
     lazy = true,
     keys = {
         {

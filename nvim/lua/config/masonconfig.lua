@@ -25,6 +25,8 @@ require("mason-lspconfig").setup {
         "tsserver",
         "yamlls",
         "zls",
+        -- "black",
+        -- "isort",
         -- "markdownlint",
         -- "debugpy",
         -- "prettier",
