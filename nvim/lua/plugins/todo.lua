@@ -13,6 +13,7 @@ return {
         "cpp",
         "markdown",
         "rust",
+        "lua",
         "javascript",
         "typescript",
         "go",

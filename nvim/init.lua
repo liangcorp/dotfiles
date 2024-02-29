@@ -44,12 +44,10 @@ opt.cursorline = true
 opt.termguicolors = true
 
 vim.g.zig_fmt_autosave = 0
-
-local autocmd = vim.api.nvim_create_autocmd
-
 vim.g.loaded_perl_provider = 0
 
 -- Remove whitespace on save
+local autocmd = vim.api.nvim_create_autocmd
 autocmd('BufWritePre', {
     pattern = '',
     command = ":%s/\\s\\+$//e"
@@ -62,6 +60,7 @@ require('plugins')
 -- vim.cmd 'colorscheme habamax'
 require('themes/onedark')
 
+-- NOTE: commented out configs are lazy loaded via plugins
 -- Statusline without Plugins
 require('config/statusline')
 
