@@ -8,7 +8,6 @@ require 'nvim-treesitter.configs'.setup {
         "python",
         "zig",
         "make",
-        "comment",
         "zig",
     },
 
