@@ -9,6 +9,7 @@ require 'nvim-treesitter.configs'.setup {
         "zig",
         "make",
         "comment",
+        "zig",
     },
 
     modules = {},
