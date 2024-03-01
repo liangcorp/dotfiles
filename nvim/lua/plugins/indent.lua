@@ -1,5 +1,9 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-treesitter/nvim-treesitter-textobjects",
+    },
     main = "ibl",
     opts = {},
     -- ft = {
