@@ -31,6 +31,11 @@ require("lazy").setup({
 
     -- Telescope
     require("plugins.telescope"),
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        lazy = true
+    },
 
     -- Indent Blankline
     require("plugins.indent"),
