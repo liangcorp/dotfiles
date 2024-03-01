@@ -32,6 +32,7 @@ return {
         require("keymaps.debugger")
         require("dap.adapters")
         require("dap.config")
+        require("dap.virtual-text")
     end,
     lazy = true,
 }
