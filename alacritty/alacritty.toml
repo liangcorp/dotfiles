@@ -21,6 +21,7 @@ style = "Bold Italic"
 style = "Italic"
 
 [font.normal]
+family = "JetBrains Mono"
 style = "Regular"
 
 [font.offset]
