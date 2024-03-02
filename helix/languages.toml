@@ -18,4 +18,5 @@ command = "clippy"
 [[language]]
 name = "markdown"
 language-servers = [ "marksman", "ltex-ls" ]
-
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "markdown"] }
