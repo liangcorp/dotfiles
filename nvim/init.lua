@@ -77,9 +77,6 @@ require('keymaps/lsp')
 -- require('keymaps/telescope')
 -- require('keymaps/harpoon')
 
--- Markdown Preview
-require('null/markdownpreview')
-
 -- Aerial for indexing/traversing definitions
 -- require('navigation/aerialline')
 
