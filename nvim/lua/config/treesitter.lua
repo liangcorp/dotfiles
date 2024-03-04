@@ -5,6 +5,8 @@ require 'nvim-treesitter.configs'.setup {
         "cpp",
         "go",
         "rust",
+        "javascript",
+        "typescript",
     },
 
     modules = {},
@@ -22,6 +24,9 @@ require 'nvim-treesitter.configs'.setup {
         "make",
         "bash",
         "lua",
+        "markdown",
+        "csv",
+        "latex",
     },
 
     highlight = {
@@ -31,7 +36,7 @@ require 'nvim-treesitter.configs'.setup {
         -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
         -- the name of the parser)
         -- list of language that will be disabled
-        disable = { "lua", "make", "yaml", "json", "groovy", "bash" },
+        disable = { "lua", "make", "yaml", "json", "groovy", "bash", "markdown", "csv", "latex" },
 
         -- use_languagetree = false,
         -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
