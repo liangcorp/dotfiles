@@ -44,7 +44,7 @@ require("lazy").setup({
     require("plugins.treesitter"),
 
     -- Code snap
-    require("plugins.codesnap"),
+    -- require("plugins.codesnap"),
 
     -- Nvim-tree
     -- require("plugins.nvim-tree"),
