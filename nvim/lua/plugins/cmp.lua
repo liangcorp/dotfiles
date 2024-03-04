@@ -16,5 +16,5 @@ return {
     config = function()
         require("luasnip").setup({})
     end,
-    -- lazy = true,
+    lazy = true,
 }
