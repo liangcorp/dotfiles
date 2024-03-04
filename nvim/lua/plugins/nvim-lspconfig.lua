@@ -4,9 +4,9 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "stevearc/aerial.nvim",
+        "folke/neoconf.nvim",
         "hrsh7th/nvim-cmp",
-        -- "folke/neoconf.nvim",
-        -- "lukas-reineke/indent-blankline.nvim",
+        "lukas-reineke/indent-blankline.nvim",
     },
     cmd = {
         "LspStart"
