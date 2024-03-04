@@ -1,26 +1,21 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;; Emacs configuration by Chen Liang
-
 ;;; Code:
 ;; Set up package.el to work with MELPA
-;; Initialize package sources
-(require 'package)
+(use-package package :ensure t)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+;; (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/packages/"))
 
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-
-  ;; Initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
-(setq use-package-always-ensure t)
+(setq visible-bell t)
+(column-number-mode)
 
 (scroll-bar-mode -1)        ; Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
@@ -34,19 +29,16 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
-(column-number-mode)
-(global-display-line-numbers-mode t)
-
-;; Disable line numbers for some modes
-(dolist (mode '(org-mode-hook
-                term-mode-hook
-                shell-mode-hook
-	                treemacs-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+;; (use-package all-the-icons
+;;   :ensure t)
+;;
+;; (add-to-list 'load-path "~/.emacs.d/unicode-fonts/")
+;; (require 'unicode-fonts)
+;; (unicode-fonts-setup)
 
 ;; Fix for "Package cl is deprecated"
 (require 'cl-lib)
+(setq warning-minimum-level :emergency)
 ;; (setq byte-compile-warnings '(cl-functions))
 
 ;; (global-set-key (kbd "C-c C-c") 'comment-line)
@@ -56,9 +48,9 @@
 
 ;; TODO done with timestamp
 ;; (setq org-log-done 'time)
-(use-package tree-sitter :ensure t)
-(global-tree-sitter-mode)
-(setq tree-sitter-hl-mode t)
+;; (use-package tree-sitter :ensure t)
+;; (global-tree-sitter-mode)
+;; (setq tree-sitter-hl-mode t)
 
 ;; Enable go-mode
 (use-package go-mode
@@ -134,7 +126,7 @@
    '("b99e334a4019a2caa71e1d6445fc346c6f074a05fcbb989800ecbe54474ae1b0" "7e377879cbd60c66b88e51fad480b3ab18d60847f31c435f15f5df18bdb18184" "a3e99dbdaa138996bb0c9c806bc3c3c6b4fd61d6973b946d750b555af8b7555b" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "5f128efd37c6a87cd4ad8e8b7f2afaba425425524a68133ac0efd87291d05874" "443e2c3c4dd44510f0ea8247b438e834188dc1c6fb80785d83ad3628eadf9294" "aec7b55f2a13307a55517fdf08438863d694550565dee23181d2ebd973ebd6b8" "eca44f32ae038d7a50ce9c00693b8986f4ab625d5f2b4485e20f22c47f2634ae" "1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" "76ed126dd3c3b653601ec8447f28d8e71a59be07d010cd96c55794c3008df4d7" "835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "c7000071e9302bee62fbe0072d53063da398887115ac27470d664f9859cdd41d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "9b4ae6aa7581d529e20e5e503208316c5ef4c7005be49fdb06e5d07160b67adc" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" default))
  '(markdown-command "/usr/bin/pandoc")
  '(package-selected-packages
-   '(lsp-ivy evil lsp-ltex git-modes lsp-pyright lsp-grammarly markdownfmt tree-sitter-langs markdown-preview-mode octicons godoctor flycheck-golangci-lint flycheck-gometalinter git-gutter-fringe cargo-mode cargo docker-compose-mode git-gutter dap-cpptools dap-mode jenkinsfile-mode go-mode vimrc-mode atom-one-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep atom-one-theme yaml-mode js2-refactor xref-js2 js2-mode company lsp-ui apheleia lsp-mode magit web-mode rust-mode)))
+   '(evil lsp-ltex git-modes lsp-pyright lsp-grammarly markdownfmt tree-sitter-langs markdown-preview-mode octicons godoctor flycheck-golangci-lint flycheck-gometalinter git-gutter-fringe cargo-mode cargo docker-compose-mode git-gutter dap-cpptools dap-mode jenkinsfile-mode go-mode vimrc-mode atom-one-dark-theme rustic lsp-python-ms sed-mode blaken blacken py-autopep8 elpy wgrep atom-one-theme yaml-mode js2-refactor xref-js2 js2-mode company lsp-ui apheleia lsp-mode magit web-mode rust-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -233,43 +225,22 @@
   :commands lsp-ui-mode
   :custom
   (lsp-ui-peek-always-show t)
-  (lsp-ui-sideline-show-hover t)
-  ;; (lsp-ui-doc-enable t))
-
-(use-package lsp-ivy)
+  ;; (lsp-ui-sideline-show-hover t)
+  (lsp-ui-doc-enable t))
 
 ;; optionally if you want to use debugger
-(use-package dap-mode
-  ;; Uncomment the config below if you want all UI panes to be hidden by default!
-  ;; :custom
-  ;; (lsp-enable-dap-auto-configure nil)
-  ;; :config
-  ;; (dap-ui-mode 1)
-
-  :config
-  ;; Set up Node debugging
-  (require 'dap-node)
-  (dap-node-setup) ;; Automatically installs Node debug adapter if needed
-
-  ;; Bind `C-c l d` to `dap-hydra` for easy access
-  (general-define-key
-    :keymaps 'lsp-mode-map
-    :prefix lsp-keymap-prefix
-    "d" '(dap-hydra t :wk "debugger")))
-
+(use-package dap-mode :ensure t)
 (setq dap-auto-configure-features '(sessions locals controls tooltip))
 (dap-mode 1)
 
 ;; The modes below are optional
-;; enables mouse hover support
+
 (dap-ui-mode 1)
-
-;; use tooltips for mouse hover
+;; enables mouse hover support
 (dap-tooltip-mode 1)
-
+;; use tooltips for mouse hover
 ;; if it is not enabled `dap-mode' will use the minibuffer.
 (tooltip-mode 1)
-
 ;; displays floating panel with debug buttons
 ;; requies emacs 26+
 (dap-ui-controls-mode 1)
