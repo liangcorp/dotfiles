@@ -13,21 +13,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- Harpoon
-    require("plugins.harpoon"),
-
     -- Themes
     "navarasu/onedark.nvim",
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
-
-    -- {
-    --     -- Zig
-    --     'ziglang/zig.vim',
-    --     ft = { "zig" },
-    --     lazy = true,
-    -- },
 
     -- Telescope
     require("plugins.telescope"),
@@ -36,18 +26,6 @@ require("lazy").setup({
         build = 'make',
         lazy = true
     },
-
-    -- Indent Blankline
-    require("plugins.indent"),
-
-    -- Treesitter
-    require("plugins.treesitter"),
-
-    -- Code snap
-    require("plugins.codesnap"),
-
-    -- Nvim-tree
-    -- require("plugins.nvim-tree"),
 
     -- NVIM Lint
     require("plugins.nvim-lint"),
@@ -61,17 +39,11 @@ require("lazy").setup({
     -- LSP server installer and manager
     require("plugins.nvim-lspconfig"),
 
-    -- Neovim plugin to manage global and project-local settings.
-    require("plugins.neoconf"),
-
     -- Text and code completions
     require("plugins.cmp"),
 
     -- Show Error in Trouble Window
     require("plugins.trouble"),
-
-    -- Show TODO in highlight
-    require("plugins.todo"),
 
     -- Prettier
     -- require("plugins.prettier"),
@@ -97,15 +69,37 @@ require("lazy").setup({
     -- install without yarn or npm
     require("plugins.markdown-preview"),
 
-    -- Create pairing brackets and quotation marks
-    require("plugins.autopairs"),
-
     -- Debugger
     require("plugins.debugger"),
 
     require("plugins.dap-go"),
 
     require("plugins.dap-python"),
+
+    -- ======== Optionsals ============
+    -- Treesitter
+    require("plugins.treesitter"),
+
+    -- Show TODO in highlight
+    -- require("plugins.todo"),
+
+    -- Create pairing brackets and quotation marks
+    -- require("plugins.autopairs"),
+
+    -- Neovim plugin to manage global and project-local settings.
+    -- require("plugins.neoconf"),
+
+    -- Code snap
+    -- require("plugins.codesnap"),
+
+    -- Harpoon
+    -- require("plugins.harpoon"),
+
+    -- Indent Blankline
+    -- require("plugins.indent"),
+
+    -- Nvim-tree
+    -- require("plugins.nvim-tree"),
 
     -- require("plugins.dap-js"),
 })
