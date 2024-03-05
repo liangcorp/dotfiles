@@ -19,7 +19,6 @@
 
 (scroll-bar-mode -1)        ; Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
-(tooltip-mode -1)           ; Disable tooltips
 (set-fringe-mode 10)        ; Give some breathing room
 
 (menu-bar-mode -1)            ; Disable the menu bar
@@ -411,3 +410,16 @@
 
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(blacken py-autopep8 elpy company xref-js2 js2-refactor web-mode cargo rustic dap-mode lsp-ui lsp-ltex lsp-mode git-gutter-fringe git-gutter docker-compose-mode jenkinsfile-mode vimrc-mode apheleia atom-one-dark-theme wgrep helm diff-hl magit flycheck go-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
