@@ -14,10 +14,21 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- Harpoon
-    -- require("plugins.harpoon"),
+    require("plugins.harpoon"),
 
     -- Themes
     "navarasu/onedark.nvim",
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     opts = {},
+    -- },
+    -- {
+    --     "ellisonleao/gruvbox.nvim",
+    --     priority = 1000,
+    --     config = true,
+    -- },
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
@@ -38,7 +49,7 @@ require("lazy").setup({
     },
 
     -- Indent Blankline
-    -- require("plugins.indent"),
+    require("plugins.indent"),
 
     -- Treesitter
     require("plugins.treesitter"),
@@ -71,7 +82,7 @@ require("lazy").setup({
     require("plugins.trouble"),
 
     -- Show TODO in highlight
-    -- require("plugins.todo"),
+    require("plugins.todo"),
 
     -- Prettier
     -- require("plugins.prettier"),
@@ -98,7 +109,7 @@ require("lazy").setup({
     require("plugins.markdown-preview"),
 
     -- Create pairing brackets and quotation marks
-    -- require("plugins.autopairs"),
+    require("plugins.autopairs"),
 
     -- Debugger
     require("plugins.debugger"),
