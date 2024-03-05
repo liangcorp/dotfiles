@@ -19,8 +19,12 @@ return {
         })
     end,
     keys = {
-        { '<space>p', function ()
-           require("conform").format()
-        end, desc = "Conform [P]rettier" },
+        {
+            '<space>p',
+            function()
+                require("conform").format()
+            end,
+            desc = "Conform [P]rettier"
+        },
     },
 }
