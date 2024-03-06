@@ -22,5 +22,5 @@ return {
     config = function()
         require("ibl").setup()
     end,
-    lazy = true,
+    -- lazy = true,
 }

@@ -9,8 +9,23 @@ procMacro = { ignored = { leptos_macro = ["server"] } }
 [language-server.rust-analyzer.config.check]
 command = "clippy"
 
+
+[[language]] 
+name = "go" 
+
+[language-server.gopls]
+config = { "formatting.gofumpt" = true, "ui.diagnostic.staticcheck" = true, "analyses" = { "fieldalignment" = true, "nilness" = true } } 
+
+
 [[language]]
 name = "markdown"
 language-servers = [ "marksman", "ltex-ls" ]
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "markdown"] }
+
+
+[[language]]
+name = "latex"
+language-servers = [ "ltex-ls" ]
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "latex"] }
