@@ -1,7 +1,7 @@
 # theme = "onedark"
 # theme = "catppuccin_mocha"
-theme = "base16_transparent"
-# theme = "everforest_dark"
+# theme = "base16_transparent"
+theme = "everforest_dark"
 
 [editor]
 true-color = true
