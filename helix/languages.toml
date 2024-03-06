@@ -3,14 +3,8 @@ use-grammars = { except = [ "yaml", "json" ] }
 [[language]]
 name = "rust"
 
-# [language-server.rust-analyzer]
-# config = { procMacro = { ignored =
-#     { leptos_macro =
-#         [
-#             # Optional:
-#             # "component",
-#             "server"
-#         ] } } }
+[language-server.rust-analyzer.config]
+procMacro = { ignored = { leptos_macro = ["server"] } }
 
 [language-server.rust-analyzer.config.check]
 command = "clippy"
