@@ -71,7 +71,6 @@ require('plugins')
 -- Themes
 o.background = "dark"
 -- vim.cmd 'colorscheme habamax'
--- vim.cmd 'colorscheme torte'
 vim.cmd 'colorscheme nord'
 -- require('themes/onedark')
 
