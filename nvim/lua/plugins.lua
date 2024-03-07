@@ -41,7 +41,7 @@ require("lazy").setup({
     -- require("plugins.indent"),
 
     -- Treesitter
-    -- require("plugins.treesitter"),
+    require("plugins.treesitter"),
 
     -- Code snap
     -- require("plugins.codesnap"),
