@@ -17,38 +17,7 @@ require("lazy").setup({
     -- require("plugins.harpoon"),
 
     -- Themes
-    -- "navarasu/onedark.nvim",
-    -- {
-    --     "folke/tokyonight.nvim",
-    --     lazy = false,
-    --     priority = 1000,
-    --     opts = {},
-    -- },
-    -- {
-    --     "ellisonleao/gruvbox.nvim",
-    --     priority = 1000,
-    --     config = true,
-    -- },
-    {
-        "neanias/everforest-nvim",
-        lazy = false,
-        priority = 1000, -- make sure to load this before all the other start plugins
-        -- Optional; default configuration will be used if setup isn't called.
-        config = function()
-            require("everforest").setup({
-                -- Your config here
-            })
-        end
-    },
-
-    -- {
-    --     'bfrg/vim-cpp-modern',
-    --     ft = {
-    --         "c",
-    --         "cpp",
-    --     },
-    --     lazy = true,
-    -- },
+    "navarasu/onedark.nvim",
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
