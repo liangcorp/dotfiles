@@ -72,7 +72,8 @@ require('plugins')
 o.background = "dark"
 -- vim.cmd 'colorscheme habamax'
 -- vim.cmd 'colorscheme torte'
-require('themes/onedark')
+vim.cmd 'colorscheme nord'
+-- require('themes/onedark')
 
 -- Statusline without Plugins
 require('config/statusline')

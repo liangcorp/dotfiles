@@ -18,6 +18,7 @@ require("lazy").setup({
 
     -- Themes
     "navarasu/onedark.nvim",
+    'shaunsingh/nord.nvim',
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
@@ -41,7 +42,7 @@ require("lazy").setup({
     -- require("plugins.indent"),
 
     -- Treesitter
-    require("plugins.treesitter"),
+    -- require("plugins.treesitter"),
 
     -- Code snap
     -- require("plugins.codesnap"),
