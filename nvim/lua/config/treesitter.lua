@@ -6,6 +6,7 @@ require 'nvim-treesitter.configs'.setup {
         "go",
         "rust",
         "python",
+        "gitcommit",
     },
 
     modules = {},
