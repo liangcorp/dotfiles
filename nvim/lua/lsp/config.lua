@@ -23,7 +23,7 @@ local on_attach = function(client, bufnr)
     -- require("lsp-format").on_attach(_)
 
     -- Disable LSP syntex highlight
-    -- client.server_capabilities.semanticTokensProvider = nil
+    client.server_capabilities.semanticTokensProvider = nil
 
     --  automatic highlighting of references for the current text position
     if client.server_capabilities.documentHighlightProvider then

@@ -17,7 +17,6 @@ return {
     --     "cpp",
     --     "lua",
     --     "go",
-    --     "make",
     --     "javascript",
     --     "typescript",
     --     "sh",
