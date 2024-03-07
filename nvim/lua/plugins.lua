@@ -17,9 +17,10 @@ require("lazy").setup({
     -- require("plugins.harpoon"),
 
     -- Themes
-    "navarasu/onedark.nvim",
-    'shaunsingh/nord.nvim',
+    -- "navarasu/onedark.nvim",
+    -- 'shaunsingh/nord.nvim',
     'p00f/alabaster.nvim',
+    -- 'Mofiqul/vscode.nvim',
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
