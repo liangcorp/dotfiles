@@ -30,6 +30,15 @@ require("lazy").setup({
     --     config = true,
     -- },
 
+    {
+        'bfrg/vim-cpp-modern',
+        ft = {
+            "c",
+            "cpp",
+        },
+        lazy = true,
+    },
+
     -- Arie (list and move between functions
     require("plugins.aerial"),
 
