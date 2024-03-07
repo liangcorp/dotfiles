@@ -8,14 +8,15 @@ o.autowrite = true
 o.mouse = 'a'
 o.mousemodel = 'popup'
 o.guioptions = 'egmrti'
--- o.completeopt = "longest"
 o.ruler = true
 o.wildmenu = true
 o.expandtab = true
 -- Set completeopt to have a better completion experience
 o.completeopt = 'menuone,noselect'
+-- o.completeopt = "longest"
 -- o.spelllang = en_GB
 -- o.spell = true
+
 vim.scriptencoding = 'UTF-8'
 
 local opt = vim.opt
@@ -24,22 +25,22 @@ opt.softtabstop = 0
 opt.shiftwidth = 4
 opt.smartindent = true
 opt.encoding = 'UTF-8'
--- vim.opt.autoindent = true
 opt.showcmd = true
 opt.cmdheight = 1
--- vim.opt.ignorecase = true
 opt.smarttab = true
--- vim.opt.breakindent = true
 opt.number = true
--- opt.relativenumber = true
 opt.path = vim.opt.path + '**'
+opt.cursorline = true
+-- opt.cursorcolumn=true
+-- opt.autoindent = true
+-- opt.ignorecase = true
+-- opt.relativenumber = true
+-- opt.breakindent = true
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- opt.cursorcolumn=true
-opt.cursorline = true
 
 -- set termguicolors to enable highlight groups
 opt.termguicolors = true
@@ -70,8 +71,9 @@ require('plugins')
 
 -- Themes
 o.background = "dark"
+vim.cmd 'colorscheme alabaster'
 -- vim.cmd 'colorscheme habamax'
-vim.cmd 'colorscheme nord'
+-- vim.cmd 'colorscheme nord'
 -- require('themes/onedark')
 
 -- Statusline without Plugins
@@ -83,9 +85,9 @@ require('config/statusline')
 -- require('lsp/bash')
 
 -- Keyboard keymaps
--- require('keymaps/aerial')
 require('keymaps/basic')
 require('keymaps/lsp')
+-- require('keymaps/aerial')
 -- require('keymaps/debugger')
 -- require('keymaps/telescope')
 -- require('keymaps/harpoon')

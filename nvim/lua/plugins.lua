@@ -19,6 +19,7 @@ require("lazy").setup({
     -- Themes
     "navarasu/onedark.nvim",
     'shaunsingh/nord.nvim',
+    'p00f/alabaster.nvim',
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
