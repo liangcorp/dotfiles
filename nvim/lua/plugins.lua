@@ -52,7 +52,7 @@ require("lazy").setup({
     -- require("plugins.indent"),
 
     -- Treesitter
-    require("plugins.treesitter"),
+    -- require("plugins.treesitter"),
 
     -- Code snap
     -- require("plugins.codesnap"),
@@ -112,11 +112,11 @@ require("lazy").setup({
     -- require("plugins.autopairs"),
 
     -- Debugger
-    require("plugins.debugger"),
+    -- require("plugins.debugger"),
 
-    require("plugins.dap-go"),
+    -- require("plugins.dap-go"),
 
-    require("plugins.dap-python"),
+    -- require("plugins.dap-python"),
 
     -- require("plugins.dap-js"),
 })

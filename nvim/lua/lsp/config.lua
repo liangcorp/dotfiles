@@ -21,7 +21,9 @@ local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     -- require("lsp-format").on_attach(_)
-    client.server_capabilities.semanticTokensProvider = nil
+
+    -- Disable LSP syntex highlight
+    -- client.server_capabilities.semanticTokensProvider = nil
 
     --  automatic highlighting of references for the current text position
     if client.server_capabilities.documentHighlightProvider then

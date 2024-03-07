@@ -5,6 +5,7 @@ require 'nvim-treesitter.configs'.setup {
         "cpp",
         "go",
         "rust",
+        "python",
     },
 
     modules = {},
@@ -12,7 +13,7 @@ require 'nvim-treesitter.configs'.setup {
     sync_install = true,
 
     -- Automatically install missing parsers when entering buffer
-    auto_install = false,
+    auto_install = true,
 
     -- List of parsers to ignore installing (for "all")
     ignore_install = {
