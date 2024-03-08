@@ -70,9 +70,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('plugins')
 
 -- Themes
-o.background = "dark"
--- require('themes/onedark')
-vim.cmd[[colorscheme nord]]
+-- o.background = "dark"
+vim.cmd [[colorscheme onedark]]
 
 -- Statusline without Plugins
 require('config/statusline')
