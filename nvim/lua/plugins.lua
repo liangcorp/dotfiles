@@ -19,6 +19,15 @@ require("lazy").setup({
     -- Themes
     "joshdick/onedark.vim",
 
+    {
+        "bfrg/vim-cpp-modern",
+        ft = {
+            "c",
+            "cpp",
+        },
+        lazy = true,
+    },
+
     -- Arie (list and move between functions
     require("plugins.aerial"),
 
