@@ -22,34 +22,6 @@ set autowrite
 
 colorscheme habamax
 
-" ============== plugins ============= "
-call plug#begin()
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
-
-" Make sure you use single quotes
-
-" Use by everything
-Plug 'sheerun/vim-polyglot'
-
-" Git related
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" VIM Test
-Plug 'vim-test/vim-test'
-
-" Prettier
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
-
-" Initialize plugin system
-call plug#end()
-
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
 set encoding=utf-8
@@ -99,21 +71,4 @@ xnoremap <Leader>p "\"_dP
 " Keep curser during search
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
-" Formatting
-nnoremap <space>f :Format<CR>
-nnoremap <space>p :Prettier<CR>
-
-" Fuzzy finder
-nnoremap <Leader>ff :Files<CR>
-nnoremap <Leader>fb :Buffers<CR>
-nnoremap <leader>ft :Tags<CR>
-nnoremap <Leader>fh :Helptags<CR>
-
-" VIM Test
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
 
