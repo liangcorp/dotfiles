@@ -47,9 +47,6 @@ Plug 'tpope/vim-fugitive'
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Treesitter
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -62,9 +59,6 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
-" Themes
-Plug 'joshdick/onedark.vim'
 
 " Initialize plugin system
 call plug#end()

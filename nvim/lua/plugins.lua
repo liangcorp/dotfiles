@@ -18,7 +18,6 @@ require("lazy").setup({
 
     -- Themes
     -- "navarasu/onedark.nvim",
-    'p00f/alabaster.nvim',
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
@@ -44,12 +43,6 @@ require("lazy").setup({
     -- Treesitter
     -- require("plugins.treesitter"),
 
-    -- Code snap
-    -- require("plugins.codesnap"),
-
-    -- Nvim-tree
-    -- require("plugins.nvim-tree"),
-
     -- NVIM Lint
     require("plugins.nvim-lint"),
 
@@ -71,11 +64,7 @@ require("lazy").setup({
     -- Show Error in Trouble Window
     require("plugins.trouble"),
 
-    -- Show TODO in highlight
-    -- require("plugins.todo"),
-
     -- Prettier
-    -- require("plugins.prettier"),
     require("plugins.conform"),
 
     -- Git related
