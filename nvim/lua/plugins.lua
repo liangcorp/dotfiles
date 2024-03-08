@@ -16,9 +16,6 @@ require("lazy").setup({
     -- Harpoon
     -- require("plugins.harpoon"),
 
-    -- Themes
-    "joshdick/onedark.vim",
-
     {
         "bfrg/vim-cpp-modern",
         ft = {

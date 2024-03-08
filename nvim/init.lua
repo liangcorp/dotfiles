@@ -3,11 +3,11 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 local o = vim.o
-o.nocompatible = true
+-- o.nocompatible = true
 o.autowrite = true
 o.mouse = 'a'
 o.mousemodel = 'popup'
-o.guioptions = 'egmrti'
+-- o.guioptions = 'egmrti'
 o.ruler = true
 o.wildmenu = true
 o.expandtab = true
@@ -69,10 +69,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- NOTE: commented out configs are lazy loaded via plugins
 require('plugins')
 
--- Themes
--- o.background = "dark"
-vim.cmd [[colorscheme onedark]]
-
 -- Statusline without Plugins
 require('config/statusline')
 
@@ -108,3 +104,19 @@ require('gitsigns').setup()
 
 -- DAP for javascript and typescript
 -- require('dap/javascript')
+
+vim.cmd [[
+hi Function guifg='salmon'
+hi Comment guifg='green'
+hi Normal guifg='222'
+hi Constant guifg='222'
+hi Statements cterm=bold guifg='222'
+hi Keyword cterm=bold guifg='222'
+hi Conditional cterm=bold guifg='222'
+hi Operator cterm=bold guifg='222'
+hi Exception cterm=bold guifg='222'
+hi Label cterm=bold guifg='222'
+hi Type guifg='222'
+hi PreCondit guifg='orange'
+hi String guifg='teal'
+]]
