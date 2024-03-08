@@ -10,22 +10,23 @@ procMacro = { ignored = { leptos_macro = ["server"] } }
 command = "clippy"
 
 
-[[language]] 
-name = "go" 
+[[language]]
+name = "go"
 
 [language-server.gopls]
-config = { "formatting.gofumpt" = true, "ui.diagnostic.staticcheck" = true, "analyses" = { "fieldalignment" = true, "nilness" = true } } 
+config = { "formatting.gofumpt" = true, "ui.diagnostic.staticcheck" = true, "analyses" = { "fieldalignment" = true, "nilness" = true } }
 
 
 [[language]]
 name = "markdown"
-language-servers = [ "marksman", "ltex-ls" ]
+language-servers = [ "marksman", "ltex-ls"]
+file-types = ["md"]
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "markdown"] }
-
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"]}
 
 [[language]]
 name = "latex"
 language-servers = [ "ltex-ls" ]
+file-types = ["tex"]
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "latex"] }
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"]}
