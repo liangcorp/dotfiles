@@ -123,7 +123,12 @@ hi Include guifg='silver'
 hi Macro guifg='silver'
 hi String guifg='mediumseagreen'
 
-highlight GoFunctionName guifg='steelblue'
-autocmd BufRead,BufNewFile *.go match GoFunctionName '\v\s+\w+\s*\(.*\)'
+autocmd BufRead,BufNewFile *.go match goFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
+autocmd BufRead,BufNewFile *.[ch] match cFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
+" autocmd BufRead,BufNewFile *.[ch]  match cUserFunctionPointer "\%((\s*\*\s*\)\@<=\h\w*\ze\s*)\_s\{-}(.*)"
+
+hi def link cFunctionName Function
+" hi def link cUserFunctionPointer Function
+hi def link goFunctionName Function
 ]]
 
