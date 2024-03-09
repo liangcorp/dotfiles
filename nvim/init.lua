@@ -43,7 +43,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 
 -- set termguicolors to enable highlight groups
--- opt.termguicolors = true
+opt.termguicolors = true
 
 vim.g.zig_fmt_autosave = 0
 vim.g.loaded_perl_provider = 0
@@ -120,5 +120,8 @@ hi Repeat gui=bold guifg='silver'
 hi Type gui=bold guifg='silver'
 hi PreCondit guifg='green'
 hi String guifg='mediumseagreen'
+
+highlight GoFunctionName guifg='steelblue'
+autocmd BufRead,BufNewFile *.go match GoFunctionName '\v\s+\w+\s*\(.*\)'
 ]]
 
