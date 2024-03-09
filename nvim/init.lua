@@ -123,6 +123,7 @@ hi Include guifg='#c678dd'
 hi Macro guifg='silver'
 hi String guifg='#98c379'
 hi SpecialChar guifg='#e06c75'
+hi SpecialComment guifg='green'
 
 autocmd BufRead,BufNewFile *.go match goFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
 autocmd BufRead,BufNewFile *.zig match cppFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
