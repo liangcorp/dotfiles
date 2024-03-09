@@ -16,14 +16,14 @@ require("lazy").setup({
     -- Harpoon
     -- require("plugins.harpoon"),
 
-    -- {
-    --     "bfrg/vim-cpp-modern",
-    --     ft = {
-    --         "c",
-    --         "cpp",
-    --     },
-    --     lazy = true,
-    -- },
+    {
+        "bfrg/vim-cpp-modern",
+        ft = {
+            "c",
+            "cpp",
+        },
+        lazy = true,
+    },
 
     -- Arie (list and move between functions
     require("plugins.aerial"),

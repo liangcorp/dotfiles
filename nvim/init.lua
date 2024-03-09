@@ -106,33 +106,28 @@ require('gitsigns').setup()
 -- require('dap/javascript')
 
 vim.cmd [[
-hi Function guifg='#BCC6CC'
-hi Comment guifg='green'
-hi Normal guifg='#B8BC86'
-hi Constant guifg='orange'
-hi Statements gui=bold guifg='silver'
-hi Keyword guifg='#98AFC7'
-hi Conditional gui=bold guifg='silver'
+hi Function guifg='#61afef'
+hi Comment guifg='#5c6370'
+hi Normal guifg='#abb2bf' guibg='#282c34'
+hi Constant guifg='#d19a66'
+hi Statement guifg='#c678dd'
+hi Keyword guifg='#c678dd'
+hi Conditional guifg='#c678dd'
 hi Operator guifg='silver'
 hi Exception gui=bold guifg='silver'
-hi Label gui=bold guifg='silver'
-hi Repeat gui=bold guifg='silver'
-hi Type guifg='#98AFC7'
-hi PreCondit gui=bold guifg='silver'
-hi Include guifg='silver'
+hi Label guifg='silver'
+hi Repeat guifg='#c678dd'
+hi Type guifg='#e5c07b'
+hi PreCondit guifg='#c678dd'
+hi Include guifg='#c678dd'
 hi Macro guifg='silver'
-hi String guifg='mediumseagreen'
+hi String guifg='#98c379'
+hi SpecialChar guifg='#e06c75'
 
 autocmd BufRead,BufNewFile *.go match goFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
-autocmd BufRead,BufNewFile *.[ch] match cFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
-autocmd BufRead,BufNewFile *.cpp match cppFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
 autocmd BufRead,BufNewFile *.zig match cppFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
-" autocmd BufRead,BufNewFile *.[ch]  match cUserFunctionPointer "\%((\s*\*\s*\)\@<=\h\w*\ze\s*)\_s\{-}(.*)"
 
-hi def link cFunctionName Function
-hi def link cppFunctionName Function
 hi def link zigFunctionName Function
-" hi def link cUserFunctionPointer Function
 hi def link goFunctionName Function
 ]]
 
