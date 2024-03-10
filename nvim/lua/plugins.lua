@@ -20,15 +20,18 @@ require("lazy").setup({
         'navarasu/onedark.nvim',
         config = function()
             require('onedark').setup {
-                -- style = 'warmer',
-                style = 'darker',
+                style = 'warmer',
+                -- style = 'darker',
                 highlights = {
+                    ["Operator"] = { fg = '#a7aab0' },
                     ["Include"] = { fg = '#95B9D7' },
                     -- ["Macro"] = { fg = '#95B9D7' },
                     ["Conditional"] = { fg = '#95B9D7' },
-                    ["Define"] = { fg = '#14A3C7' },
-                    ["Operator"] = { fg = '#a7aab0' },
-                    ["Keyword"] = { fg='#95B9D7'},
+                    ["Repeat"] = { fg = '#95B9D7' },
+                    -- ["Define"] = { fg = '#14A3C7' },
+                    ["Keyword"] = { fg = '#95B9D7' },
+                    ["Constant"] = { fg = '#d19a66' },
+                    ["PreCondit"] = { fg = '#a7aab0' },
                 }
             }
             require('onedark').load()
