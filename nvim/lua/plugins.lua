@@ -17,6 +17,25 @@ require("lazy").setup({
     -- require("plugins.harpoon"),
 
     {
+        'navarasu/onedark.nvim',
+        config = function()
+            require('onedark').setup {
+                -- style = 'warmer',
+                style = 'darker',
+                highlights = {
+                    ["Include"] = { fg = '#95B9D7' },
+                    -- ["Macro"] = { fg = '#95B9D7' },
+                    ["Conditional"] = { fg = '#95B9D7' },
+                    ["Define"] = { fg = '#14A3C7' },
+                    ["Operator"] = { fg = '#a7aab0' },
+                    ["Keyword"] = { fg='#95B9D7'},
+                }
+            }
+            require('onedark').load()
+        end
+    },
+
+    {
         "bfrg/vim-cpp-modern",
         ft = {
             "c",

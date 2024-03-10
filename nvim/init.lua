@@ -105,39 +105,39 @@ require('gitsigns').setup()
 -- DAP for javascript and typescript
 -- require('dap/javascript')
 --------------- Theme -----------------------
-vim.cmd [[
-hi Function guifg='#61afef'
-hi Comment guifg='green'
-hi Normal guifg='#abb2bf' "guibg='#1e2127'
-hi Constant guifg='#d19a66'
-
-hi Statement guifg='#abb2bf'
-" hi Conditional guifg='#95B9C7'
-" hi Repeat guifg='#95B9C7'
-" hi Keyword guifg='#95B9C7'
-" hi Label guifg='silver'
-" hi Operator guifg='silver'
-" hi Exception gui=bold guifg='silver'
-
-hi Preproc guifg='green'
-" hi PreCondit guifg='#007C80'
-hi Include guifg='#95B9C7'
-hi Macro guifg='#95B9C7'
-hi Define guifg='#14A3C7'
-
-hi String guifg='#98c379'
-hi Type guifg='#e5c07b'
-
-hi Special guifg='#e06c75'
-hi SpecialChar guifg='#e06c75'
-hi SpecialComment guifg='#08A04B'
-
-autocmd BufRead,BufNewFile *.go match goFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
-autocmd BufRead,BufNewFile *.zig match cppFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
-
-hi def link zigFunctionName Function
-hi def link goFunctionName Function
-]]
+-- vim.cmd [[
+-- hi Function guifg='#61afef'
+-- hi Comment guifg='green'
+-- hi Normal guifg='#abb2bf' "guibg='#1e2127'
+-- hi Constant guifg='#d19a66'
+--
+-- hi Statement guifg='#abb2bf'
+-- " hi Conditional guifg='#95B9C7'
+-- " hi Repeat guifg='#95B9C7'
+-- " hi Keyword guifg='#95B9C7'
+-- " hi Label guifg='silver'
+-- " hi Operator guifg='silver'
+-- " hi Exception gui=bold guifg='silver'
+--
+-- hi Preproc guifg='green'
+-- " hi PreCondit guifg='#007C80'
+-- hi Include guifg='#95B9C7'
+-- hi Macro guifg='#95B9C7'
+-- hi Define guifg='#14A3C7'
+--
+-- hi String guifg='#98c379'
+-- hi Type guifg='#e5c07b'
+--
+-- hi Special guifg='#e06c75'
+-- hi SpecialChar guifg='#e06c75'
+-- hi SpecialComment guifg='#08A04B'
+--
+-- autocmd BufRead,BufNewFile *.go match goFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
+-- autocmd BufRead,BufNewFile *.zig match cppFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
+--
+-- hi def link zigFunctionName Function
+-- hi def link goFunctionName Function
+-- ]]
 
 ------------------ One Dark -------------------
 -- vim.cmd [[
