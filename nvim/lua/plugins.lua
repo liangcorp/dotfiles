@@ -38,13 +38,25 @@ require("lazy").setup({
     --     end
     -- },
 
+    -- {
+    --     'shaunsingh/nord.nvim',
+    --     config = function()
+    --         vim.cmd [[
+    --         colorscheme nord
+    --         hi Normal guifg='#abb2bf'
+    --         hi Constant guifg='#d19a66'
+    --         ]]
+    --     end
+    -- },
+
     {
-        'shaunsingh/nord.nvim',
+        'sainnhe/everforest',
         config = function()
             vim.cmd [[
-            colorscheme nord
-            hi Normal guifg='#abb2bf'
-            hi Constant guifg='#d19a66'
+            set background=dark
+            let g:everforest_background = 'hard'
+            let g:everforest_better_performance = 1
+            colorscheme everforest
             ]]
         end
     },
