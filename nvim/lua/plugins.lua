@@ -16,36 +16,47 @@ require("lazy").setup({
     -- Harpoon
     -- require("plugins.harpoon"),
 
+    -- {
+    --     'navarasu/onedark.nvim',
+    --     config = function()
+    --         require('onedark').setup {
+    --             style = 'warmer',
+    --             -- style = 'darker',
+    --             highlights = {
+    --                 ["Operator"] = { fg = '#a7aab0' },
+    --                 ["Include"] = { fg = '#95B9D7' },
+    --                 -- ["Macro"] = { fg = '#95B9D7' },
+    --                 ["Conditional"] = { fg = '#95B9D7' },
+    --                 ["Repeat"] = { fg = '#95B9D7' },
+    --                 -- ["Define"] = { fg = '#14A3C7' },
+    --                 ["Keyword"] = { fg = '#95B9D7' },
+    --                 ["Constant"] = { fg = '#d19a66' },
+    --                 ["PreCondit"] = { fg = '#a7aab0' },
+    --             }
+    --         }
+    --         require('onedark').load()
+    --     end
+    -- },
+
     {
-        'navarasu/onedark.nvim',
+        'shaunsingh/nord.nvim',
         config = function()
-            require('onedark').setup {
-                style = 'warmer',
-                -- style = 'darker',
-                highlights = {
-                    ["Operator"] = { fg = '#a7aab0' },
-                    ["Include"] = { fg = '#95B9D7' },
-                    -- ["Macro"] = { fg = '#95B9D7' },
-                    ["Conditional"] = { fg = '#95B9D7' },
-                    ["Repeat"] = { fg = '#95B9D7' },
-                    -- ["Define"] = { fg = '#14A3C7' },
-                    ["Keyword"] = { fg = '#95B9D7' },
-                    ["Constant"] = { fg = '#d19a66' },
-                    ["PreCondit"] = { fg = '#a7aab0' },
-                }
-            }
-            require('onedark').load()
+            vim.cmd [[
+            colorscheme nord
+            hi Normal guifg='#abb2bf'
+            hi Constant guifg='#d19a66'
+            ]]
         end
     },
 
-    -- {
-    --     "bfrg/vim-cpp-modern",
-    --     ft = {
-    --         "c",
-    --         "cpp",
-    --     },
-    --     lazy = true,
-    -- },
+    {
+        "bfrg/vim-cpp-modern",
+        ft = {
+            "c",
+            "cpp",
+        },
+        lazy = true,
+    },
 
     -- Arie (list and move between functions
     require("plugins.aerial"),

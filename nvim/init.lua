@@ -133,12 +133,8 @@ vim.cmd [[
 " hi SpecialComment guifg='#08A04B'
 
 autocmd BufRead,BufNewFile *.go match goFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
-autocmd BufRead,BufNewFile *.[ch] match cFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
-autocmd BufRead,BufNewFile *.cpp match cppFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
 autocmd BufRead,BufNewFile *.zig match zigFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
 
-hi def link cFunctionName Function
-hi def link cppFunctionName Function
 hi def link zigFunctionName Function
 hi def link goFunctionName Function
 ]]
