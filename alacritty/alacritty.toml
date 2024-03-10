@@ -21,7 +21,7 @@ style = "Bold Italic"
 style = "Italic"
 
 [font.normal]
-family = "JetBrains Mono"
+family = "JetBrains Mono Medium"
 style = "Regular"
 
 [font.offset]
@@ -124,8 +124,8 @@ program = "~/dev_setup.sh"
 history = 5000
 
 [window]
-decorations = "none"
+decorations = "None"
 
 [window.padding]
-x = 0
+x = 1
 y = 0

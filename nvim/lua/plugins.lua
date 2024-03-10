@@ -43,7 +43,7 @@ require("lazy").setup({
         config = function()
             vim.cmd [[
             set background=dark
-            let g:everforest_background = 'hard'
+            let g:everforest_background = 'soft'
             let g:everforest_better_performance = 1
             colorscheme everforest
             hi Normal guifg = '#D3C6AA' guibg='#232A2E'
@@ -56,6 +56,21 @@ require("lazy").setup({
         end
     },
 
+    -- {
+    --     'maxmx03/solarized.nvim',
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         vim.o.background = 'dark' -- or 'light'
+    --
+    --         vim.cmd.colorscheme 'solarized'
+    --         vim.cmd [[
+    --             hi Macro guifg='#95B9C7'
+    --             hi Operator guifg='#D3C6AA'
+    --             hi Include guifg='#95B9C7'
+    --         ]]
+    --     end,
+    -- },
     {
         "bfrg/vim-cpp-modern",
         ft = {
