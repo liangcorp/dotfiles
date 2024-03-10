@@ -45,7 +45,7 @@ require("lazy").setup({
             set background=dark
             let g:everforest_background = 'soft'
             let g:everforest_better_performance = 1
-            colorscheme everforest
+            " colorscheme everforest
             hi Normal guifg = '#D3C6AA' guibg='#232A2E'
             hi Operator guifg='#D3C6AA'
             hi Conditional guifg='#95B9C7'
@@ -56,6 +56,17 @@ require("lazy").setup({
         end
     },
 
+    {
+        'ramojus/mellifluous.nvim',
+        -- version = "v0.*", -- uncomment for stable config (some features might be missed if/when v1 comes out)
+        config = function()
+            require 'mellifluous'.setup({}) -- optional, see configuration section.
+            vim.cmd [[
+            colorscheme mellifluous
+            hi Normal guifg = '#D3C6AA'
+            ]]
+        end,
+    },
     -- {
     --     'maxmx03/solarized.nvim',
     --     lazy = false,
