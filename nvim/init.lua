@@ -108,26 +108,27 @@ require('gitsigns').setup()
 vim.cmd [[
 hi Function guifg='#61afef'
 hi Comment guifg='green'
-hi Normal guifg='#abb2bf'
+hi Normal guifg='#abb2bf' "guibg='#1e2127'
 hi Constant guifg='#d19a66'
 
-hi Statement guifg='#95B9C7'
-hi Conditional guifg='#95B9C7'
-hi Repeat guifg='#95B9C7'
-hi Keyword guifg='#95B9C7'
-hi Label guifg='silver'
-hi Operator guifg='silver'
-hi Exception gui=bold guifg='silver'
+hi Statement guifg='#abb2bf'
+" hi Conditional guifg='#95B9C7'
+" hi Repeat guifg='#95B9C7'
+" hi Keyword guifg='#95B9C7'
+" hi Label guifg='silver'
+" hi Operator guifg='silver'
+" hi Exception gui=bold guifg='silver'
 
-hi Preproc guifg='#95B9C7'
+hi Preproc guifg='green'
 " hi PreCondit guifg='#007C80'
-" hi Include guifg='#14A3C7'
-" hi Macro guifg='silver'
-" hi Define guifg='#14A3C7'
+hi Include guifg='#95B9C7'
+hi Macro guifg='#95B9C7'
+hi Define guifg='#14A3C7'
 
 hi String guifg='#98c379'
 hi Type guifg='#e5c07b'
 
+hi Special guifg='#e06c75'
 hi SpecialChar guifg='#e06c75'
 hi SpecialComment guifg='#08A04B'
 
@@ -142,7 +143,7 @@ hi def link goFunctionName Function
 -- vim.cmd [[
 -- hi Function guifg='#61afef'
 -- hi Comment guifg='#5c6370'
--- hi Normal guifg='#abb2bf' guibg='#282c34'
+-- hi Normal guifg='#abb2bf' guibg='#1e2127'
 -- hi Constant guifg='#d19a66'
 -- hi Statement guifg='#c678dd'
 -- hi Keyword guifg='#c678dd'
