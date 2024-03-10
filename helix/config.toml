@@ -21,6 +21,9 @@ mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
 
+[editor.soft-wrap]
+enable = true
+
 [keys.normal]
 "space" = { f = ":format" }
 J = ["extend_to_line_bounds", "delete_selection", "paste_after"]
