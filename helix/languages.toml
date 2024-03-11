@@ -1,7 +1,14 @@
 use-grammars = { except = [ "yaml", "json" ] }
 
 [[language]]
+name = "c"
+auto-format = true
+indent = { tab-width = 4, unit = " " }
+
+[[language]]
 name = "rust"
+auto-format = true
+indent = { tab-width = 4, unit = " " }
 
 [language-server.rust-analyzer.config]
 procMacro = { ignored = { leptos_macro = ["server"] } }
@@ -12,6 +19,8 @@ command = "clippy"
 
 [[language]]
 name = "go"
+auto-format = true
+indent = { tab-width = 4, unit = " " } 
 
 [language-server.gopls]
 config = { "formatting.gofumpt" = true, "ui.diagnostic.staticcheck" = true, "analyses" = { "fieldalignment" = true, "nilness" = true } }

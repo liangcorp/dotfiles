@@ -1,4 +1,6 @@
 theme = "onedark"
+# inherits = "onedark"
+# operator = { fg = "silver" }
 # theme = "catppuccin_mocha"
 # theme = "base16_transparent"
 # theme = "everforest_dark"
