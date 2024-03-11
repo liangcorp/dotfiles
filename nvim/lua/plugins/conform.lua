@@ -8,6 +8,8 @@ return {
                 -- Conform will run multiple formatters sequentially
                 python = { "isort", "black" },
                 -- Use a sub-list to run only the first available formatter
+                html = { { "prettierd", "prettier" } },
+                css = { { "prettierd", "prettier" } },
                 javascript = { { "prettierd", "prettier" } },
                 typescript = { { "prettierd", "prettier" } },
                 markdown = { { "prettierd", "prettier" } },
