@@ -23,7 +23,7 @@ require("lazy").setup({
                 style = 'warmer',
                 -- style = 'darker',
                 highlights = {
-                    -- ["Operator"] = { fg = '#a7aab0' },
+                    ["Operator"] = { fg = '#a7aab0' },
                 }
             }
             require('onedark').load()
