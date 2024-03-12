@@ -210,47 +210,6 @@
   ;; (lsp-ui-sideline-show-hover t)
   (lsp-ui-doc-enable t))
 
-;; optionally if you want to use debugger
-(use-package dap-mode :ensure t)
-(setq dap-auto-configure-features '(sessions locals controls tooltip))
-(dap-mode 1)
-
-;; The modes below are optional
-
-(dap-ui-mode 1)
-;; enables mouse hover support
-(dap-tooltip-mode 1)
-;; use tooltips for mouse hover
-;; if it is not enabled `dap-mode' will use the minibuffer.
-(tooltip-mode 1)
-;; displays floating panel with debug buttons
-;; requies emacs 26+
-(dap-ui-controls-mode 1)
-
-(require 'dap-utils)
-(require 'dap-dlv-go)
-(require 'dap-gdb-lldb)
-(require 'dap-cpptools)
-(add-hook 'dap-stopped-hook
-          (lambda (arg) (call-interactively #'dap-hydra)))
-
-;; (with-eval-after-load 'lsp-rust (require 'dap-cpptools))
-
-;; Add a template specific for debugging Rust programs.
-;; It is used for new projects, where I can M-x dap-edit-debug-template
-(dap-register-debug-template "Rust::GDB Run Configuration"
-                             (list :type "gdb"
-                                   :request "launch"
-                                   :name "GDB::Run"
-								   :gdbpath "rust-gdb"
-                                   :target nil
-                                   :cwd nil))
-(with-eval-after-load 'dap-mode
-  (setq dap-default-terminal-kind "integrated") ;; Make sure that terminal programs open a term for I/O in an Emacs buffer
-  (dap-auto-configure-mode +1))
-
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-
 ;; (ac-config-default)
 
 ;; Rust mode with LSP support
@@ -365,8 +324,6 @@
   (require 'lsp-marksman))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-
-
 ;; yaml-mode runs on .yaml files by default
 (use-package yaml-mode :mode "\\.ya?ml\\'")
 
@@ -416,7 +373,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(blacken py-autopep8 elpy company xref-js2 js2-refactor web-mode cargo rustic dap-mode lsp-ui lsp-ltex lsp-mode git-gutter-fringe git-gutter docker-compose-mode jenkinsfile-mode vimrc-mode apheleia atom-one-dark-theme wgrep helm diff-hl magit flycheck go-mode)))
+   '(blacken py-autopep8 elpy company xref-js2 js2-refactor web-mode cargo rustic lsp-ui lsp-ltex lsp-mode git-gutter-fringe git-gutter docker-compose-mode jenkinsfile-mode vimrc-mode apheleia atom-one-dark-theme wgrep helm diff-hl magit flycheck go-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
