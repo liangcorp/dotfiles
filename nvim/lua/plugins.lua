@@ -16,45 +16,31 @@ require("lazy").setup({
     -- Harpoon
     -- require("plugins.harpoon"),
 
-    -- {
-    --     'navarasu/onedark.nvim',
-    --     config = function()
-    --         require('onedark').setup {
-    --             style = 'warmer',
-    --             -- style = 'darker',
-    --             highlights = {
-    --                 ["Operator"] = { fg = '#a7aab0' },
-    --                 -- ["Include"] = { fg = '#95B9D7' },
-    --                 -- ["Macro"] = { fg = '#95B9D7' },
-    --                 -- ["Conditional"] = { fg = '#95B9D7' },
-    --                 -- ["Repeat"] = { fg = '#95B9D7' },
-    --                 -- ["Define"] = { fg = '#14A3C7' },
-    --                 -- ["Keyword"] = { fg = '#95B9D7' },
-    --                 -- ["Constant"] = { fg = '#d19a66' },
-    --                 -- ["PreCondit"] = { fg = '#a7aab0' },
-    --             }
-    --         }
-    --         require('onedark').load()
-    --     end
-    -- },
-
     {
-        'sainnhe/everforest',
+        'navarasu/onedark.nvim',
         config = function()
-            vim.cmd [[
-            set background=dark
-            let g:everforest_background = 'soft'
-            let g:everforest_better_performance = 1
-            colorscheme everforest
-            hi Normal guifg = '#D3C6AA' guibg='#232A2E'
-            hi Operator guifg='#D3C6AA'
-            hi Conditional guifg='#95B9C7'
-            hi Repeat guifg='#95B9C7'
-            " hi Macro guifg='#95B9C7'
-            hi Keyword guifg='#95B9C7'
-            ]]
+            require('onedark').setup {
+                style = 'warmer',
+                -- style = 'darker',
+                highlights = {
+                    -- ["Operator"] = { fg = '#a7aab0' },
+                }
+            }
+            require('onedark').load()
         end
     },
+
+    -- {
+    --     'sainnhe/everforest',
+    --     config = function()
+    --         vim.cmd [[
+    --         set background=dark
+    --         let g:everforest_background = 'soft'
+    --         let g:everforest_better_performance = 1
+    --         colorscheme everforest
+    --         ]]
+    --     end
+    -- },
 
     -- {
     --     'maxmx03/solarized.nvim',
@@ -71,14 +57,14 @@ require("lazy").setup({
     --     end,
     -- },
 
-    {
-        "bfrg/vim-cpp-modern",
-        ft = {
-            "c",
-            "cpp",
-        },
-        lazy = true,
-    },
+    -- {
+    --     "bfrg/vim-cpp-modern",
+    --     ft = {
+    --         "c",
+    --         "cpp",
+    --     },
+    --     lazy = true,
+    -- },
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
@@ -99,10 +85,10 @@ require("lazy").setup({
     },
 
     -- Indent Blankline
-    -- require("plugins.indent"),
+    require("plugins.indent"),
 
     -- Treesitter
-    -- require("plugins.treesitter"),
+    require("plugins.treesitter"),
 
     -- NVIM Lint
     require("plugins.nvim-lint"),
@@ -152,11 +138,11 @@ require("lazy").setup({
     -- require("plugins.autopairs"),
 
     -- Debugger
-    -- require("plugins.debugger"),
+    require("plugins.debugger"),
 
-    -- require("plugins.dap-go"),
+    require("plugins.dap-go"),
 
-    -- require("plugins.dap-python"),
+    require("plugins.dap-python"),
 
     -- require("plugins.dap-js"),
 })
