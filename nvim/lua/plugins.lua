@@ -24,52 +24,52 @@ require("lazy").setup({
     --             -- style = 'darker',
     --             highlights = {
     --                 ["Operator"] = { fg = '#a7aab0' },
-    --                 ["Include"] = { fg = '#95B9D7' },
+    --                 -- ["Include"] = { fg = '#95B9D7' },
     --                 -- ["Macro"] = { fg = '#95B9D7' },
-    --                 ["Conditional"] = { fg = '#95B9D7' },
-    --                 ["Repeat"] = { fg = '#95B9D7' },
+    --                 -- ["Conditional"] = { fg = '#95B9D7' },
+    --                 -- ["Repeat"] = { fg = '#95B9D7' },
     --                 -- ["Define"] = { fg = '#14A3C7' },
-    --                 ["Keyword"] = { fg = '#95B9D7' },
-    --                 ["Constant"] = { fg = '#d19a66' },
-    --                 ["PreCondit"] = { fg = '#a7aab0' },
+    --                 -- ["Keyword"] = { fg = '#95B9D7' },
+    --                 -- ["Constant"] = { fg = '#d19a66' },
+    --                 -- ["PreCondit"] = { fg = '#a7aab0' },
     --             }
     --         }
     --         require('onedark').load()
     --     end
     -- },
 
-    -- {
-    --     'sainnhe/everforest',
-    --     config = function()
-    --         vim.cmd [[
-    --         set background=dark
-    --         let g:everforest_background = 'soft'
-    --         let g:everforest_better_performance = 1
-    --         " colorscheme everforest
-    --         hi Normal guifg = '#D3C6AA' guibg='#232A2E'
-    --         hi Operator guifg='#D3C6AA'
-    --         hi Conditional guifg='#95B9C7'
-    --         hi Repeat guifg='#95B9C7'
-    --         " hi Macro guifg='#95B9C7'
-    --         hi Keyword guifg='#95B9C7'
-    --         ]]
-    --     end
-    -- },
-
     {
-        'maxmx03/solarized.nvim',
-        lazy = false,
-        priority = 1000,
+        'sainnhe/everforest',
         config = function()
-            vim.o.background = 'dark' -- or 'light'
-            vim.cmd.colorscheme 'solarized'
-            -- vim.cmd [[
-            --     hi Macro guifg='#95B9C7'
-            --     hi Operator guifg='#D3C6AA'
-            --     hi Include guifg='#95B9C7'
-            -- ]]
-        end,
+            vim.cmd [[
+            set background=dark
+            let g:everforest_background = 'soft'
+            let g:everforest_better_performance = 1
+            colorscheme everforest
+            hi Normal guifg = '#D3C6AA' guibg='#232A2E'
+            hi Operator guifg='#D3C6AA'
+            hi Conditional guifg='#95B9C7'
+            hi Repeat guifg='#95B9C7'
+            " hi Macro guifg='#95B9C7'
+            hi Keyword guifg='#95B9C7'
+            ]]
+        end
     },
+
+    -- {
+    --     'maxmx03/solarized.nvim',
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         vim.o.background = 'dark' -- or 'light'
+    --         vim.cmd.colorscheme 'solarized'
+    --         -- vim.cmd [[
+    --         --     hi Macro guifg='#95B9C7'
+    --         --     hi Operator guifg='#D3C6AA'
+    --         --     hi Include guifg='#95B9C7'
+    --         -- ]]
+    --     end,
+    -- },
 
     {
         "bfrg/vim-cpp-modern",

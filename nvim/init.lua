@@ -104,6 +104,7 @@ require('gitsigns').setup()
 
 -- DAP for javascript and typescript
 -- require('dap/javascript')
+
 --------------- Theme -----------------------
 -- vim.cmd [[
 -- " hi Function guifg='#61afef'
@@ -131,10 +132,10 @@ require('gitsigns').setup()
 -- " hi Special guifg='#e06c75'
 -- " hi SpecialChar guifg='#e06c75'
 -- " hi SpecialComment guifg='#08A04B'
---
+
 -- " autocmd BufRead,BufNewFile *.go match goFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
 -- " autocmd BufRead,BufNewFile *.zig match zigFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
---
+
 -- " hi def link zigFunctionName Function
 -- " hi def link goFunctionName Function
 -- ]]
@@ -159,11 +160,10 @@ require('gitsigns').setup()
 -- hi String guifg='#98c379'
 -- hi SpecialChar guifg='#e06c75'
 -- hi SpecialComment guifg='green'
---
+
 -- autocmd BufRead,BufNewFile *.go match goFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
 -- autocmd BufRead,BufNewFile *.zig match cppFunctionName '\<\h\w*\ze\_s\{-}(\%(\*\h\w*)\_s\{-}(\)\@!'
 --
 -- hi def link zigFunctionName Function
 -- hi def link goFunctionName Function
 -- ]]
---
