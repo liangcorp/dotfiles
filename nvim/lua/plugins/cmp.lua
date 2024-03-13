@@ -14,6 +14,22 @@ return {
     },
 
     event = { "InsertEnter", "CmdlineEnter" },
+    keys = {
+        {
+            '<space>ce',
+            function()
+                require('cmp').setup.buffer { enabled = true }
+            end,
+            desc = "[C]ompletion [E]nable"
+        },
+        {
+            '<space>cd',
+            function()
+                require('cmp').setup.buffer { enabled = false }
+            end,
+            desc = "[C]ompletion [D]isable"
+        },
+    },
     config = function()
         require("luasnip").setup({})
     end,
