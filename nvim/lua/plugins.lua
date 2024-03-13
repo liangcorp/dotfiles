@@ -76,7 +76,8 @@ require("lazy").setup({
     require("plugins.trouble"),
 
     -- Prettier
-    require("plugins.conform"),
+    require("plugins.prettier"),
+    -- require("plugins.conform"),
 
     -- Git related
     "lewis6991/gitsigns.nvim",
