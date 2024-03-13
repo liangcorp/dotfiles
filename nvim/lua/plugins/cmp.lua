@@ -13,7 +13,7 @@ return {
         "saadparwaiz1/cmp_luasnip",
     },
 
-    event = { "InsertEnter", "CmdlineEnter" },
+    -- event = { "InsertEnter", "CmdlineEnter" },
     keys = {
         {
             '<space>ce',
