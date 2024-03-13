@@ -13,6 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+
     -- Harpoon
     -- require("plugins.harpoon"),
 
@@ -57,9 +58,6 @@ require("lazy").setup({
     -- NVIM Lint
     require("plugins.nvim-lint"),
 
-    -- NVIM Java
-    -- require("plugins.nvim-java"),
-
     -- This is a VS Code like winbar
     require("plugins.barbecue"),
 
@@ -76,8 +74,7 @@ require("lazy").setup({
     require("plugins.trouble"),
 
     -- Prettier
-    require("plugins.prettier"),
-    -- require("plugins.conform"),
+    require("plugins.conform"),
 
     -- Git related
     "lewis6991/gitsigns.nvim",
@@ -105,9 +102,9 @@ require("lazy").setup({
     -- Debugger
     require("plugins.debugger"),
 
-    require("plugins.dap-go"),
+    -- require("plugins.dap-go"),
 
-    require("plugins.dap-python"),
+    -- require("plugins.dap-python"),
 
     -- require("plugins.dap-js"),
 })
