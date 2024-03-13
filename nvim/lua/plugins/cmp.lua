@@ -13,6 +13,7 @@ return {
         "saadparwaiz1/cmp_luasnip",
     },
 
+    event = { "InsertEnter", "CmdlineEnter" },
     config = function()
         require("luasnip").setup({})
     end,

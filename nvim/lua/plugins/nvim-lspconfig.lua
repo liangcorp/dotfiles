@@ -5,7 +5,6 @@ return {
         "williamboman/mason-lspconfig.nvim",
         "stevearc/aerial.nvim",
         "folke/neoconf.nvim",
-        "hrsh7th/nvim-cmp",
         "lukas-reineke/indent-blankline.nvim",
     },
     cmd = {
