@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
     -- Harpoon
-    -- require("plugins.harpoon"),
+    require("plugins.harpoon"),
 
     {
         'navarasu/onedark.nvim',
