@@ -94,6 +94,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gl <plug>(lsp-document-diagnostics)
     nmap <buffer> <leader>rn <plug>(lsp-rename)
     nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <space>f <plug>(lsp-document-format)
 endfunction
 
 augroup lsp_install
