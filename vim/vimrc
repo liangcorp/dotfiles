@@ -1,8 +1,9 @@
+color retrobox
 syntax on
 " filetype plugin on
 filetype plugin indent on
 
-set nocompatible
+" set nocompatible
 set number
 set tabstop=4
 set softtabstop=0
@@ -10,12 +11,12 @@ set shiftwidth=4
 set expandtab
 set path+=**
 set wildmenu
-set ruler
-set mouse=a
-set mousemodel=popup
-set t_Co=256
+
+set cursorline
+" set ruler
+" set t_Co=256
 set guioptions=egmrti
-set gfn=Monospace\ 10
+" set gfn=Monospace\ 10
 set autowrite
 
 " utf-8 byte sequence
@@ -59,3 +60,37 @@ xnoremap <Leader>p "\"_dP
 " Keep curser during search
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+nnoremap x _x
+
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+
+call plug#begin('~/vimplugins')
+
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> gi <plug>(lsp-definition)
+    nmap <buffer> gd <plug>(lsp-declaration)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gl <plug>(lsp-document-diagnostics)
+    nmap <buffer> <f2> <plug>(lsp-rename)
+    nmap <buffer> <f3> <plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END

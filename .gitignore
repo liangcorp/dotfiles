@@ -7,3 +7,4 @@ plugin
 package-lock.json
 package.json
 .lsp-session-v1
+*.swp

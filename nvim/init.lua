@@ -45,7 +45,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- set termguicolors to enable highlight groups
 opt.termguicolors = true
 
-vim.g.zig_fmt_autosave = 0
+-- vim.g.zig_fmt_autosave = 0
 vim.g.loaded_perl_provider = 0
 
 -- Remove whitespace on save
