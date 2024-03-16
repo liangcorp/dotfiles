@@ -11,6 +11,9 @@ set shiftwidth=4
 set expandtab
 set path+=**
 set wildmenu
+set hidden
+
+set wildignore=*.exe,*.dll,*.pdb
 
 set cursorline
 set ruler
