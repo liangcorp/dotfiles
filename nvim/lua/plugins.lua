@@ -21,8 +21,8 @@ require("lazy").setup({
         'navarasu/onedark.nvim',
         config = function()
             require('onedark').setup {
-                style = 'warmer',
-                -- style = 'darker',
+                style = 'darker',
+                -- style = 'warmer',
                 highlights = {
                     ["Operator"] = { fg = '#a7aab0' },
                 }
