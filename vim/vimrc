@@ -61,7 +61,7 @@ nnoremap <Esc>  :nohlsearch<CR>
 
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
+    " setlocal signcolumn=yes
     nmap <buffer> gi <plug>(lsp-definition)
     nmap <buffer> gd <plug>(lsp-declaration)
     nmap <buffer> gr <plug>(lsp-references)
