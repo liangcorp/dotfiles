@@ -1,6 +1,4 @@
-color retrobox
 syntax on
-" filetype plugin on
 filetype plugin indent on
 
 " set nocompatible
@@ -31,6 +29,7 @@ set smartcase
 
 set gp=git\ grep\ -n
 
+" ---------- trim whitespace ----------
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -38,7 +37,45 @@ fun! TrimWhitespace()
 endfun
 autocmd BufWritePre * call TrimWhitespace()
 
-" ========== key mappings =========== "
+" ---------- Plugins ----------- "
+
+call plug#begin('~/vimplugins')
+
+Plug 'morhetz/gruvbox'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-test/vim-test'
+
+call plug#end()
+
+" color retrobox
+set background=dark
+color gruvbox
+
+" ------------- key mappings -----------
+" clear highlighting
+nnoremap <Esc>  :nohlsearch<CR>
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> gi <plug>(lsp-definition)
+    nmap <buffer> gd <plug>(lsp-declaration)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gl <plug>(lsp-document-diagnostics)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <space>f <plug>(lsp-document-format)
+endfunction
+
+augroup lsp_install
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
 let mapleader="\\"
 
 " Move blocks up and down
@@ -67,33 +104,6 @@ nnoremap <C-l> <C-w><C-l>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 
-call plug#begin('~/vimplugins')
-
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-call plug#end()
-
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    nmap <buffer> gi <plug>(lsp-definition)
-    nmap <buffer> gd <plug>(lsp-declaration)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gl <plug>(lsp-document-diagnostics)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> K <plug>(lsp-hover)
-    nmap <buffer> <space>f <plug>(lsp-document-format)
-endfunction
-
-augroup lsp_install
-    au!
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fb :Buffers<CR>
 nnoremap <leader>ft :Tags<CR>
@@ -109,3 +119,8 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+nmap <silent> <leader>tt :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ta :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tg :TestVisit<CR>
