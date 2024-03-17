@@ -66,7 +66,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gd <plug>(lsp-declaration)
     nmap <buffer> gr <plug>(lsp-references)
     nmap <buffer> gl <plug>(lsp-document-diagnostics)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> <space>rn <plug>(lsp-rename)
     nmap <buffer> K <plug>(lsp-hover)
     nmap <buffer> <space>f <plug>(lsp-document-format)
 endfunction
@@ -104,10 +104,10 @@ nnoremap <C-l> <C-w><C-l>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 
-nnoremap <Leader>ff :Files<CR>
-nnoremap <Leader>fb :Buffers<CR>
-nnoremap <leader>ft :Tags<CR>
-nnoremap <Leader>fh :Helptags<CR>
+nnoremap <space>ff :Files<CR>
+nnoremap <space>fb :Buffers<CR>
+nnoremap <space>ft :Tags<CR>
+nnoremap <space>fh :Helptags<CR>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -119,8 +119,13 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-nmap <silent> <leader>tt :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ta :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tg :TestVisit<CR>
+nmap <silent> <space>tt :TestNearest<CR>
+nmap <silent> <space>tf :TestFile<CR>
+nmap <silent> <space>ta :TestSuite<CR>
+nmap <silent> <space>tl :TestLast<CR>
+nmap <silent> <space>tg :TestVisit<CR>
+
+nnoremap <space>co :copen<CR>
+nnoremap <space>cc :cclose<CR>
+
+nnoremap <space>ls :ls<CR>
