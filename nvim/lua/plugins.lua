@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
     -- Harpoon
-    require("plugins.harpoon"),
+    -- require("plugins.harpoon"),
 
     {
         'navarasu/onedark.nvim',
@@ -32,7 +32,7 @@ require("lazy").setup({
     },
 
     -- Arie (list and move between functions
-    require("plugins.aerial"),
+    -- require("plugins.aerial"),
 
     -- {
     --     -- Zig
@@ -100,7 +100,7 @@ require("lazy").setup({
     -- require("plugins.autopairs"),
 
     -- Debugger
-    require("plugins.debugger"),
+    -- require("plugins.debugger"),
 
     -- require("plugins.dap-go"),
 
