@@ -33,10 +33,11 @@ opt.path = vim.opt.path + '**'
 opt.cursorline = true
 -- opt.cursorcolumn=true
 -- opt.autoindent = true
--- opt.ignorecase = true
+opt.ignorecase = true
+opt.smartcase = true
 -- opt.relativenumber = true
 -- opt.breakindent = true
-
+opt.clipboard = unnamedplus
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')

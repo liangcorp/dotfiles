@@ -27,6 +27,8 @@ set is
 set ignorecase
 set smartcase
 
+set clipboard=unnamedplus
+
 set gp=git\ grep\ -n
 
 " ---------- trim whitespace ----------
@@ -129,3 +131,12 @@ nnoremap <space>co :copen<CR>
 nnoremap <space>cc :cclose<CR>
 
 nnoremap <space>ls :ls<CR>
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
+nnoremap <C-Left> :vertical resize +3<CR>
+nnoremap <C-Right> :vertial resize -3<CR>

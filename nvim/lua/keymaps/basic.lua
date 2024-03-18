@@ -53,6 +53,9 @@ keymap.set("n", "<leader>Y", "\"+Y", { desc = "System Paste" })
 keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
@@ -61,3 +64,10 @@ keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' 
 keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+keymap.set('n', '<Tab>', ":bnext<CR>")
+keymap.set('n', '<S-Tab>', ":bprevious<CR>")
+
+keymap.set('n', '<C-Left>', ":vertical resize +3<CR>")
+keymap.set('n', '<C-Right>', ":vertical resize -3<CR>")
+
