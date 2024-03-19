@@ -232,15 +232,15 @@ for type, icon in pairs(signs) do
 end
 
 -- Manage the display of line diagnostic
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---     vim.lsp.diagnostic.on_publish_diagnostics,
---     {
---       virtual_text = false,
---       signs = true,
---       update_in_insert = false,
---       underline = true,
---     }
--- )
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
+      virtual_text = true,
+      signs = false,
+      update_in_insert = false,
+      underline = true,
+    }
+)
 
 -- Formatting file
 -- local autocmd = vim.api.nvim_create_autocmd
