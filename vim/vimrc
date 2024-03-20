@@ -15,7 +15,7 @@ set wildignore=*.exe,*.dll,*.pdb
 
 set cursorline
 set ruler
-" set t_Co=256
+set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
 " set autowrite
@@ -61,6 +61,66 @@ highlight Macro ctermfg=Green
 highlight String ctermfg=Green
 highlight SpecialChar ctermfg=Red
 highlight SpecialComment ctermfg=LightGreen
+highlight LineNr ctermfg=DarkGray
+unlet c_comment_strings
+
+" ------------- Status line -----------
+set laststatus=2
+set statusline=
+set statusline+=%{StatuslineMode()}
+set statusline+=\ |
+set statusline+=%{b:gitbranch}
+set statusline+=\ |
+set statusline+=%f
+set statusline+=%=
+set statusline+=%y
+set statusline+=\ |
+set statusline+=%P
+set statusline+=\ |
+set statusline+=%l
+set statusline+=:
+set statusline+=%c
+hi statusline ctermbg=black ctermfg=lightgray
+
+function! StatuslineMode()
+  let l:mode=mode()
+  if l:mode==#"n"
+    return "NORMAL"
+  elseif l:mode==?"v"
+    return "VISUAL"
+  elseif l:mode==#"i"
+    return "INSERT"
+  elseif l:mode==#"R"
+    return "REPLACE"
+  elseif l:mode==?"s"
+    return "SELECT"
+  elseif l:mode==#"t"
+    return "TERMINAL"
+  elseif l:mode==#"c"
+    return "COMMAND"
+  elseif l:mode==#"!"
+    return "SHELL"
+  endif
+endfunction
+
+function! StatuslineGitBranch()
+  let b:gitbranch=""
+  if &modifiable
+    try
+      let l:dir=expand('%:p:h')
+      let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
+      if !v:shell_error
+        let b:gitbranch="(".substitute(l:gitrevparse, '\n', '', 'g').") "
+      endif
+    catch
+    endtry
+  endif
+endfunction
+
+augroup GetGitBranch
+  autocmd!
+  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+augroup END
 
 " ------------- key mappings -----------
 " clear highlighting
