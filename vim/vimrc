@@ -48,7 +48,7 @@ endif
 
 call plug#begin('~/vimplugins')
 
-Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'tpope/vim-fugitive'
@@ -58,18 +58,26 @@ Plug 'vim-test/vim-test'
 
 call plug#end()
 
-" color retrobox
 set background=dark
-color gruvbox
-" color retrobox
+color onedark
+highlight Operator ctermfg=grey
 
 " ------------- key mappings -----------
 " clear highlighting
 nnoremap <Esc>  :nohlsearch<CR>
 
+if executable('pylsp')
+    " pip install python-lsp-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
+    " setlocal signcolumn=yes
     nmap <buffer> gi <plug>(lsp-definition)
     nmap <buffer> gd <plug>(lsp-declaration)
     nmap <buffer> gr <plug>(lsp-references)
@@ -83,6 +91,8 @@ augroup lsp_install
     au!
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+set scl=no   " force the signcolumn to disappear
 
 let mapleader="\\"
 
