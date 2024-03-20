@@ -39,60 +39,32 @@ fun! TrimWhitespace()
 endfun
 autocmd BufWritePre * call TrimWhitespace()
 
-" ---------- Plugins ----------- "
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin()
-
-Plug 'joshdick/onedark.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'vim-test/vim-test'
-
-call plug#end()
-
+" ------------------ One Dark -------------------
 set background=dark
-color onedark
-highlight Operator ctermfg=grey
+highlight Function ctermfg=DarkCyan
+highlight Comment ctermfg=Green
+highlight Normal ctermfg=Gray
+highlight Constant ctermfg=Yellow
+highlight Statement ctermfg=Magenta
+highlight Keyword ctermfg=Magenta
+highlight Conditional ctermfg=Gray
+highlight Exception ctermfg=Gray
+highlight Operator ctermfg=Gray
+highlight Label ctermfg=Magenta
+highlight Repeat ctermfg=Gray
+highlight Type ctermfg=Magenta
+highlight PreCondit ctermfg=Green
+highlight Include ctermfg=Magenta
+highlight Macro ctermfg=Green
+highlight String ctermfg=Blue
+highlight SpecialChar ctermfg=Red
+highlight SpecialComment ctermfg=Green
 
 " ------------- key mappings -----------
 " clear highlighting
 nnoremap <Esc>  :nohlsearch<CR>
 
-if executable('pylsp')
-    " pip install python-lsp-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    " setlocal signcolumn=yes
-    nmap <buffer> gi <plug>(lsp-definition)
-    nmap <buffer> gd <plug>(lsp-declaration)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gl <plug>(lsp-document-diagnostics)
-    nmap <buffer> <space>rn <plug>(lsp-rename)
-    nmap <buffer> K <plug>(lsp-hover)
-    nmap <buffer> <space>f <plug>(lsp-document-format)
-endfunction
-
-augroup lsp_install
-    au!
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-
-set scl=no   " force the signcolumn to disappear
+" set scl=no   " force the signcolumn to disappear
 
 let mapleader="\\"
 
@@ -121,27 +93,6 @@ nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
-
-nnoremap <space>ff :Files<CR>
-nnoremap <space>fb :Buffers<CR>
-nnoremap <space>ft :Tags<CR>
-nnoremap <space>fh :Helptags<CR>
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-nmap <silent> <space>tt :TestNearest<CR>
-nmap <silent> <space>tf :TestFile<CR>
-nmap <silent> <space>ta :TestSuite<CR>
-nmap <silent> <space>tl :TestLast<CR>
-nmap <silent> <space>tg :TestVisit<CR>
 
 nnoremap <space>co :copen<CR>
 nnoremap <space>cc :cclose<CR>
