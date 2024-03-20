@@ -41,10 +41,10 @@ autocmd BufWritePre * call TrimWhitespace()
 
 " ------------------ One Dark -------------------
 set background=dark
-highlight Function ctermfg=DarkCyan
-highlight Comment ctermfg=Green
+highlight Function ctermfg=Blue
+highlight Comment ctermfg=DarkGray
 highlight Normal ctermfg=Gray
-highlight Constant ctermfg=Yellow
+highlight Constant ctermfg=Cyan
 highlight Statement ctermfg=Magenta
 highlight Keyword ctermfg=Magenta
 highlight Conditional ctermfg=Gray
@@ -52,13 +52,15 @@ highlight Exception ctermfg=Gray
 highlight Operator ctermfg=Gray
 highlight Label ctermfg=Magenta
 highlight Repeat ctermfg=Gray
-highlight Type ctermfg=Magenta
-highlight PreCondit ctermfg=Green
-highlight Include ctermfg=Magenta
+highlight Type ctermfg=Yellow
+highlight StorageClass ctermfg=Magenta
+highlight Number ctermfg=DarkYellow
+highlight PreCondit ctermfg=Magenta
+highlight Include ctermfg=Blue
 highlight Macro ctermfg=Green
-highlight String ctermfg=Blue
+highlight String ctermfg=Green
 highlight SpecialChar ctermfg=Red
-highlight SpecialComment ctermfg=Green
+highlight SpecialComment ctermfg=LightGreen
 
 " ------------- key mappings -----------
 " clear highlighting
