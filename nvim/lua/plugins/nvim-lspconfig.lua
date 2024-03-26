@@ -3,10 +3,10 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        -- "stevearc/aerial.nvim",
+        "stevearc/aerial.nvim",
         "hrsh7th/nvim-cmp",
         "folke/neoconf.nvim",
-        "lukas-reineke/indent-blankline.nvim",
+        -- "lukas-reineke/indent-blankline.nvim",
     },
     cmd = {
         "LspStart"
@@ -33,9 +33,9 @@ return {
         require('lsp.completion')
         require('lsp.bash')
         require('cmp').setup.buffer { enabled = false }
-        -- require('keymaps.aerial')
-        -- require('navigation.aerialline')
-        -- require('telescope').load_extension('aerial')
+        require('keymaps.aerial')
+        require('navigation.aerialline')
+        require('telescope').load_extension('aerial')
     end,
     keys = {
         { '<space>ls', ":LspStart<CR>", desc = "[L]SP [S]tart" },

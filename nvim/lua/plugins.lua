@@ -32,7 +32,16 @@ require("lazy").setup({
     },
 
     -- Arie (list and move between functions
-    -- require("plugins.aerial"),
+    require("plugins.aerial"),
+
+    {
+        'bfrg/vim-cpp-modern',
+        ft = {
+            'c',
+            'cpp',
+        },
+        lazy = true,
+    },
 
     -- {
     --     -- Zig
@@ -43,14 +52,15 @@ require("lazy").setup({
 
     -- Telescope
     require("plugins.telescope"),
-    {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        lazy = true
-    },
+
+    -- {
+    --     'nvim-telescope/telescope-fzf-native.nvim',
+    --     build = 'make',
+    --     lazy = true
+    -- },
 
     -- Indent Blankline
-    require("plugins.indent"),
+    -- require("plugins.indent"),
 
     -- Treesitter
     -- require("plugins.treesitter"),

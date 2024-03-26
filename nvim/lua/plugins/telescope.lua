@@ -5,7 +5,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-symbols.nvim",
-        'nvim-telescope/telescope-fzf-native.nvim',
+        -- 'nvim-telescope/telescope-fzf-native.nvim',
     },
     lazy = true,
     keys = {
@@ -16,7 +16,7 @@ return {
         require("keymaps.telescope")
         require("navigation.telescopeconfig")
         -- Enable telescope extensions, if they are installed
-        pcall(require('telescope').load_extension, 'fzf')
+        -- pcall(require('telescope').load_extension, 'fzf')
         pcall(require('telescope').load_extension, 'ui-select')
     end
 }
