@@ -21,3 +21,5 @@ cp $HOME/.bashrc $HOME/.bashrc.bak
 echo 'alias ls="ls --group-directories-first --color"' >> $HOME/.bashrc
 echo 'alias vim="nvim"' >> $HOME/.bashrc
 echo 'PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"' >> $HOME/.bashrc
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

@@ -4,8 +4,11 @@ filetype plugin indent on
 " set nocompatible
 set number
 set tabstop=4
-set softtabstop=0
 set shiftwidth=4
+set softtabstop=4
+set autoindent
+set smartindent
+
 set expandtab
 set path+=**
 set wildmenu
