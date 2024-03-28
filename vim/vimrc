@@ -148,13 +148,19 @@ xnoremap <Leader>p "\"_dP
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
+" Increase and decrease number
 nnoremap + <C-a>
 nnoremap - <C-x>
 
+" Move between panels
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
+
+" Resizing panels
+nnoremap <C-Left> :vertical resize +3<CR>
+nnoremap <C-Right> :vertial resize -3<CR>
 
 nnoremap <space>co :copen<CR>
 nnoremap <space>cc :cclose<CR>
@@ -164,8 +170,17 @@ nnoremap <space>ls :ls<CR>
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
+" Move between buffers
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
-nnoremap <C-Left> :vertical resize +3<CR>
-nnoremap <C-Right> :vertial resize -3<CR>
+" Autocomplete
+" <C-X><C-n> for just this file
+" <C-X><C-f> for filename
+" <C-X><C-]> for tags only
+" <C-n> for anything specified by the 'complete' option
+
+" Tag Jumping
+" <C-]> to jump to tag under cursor
+" g<C-]> for ambiguous tags
+" <C-t> to jump back up the tag stack
