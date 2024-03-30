@@ -23,3 +23,4 @@ echo 'alias vim="nvim"' >> $HOME/.bashrc
 echo 'PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"' >> $HOME/.bashrc
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/alacritty/alacritty-theme ~/tools/dotfiles/alacritty/alacritty-theme
