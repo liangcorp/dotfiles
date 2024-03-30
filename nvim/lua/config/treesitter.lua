@@ -4,6 +4,8 @@ require 'nvim-treesitter.configs'.setup {
         "c",
         "python",
         "gitcommit",
+        "rust",
+        "rstml",
     },
 
     modules = {},
@@ -15,7 +17,6 @@ require 'nvim-treesitter.configs'.setup {
 
     -- List of parsers to ignore installing (for "all")
     ignore_install = {
-        "rust",
         "html",
         "groovy",
         "json",
