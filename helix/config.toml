@@ -9,6 +9,7 @@ theme = "onedark"
 true-color = true
 # line-number = "relative"
 color-modes = true
+auto-completion = false
 
 [editor.cursor-shape]
 insert = "bar"
@@ -25,6 +26,9 @@ mode.select = "SELECT"
 
 [editor.soft-wrap]
 enable = true
+
+# [editor.lsp]
+# auto-signature-help = false
 
 [keys.normal]
 "space" = { f = ":format" }
