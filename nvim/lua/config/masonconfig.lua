@@ -24,7 +24,7 @@ require("mason-lspconfig").setup {
         "rust_analyzer",
         "tsserver",
         "yamlls",
-        "zls",
+        -- "zls",
         -- "flake8",
         -- "black",
         -- "isort",
