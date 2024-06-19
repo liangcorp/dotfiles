@@ -166,6 +166,21 @@ lspconfig.clangd.setup {
     root_dir = util.root_pattern("Makefile", ".git"),
 }
 
+-- arduino
+lspconfig.arduino_language_server.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags,
+    cmd = {
+        "arduino-language-server",
+        "-cli-config", "$HOME/.arduino15/arduino-cli.yaml",
+        "-fqbn", "esp8266:esp8266:arduino-esp8266",
+        "-cli", "arduino-cli",
+        "-clangd", "clangd"
+    },
+    filetypes = { "arduino" },
+}
+
 -- groovy
 lspconfig.groovyls.setup {
     on_attach = on_attach,
