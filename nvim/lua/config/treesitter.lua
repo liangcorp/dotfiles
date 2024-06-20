@@ -5,7 +5,7 @@ require 'nvim-treesitter.configs'.setup {
         "python",
         "gitcommit",
         "rust",
-        -- "rstml",
+        "markdown",
     },
 
     modules = {},
@@ -13,22 +13,10 @@ require 'nvim-treesitter.configs'.setup {
     sync_install = true,
 
     -- Automatically install missing parsers when entering buffer
-    auto_install = false,
+    auto_install = true,
 
     -- List of parsers to ignore installing (for "all")
     ignore_install = {
-        "html",
-        "groovy",
-        "json",
-        "yaml",
-        "make",
-        "bash",
-        "lua",
-        "markdown",
-        "csv",
-        "latex",
-        "javascript",
-        "typescript",
     },
 
     highlight = {
