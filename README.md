@@ -10,6 +10,14 @@ cd rust-analyser
 cargo xtask install --server # will install rust-analyzer into $HOME/.cargo/bin
 ```
 
+## For Arduino
+
+Make sure to install arduino LSP via go instead of Mason
+
+```BASH
+go install github.com/arduino/arduino-language-server@latest
+```
+
 ## For JavaScript and LSP
 
 ```BASH
