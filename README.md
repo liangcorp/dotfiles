@@ -45,3 +45,6 @@ sudo dnf install golang golang-x-tools-gopls
 sudo npm install -g prettier
 sudo npm install -g eslint
 ```
+
+## For China
+Use fedora_cn/sh
