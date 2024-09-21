@@ -28,3 +28,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 # pip install pandas wheel scikit-learn
+
+# Golang proxy in China
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,direct

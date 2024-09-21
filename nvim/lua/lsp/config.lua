@@ -192,7 +192,7 @@ lspconfig.groovyls.setup {
 }
 
 -- javascript, json and zig
-local servers = { 'zls', 'jsonls', 'tsserver' }
+local servers = { 'zls', 'jsonls', 'ts_ls' }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
