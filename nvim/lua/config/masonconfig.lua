@@ -22,7 +22,7 @@ require("mason-lspconfig").setup {
         "marksman",
         "pylsp",
         "rust_analyzer",
-        "tsserver",
+        -- "ts_ls",
         "yamlls",
         -- "zls",
         -- "flake8",
