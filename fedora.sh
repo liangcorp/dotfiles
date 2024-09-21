@@ -7,7 +7,7 @@ sudo dnf install clang golang mozilla-openh264 gnome-tweaks neovim chromium yaru
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
 
-pip install pandas wheel scikit-learn
+# pip install pandas wheel scikit-learn
 
 ln -s $HOME/tools/dotfiles/nvim $HOME/.config/
 ln -s $HOME/tools/dotfiles/helix $HOME/.config/
@@ -23,4 +23,3 @@ echo 'alias vim="nvim"' >> $HOME/.bashrc
 echo 'PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"' >> $HOME/.bashrc
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-git clone https://github.com/alacritty/alacritty-theme ~/tools/dotfiles/alacritty/alacritty-theme

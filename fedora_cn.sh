@@ -20,10 +20,10 @@ ln -s $HOME/tools/dotfiles/bash_git.sh $HOME/.bash_git.sh
 ln -s $HOME/tools/dotfiles/vim/vimrc $HOME/.vimrc
 ln -s $HOME/tools/dotfiles/cargo/config.toml $HOME/.cargo/config.toml
 
-git config --global url."https://gitclone.com/".insteadOf https://
+# git config --global url."https://gitclone.com/".insteadOf https://
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-git clone https://github.com/alacritty/alacritty-theme ~/tools/dotfiles/alacritty/alacritty-theme
+# git clone https://github.com/alacritty/alacritty-theme ~/tools/dotfiles/alacritty/alacritty-theme
 
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
