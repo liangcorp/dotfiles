@@ -64,6 +64,7 @@ require("lazy").setup({
 
     -- Treesitter
     require("plugins.treesitter"),
+    require("plugins.leptos-treesitter"),
 
     -- NVIM Lint
     require("plugins.nvim-lint"),

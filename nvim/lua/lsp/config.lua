@@ -77,6 +77,7 @@ lspconfig.rust_analyzer.setup {
         ['rust-analyzer'] = {
             cargo = {
                 autoReload = true,
+                allFeatures = true,
             },
             checkOnSave = {
                 command = "clippy"
@@ -91,6 +92,14 @@ lspconfig.rust_analyzer.setup {
                     },
                 },
             },
+            rustfmt = {
+                overrideCommand = "leptosfmt --stdin --rustfmt"
+            },
+            -- diagnostics = {
+            --     disabled = {
+            --         unlinked-files,
+            --     }
+            -- },
         },
     },
 }
