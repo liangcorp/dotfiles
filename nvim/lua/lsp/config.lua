@@ -97,7 +97,7 @@ lspconfig.rust_analyzer.setup {
             },
             diagnostics = {
                 disabled = {
-                    "unlinked-files",
+                    "unlinked-file",
                 },
             },
         },
