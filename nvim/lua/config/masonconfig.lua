@@ -3,19 +3,17 @@ require("mason").setup({
         icons = {
             package_installed = "✓",
             package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    }
+            package_uninstalled = "✗",
+        },
+    },
 })
 
-require("mason-lspconfig").setup {
+require("mason-lspconfig").setup({
     ensure_installed = {
         "bashls",
         "clangd",
         "dockerls",
         "gopls",
-        -- "groovyls",
-        -- "jdtls",
         "jsonls",
         "ltex",
         "lua_ls",
@@ -25,15 +23,33 @@ require("mason-lspconfig").setup {
         -- "ts_ls",
         "yamlls",
         -- "zls",
+    },
+})
+
+require("mason-tool-installer").setup({
+
+    -- a list of all tools you want to ensure are installed upon
+    -- start
+    ensure_installed = {
+
+        -- you can turn off/on auto_update per tool
+        { "bash-language-server", auto_update = true },
+
+        "delve",
+        -- "groovyls",
+        -- "jdtls",
         -- "flake8",
-        -- "black",
-        -- "isort",
-        -- "markdownlint",
+        "black",
+        "isort",
+        "stylua",
+        "goimports",
+        "markdownlint",
         -- "debugpy",
-        -- "prettier",
-        -- "jsonlint",
-        -- "yamllint",
-        -- "codespell",
+        "prettier",
+        "prettierd",
+        "jsonlint",
+        "yamllint",
+        "codespell",
         -- "golangcilint",
     },
-}
+})
