@@ -86,7 +86,7 @@ lspconfig.rust_analyzer.setup {
                 enable = true,
                 ignored = {
                     leptos_macro = {
-                        -- optional: --
+                        -- optional:
                         -- "component",
                         -- "server",
                     },
@@ -95,11 +95,11 @@ lspconfig.rust_analyzer.setup {
             rustfmt = {
                 overrideCommand = "leptosfmt --stdin --rustfmt"
             },
-            -- diagnostics = {
-            --     disabled = {
-            --         unlinked-files,
-            --     }
-            -- },
+            diagnostics = {
+                disabled = {
+                    "unlinked-files",
+                },
+            },
         },
     },
 }
