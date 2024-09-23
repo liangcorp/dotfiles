@@ -1,4 +1,14 @@
 syntax on
+
+call plug#begin()
+
+" List your plugins here
+Plug 'joshdick/onedark.vim'
+
+call plug#end()
+
+colorscheme onedark
+
 filetype plugin indent on
 
 " set nocompatible
@@ -46,31 +56,6 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 autocmd BufWritePre * call TrimWhitespace()
-
-" ------------------ One Dark -------------------
-set background=dark
-highlight Function ctermfg=Blue
-highlight Comment ctermfg=DarkGray
-highlight Normal ctermfg=Gray
-highlight Constant ctermfg=Cyan
-highlight Statement ctermfg=Magenta
-highlight Keyword ctermfg=Magenta
-highlight Conditional ctermfg=Gray
-highlight Exception ctermfg=Gray
-highlight Operator ctermfg=Gray
-highlight Label ctermfg=Magenta
-highlight Repeat ctermfg=Gray
-highlight Type ctermfg=Yellow
-highlight StorageClass ctermfg=Magenta
-highlight Number ctermfg=DarkYellow
-highlight PreCondit ctermfg=Magenta
-highlight Include ctermfg=Blue
-highlight Macro ctermfg=Green
-highlight String ctermfg=Green
-highlight SpecialChar ctermfg=Red
-highlight SpecialComment ctermfg=LightGreen
-highlight LineNr ctermfg=DarkGray
-unlet c_comment_strings
 
 " ------------- Status line -----------
 set laststatus=2
