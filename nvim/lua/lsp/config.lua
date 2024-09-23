@@ -87,7 +87,7 @@ lspconfig.rust_analyzer.setup {
                     leptos_macro = {
                         -- optional: --
                         -- "component",
-                        "server",
+                        -- "server",
                     },
                 },
             },

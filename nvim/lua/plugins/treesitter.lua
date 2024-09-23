@@ -27,10 +27,11 @@ return {
     --     "git",
     --     "sh",
     -- },
+    cmd = "TSEnable",
     config = function()
         pcall(require("nvim-treesitter.install").update({ with_sync = true }))
         -- require("config.autopair")
         require("config.treesitter")
     end,
-    -- lazy = true,
+    lazy = true,
 }
