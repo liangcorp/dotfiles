@@ -1,13 +1,6 @@
 syntax on
 
-call plug#begin()
-
-" List your plugins here
-Plug 'joshdick/onedark.vim'
-
-call plug#end()
-
-colorscheme onedark
+colorscheme sorbet
 
 filetype plugin indent on
 
@@ -166,6 +159,9 @@ nnoremap <C-u> <C-u>zz
 " Move between buffers
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
+
+highlight Operator ctermfg=Gray
+unlet c_comment_strings
 
 " Autocomplete
 " <C-X><C-n> for just this file
