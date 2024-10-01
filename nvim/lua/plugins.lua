@@ -27,7 +27,19 @@ require("lazy").setup({
                     ["Operator"] = { fg = '#a7aab0' },
                 }
             }
-            require('onedark').load()
+            -- require('onedark').load()
+        end
+    },
+
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = function()
+            require('gruvbox').setup {
+                overrides = {
+                    Operator = { fg = '#ebdbb2' },
+                }
+            }
         end
     },
 

@@ -17,6 +17,8 @@ o.completeopt = 'menuone,noselect'
 -- o.spelllang = en_GB
 -- o.spell = true
 
+o.background = "dark" -- or "light" for light mode
+
 vim.scriptencoding = 'UTF-8'
 
 local opt = vim.opt
@@ -69,6 +71,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- NOTE: commented out configs are lazy loaded via plugins
 require('plugins')
+
+vim.cmd([[colorscheme gruvbox]])
 
 -- Statusline without Plugins
 require('config/statusline')
