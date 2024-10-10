@@ -32,3 +32,5 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 # Golang proxy in China
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
+
+npm config set registry https://registry.npmmirror.com
