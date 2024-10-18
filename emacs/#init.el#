@@ -49,7 +49,7 @@
   :config
   (add-to-list 'exec-path "~/go/bin")
   (setq gofmt-command "goimports"))
-(add-hook 'go-mode-hook 'display-line-numbers-mode)
+(add-hook 'go-mode-hook 'display-line-number-mode)
 
 ;; Add spell check to Org mode
 ;; (add-hook 'org 'flycheck-mode)
@@ -71,7 +71,6 @@
 (setq helm-locate-fuzzy-match t)
 ;; (require 'helm-config)
 (helm-mode 1)
-(setq helm-move-to-line-cycle-in-source nil)
 
 ;; wgrep package for string refactoring in multiple files
 (use-package wgrep :ensure t)
@@ -108,15 +107,15 @@
 
 (use-package vimrc-mode :ensure t)
 (add-to-list 'auto-mode-alist '("\\vimrc\\'" . vimrc-mode))
-(add-hook 'vimrc-mode-hook 'display-line-numbers-mode)
+(add-hook 'vimrc-mode-hook 'display-line-number-mode)
 
 (use-package jenkinsfile-mode :ensure t)
 (add-to-list 'auto-mode-alist '("\\JenkinsFile\\'" . jenkinsfile-mode))
-(add-hook 'jenkinsfile-mode-hook 'display-line-numbers-mode)
+(add-hook 'jenkinsfile-mode-hook 'display-line-number-mode)
 
 (use-package docker-compose-mode :ensure t)
 (add-to-list 'auto-mode-alist '("\\Dockerfile\\'" . docker-compose-mode))
-(add-hook 'docker-compose-mode-hook 'display-line-numbers-mode)
+(add-hook 'docker-compose-mode-hook 'display-line-number-mode)
 
 (use-package git-gutter :ensure t)
 (use-package git-gutter-fringe :ensure t)
@@ -154,24 +153,24 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-hook 'web-mode-hook 'display-line-numbers-mode)
+(add-hook 'web-mode-hook 'display-line-number-mode)
 
 ;; Add hook for CSS modes that will run auto-complete-mode
 ;; (require 'css-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-hook 'css-mode #'auto-complete-mode)
-(add-hook 'css-mode-hook 'display-line-numbers-mode)
+(add-hook 'css-mode-hook 'display-line-number-mode)
 
 ;; C-mode that will run LSP at start
 (add-hook 'c-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
-(add-hook 'c-mode-hook 'display-line-numbers-mode)
+(add-hook 'c-mode-hook 'display-line-number-mode)
 ;; (setq c-format-on-save t)
 
 ;; C++-mode that will run LSP at start
 (add-hook 'c++-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
-(add-hook 'c++-mode-hook 'display-line-numbers-mode)
+(add-hook 'c++-mode-hook 'display-line-number-mode)
 ;; (setq c-format-on-save t)
 
 
@@ -182,7 +181,7 @@
 (use-package py-autopep8 :ensure t)
 (use-package blacken :ensure t)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-(add-hook 'elpy-mode-hook 'display-line-numbers-mode)
+(add-hook 'elpy-mode-hook 'display-line-number-mode)
 
 (use-package yasnippet
   :ensure
@@ -195,11 +194,11 @@
 (use-package markdown-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-  (add-hook 'markdown-mode-hook 'display-line-numbers-mode)
+  (add-hook 'markdown-mode-hook 'display-line-number-mode)
 
   ;; yaml-mode runs on .yaml files by default
   (use-package yaml-mode :mode "\\.ya?ml\\'")
-  (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
+  (add-hook 'yaml-mode-hook 'display-line-number-mode)
 
   ;; turn on semantic
   ;; (semantic-mode 1)
@@ -238,36 +237,6 @@
   ;;     ad-do-it
   ;;     (ibuffer-jump-to-buffer recent-buffer-name)))
   ;; (ad-activate 'ibuffer)
-
-  (setq x-select-enable-clipboard t)
-
-  ;; Shift the selected region right if distance is postive, left if
-;; negative
-
-(defun shift-region (distance)
-  (let ((mark (mark)))
-    (save-excursion
-      (indent-rigidly (region-beginning) (region-end) distance)
-      (push-mark mark t t)
-      ;; Tell the command loop not to deactivate the mark
-      ;; for transient mark mode
-      (setq deactivate-mark nil))))
-
-(defun shift-right ()
-  (interactive)
-  (shift-region 1))
-
-(defun shift-left ()
-  (interactive)
-  (shift-region -1))
-
-;; Bind (shift-right) and (shift-left) function to your favorite keys. I use
-;; the following so that Ctrl-Shift-Right Arrow moves selected text one
-;; column to the right, Ctrl-Shift-Left Arrow moves selected text one
-;; column to the left:
-
-(global-set-key [C-S-right] 'shift-right)
-(global-set-key [C-S-left] 'shift-left)
 
 
 ;;; init.el ends here

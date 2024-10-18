@@ -40,6 +40,7 @@ require("lazy").setup({
                     Operator = { fg = '#ebdbb2' },
                 }
             }
+            -- require('gruvbox').load()
         end
     },
 

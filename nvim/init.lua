@@ -72,7 +72,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- NOTE: commented out configs are lazy loaded via plugins
 require('plugins')
 
-vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme onedark]])
 
 -- Statusline without Plugins
 require('config/statusline')
