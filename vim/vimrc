@@ -1,6 +1,6 @@
 syntax on
 
-colorscheme sorbet
+" colorscheme sorbet
 
 filetype plugin indent on
 
@@ -25,11 +25,14 @@ autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 hi CursorLine cterm=NONE ctermbg=238
 
+set showcmd
 set ruler
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
 " set autowrite
+" set fileformat=dos
+set fileformat=unix
 
 " utf-8 byte sequence
 set encoding=utf-8
@@ -41,6 +44,26 @@ set smartcase
 set clipboard=unnamedplus
 
 set gp=git\ grep\ -n
+
+set incsearch
+
+set  showmatch
+
+if has("gui_running")
+    " this font setting works in macOS
+    " use :set guifont=* to select a gui font and :set guifont? to
+    " reveal the current gui font
+    """
+    """
+    " change this to whatever colorscheme you like -
+    " use :colorscheme to show the active colorscheme
+    colorscheme desert
+else
+    " use a 256 color colorscheme
+endif
+
+set  nobackup
+set  nowritebackup
 
 " ---------- trim whitespace ----------
 fun! TrimWhitespace()
