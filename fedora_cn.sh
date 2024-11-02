@@ -12,6 +12,16 @@ echo 'export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"' >> $HOME/.bashrc
 
 curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh
 
+mkdir -vp ${CARGO_HOME:-$HOME/.cargo}
+
+cat << EOF | tee -a ${CARGO_HOME:-$HOME/.cargo}/config.toml
+[source.crates-io]
+replace-with = 'mirror'
+
+[source.mirror]
+registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+EOF
+
 ln -s $HOME/tools/dotfiles/nvim $HOME/.config/
 ln -s $HOME/tools/dotfiles/helix $HOME/.config/
 ln -s $HOME/tools/dotfiles/alacritty $HOME/.config/
