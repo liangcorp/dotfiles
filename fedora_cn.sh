@@ -16,10 +16,19 @@ mkdir -vp ${CARGO_HOME:-$HOME/.cargo}
 
 cat << EOF | tee -a ${CARGO_HOME:-$HOME/.cargo}/config.toml
 [source.crates-io]
-replace-with = 'mirror'
+replace-with = 'rsproxy-sparse'
 
-[source.mirror]
-registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+[source.rsproxy]
+registry = "https://rsproxy.cn/crates.io-index"
+
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
+
+[registries.rsproxy]
+index = "https://rsproxy.cn/crates.io-index"
+
+[net]
+git-fetch-with-cli = true
 EOF
 
 ln -s $HOME/tools/dotfiles/nvim $HOME/.config/
