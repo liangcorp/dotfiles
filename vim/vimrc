@@ -1,3 +1,4 @@
+set t_u7=
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
@@ -187,7 +188,7 @@ set statusline+=\ |
 set statusline+=%l
 set statusline+=:
 set statusline+=%c
-hi statusline ctermbg=black ctermfg=lightgray
+hi statusline ctermfg=15 ctermbg=black
 
 function! StatuslineMode()
   let l:mode=mode()
