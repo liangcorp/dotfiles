@@ -2,88 +2,83 @@
 set nocompatible
 
 " Disable auto commenting in a new line
-	autocmd Filetype * setlocal formatoptions-=c formatoptions-=r  formatoptions-=o
+autocmd Filetype * setlocal formatoptions-=c formatoptions-=r  formatoptions-=o
 
 " Setting the character encoding of Vim to UTF-8
 set encoding=utf-8
 
 " Enable type file detection. Vim will be able to try to detect the type of file is use.
-	filetype on
-
-" Enable spell check
-	set spell
-	
-" Smart tab
-	set smarttab
-
-" Search down to subfolders
-	set path+=**
+filetype on
 
 " Enable plugins and load plugin for the detected file type.
-	filetype plugin on
+filetype plugin on
 
 " Load an indent file for the detected file type.
-	filetype indent on
-    set autoindent
-    set smartindent
-    
+filetype indent on
+set autoindent
+set smartindent
+
+" Enable spell check
+"	set spell
+
+" Smart tab
+set smarttab
+
+" Search down to subfolders
+set path+=**
+
 " Turn syntax highlighting on.
-	syntax on
+syntax on
 
 " Add numbers to the file.
 "	set number relativenumber
-	set number
+set number
 
 " Mouse functionality
-	set mouse=a
+set mouse=a
 
 " Color scheme
-	colorscheme slate
-	
-" Highlight cursor line underneath the cursor horizontally.
-	set cursorline
-	
-    hi cursorline cterm=none term=none "ctermbg=Gray40 ctermfg=Gray guibg=Grey40
-    autocmd WinEnter * setlocal cursorline
-    autocmd WinLeave * setlocal nocursorline
+"	colorscheme slate
 
+" Highlight cursor line underneath the cursor horizontally.
+set cursorline
 
 " Highlight cursor line underneath the cursor vertically.
 "	set cursorcolumn
 
 " Set shift width to 4 spaces.Set tab width to 4 columns.
-	set shiftwidth=4
-	set tabstop=4
-	set softtabstop=4
-	
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+
 " If the current file type is HTML, set tabstop to 2 spaces.
-	autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 
 " Do not save backup files.
-	set nobackup
+set nobackup
 "	set nowritebackup
-	
+
 " Do wrap lines.
-	set wrap
+set wrap
 
 " While searching though a file incrementally highlight matching characters as you type.
-	set incsearch
-	set hlsearch
-	
+set incsearch
+set hlsearch
+
 " clear highlighting
-	nnoremap <Esc>  :nohlsearch<CR>
+nnoremap <Esc>  :nohlsearch<CR>
 
 " Ignore capital letters during search.
-	set ignorecase
+set ignorecase
 
 " Show partial command you type in the last line of the screen.
-	set showcmd
+set showcmd
 
 " Show the mode you are on the last line.
 "	set showmode
 
 " Show matching words during a search.
-	set showmatch
+set showmatch
 
 " Set the commands to save in history default number is 20.
 "	set history=1000
@@ -92,28 +87,28 @@ set encoding=utf-8
 "	set splitbelow splitright
 
 " Enable auto completion menu after pressing TAB.
-	set wildmenu
+set wildmenu
 
 " There are certain files that we would never want to edit with Vim.
 " Wild menu will ignore files with these extensions.
-	set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " If Vim version is equal to or greater than 7.3 enable undo file.
 " This allows you to undo changes to a file even after saving it.
-	if version >= 703
-    	set undodir=~/.vim/backup
-    	set undofile
-    	set undoreload=10000
-	endif
-	
+if version >= 703
+    set undodir=~/.vim/backup
+    set undofile
+    set undoreload=10000
+endif
+
 " File Browsing settings
-	let g:netrw_banner=0
-	let g:netrw_liststyle=3
-	let g:netrw_showhide=1
-	let g:netrw_winsize=20
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_showhide=1
+let g:netrw_winsize=20
 
 " Auto Completion - Enable Omni complete features
-	set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 
 " Enable Spelling Suggestions for Auto-Completion:
 "	set complete+=k
@@ -125,9 +120,9 @@ set expandtab
 " allow unsaved worked that's not displayed on your screen
 set hidden
 
-" the ruler is displayed on the right side of the status 
+" the ruler is displayed on the right side of the status
 " line at the bottom of the window. By default, it displays
-" the line number, the column number, the virtual column 
+" the line number, the column number, the virtual column
 " number, and the relative position of the cursor in the file
 set ruler
 
@@ -161,25 +156,8 @@ set clipboard=unnamedplus
 " the plugin isn't installed
 " set gp=git\ grep\ -n
 
-" Set operator (< > + -) syntax highlight to gray
-highlight Operator ctermfg=Gray
-
 " turn off vim syntax highlighting inside C/C++ comments
 unlet c_comment_strings
-
-
-if has("gui_running")
-    " this font setting works in macOS
-    " use :set guifont=* to select a gui font and :set guifont? to
-    " reveal the current gui font
-    """
-    """
-    " change this to whatever colorscheme you like -
-    " use :colorscheme to show the active colorscheme
-    colorscheme desert
-else
-    " use a 256 color colorscheme
-endif
 
 " ---------- trim whitespace ----------
 fun! TrimWhitespace()
@@ -246,7 +224,6 @@ augroup GetGitBranch
   autocmd!
   autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
-
 
 " ------------- key mappings -----------
 " set scl=no   " force the signcolumn to disappear
@@ -344,7 +321,7 @@ nnoremap <leader>sc :set smartcase!<CR>
 	if has('gui_running')
 
     	" Set the color scheme.
-    		color slate
+    	"	color slate
 
 		" Font
 			if has("macvim")
@@ -366,3 +343,57 @@ nnoremap <leader>sc :set smartcase!<CR>
 
 	endif
 
+
+" --------------------- One Dark theme ----------------
+function! MyHighlights() abort
+    hi Comment ctermfg='34' guifg='#5C6370'        " Dark Green
+    hi Constant ctermfg='180' guifg='#d19a66'       " Yellow
+    hi String ctermfg='2' guifg='#98c379'           " Green
+    hi Character ctermfg='2' guifg='#98c379'        " Green
+    hi Number ctermfg='180' guifg='#d19a66'         " Yellow
+    hi Boolean ctermfg='180' guifg='#d19a66'        " Yellow
+    hi Float ctermfg='180' guifg='#d19a66'          " Yellow
+    hi Identifier ctermfg='204' guifg='#E06C75'     " Red
+    hi Function ctermfg='39'  guifg='#61afef'       " Blue
+    hi Statement ctermfg='170' guifg='#C678DD'      " Purple
+    hi Conditional ctermfg='170'  guifg='#c678dd'   " Purple
+    hi Repeat ctermfg='170' guifg='#c678dd'         " Purple
+    hi Label ctermfg='170' guifg='#c678dd'          " Purple
+    hi Keyword ctermfg='170' guifg='#c678dd'        " Purple
+    " hi Exception gui=bold guifg='silver'
+    hi Exception ctermfg='170' guifg='#c678dd'      " Purple
+    hi PreProc ctermfg='180' guifg='#e5c07b'        " Yellow
+    hi Include ctermfg='39' guifg='#61afef'         " Blue
+    hi Define ctermfg='170' guifg='#c678dd'         " Purple
+    hi Macro ctermfg='204' guifg='#e06c75'          " Red
+    hi PreCondit ctermfg='180' guifg='#e5c07b'      " Yellow
+    hi Type ctermfg='180' guifg='#e5c07b'           " Yellow
+    hi StorageClass ctermfg='180' guifg='#e5c07b'   " Yellow
+    hi Structure ctermfg='180' guifg='#e5c07b'      " Yellow
+    hi Typedef ctermfg='180' guifg='#e5c07b'        " Yellow
+    hi Special ctermfg='39' guifg='#61afef'         " Blue
+    hi SpecialChar ctermfg='180' guifg='#d19a66'    " Yellow
+    hi SpecialComment ctermfg='34' guifg='#98c379'  " Dark Green
+    hi Underlined gui='underline' cterm='underline'
+    hi Todo cterm='underline'
+
+    " Normal texts and background
+    hi Normal ctermfg='15' ctermbg='235' guifg='#abb2bf' guibg='#1e2127'
+
+    " Set operator (< > + -) syntax highlight to gray
+    hi Operator ctermfg='15' guifg='#5c6370'        " Grey
+
+    hi cursorline cterm=none term=none ctermbg='8' guibg=Grey40 "ctermbg=Gray40 ctermfg=Gray
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
+
+colorscheme habamax
+
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+
+" set background=dark
