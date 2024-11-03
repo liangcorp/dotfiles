@@ -1,4 +1,6 @@
+" Remove first line garbage text caused by a shell command during startup
 set t_u7=
+
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
