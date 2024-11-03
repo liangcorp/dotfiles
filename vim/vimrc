@@ -41,14 +41,8 @@ set clipboard=unnamedplus
 set mouse=r
 " set mouse=a
 
-" Color scheme
-"	colorscheme slate
-
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
-
-" Highlight cursor line underneath the cursor vertically.
-"	set cursorcolumn
 
 " Set shift width to 4 spaces.Set tab width to 4 columns.
 set shiftwidth=4
@@ -79,7 +73,7 @@ set ignorecase
 set showcmd
 
 " Show the mode you are on the last line.
-"	set showmode
+" set showmode
 
 " Show matching words during a search.
 set showmatch
@@ -95,7 +89,7 @@ set wildmenu
 
 " There are certain files that we would never want to edit with Vim.
 " Wild menu will ignore files with these extensions.
-set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+set wildignore=*.o,*.so,*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " If Vim version is equal to or greater than 7.3 enable undo file.
 " This allows you to undo changes to a file even after saving it.
@@ -347,45 +341,46 @@ nnoremap <leader>sc :set smartcase!<CR>
 
 " --------------------- One Dark theme ----------------
 function! MyHighlights() abort
-    hi Comment ctermfg='34' guifg='#5C6370'        " Dark Green
-    hi Constant ctermfg='180' guifg='#d19a66'       " Yellow
-    hi String ctermfg='2' guifg='#98c379'           " Green
-    hi Character ctermfg='2' guifg='#98c379'        " Green
-    hi Number ctermfg='180' guifg='#d19a66'         " Yellow
-    hi Boolean ctermfg='180' guifg='#d19a66'        " Yellow
-    hi Float ctermfg='180' guifg='#d19a66'          " Yellow
-    hi Identifier ctermfg='204' guifg='#E06C75'     " Red
-    hi Function ctermfg='39'  guifg='#61afef'       " Blue
-    hi Statement ctermfg='170' guifg='#C678DD'      " Purple
-    hi Conditional ctermfg='170'  guifg='#c678dd'   " Purple
-    hi Repeat ctermfg='170' guifg='#c678dd'         " Purple
-    hi Label ctermfg='170' guifg='#c678dd'          " Purple
-    hi Keyword ctermfg='170' guifg='#c678dd'        " Purple
+    hi Comment ctermfg=34 guifg='#5C6370'        " Dark Green
+    hi Constant ctermfg=180 guifg='#d19a66'       " Yellow
+    hi String ctermfg=2 guifg='#98c379'           " Green
+    hi Character ctermfg=2 guifg='#98c379'        " Green
+    hi Number ctermfg=180 guifg='#d19a66'         " Yellow
+    hi Boolean ctermfg=180 guifg='#d19a66'        " Yellow
+    hi Float ctermfg=180 guifg='#d19a66'          " Yellow
+    hi Identifier ctermfg=204 guifg='#E06C75'     " Red
+    hi Function ctermfg=39  guifg='#61afef'       " Blue
+    hi Statement ctermfg=170 guifg='#C678DD'      " Purple
+    hi Conditional ctermfg=170  guifg='#c678dd'   " Purple
+    hi Repeat ctermfg=170 guifg='#c678dd'         " Purple
+    hi Label ctermfg=170 guifg='#c678dd'          " Purple
+    hi Keyword ctermfg=170 guifg='#c678dd'        " Purple
     " hi Exception gui=bold guifg='silver'
-    hi Exception ctermfg='170' guifg='#c678dd'      " Purple
-    hi PreProc ctermfg='180' guifg='#e5c07b'        " Yellow
-    hi Include ctermfg='39' guifg='#61afef'         " Blue
-    hi Define ctermfg='170' guifg='#c678dd'         " Purple
-    hi Macro ctermfg='204' guifg='#e06c75'          " Red
-    hi PreCondit ctermfg='180' guifg='#e5c07b'      " Yellow
-    hi Type ctermfg='180' guifg='#e5c07b'           " Yellow
-    hi StorageClass ctermfg='180' guifg='#e5c07b'   " Yellow
-    hi Structure ctermfg='180' guifg='#e5c07b'      " Yellow
-    hi Typedef ctermfg='180' guifg='#e5c07b'        " Yellow
-    hi Special ctermfg='39' guifg='#61afef'         " Blue
-    hi SpecialChar ctermfg='180' guifg='#d19a66'    " Yellow
-    hi SpecialComment ctermfg='34' guifg='#98c379'  " Dark Green
+    hi Exception ctermfg=170 guifg='#c678dd'      " Purple
+    hi PreProc ctermfg=180 guifg='#e5c07b'        " Yellow
+    hi Include ctermfg=39 guifg='#61afef'         " Blue
+    hi Define ctermfg=170 guifg='#c678dd'         " Purple
+    hi Macro ctermfg=204 guifg='#e06c75'          " Red
+    hi PreCondit ctermfg=180 guifg='#e5c07b'      " Yellow
+    hi Type ctermfg=180 guifg='#e5c07b'           " Yellow
+    hi StorageClass ctermfg=180 guifg='#e5c07b'   " Yellow
+    hi Structure ctermfg=180 guifg='#e5c07b'      " Yellow
+    hi Typedef ctermfg=180 guifg='#e5c07b'        " Yellow
+    hi Special ctermfg=39 guifg='#61afef'         " Blue
+    hi SpecialChar ctermfg=180 guifg='#d19a66'    " Yellow
+    hi SpecialComment ctermfg=34 guifg='#98c379'  " Dark Green
     hi Underlined gui='underline' cterm='underline'
-    hi Error ctermfg='204' guifg='#E06C75'          " Red
-    hi Todo ctermfg='170' guifg='#c678dd'           " Purple
+    hi Error ctermfg=204 guifg='#E06C75'          " Red
+    hi Todo ctermfg=170 guifg='#c678dd'           " Purple
 
     " Normal texts and background
-    hi Normal ctermfg='15' ctermbg='235' guifg='#abb2bf' guibg='#1e2127'
+    hi Normal ctermfg=15 ctermbg=235 guifg='#abb2bf' guibg='#1e2127'
 
     " Set operator (< > + -) syntax highlight to gray
-    hi Operator ctermfg='15' guifg='#5c6370'        " Grey
+    hi Operator ctermfg=15 guifg='#5c6370'        " Grey
 
-    hi cursorline cterm=none term=none ctermbg='8' guibg=Grey40
+    hi CursorLine cterm=none term=none ctermbg=236 guibg='#2C323C'
+    " hi Cursor ctermfg=black ctermbg=blue
 endfunction
 
 augroup MyColors
