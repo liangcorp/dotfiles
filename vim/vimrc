@@ -144,7 +144,7 @@ endif
 
 " set autowrite
 " set fileformat=dos
-set fileformat=unix
+" set fileformat=unix
 
 " Not sure what this is. Disabled for now
 " set is
