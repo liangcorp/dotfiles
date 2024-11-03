@@ -34,8 +34,12 @@ syntax on
 "	set number relativenumber
 set number
 
+" enable system clipboard for vim
+set clipboard=unnamedplus
+
 " Mouse functionality
-set mouse=a
+set mouse=r
+" set mouse=a
 
 " Color scheme
 "	colorscheme slate
@@ -148,9 +152,6 @@ endif
 
 " Not sure what this is. Disabled for now
 " set is
-
-" enable system clipboard for vim
-set clipboard=unnamedplus
 
 " This is maybe fugitive related. Not needed if
 " the plugin isn't installed
