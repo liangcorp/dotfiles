@@ -375,7 +375,8 @@ function! MyHighlights() abort
     hi SpecialChar ctermfg='180' guifg='#d19a66'    " Yellow
     hi SpecialComment ctermfg='34' guifg='#98c379'  " Dark Green
     hi Underlined gui='underline' cterm='underline'
-    hi Todo cterm='underline'
+    hi Error ctermfg='204' guifg='#E06C75'          " Red
+    hi Todo ctermfg='170' guifg='#c678dd'           " Purple
 
     " Normal texts and background
     hi Normal ctermfg='15' ctermbg='235' guifg='#abb2bf' guibg='#1e2127'
@@ -383,7 +384,7 @@ function! MyHighlights() abort
     " Set operator (< > + -) syntax highlight to gray
     hi Operator ctermfg='15' guifg='#5c6370'        " Grey
 
-    hi cursorline cterm=none term=none ctermbg='8' guibg=Grey40 "ctermbg=Gray40 ctermfg=Gray
+    hi cursorline cterm=none term=none ctermbg='8' guibg=Grey40
 endfunction
 
 augroup MyColors
