@@ -1,53 +1,172 @@
-syntax on
+" Disable compatibility with vi which can cause unexpected issues.
+set nocompatible
 
-" colorscheme sorbet
+" Disable auto commenting in a new line
+	autocmd Filetype * setlocal formatoptions-=c formatoptions-=r  formatoptions-=o
 
-filetype plugin indent on
+" Setting the character encoding of Vim to UTF-8
+set encoding=utf-8
 
-" set nocompatible
-set number
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set autoindent
-set smartindent
+" Enable type file detection. Vim will be able to try to detect the type of file is use.
+	filetype on
 
+" Enable spell check
+	set spell
+	
+" Smart tab
+	set smarttab
+
+" Search down to subfolders
+	set path+=**
+
+" Enable plugins and load plugin for the detected file type.
+	filetype plugin on
+
+" Load an indent file for the detected file type.
+	filetype indent on
+    set autoindent
+    set smartindent
+    
+" Turn syntax highlighting on.
+	syntax on
+
+" Add numbers to the file.
+"	set number relativenumber
+	set number
+
+" Mouse functionality
+	set mouse=a
+
+" Color scheme
+	colorscheme slate
+	
+" Highlight cursor line underneath the cursor horizontally.
+	set cursorline
+	
+    hi cursorline cterm=none term=none "ctermbg=Gray40 ctermfg=Gray guibg=Grey40
+    autocmd WinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+
+
+" Highlight cursor line underneath the cursor vertically.
+"	set cursorcolumn
+
+" Set shift width to 4 spaces.Set tab width to 4 columns.
+	set shiftwidth=4
+	set tabstop=4
+	set softtabstop=4
+	
+" If the current file type is HTML, set tabstop to 2 spaces.
+	autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+
+" Do not save backup files.
+	set nobackup
+"	set nowritebackup
+	
+" Do wrap lines.
+	set wrap
+
+" While searching though a file incrementally highlight matching characters as you type.
+	set incsearch
+	set hlsearch
+	
+" clear highlighting
+	nnoremap <Esc>  :nohlsearch<CR>
+
+" Ignore capital letters during search.
+	set ignorecase
+
+" Show partial command you type in the last line of the screen.
+	set showcmd
+
+" Show the mode you are on the last line.
+"	set showmode
+
+" Show matching words during a search.
+	set showmatch
+
+" Set the commands to save in history default number is 20.
+"	set history=1000
+
+" Setting the split window to open as i like (like in a WM - qtile)
+"	set splitbelow splitright
+
+" Enable auto completion menu after pressing TAB.
+	set wildmenu
+
+" There are certain files that we would never want to edit with Vim.
+" Wild menu will ignore files with these extensions.
+	set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+" If Vim version is equal to or greater than 7.3 enable undo file.
+" This allows you to undo changes to a file even after saving it.
+	if version >= 703
+    	set undodir=~/.vim/backup
+    	set undofile
+    	set undoreload=10000
+	endif
+	
+" File Browsing settings
+	let g:netrw_banner=0
+	let g:netrw_liststyle=3
+	let g:netrw_showhide=1
+	let g:netrw_winsize=20
+
+" Auto Completion - Enable Omni complete features
+	set omnifunc=syntaxcomplete#Complete
+
+" Enable Spelling Suggestions for Auto-Completion:
+"	set complete+=k
+"	set completeopt=menu,menuone,noinsert
+
+" insert space characters whenever the tab key is pressed
 set expandtab
-set path+=**
-set wildmenu
+
+" allow unsaved worked that's not displayed on your screen
 set hidden
 
-set wildignore=*.exe,*.dll,*.pdb
-
-set cursorline
-hi cursorline cterm=none term=none
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
-hi CursorLine cterm=NONE ctermbg=238
-
-set showcmd
+" the ruler is displayed on the right side of the status 
+" line at the bottom of the window. By default, it displays
+" the line number, the column number, the virtual column 
+" number, and the relative position of the cursor in the file
 set ruler
-set t_Co=256
+
+" probably don't need this since I don't use tmux
+" set t_Co=256
+
+" remove menu, scrollbars, and a few other things
 set guioptions=egmrti
-set gfn=Monospace\ 10
+
+if has('gui_win32') || has('gui_win64') || has('gui_macvim')
+  " Complicated syntax and repetition of size
+  set guifont=Cascadia\ Code\ PL\:h14,JetBrains\ Mono\:h14,Hack\:h14,Consolas\:h14
+
+elseif has('gui_gtk') " Linux
+  " Another syntax and cannot specify more than one
+  set guifont=JetBrains\ Mono\ 14
+endif
+" set gfn=Monospace\ 10
+
 " set autowrite
 " set fileformat=dos
 set fileformat=unix
 
-" utf-8 byte sequence
-set encoding=utf-8
+" Not sure what this is. Disabled for now
+" set is
 
-set is
-set ignorecase
-set smartcase
-
+" enable system clipboard for vim
 set clipboard=unnamedplus
 
-set gp=git\ grep\ -n
+" This is maybe fugitive related. Not needed if
+" the plugin isn't installed
+" set gp=git\ grep\ -n
 
-set incsearch
+" Set operator (< > + -) syntax highlight to gray
+highlight Operator ctermfg=Gray
 
-set  showmatch
+" turn off vim syntax highlighting inside C/C++ comments
+unlet c_comment_strings
+
 
 if has("gui_running")
     " this font setting works in macOS
@@ -61,9 +180,6 @@ if has("gui_running")
 else
     " use a 256 color colorscheme
 endif
-
-set  nobackup
-set  nowritebackup
 
 " ---------- trim whitespace ----------
 fun! TrimWhitespace()
@@ -131,10 +247,8 @@ augroup GetGitBranch
   autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
 
-" ------------- key mappings -----------
-" clear highlighting
-nnoremap <Esc>  :nohlsearch<CR>
 
+" ------------- key mappings -----------
 " set scl=no   " force the signcolumn to disappear
 
 let mapleader="\\"
@@ -161,7 +275,7 @@ nnoremap N Nzzzv
 nnoremap + <C-a>
 nnoremap - <C-x>
 
-" Move between panels
+" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-j> <C-w><C-j>
@@ -171,6 +285,7 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap <C-Left> :vertical resize +3<CR>
 nnoremap <C-Right> :vertial resize -3<CR>
 
+" Copen and Cclose
 nnoremap <space>co :copen<CR>
 nnoremap <space>cc :cclose<CR>
 
@@ -183,8 +298,11 @@ nnoremap <C-u> <C-u>zz
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
-highlight Operator ctermfg=Gray
-unlet c_comment_strings
+" toggle highlight current line
+nnoremap <leader>hl :set cursorline!<CR>
+
+" toggle smartcase
+nnoremap <leader>sc :set smartcase!<CR>
 
 " Autocomplete
 " <C-X><C-n> for just this file
@@ -192,7 +310,59 @@ unlet c_comment_strings
 " <C-X><C-]> for tags only
 " <C-n> for anything specified by the 'complete' option
 
+" Minimalist-Tab Complete
+"	inoremap <expr> <Tab> TabComplete()
+"	fun! TabComplete()
+"	    if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
+"	        return "\<C-N>"
+"	    else
+"	        return "\<Tab>"
+"	    endif
+"	endfun
+
+
+" Minimalist-Autocomplete
+"	inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+"	autocmd InsertCharPre * call AutoComplete()
+"	fun! AutoComplete()
+"	    if v:char =~ '\K'
+"	        \ && getline('.')[col('.') - 4] !~ '\K'
+"	        \ && getline('.')[col('.') - 3] =~ '\K'
+"	        \ && getline('.')[col('.') - 2] =~ '\K' " last char
+"	        \ && getline('.')[col('.') - 1] !~ '\K'
+"
+"	        call feedkeys("\<C-N>", 'n')
+"	    end
+"	endfun
+
 " Tag Jumping
 " <C-]> to jump to tag under cursor
 " g<C-]> for ambiguous tags
 " <C-t> to jump back up the tag stack
+
+"------------------GVIM - GUI VERSION------------------
+	if has('gui_running')
+
+    	" Set the color scheme.
+    		color slate
+
+		" Font
+			if has("macvim")
+    			set guifont=Menlo\ Regular:h14
+			elseif has("win32")
+				set guifont="Consolas 14"
+			else
+				set guifont=JetBrains Mono\ 18
+			endif
+
+		" Hide the toolbar.
+			set guioptions-=T
+
+    	" Hide the right-side scroll bar.
+    		set guioptions-=r
+
+		" Start Lex Tree and put the cursor back in the other window.
+			autocmd VimEnter * :Lexplore | wincmd p
+
+	endif
+
