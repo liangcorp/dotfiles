@@ -58,6 +58,15 @@ autocmd('BufWritePre', {
     command = ":%s/\\s\\+$//e"
 })
 
+vim.cmd[[
+    autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd Filetype css setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd Filetype json setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd Filetype typescript setlocal tabstop=2 shiftwidth=2 expandtab
+]]
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -72,8 +81,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- NOTE: commented out configs are lazy loaded via plugins
 require('plugins')
 
-vim.cmd([[colorscheme gruvbox]])
--- vim.cmd([[colorscheme onedark]])
+-- vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme onedark]])
 
 -- Statusline without Plugins
 require('config/statusline')
