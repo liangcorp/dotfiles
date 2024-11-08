@@ -164,7 +164,7 @@ endif
 " set gp=git\ grep\ -n
 
 " turn off vim syntax highlighting inside C/C++ comments
-unlet c_comment_strings
+" unlet c_comment_strings
 
 " ---------- trim whitespace ----------
 fun! TrimWhitespace()
