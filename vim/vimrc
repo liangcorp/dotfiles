@@ -388,7 +388,7 @@ function! MyHighlights() abort
     hi Operator ctermfg=15 guifg='#5c6370'          " Grey
 
     " Normal texts and background
-    hi Normal ctermfg=15 ctermbg=235 guifg='#abb2bf' guibg='#1e2127'
+    hi Normal ctermfg=15 ctermbg=235 guifg='#abb2bf' guibg='#282c34'
 
     hi CursorLine cterm=none term=none ctermbg=236 guibg='#2C323C'
 endfunction
@@ -557,4 +557,12 @@ endif
 " Enable the :Man command shipped inside Vim's man filetype plugin.
 if exists(':Man') != 2 && !exists('g:loaded_man') && &filetype !=? 'man' && !has('nvim')
   runtime ftplugin/man.vim
+endif
+
+if has('python')
+  map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
+  imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+elseif has('python3')
+  map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
+  imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
 endif

@@ -31,30 +31,30 @@ require("lazy").setup({
         end
     },
 
-    {
-        "ellisonleao/gruvbox.nvim",
-        priority = 1000,
-        config = function()
-            require('gruvbox').setup {
-                overrides = {
-                    Operator = { fg = '#ebdbb2' },
-                }
-            }
-            -- require('gruvbox').load()
-        end
-    },
+    -- {
+    --     "ellisonleao/gruvbox.nvim",
+    --     priority = 1000,
+    --     config = function()
+    --         require('gruvbox').setup {
+    --             overrides = {
+    --                 Operator = { fg = '#ebdbb2' },
+    --             }
+    --         }
+    --         -- require('gruvbox').load()
+    --     end
+    -- },
 
     -- Arie (list and move between functions
     require("plugins.aerial"),
 
-    -- {
-    --     'bfrg/vim-cpp-modern',
-    --     ft = {
-    --         'c',
-    --         'cpp',
-    --     },
-    --     lazy = true,
-    -- },
+    {
+        'bfrg/vim-cpp-modern',
+        ft = {
+            'c',
+            'cpp',
+        },
+        lazy = true,
+    },
 
     -- {
     --     -- Zig

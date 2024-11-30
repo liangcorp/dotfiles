@@ -71,3 +71,12 @@ keymap.set('n', '<S-Tab>', ":bprevious<CR>")
 keymap.set('n', '<C-Left>', ":vertical resize +3<CR>")
 keymap.set('n', '<C-Right>', ":vertical resize -3<CR>")
 
+vim.cmd [[
+    if has('python')
+        map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
+        imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+    elseif has('python3')
+        map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
+        imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
+    endif
+]]
