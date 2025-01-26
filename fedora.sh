@@ -2,7 +2,7 @@
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-sudo dnf install clang golang mozilla-openh264 gnome-tweaks neovim chromium yaru-theme arc-theme wireshark gcc-g++ fd-find ripgrep reaver arpwatch hashcat netcat rkhunter gobuster hping3 ffuf whatweb nbtscan socat yersinia kismet macchanger dnsenum cryptsetup testdisk subfinder lynis foremost chntpw capstone binwalk medusa bluez  yara steghide sslscan evolution-ews bzip2 texlive texlive-multirow texlive-overpic texlive-appendix texlive-cjk texlive-ctex virt-manager emacs nmap john nikto hydra parsero valgrind gdb hyperfine jetbrains-mono-fonts jetbrains-mono-nl-fonts dejavu-fonts-all python3-pip tcpdump npm delve lldb helix  @virtualization -y
+sudo dnf install -y clang emacs nmap mozilla-openh264 gnome-tweaks neovim chromium yaru-theme arc-theme gcc-g++ fd-find ripgrep valgrind netcat gdb hyperfine jetbrains-mono-fonts jetbrains-mono-nl-fonts dejavu-fonts-all python3-pip tcpdump npm lldb helix delve golang NetworkManager-openvpn-gnome openvpn # wireshark reaver arpwatch hashcat rkhunter gobuster hping3 ffuf whatweb nbtscan socat yersinia kismet macchanger dnsenum cryptsetup testdisk subfinder lynis foremost chntpw capstone binwalk medusa bluez yara steghide sslscan evolution-ews bzip2 texlive texlive-multirow texlive-overpic texlive-appendix texlive-cjk texlive-ctex virt-manager john nikto hydra parsero @virtualization
 
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
