@@ -20,6 +20,8 @@ require 'nvim-treesitter.configs'.setup {
         'org',
         'make',
         'csv',
+        'toml',
+        'gitignore'
     },
 
     highlight = {

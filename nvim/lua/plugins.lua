@@ -93,7 +93,7 @@ require("lazy").setup({
     -- },
 
     -- Indent Blankline
-    -- require("plugins.indent"),
+    require("plugins.indent"),
 
     -- Treesitter
     require("plugins.treesitter"),
