@@ -47,14 +47,14 @@ require("lazy").setup({
     -- Arie (list and move between functions
     require("plugins.aerial"),
 
-    {
-        'bfrg/vim-cpp-modern',
-        ft = {
-            'c',
-            'cpp',
-        },
-        lazy = true,
-    },
+    -- {
+    --     'bfrg/vim-cpp-modern',
+    --     ft = {
+    --         'c',
+    --         'cpp',
+    --     },
+    --     lazy = true,
+    -- },
 
     {
         'nvim-orgmode/orgmode',
@@ -96,7 +96,7 @@ require("lazy").setup({
     -- require("plugins.indent"),
 
     -- Treesitter
-    -- require("plugins.treesitter"),
+    require("plugins.treesitter"),
     -- require("plugins.leptos-treesitter"),
 
     -- NVIM Lint
