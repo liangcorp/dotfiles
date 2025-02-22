@@ -18,17 +18,17 @@ require("lazy").setup({
     -- require("plugins.harpoon"),
 
     {
-        'navarasu/onedark.nvim',
+        "navarasu/onedark.nvim",
         config = function()
-            require('onedark').setup {
+            require("onedark").setup({
                 -- style = 'darker',
                 -- style = 'warmer',
                 highlights = {
-                    ["Operator"] = { fg = '#a7aab0' },
-                }
-            }
+                    ["Operator"] = { fg = "#a7aab0" },
+                },
+            })
             -- require('onedark').load()
-        end
+        end,
     },
 
     -- {
@@ -57,14 +57,14 @@ require("lazy").setup({
     -- },
 
     {
-        'nvim-orgmode/orgmode',
-        event = 'VeryLazy',
-        ft = { 'org' },
+        "nvim-orgmode/orgmode",
+        event = "VeryLazy",
+        ft = { "org" },
         config = function()
             -- Setup orgmode
-            require('orgmode').setup({
-                org_agenda_files = '~/orgfiles/**/*',
-                org_default_notes_file = '~/orgfiles/refile.org',
+            require("orgmode").setup({
+                org_agenda_files = "~/orgfiles/**/*",
+                org_default_notes_file = "~/orgfiles/refile.org",
             })
 
             -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
