@@ -4,19 +4,19 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-                lua = { "stylua" },
+                -- lua = { "stylua" },
                 -- Conform will run multiple formatters sequentially
-                go = { "goimports", "gofmt" },
+                -- go = { "goimports", "gofmt" },
                 -- You can also customize some of the format options for the filetype
-                rust = { "rustfmt", lsp_format = "fallback" },
+                -- rust = { "rustfmt", lsp_format = "fallback" },
                 -- You can use a function here to determine the formatters dynamically
-                python = function(bufnr)
-                    if require("conform").get_formatter_info("ruff_format", bufnr).available then
-                        return { "ruff_format" }
-                    else
-                        return { "isort", "black" }
-                    end
-                end,
+                -- python = function(bufnr)
+                --     if require("conform").get_formatter_info("ruff_format", bufnr).available then
+                --         return { "ruff_format" }
+                --     else
+                --         return { "isort", "black" }
+                --     end
+                -- end,
                 -- Use a sub-list to run only the first available formatter
                 html = { "prettierd", "prettier", stop_after_first = true },
                 css = { "prettierd", "prettier", stop_after_first = true },
