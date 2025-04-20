@@ -31,9 +31,8 @@ return {
         -- lspconfig.neocmake.setup {}
         require("config.masonconfig")
         require('lsp.config')
-        require('lsp.completion')
+        -- require('lsp.completion')
         require('lsp.bash')
-        require('cmp').setup.buffer { enabled = false }
         require('keymaps.aerial')
         require('navigation.aerialline')
         require('telescope').load_extension('aerial')
