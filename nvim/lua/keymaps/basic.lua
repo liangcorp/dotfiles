@@ -71,7 +71,7 @@ keymap.set('n', '<S-Tab>', ":bprevious<CR>")
 keymap.set('n', '<C-Left>', ":vertical resize +3<CR>")
 keymap.set('n', '<C-Right>', ":vertical resize -3<CR>")
 
-
+-- clang-format
 keymap.set('n', '<C-K>', ":pyf /usr/share/clang/clang-format.py<CR>")
 keymap.set('i', '<C-K> <c-o>', ":pyf /usr/share/clang/clang-format.py<CR>")
 
