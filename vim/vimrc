@@ -1,9 +1,6 @@
 " Remove first line garbage text caused by a shell command during startup
 set t_u7=
 
-" Disable compatibility with vi which can cause unexpected issues.
-set nocompatible
-
 " Disable auto commenting in a new line
 autocmd Filetype * setlocal formatoptions-=c formatoptions-=r  formatoptions-=o
 
@@ -22,7 +19,7 @@ set autoindent
 set smartindent
 
 " Enable spell check
-"	set spell
+" set spell
 
 " Smart tab
 set smarttab
@@ -41,8 +38,8 @@ set number
 set clipboard=unnamedplus
 
 " Mouse functionality
-set mouse=r
-" set mouse=a
+" set mouse=r
+set mouse=a
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
@@ -57,7 +54,8 @@ autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype css setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype json setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 expandtab
-" who cares
+
+" I guess javascript and typescript prefers 2 spaces tabstop as well
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype typescript setlocal tabstop=2 shiftwidth=2 expandtab
 
@@ -91,10 +89,10 @@ set showcmd
 set showmatch
 
 " Set the commands to save in history default number is 20.
-"	set history=1000
+" set history=1000
 
 " Setting the split window to open as i like (like in a WM - qtile)
-"	set splitbelow splitright
+" set splitbelow splitright
 
 " Enable auto completion menu after pressing TAB.
 set wildmenu
@@ -121,8 +119,8 @@ let g:netrw_winsize=20
 set omnifunc=syntaxcomplete#Complete
 
 " Enable Spelling Suggestions for Auto-Completion:
-"	set complete+=k
-"	set completeopt=menu,menuone,noinsert
+" set complete+=k
+" set completeopt=menu,menuone,noinsert
 
 " insert space characters whenever the tab key is pressed
 set expandtab
@@ -159,8 +157,7 @@ endif
 " Not sure what this is. Disabled for now
 " set is
 
-" This is maybe fugitive related. Not needed if
-" the plugin isn't installed
+" This is maybe fugitive related. Not needed if the plugin isn't installed
 " set gp=git\ grep\ -n
 
 " turn off vim syntax highlighting inside C/C++ comments
@@ -279,8 +276,9 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
 " Move between buffers
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <space>fb :ls<CR>
+nnoremap <C-n> :bnext<CR>:redraw<CR>:ls<CR>
+nnoremap <C-p> :bprevious<CR>:redraw<CR>:ls<CR>
 
 " toggle highlight current line
 nnoremap <leader>hl :set cursorline!<CR>
@@ -324,32 +322,29 @@ nnoremap <leader>sc :set smartcase!<CR>
 " g<C-]> for ambiguous tags
 " <C-t> to jump back up the tag stack
 
-"------------------GVIM - GUI VERSION------------------
-	if has('gui_running')
+" ------------------ GVIM - GUI VERSION ---------------
+if has('gui_running')
+    " Set the color scheme.
+    "	color slate
 
-    	" Set the color scheme.
-    	"	color slate
+    " Font
+        if has("macvim")
+            set guifont=Menlo\ Regular:h14
+        elseif has("win32")
+            set guifont="Consolas 14"
+        else
+            set guifont=JetBrains Mono\ 18
+        endif
 
-		" Font
-			if has("macvim")
-    			set guifont=Menlo\ Regular:h14
-			elseif has("win32")
-				set guifont="Consolas 14"
-			else
-				set guifont=JetBrains Mono\ 18
-			endif
+    " Hide the toolbar.
+        set guioptions-=T
 
-		" Hide the toolbar.
-			set guioptions-=T
+    " Hide the right-side scroll bar.
+        set guioptions-=r
 
-    	" Hide the right-side scroll bar.
-    		set guioptions-=r
-
-		" Start Lex Tree and put the cursor back in the other window.
-			autocmd VimEnter * :Lexplore | wincmd p
-
-	endif
-
+    " Start Lex Tree and put the cursor back in the other window.
+        autocmd VimEnter * :Lexplore | wincmd p
+endif
 
 " --------------------- One Dark theme ----------------
 function! OneDark() abort
@@ -399,7 +394,6 @@ hi clear
 let g:colors_name = 'naysayer'
 
 set termguicolors
-" set background=dark
 set t_md=
 
 hi! link Normal         NormalFloat
@@ -464,6 +458,7 @@ hi TroublePreview guifg=#062329 guibg=#d1b897
 hi tomlTable guifg=#d1b897
 endfunction
 
+" --------------- colour scheme -----
 augroup MyColors
     autocmd!
     autocmd ColorScheme * call NaySayer()
@@ -471,6 +466,7 @@ augroup END
 
 colorscheme habamax
 
+" ------------ Windows cursor line -----------------
 " autocmd WinEnter * setlocal cursorline
 " autocmd WinLeave * setlocal nocursorline
 
@@ -598,6 +594,7 @@ endif
 if !(exists('g:did_load_filetypes') && exists('g:did_load_ftplugin') && exists('g:did_indent_on'))
   filetype plugin indent on
 endif
+
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
@@ -605,6 +602,7 @@ endif
 if empty(mapcheck('<C-U>', 'i'))
   inoremap <C-U> <C-G>u<C-U>
 endif
+
 if empty(mapcheck('<C-W>', 'i'))
   inoremap <C-W> <C-G>u<C-W>
 endif
@@ -630,10 +628,3 @@ if exists(':Man') != 2 && !exists('g:loaded_man') && &filetype !=? 'man' && !has
   runtime ftplugin/man.vim
 endif
 
-if has('python')
-  map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
-  imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
-elseif has('python3')
-  map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
-  imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
-endif
