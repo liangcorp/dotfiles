@@ -12,7 +12,7 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "bashls",
         "clangd",
-        "dockerls",
+        -- "dockerls",
         -- "gopls",
         "jsonls",
         "ltex",
