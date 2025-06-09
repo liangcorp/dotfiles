@@ -47,4 +47,4 @@ sudo npm install -g eslint
 ```
 
 ## For China
-Use fedora_cn/sh
+Use fedora_cn.sh
