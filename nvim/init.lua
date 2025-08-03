@@ -83,8 +83,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('plugins')
 
 -- vim.cmd([[colorscheme gruvbox]])
--- vim.cmd([[colorscheme onedark]])
-vim.cmd([[colorscheme everforest]])
+vim.cmd([[colorscheme onedark]])
+-- vim.cmd([[colorscheme everforest]])
 
 -- Statusline without Plugins
 require('config/statusline')

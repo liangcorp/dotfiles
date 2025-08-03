@@ -242,7 +242,7 @@ lspconfig.lua_ls.setup {
 -- markdown
 lspconfig.ltex.setup {
     on_attach = on_attach,
-    cmd = { "ltex-ls" },
+    cmd = { "ltex_plus" },
     filetypes = { "markdown", "text", "latex", "tex", "txt", "org" },
     flags = lsp_flags,
 }
