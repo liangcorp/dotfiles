@@ -39,6 +39,7 @@ ln -s $HOME/tools/dotfiles/alacritty $HOME/.config/
 ln -s $HOME/tools/dotfiles/.tmux.conf $HOME/
 ln -s $HOME/tools/dotfiles/bash_git.sh $HOME/.bash_git.sh
 ln -s $HOME/tools/dotfiles/vim/vimrc $HOME/.vimrc
+ln -s $HOME/tools/dotfiles/vim/vim $HOME/.vim
 ln -s $HOME/tools/dotfiles/cargo/config.toml $HOME/.cargo/config.toml
 
 # git config --global url."https://gitclone.com/".insteadOf https://
