@@ -11,7 +11,7 @@ set encoding=utf-8
 filetype on
 
 " Enable plugins and load plugin for the detected file type.
-filetype plugin on
+" filetype plugin on
 
 " Load an indent file for the detected file type.
 filetype indent on
@@ -24,13 +24,16 @@ set smartindent
 " Smart tab
 set smarttab
 
+" Disable folding
+set nofoldenable
+
 " Search down to subfolders
 set path+=**
 
 " Turn syntax highlighting on.
 syntax on
 
-" Add numbers to the file.
+" Show line number
 " set number relativenumber
 set number
 
@@ -143,7 +146,6 @@ set guioptions=egmrti
 if has('gui_win32') || has('gui_win64') || has('gui_macvim')
   " Complicated syntax and repetition of size
   set guifont=Cascadia\ Code\ PL\:h14,JetBrains\ Mono\:h14,Hack\:h14,Consolas\:h14
-
 elseif has('gui_gtk') " Linux
   " Another syntax and cannot specify more than one
   set guifont=JetBrains\ Mono\ 14
@@ -241,7 +243,7 @@ vnoremap K :m '<-2<CR>gv=gv
 " Keep curser in the same position
 nnoremap J mzJ`z
 
-" Keey curser in the same position during move
+" Keep curser in the same position during move
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
@@ -293,29 +295,29 @@ nnoremap <leader>sc :set smartcase!<CR>
 " <C-n> for anything specified by the 'complete' option
 
 " Minimalist-Tab Complete
-"	inoremap <expr> <Tab> TabComplete()
-"	fun! TabComplete()
-"	    if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
-"	        return "\<C-N>"
-"	    else
-"	        return "\<Tab>"
-"	    endif
-"	endfun
+" inoremap <expr> <Tab> TabComplete()
+" fun! TabComplete()
+"     if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
+"         return "\<C-N>"
+"     else
+"         return "\<Tab>"
+"     endif
+" endfun
 
 
 " Minimalist-Autocomplete
-"	inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-"	autocmd InsertCharPre * call AutoComplete()
-"	fun! AutoComplete()
-"	    if v:char =~ '\K'
-"	        \ && getline('.')[col('.') - 4] !~ '\K'
-"	        \ && getline('.')[col('.') - 3] =~ '\K'
-"	        \ && getline('.')[col('.') - 2] =~ '\K' " last char
-"	        \ && getline('.')[col('.') - 1] !~ '\K'
+" inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+" autocmd InsertCharPre * call AutoComplete()
+" fun! AutoComplete()
+"     if v:char =~ '\K'
+"         \ && getline('.')[col('.') - 4] !~ '\K'
+"         \ && getline('.')[col('.') - 3] =~ '\K'
+"         \ && getline('.')[col('.') - 2] =~ '\K' " last char
+"         \ && getline('.')[col('.') - 1] !~ '\K'
 "
-"	        call feedkeys("\<C-N>", 'n')
-"	    end
-"	endfun
+"         call feedkeys("\<C-N>", 'n')
+"     end
+" endfun
 
 " Tag Jumping
 " <C-]> to jump to tag under cursor
@@ -332,6 +334,11 @@ if has('gui_running')
             set guifont=Menlo\ Regular:h14
         elseif has("win32")
             set guifont="Consolas 14"
+
+            " ------------ Windows cursor line -----------------
+            autocmd WinEnter * setlocal cursorline
+            autocmd WinLeave * setlocal nocursorline
+
         else
             set guifont=JetBrains Mono\ 18
         endif
@@ -346,130 +353,15 @@ if has('gui_running')
         autocmd VimEnter * :Lexplore | wincmd p
 endif
 
-" --------------------- One Dark theme ----------------
-function! OneDark() abort
-    hi Comment ctermfg=34 guifg='#5C6370'           " Dark Green
-    hi Constant ctermfg=180 guifg='#d19a66'         " Yellow
-    hi String ctermfg=2 guifg='#98c379'             " Green
-    hi Character ctermfg=2 guifg='#98c379'          " Green
-    hi Number ctermfg=180 guifg='#d19a66'           " Yellow
-    hi Boolean ctermfg=180 guifg='#d19a66'          " Yellow
-    hi Float ctermfg=180 guifg='#d19a66'            " Yellow
-    hi Identifier ctermfg=204 guifg='#E06C75'       " Red
-    hi Function ctermfg=39  guifg='#61afef'         " Blue
-    hi Statement ctermfg=170 guifg='#C678DD'        " Purple
-    hi Conditional ctermfg=170  guifg='#c678dd'     " Purple
-    hi Repeat ctermfg=170 guifg='#c678dd'           " Purple
-    hi Label ctermfg=170 guifg='#c678dd'            " Purple
-    hi Keyword ctermfg=170 guifg='#c678dd'          " Purple
-    " hi Exception gui=bold guifg='silver'
-    hi Exception ctermfg=170 guifg='#c678dd'        " Purple
-    hi PreProc ctermfg=180 guifg='#e5c07b'          " Yellow
-    hi Include ctermfg=39 guifg='#61afef'           " Blue
-    hi Define ctermfg=170 guifg='#c678dd'           " Purple
-    hi Macro ctermfg=204 guifg='#e06c75'            " Red
-    hi PreCondit ctermfg=180 guifg='#e5c07b'        " Yellow
-    hi Type ctermfg=180 guifg='#e5c07b'             " Yellow
-    hi StorageClass ctermfg=180 guifg='#e5c07b'     " Yellow
-    hi Structure ctermfg=180 guifg='#e5c07b'        " Yellow
-    hi Typedef ctermfg=180 guifg='#e5c07b'          " Yellow
-    hi Special ctermfg=39 guifg='#61afef'           " Blue
-    hi SpecialChar ctermfg=180 guifg='#d19a66'      " Yellow
-    hi SpecialComment ctermfg=34 guifg='#98c379'    " Dark Green
-    hi Error ctermfg=204 guifg='#E06C75'            " Red
-    hi Todo ctermfg=170 guifg='#c678dd'             " Purple
-    hi Underlined gui='underline' cterm='underline'
-    " Set operator (< > + -) syntax highlight to gray
-    hi Operator ctermfg=15 guifg='#5c6370'          " Grey
-
-    " Normal texts and background
-    hi Normal ctermfg=15 ctermbg=235 guifg='#abb2bf' guibg='#282c34'
-
-    hi CursorLine cterm=none term=none ctermbg=236 guibg='#2C323C'
-endfunction
-
-" --------------------- Nay Sayer theme ----------------
-function! NaySayer() abort
-hi clear
-let g:colors_name = 'naysayer'
-
-set termguicolors
-set t_md=
-
-hi! link Normal         NormalFloat
-hi! link NormalFloat    CursorLineNr
-hi! link SignColumn     CursorLineNr
-hi! link CursorLine     CursorLineNr
-hi! link StatusLine     StatusLineNC
-hi! link StatusLineNC   StatusLineNC
-hi! link VertSplit      StatusLineNC
-hi! link StatusLineTerm StatusLineNC
-hi! link StatusLineNC   StatusLineNC
-
-hi! link Identifier     Comment
-hi! link Statement      Function
-hi! link Keyword        Function
-
-hi Normal         guifg=#d1b897 guibg=#062329
-hi SignColumn     guibg=#062329
-" hi CursorLine     guibg=#062329 guifg=#d1b897
-hi CursorLine     cterm=none    term=none ctermbg=236 guibg='#2C323C'
-hi StatusLine     guibg=#062329 guifg=#d1b897 gui=NONE
-hi StatusLineNC   guibg=#d1b897 guifg=#062329
-hi VertSplit      guifg=#d1b897 guibg=#062329
-hi StatusLineTerm guifg=#062329 guibg=#d1b897
-
-hi Comment        guifg=#15ed05
-hi String         guifg=#22b59e
-hi Identifier     guifg=#afc6ce
-hi Statement      guifg=#ffffff
-hi Keyword        guifg=#ffffff gui=NONE
-hi Type           guifg=#8cde94 gui=NONE
-hi Function       guifg=#d1b897
-hi Constant       guifg=#7ad0c6
-hi Special        guifg=#8cde94
-hi PreProc        guifg=#8cde94
-hi Include        guifg=#8cde94
-hi Operator       guifg=#8cde94
-hi Exception      guifg=#ff0000
-hi Label          guifg=#ffffff
-hi Tag            guifg=#ffffff
-hi Delimiter      guifg=#8cde94
-hi Ignore         guifg=#8cde94
-hi Error          guifg=#ff0000
-hi Todo           guifg=#ffaa00
-hi LineNr         guifg=#d1b897
-hi Pmenu          guibg=#062329 guifg=#d1b897
-hi PmenuSel       guibg=#d1b897 guifg=#062329
-hi PmenuSbar      guibg=#062329
-hi PmenuThumb     guibg=#d1b897
-hi NonText        guifg=#d1b897 gui=NONE
-hi EndofBuffer    guifg=#062329 guibg=#062329
-hi Visual         guifg=#062329 guibg=#d1b897
-hi Directory      guibg=#062329 guifg=#d1b897 gui=NONE
-hi Statement      guifg=#d1b897 gui=NONE
-hi netrwCursor    guibg=#d1b897 guifg=#062329
-hi DiagnosticError guifg=#c74138 guibg=#062329
-hi DiagnosticUnderlineError guisp=#c74138
-hi DiagnosticHint guifg=#c7a538 guibg=#062329
-
-hi TroublePreview guifg=#062329 guibg=#d1b897
-
-hi tomlTable guifg=#d1b897
-endfunction
 
 " --------------- colour scheme -----
 " augroup MyColors
 "     autocmd!
-"     autocmd ColorScheme * call OneDark()
+"     autocmd ColorScheme * call NaySayer()
 " augroup END
 
 " colorscheme habamax
 colorscheme onedark
-
-" ------------ Windows cursor line -----------------
-" autocmd WinEnter * setlocal cursorline
-" autocmd WinLeave * setlocal nocursorline
 
 " -------------- vim sensible ------------------
 " Disable vi compatibility, if for some reason it's on.
@@ -578,9 +470,9 @@ set sessionoptions-=options
 set viewoptions-=options
 
 " Allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^Eterm'
-  set t_Co=16
-endif
+" if &t_Co == 8 && $TERM !~# '^Eterm'
+"   set t_Co=16
+" endif
 
 " If the running Vim lacks support for the Fish shell, use Bash instead.
 if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
@@ -644,3 +536,115 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
+
+" --------------------- One Dark theme ----------------
+" function! OneDark() abort
+"     hi Comment ctermfg=34 guifg='#5C6370'           " Dark Green
+"     hi Constant ctermfg=180 guifg='#d19a66'         " Yellow
+"     hi String ctermfg=2 guifg='#98c379'             " Green
+"     hi Character ctermfg=2 guifg='#98c379'          " Green
+"     hi Number ctermfg=180 guifg='#d19a66'           " Yellow
+"     hi Boolean ctermfg=180 guifg='#d19a66'          " Yellow
+"     hi Float ctermfg=180 guifg='#d19a66'            " Yellow
+"     hi Identifier ctermfg=204 guifg='#E06C75'       " Red
+"     hi Function ctermfg=39  guifg='#61afef'         " Blue
+"     hi Statement ctermfg=170 guifg='#C678DD'        " Purple
+"     hi Conditional ctermfg=170  guifg='#c678dd'     " Purple
+"     hi Repeat ctermfg=170 guifg='#c678dd'           " Purple
+"     hi Label ctermfg=170 guifg='#c678dd'            " Purple
+"     hi Keyword ctermfg=170 guifg='#c678dd'          " Purple
+"     " hi Exception gui=bold guifg='silver'
+"     hi Exception ctermfg=170 guifg='#c678dd'        " Purple
+"     hi PreProc ctermfg=180 guifg='#e5c07b'          " Yellow
+"     hi Include ctermfg=39 guifg='#61afef'           " Blue
+"     hi Define ctermfg=170 guifg='#c678dd'           " Purple
+"     hi Macro ctermfg=204 guifg='#e06c75'            " Red
+"     hi PreCondit ctermfg=180 guifg='#e5c07b'        " Yellow
+"     hi Type ctermfg=180 guifg='#e5c07b'             " Yellow
+"     hi StorageClass ctermfg=180 guifg='#e5c07b'     " Yellow
+"     hi Structure ctermfg=180 guifg='#e5c07b'        " Yellow
+"     hi Typedef ctermfg=180 guifg='#e5c07b'          " Yellow
+"     hi Special ctermfg=39 guifg='#61afef'           " Blue
+"     hi SpecialChar ctermfg=180 guifg='#d19a66'      " Yellow
+"     hi SpecialComment ctermfg=34 guifg='#98c379'    " Dark Green
+"     hi Error ctermfg=204 guifg='#E06C75'            " Red
+"     hi Todo ctermfg=170 guifg='#c678dd'             " Purple
+"     hi Underlined gui='underline' cterm='underline'
+"     " Set operator (< > + -) syntax highlight to gray
+"     hi Operator ctermfg=15 guifg='#5c6370'          " Grey
+"
+"     " Normal texts and background
+"     hi Normal ctermfg=15 ctermbg=235 guifg='#abb2bf' guibg='#282c34'
+"
+"     hi CursorLine cterm=none term=none ctermbg=236 guibg='#2C323C'
+" endfunction
+
+" --------------------- Nay Sayer theme ----------------
+function! NaySayer() abort
+hi clear
+let g:colors_name = 'naysayer'
+
+set t_md=
+
+hi! link Normal         NormalFloat
+hi! link NormalFloat    CursorLineNr
+hi! link SignColumn     CursorLineNr
+hi! link CursorLine     CursorLineNr
+hi! link StatusLine     StatusLineNC
+hi! link StatusLineNC   StatusLineNC
+hi! link VertSplit      StatusLineNC
+hi! link StatusLineTerm StatusLineNC
+hi! link StatusLineNC   StatusLineNC
+
+hi! link Identifier     Comment
+hi! link Statement      Function
+hi! link Keyword        Function
+
+hi Normal         guifg=#d1b897 guibg=#062329
+hi SignColumn     guibg=#062329
+" hi CursorLine     guibg=#062329 guifg=#d1b897
+hi CursorLine     cterm=none    term=none ctermbg=236 guibg='#2C323C'
+hi StatusLine     guibg=#062329 guifg=#d1b897 gui=NONE
+hi StatusLineNC   guibg=#d1b897 guifg=#062329
+hi VertSplit      guifg=#d1b897 guibg=#062329
+hi StatusLineTerm guifg=#062329 guibg=#d1b897
+
+hi Comment        guifg=#15ed05
+hi String         guifg=#22b59e
+hi Identifier     guifg=#afc6ce
+hi Statement      guifg=#ffffff
+hi Keyword        guifg=#ffffff gui=NONE
+hi Type           guifg=#8cde94 gui=NONE
+hi Function       guifg=#d1b897
+hi Constant       guifg=#7ad0c6
+hi Special        guifg=#8cde94
+hi PreProc        guifg=#8cde94
+hi Include        guifg=#8cde94
+hi Operator       guifg=#8cde94
+hi Exception      guifg=#ff0000
+hi Label          guifg=#ffffff
+hi Tag            guifg=#ffffff
+hi Delimiter      guifg=#8cde94
+hi Ignore         guifg=#8cde94
+hi Error          guifg=#ff0000
+hi Todo           guifg=#ffaa00
+hi LineNr         guifg=#d1b897
+hi Pmenu          guibg=#062329 guifg=#d1b897
+hi PmenuSel       guibg=#d1b897 guifg=#062329
+hi PmenuSbar      guibg=#062329
+hi PmenuThumb     guibg=#d1b897
+hi NonText        guifg=#d1b897 gui=NONE
+hi EndofBuffer    guifg=#062329 guibg=#062329
+hi Visual         guifg=#062329 guibg=#d1b897
+hi Directory      guibg=#062329 guifg=#d1b897 gui=NONE
+hi Statement      guifg=#d1b897 gui=NONE
+hi netrwCursor    guibg=#d1b897 guifg=#062329
+hi DiagnosticError guifg=#c74138 guibg=#062329
+hi DiagnosticUnderlineError guisp=#c74138
+hi DiagnosticHint guifg=#c7a538 guibg=#062329
+
+hi TroublePreview guifg=#062329 guibg=#d1b897
+
+hi tomlTable guifg=#d1b897
+endfunction
