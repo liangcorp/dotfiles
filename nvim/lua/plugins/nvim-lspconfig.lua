@@ -24,11 +24,11 @@ return {
     --     "zig",
     -- },
     config = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.yamlls.setup {}
-        lspconfig.dockerls.setup {}
-        lspconfig.marksman.setup {}
+        vim.lsp.enable("yamlls")
+        vim.lsp.enable("dockerls")
+        vim.lsp.enable("marksman")
         -- lspconfig.neocmake.setup {}
+
         require("config.masonconfig")
         require('lsp.config')
         -- require('lsp.completion')

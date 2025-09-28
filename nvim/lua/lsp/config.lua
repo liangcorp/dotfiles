@@ -7,13 +7,8 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 
-local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -67,42 +62,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- rust
-lspconfig.rust_analyzer.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags,
-    root_dir = util.root_pattern("Cargo.toml", ".git", "Cargo.lock"),
-    -- Server-specific settings. See `:help lspconfig-setup`
-    settings = {
-        ['rust-analyzer'] = {
-            cargo = {
-                autoReload = true,
-                allFeatures = true,
-            },
-            checkOnSave = {
-                command = "clippy"
-            },
-            procMacro = {
-                enable = true,
-                ignored = {
-                    leptos_macro = {
-                        -- optional:
-                        -- "component",
-                        -- "server",
-                    },
-                },
-            },
-            rustfmt = {
-                overrideCommand = "leptosfmt --stdin --rustfmt"
-            },
-            diagnostics = {
-                disabled = {
-                    "unlinked-file",
-                },
-            },
-        },
-    },
-}
+vim.lsp.enable("rust_analyzer")
 
 -- local go_org_import = function(wait_ms)
 --     local params = vim.lsp.util.make_range_params()
@@ -119,133 +79,38 @@ lspconfig.rust_analyzer.setup {
 -- end
 
 -- golang
-lspconfig.gopls.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    cmd = { 'gopls', 'serve' },
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-    single_file_support = true,
-    -- for postfix snippets and analyzers
-    capabilities = capabilities,
-    settings = {
-        gopls = {
-            experimentalPostfixCompletions = true,
-            analyses = {
-                fieldalignment = true,
-                unusedparams = true,
-                shadow = true,
-            },
-            staticcheck = true,
-        },
-    },
-}
+vim.lsp.enable("gopls")
 
 -- python
-lspconfig.pylsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags,
-    root_dir = util.root_pattern(".git"),
-    filetypes = { "python" },
-}
+vim.lsp.enable("pylsp")
 
 -- java
-lspconfig.jdtls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags,
-    root_dir = util.root_pattern(".git, main.java"),
-}
+vim.lsp.enable("jdtlsa")
 
 -- c and cpp
-lspconfig.clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags,
-    cmd = {
-        "clangd",
-        "--background-index",
-        "--pretty",
-        "--clang-tidy",
-        "--completion-style=bundled",
-        "--cross-file-rename",
-        "--header-insertion=iwyu",
-    },
-    root_dir = util.root_pattern("Makefile", ".git"),
-    filetypes = { "arduino", "c", "cpp" },
-}
+vim.lsp.enable("clangd")
 
 -- arduino
--- lspconfig.arduino_language_server.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     flags = lsp_flags,
---     cmd = {
---         "arduino-language-server",
---         "-cli-config", "$HOME/.arduino15/arduino-cli.yaml",
---         "-fqbn", "esp8266:esp8266:arduino-esp8266",
---         "-cli", "arduino-cli",
---         "-clangd", "clangd"
---     },
---     filetypes = { "arduino" },
--- }
+-- vim.lsp.enable("arduino_language_server")
 
 -- groovy
-lspconfig.groovyls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags,
-    cmd = { "java", "-jar",
-        vim.fn.expand("$HOME/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar") },
-}
+vim.lsp.enable("groovyls")
 
--- javascript, json and zig
-local servers = { 'zls', 'jsonls', 'ts_ls' }
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        flags = lsp_flags,
-        root_dir = util.root_pattern(".git"),
-    }
-end
+-- zig
+vim.lsp.enable("zls")
+
+-- JSON
+vim.lsp.enable("jsonls")
+
+-- Typescript
+vim.lsp.enable("ts_ls")
+
 
 -- lua
-lspconfig.lua_ls.setup {
-    on_attach = on_attach,
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { 'vim' },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false,
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-    capabilities = capabilities,
-    flag = lsp_flags
-}
+vim.lsp.enable("lua_ls")
 
 -- markdown
-lspconfig.ltex.setup {
-    on_attach = on_attach,
-    cmd = { "ltex_plus" },
-    filetypes = { "markdown", "text", "latex", "tex", "txt", "org" },
-    flags = lsp_flags,
-}
+vim.lsp.enable("ltex")
 
 -- this is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones

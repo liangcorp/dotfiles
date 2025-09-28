@@ -1,0 +1,11 @@
+cmd = {
+    "clangd",
+    "--background-index",
+    "--pretty",
+    "--clang-tidy",
+    "--completion-style=bundled",
+    "--cross-file-rename",
+    "--header-insertion=iwyu",
+},
+root_dir = util.root_pattern("Makefile", ".git"),
+filetypes = { "arduino", "c", "cpp" },
