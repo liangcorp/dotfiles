@@ -63,6 +63,38 @@ end
 
 -- rust
 vim.lsp.enable("rust_analyzer")
+vim.lsp.config("rust_analyzer", {
+    on_attach = on_attach,
+    capabilities = capabilities,
+
+    -- Server-specific settings. See `:help lspconfig-setup`
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                autoReload = true,
+                allFeatures = true,
+            },
+            checkOnSave = {
+                command = "clippy"
+            },
+            procMacro = {
+                enable = true,
+                ignored = {
+                    leptos_macro = {
+                        -- optional:
+                        -- "component",
+                        -- "server",
+                    },
+                },
+            },
+            diagnostics = {
+                disabled = {
+                    "unlinked-file",
+                },
+            },
+        },
+    },
+})
 
 -- local go_org_import = function(wait_ms)
 --     local params = vim.lsp.util.make_range_params()
@@ -80,6 +112,26 @@ vim.lsp.enable("rust_analyzer")
 
 -- golang
 vim.lsp.enable("gopls")
+vim.lsp.config("gopls", {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { 'gopls', 'serve' },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    single_file_support = true,
+
+    settings = {
+        gopls = {
+            experimentalPostfixCompletions = true,
+            analyses = {
+                fieldalignment = true,
+                unusedparams = true,
+                shadow = true,
+            },
+            staticcheck = true,
+        },
+    },
+})
 
 -- python
 vim.lsp.enable("pylsp")
@@ -89,6 +141,21 @@ vim.lsp.enable("jdtlsa")
 
 -- c and cpp
 vim.lsp.enable("clangd")
+vim.lsp.config("clangd", {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--pretty",
+        "--clang-tidy",
+        "--completion-style=bundled",
+        "--cross-file-rename",
+        "--header-insertion=iwyu",
+    },
+    root_dir = util.root_pattern("Makefile", ".git"),
+    filetypes = { "arduino", "c", "cpp" },
+})
 
 -- arduino
 -- vim.lsp.enable("arduino_language_server")
@@ -105,12 +172,41 @@ vim.lsp.enable("jsonls")
 -- Typescript
 vim.lsp.enable("ts_ls")
 
-
 -- lua
 vim.lsp.enable("lua_ls")
-
+vim.lsp.config("lus_ls", {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+})
 -- markdown
 vim.lsp.enable("ltex")
+vim.lsp.config("ltex", {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { "ltex_plus" },
+    filetypes = { "markdown", "text", "latex", "tex", "txt", "org" },
+})
 
 -- this is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
