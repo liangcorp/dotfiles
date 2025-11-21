@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt install -y curl git build-essential clang emacs nmap gnome-tweaks neovim chromium-browser fd-find ripgrep valgrind ncat gdb hyperfine fonts-jetbrains-mono fonts-dejavu-mono python3-pip tcpdump npm lldb tree-sitter-cli python3-venv evolution-ews
+sudo apt install -y curl git build-essential clang emacs nmap gnome-tweaks neovim chromium-browser fd-find ripgrep valgrind ncat gdb hyperfine fonts-jetbrains-mono fonts-dejavu-mono python3-pip tcpdump npm lldb tree-sitter-cli python3-venv evolution-ews tree
 
 # sudo apt install -y delve golang wireshark reaver arpwatch hashcat rkhunter gobuster hping3 ffuf whatweb nbtscan socat yersinia kismet macchanger dnsenum cryptsetup testdisk subfinder lynis foremost chntpw capstone binwalk medusa bluez yara steghide sslscan bzip2 texlive texlive-multirow texlive-overpic texlive-appendix texlive-cjk texlive-ctex john nikto hydra parsero
 
