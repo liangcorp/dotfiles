@@ -1,8 +1,8 @@
 #!/bin/sh
 
-sudo apt install -y build-essential clang emacs nmap gnome-tweaks neovim chromium-browser fd-find ripgrep valgrind ncat gdb hyperfine fonts-jetbrains-mono fonts-dejavu-mono python3-pip tcpdump npm lldb
+sudo apt install -y curl git build-essential clang emacs nmap gnome-tweaks neovim chromium-browser fd-find ripgrep valgrind ncat gdb hyperfine fonts-jetbrains-mono fonts-dejavu-mono python3-pip tcpdump npm lldb tree-sitter-cli python3-venv evolution-ews
 
-# sudo apt install -y delve golang wireshark reaver arpwatch hashcat rkhunter gobuster hping3 ffuf whatweb nbtscan socat yersinia kismet macchanger dnsenum cryptsetup testdisk subfinder lynis foremost chntpw capstone binwalk medusa bluez yara steghide sslscan evolution-ews bzip2 texlive texlive-multirow texlive-overpic texlive-appendix texlive-cjk texlive-ctex virt-manager john nikto hydra parsero @virtualization
+# sudo apt install -y delve golang wireshark reaver arpwatch hashcat rkhunter gobuster hping3 ffuf whatweb nbtscan socat yersinia kismet macchanger dnsenum cryptsetup testdisk subfinder lynis foremost chntpw capstone binwalk medusa bluez yara steghide sslscan bzip2 texlive texlive-multirow texlive-overpic texlive-appendix texlive-cjk texlive-ctex john nikto hydra parsero
 
 cp $HOME/.bashrc $HOME/.bashrc.bak
 # echo 'source "$HOME/.bash_git.sh"' >> $HOME/.bashrc
@@ -52,8 +52,8 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 # pip install pandas wheel scikit-learn
 
 # Golang proxy in China
-go env -w GO111MODULE=on
-go env -w GOPROXY=https://goproxy.cn,direct
+# go env -w GO111MODULE=on
+# go env -w GOPROXY=https://goproxy.cn,direct
 
 npm config set registry https://registry.npmmirror.com
 
