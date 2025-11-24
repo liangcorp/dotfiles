@@ -65,8 +65,8 @@ keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window'
 keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-keymap.set('n', '<Tab>', ":bnext<CR>")
-keymap.set('n', '<S-Tab>', ":bprevious<CR>")
+keymap.set('n', '<C-n>', ":bnext<CR>:redraw<CR>:ls<CR>")
+keymap.set('n', '<C-p>', ":bprevious<CR>:redraw<CR>:ls<CR>")
 
 keymap.set('n', '<C-Left>', ":vertical resize +3<CR>")
 keymap.set('n', '<C-Right>', ":vertical resize -3<CR>")
