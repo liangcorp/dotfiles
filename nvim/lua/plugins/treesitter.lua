@@ -26,7 +26,7 @@ return {
         -- "xml",
         -- "git",
         -- "sh",
-        "python"
+        -- "python"
     },
     -- cmd = "TSEnable",
     config = function()
