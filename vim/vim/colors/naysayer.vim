@@ -35,7 +35,8 @@ hi Identifier     guifg=#afc6ce
 hi Statement      guifg=#ffffff
 hi Keyword        guifg=#ffffff gui=NONE
 hi Type           guifg=#8cde94 gui=NONE
-hi Function       guifg=#d1b897
+" hi Function       guifg=#d1b897
+hi Function       guifg=#8cde94
 hi Constant       guifg=#7ad0c6
 hi Special        guifg=#8cde94
 hi PreProc        guifg=#8cde94

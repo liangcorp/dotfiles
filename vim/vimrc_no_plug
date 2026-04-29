@@ -1,432 +1,540 @@
-
-" Disable compatibility with vi which can cause unexpected issues.
-	set nocompatible
-
-" Disable the vim bell
-	set visualbell
+" Remove first line garbage text caused by a shell command during startup
+set t_u7=
 
 " Disable auto commenting in a new line
-	autocmd Filetype * setlocal formatoptions-=c formatoptions-=r  formatoptions-=o
+autocmd Filetype * setlocal formatoptions-=c formatoptions-=r  formatoptions-=o
 
 " Setting the character encoding of Vim to UTF-8
-	set encoding=UTF-8
+set encoding=utf-8
 
 " Enable type file detection. Vim will be able to try to detect the type of file is use.
-	filetype on
-
-" Enable spell check
-	set spell
-
-" Smart tab
-	set smarttab
-
-" Search down to subfolders
-	set path+=**
+filetype on
 
 " Enable plugins and load plugin for the detected file type.
-	filetype plugin on
+" filetype plugin on
 
 " Load an indent file for the detected file type.
-	filetype indent on
+filetype indent on
+set autoindent
+set smartindent
+
+" Enable spell check
+" set spell
+
+" Smart tab
+set smarttab
+
+" Disable folding
+set nofoldenable
+
+" Search down to subfolders
+set path+=**
 
 " Turn syntax highlighting on.
-	syntax on
+syntax on
 
-" Add numbers to the file.
-	set number relativenumber
+" Show line number
+" set number relativenumber
+set number
+
+" enable system clipboard for vim
+set clipboard=unnamedplus
 
 " Mouse functionality
-	set mouse=a
-
-" Color scheme
-	colorscheme slate
+" set mouse=r
+set mouse=a
 
 " Highlight cursor line underneath the cursor horizontally.
-	set cursorline
-
-" Highlight cursor line underneath the cursor vertically.
-	set cursorcolumn
+set cursorline
 
 " Set shift width to 4 spaces.Set tab width to 4 columns.
-	set shiftwidth=4
-	set tabstop=4
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 
-" If the current file type is HTML, set indentation to 2 spaces.
-	autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+" If the current file type is HTML CSS, JSON or YAML, set tabstop to 2 spaces.
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype css setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype json setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 expandtab
+
+" I guess javascript and typescript prefers 2 spaces tabstop as well
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype typescript setlocal tabstop=2 shiftwidth=2 expandtab
+
+" Disable all bells
+set noerrorbells
 
 " Do not save backup files.
-	set nobackup
+set nobackup
+"	set nowritebackup
 
 " Do wrap lines.
-	set wrap
+set wrap
 
 " While searching though a file incrementally highlight matching characters as you type.
-	set incsearch
-	set hlsearch
+set incsearch
+set hlsearch
+
+" clear highlighting
+nnoremap <Esc>  :nohlsearch<CR>
 
 " Ignore capital letters during search.
-	set ignorecase
+set ignorecase
 
 " Show partial command you type in the last line of the screen.
-	set showcmd
+set showcmd
 
 " Show the mode you are on the last line.
-	set showmode
+" set showmode
 
 " Show matching words during a search.
-	set showmatch
+set showmatch
 
 " Set the commands to save in history default number is 20.
-	set history=1000
+" set history=1000
 
 " Setting the split window to open as i like (like in a WM - qtile)
-	set splitbelow splitright
+" set splitbelow splitright
 
 " Enable auto completion menu after pressing TAB.
-	set wildmenu
+set wildmenu
 
 " There are certain files that we would never want to edit with Vim.
 " Wild menu will ignore files with these extensions.
-	set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+set wildignore=*.o,*.so,*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " If Vim version is equal to or greater than 7.3 enable undo file.
 " This allows you to undo changes to a file even after saving it.
-	if version >= 703
-    	set undodir=~/.vim/backup
-    	set undofile
-    	set undoreload=10000
-	endif
-
+if version >= 703
+    set undodir=~/.vim/backup
+    set undofile
+    set undoreload=10000
+endif
 
 " File Browsing settings
-	let g:netrw_banner=0
-	let g:netrw_liststyle=3
-	let g:netrw_showhide=1
-	let g:netrw_winsize=20
-
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_showhide=1
+let g:netrw_winsize=20
 
 " Auto Completion - Enable Omni complete features
-	set omnifunc=syntaxcomplete#Complete
-
+set omnifunc=syntaxcomplete#Complete
 
 " Enable Spelling Suggestions for Auto-Completion:
-	set complete+=k
-	set completeopt=menu,menuone,noinsert
+" set complete+=k
+" set completeopt=menu,menuone,noinsert
 
+" insert space characters whenever the tab key is pressed
+set expandtab
+
+" allow unsaved worked that's not displayed on your screen
+set hidden
+
+" the ruler is displayed on the right side of the status
+" line at the bottom of the window. By default, it displays
+" the line number, the column number, the virtual column
+" number, and the relative position of the cursor in the file
+set ruler
+
+" probably don't need this since I don't use tmux
+" set t_Co=256
+
+" remove menu, scrollbars, and a few other things
+set guioptions=egmrti
+
+if has('gui_win32') || has('gui_win64') || has('gui_macvim')
+  " Complicated syntax and repetition of size
+  set guifont=Cascadia\ Code\ PL\:h14,JetBrains\ Mono\:h14,Hack\:h14,Consolas\:h14
+elseif has('gui_gtk') " Linux
+  " Another syntax and cannot specify more than one
+  set guifont=JetBrains\ Mono\ 14
+endif
+" set gfn=Monospace\ 10
+
+" set autowrite
+" set fileformat=dos
+" set fileformat=unix
+
+" Not sure what this is. Disabled for now
+" set is
+
+" This is maybe fugitive related. Not needed if the plugin isn't installed
+" set gp=git\ grep\ -n
+
+" turn off vim syntax highlighting inside C/C++ comments
+" unlet c_comment_strings
+
+" ---------- trim whitespace ----------
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+autocmd BufWritePre * call TrimWhitespace()
+
+" ------------- Status line -----------
+set laststatus=2
+set statusline=
+set statusline+=%{StatuslineMode()}
+set statusline+=\ |
+set statusline+=%{b:gitbranch}
+set statusline+=\ |
+set statusline+=%f
+set statusline+=%=
+set statusline+=%y
+set statusline+=\ |
+set statusline+=%P
+set statusline+=\ |
+set statusline+=%l
+set statusline+=:
+set statusline+=%c
+hi statusline ctermfg=15 ctermbg=black
+
+function! StatuslineMode()
+  let l:mode=mode()
+  if l:mode==#"n"
+    return "NORMAL"
+  elseif l:mode==?"v"
+    return "VISUAL"
+  elseif l:mode==#"i"
+    return "INSERT"
+  elseif l:mode==#"R"
+    return "REPLACE"
+  elseif l:mode==?"s"
+    return "SELECT"
+  elseif l:mode==#"t"
+    return "TERMINAL"
+  elseif l:mode==#"c"
+    return "COMMAND"
+  elseif l:mode==#"!"
+    return "SHELL"
+  endif
+endfunction
+
+function! StatuslineGitBranch()
+  let b:gitbranch=""
+  if &modifiable
+    try
+      let l:dir=expand('%:p:h')
+      let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
+      if !v:shell_error
+        let b:gitbranch="(".substitute(l:gitrevparse, '\n', '', 'g').") "
+      endif
+    catch
+    endtry
+  endif
+endfunction
+
+augroup GetGitBranch
+  autocmd!
+  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+augroup END
+
+" ------------- key mappings -----------
+" set scl=no   " force the signcolumn to disappear
+
+let mapleader="\\"
+
+" Move blocks up and down
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Keep curser in the same position
+nnoremap J mzJ`z
+
+" Keep curser in the same position during move
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Paste over the highlighted word with copied word
+xnoremap <Leader>p "\"_dP
+
+" Keep curser during search
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Increase and decrease number
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+
+" Resizing panels
+nnoremap <C-Left> :vertical resize +3<CR>
+nnoremap <C-Right> :vertial resize -3<CR>
+
+" Copen and Cclose
+nnoremap <space>co :copen<CR>
+nnoremap <space>cc :cclose<CR>
+
+nnoremap <space>ls :ls<CR>
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Move between buffers
+nnoremap <space>fb :ls<CR>
+nnoremap <C-n> :bnext<CR>:redraw<CR>:ls<CR>
+nnoremap <C-p> :bprevious<CR>:redraw<CR>:ls<CR>
+
+" toggle highlight current line
+nnoremap <leader>hl :set cursorline!<CR>
+
+" toggle smartcase
+nnoremap <leader>sc :set smartcase!<CR>
+
+" Autocomplete
+" <C-X><C-n> for just this file
+" <C-X><C-f> for filename
+" <C-X><C-]> for tags only
+" <C-n> for anything specified by the 'complete' option
 
 " Minimalist-Tab Complete
-	inoremap <expr> <Tab> TabComplete()
-	fun! TabComplete()
-	    if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
-	        return "\<C-N>"
-	    else
-	        return "\<Tab>"
-	    endif
-	endfun
+" inoremap <expr> <Tab> TabComplete()
+" fun! TabComplete()
+"     if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
+"         return "\<C-N>"
+"     else
+"         return "\<Tab>"
+"     endif
+" endfun
 
 
 " Minimalist-Autocomplete
-	inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-	autocmd InsertCharPre * call AutoComplete()
-	fun! AutoComplete()
-	    if v:char =~ '\K'
-	        \ && getline('.')[col('.') - 4] !~ '\K'
-	        \ && getline('.')[col('.') - 3] =~ '\K'
-	        \ && getline('.')[col('.') - 2] =~ '\K' " last char
-	        \ && getline('.')[col('.') - 1] !~ '\K'
+" inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+" autocmd InsertCharPre * call AutoComplete()
+" fun! AutoComplete()
+"     if v:char =~ '\K'
+"         \ && getline('.')[col('.') - 4] !~ '\K'
+"         \ && getline('.')[col('.') - 3] =~ '\K'
+"         \ && getline('.')[col('.') - 2] =~ '\K' " last char
+"         \ && getline('.')[col('.') - 1] !~ '\K'
+"
+"         call feedkeys("\<C-N>", 'n')
+"     end
+" endfun
 
-	        call feedkeys("\<C-N>", 'n')
-	    end
-	endfun
+" Tag Jumping
+" <C-]> to jump to tag under cursor
+" g<C-]> for ambiguous tags
+" <C-t> to jump back up the tag stack
+
+" ------------------ GVIM - GUI VERSION ---------------
+if has('gui_running')
+    " Set the color scheme.
+    "	color slate
+
+    " Font
+        if has("macvim")
+            set guifont=Menlo\ Regular:h14
+        elseif has("win32")
+            set guifont="Consolas 14"
+
+            " ------------ Windows cursor line -----------------
+            autocmd WinEnter * setlocal cursorline
+            autocmd WinLeave * setlocal nocursorline
+
+        else
+            set guifont=JetBrains Mono\ 18
+        endif
+
+    " Hide the toolbar.
+        set guioptions-=T
+
+    " Hide the right-side scroll bar.
+        set guioptions-=r
+
+    " Start Lex Tree and put the cursor back in the other window.
+        autocmd VimEnter * :Lexplore | wincmd p
+endif
 
 
-" Closing compaction in insert mode
-	inoremap [ []<left>
-	inoremap ( ()<left>
-	inoremap { {}<left>
-	inoremap /* /**/<left><left>
+" --------------- colour scheme -----
+" augroup MyColors
+"     autocmd!
+"     autocmd ColorScheme * call NaySayer()
+" augroup END
 
-"------------------GVIM - GUI VERSION------------------
+" colorscheme habamax
+" colorscheme onedark
+colorscheme naysayer
 
+" -------------- vim sensible ------------------
+" Disable vi compatibility, if for some reason it's on.
+if &compatible
+  set nocompatible
+endif
 
-	if has('gui_running')
-
-    	" Set the color scheme.
-    		color slate
-
-		" Font
-			if has("macvim")
-    			set guifont=Menlo\ Regular:h14
-			elseif has("win32")
-				set guifont="Consolas 14"
-			else
-				set guifont=Consolas\ 18
-			endif
-
-		" Hide the toolbar.
-			set guioptions-=T
-
-    	" Hide the right-side scroll bar.
-    		set guioptions-=r
-
-		" Start Lex Tree and put the cursor back in the other window.
-			autocmd VimEnter * :Lexplore | wincmd p
-
-	endif
-
-"------------------Hex_Toggle_Functions------------------
-
-function! DoHex()
-    " Get the current buffer name
-    let current_file = expand('%')
-
-    " New file name
-	let new_file = current_file . '.hex'
-
-    " Save the current buffer as a hex file
-    execute 'w !xxd > ' . new_file
-
-    echo "Hex file created and saved as " . new_file
+" Check if an option was set from a file in $HOME.  This lets us avoid
+" overriding options in the user's vimrc, but still override options in the
+" system vimrc.
+function! s:MaySet(option) abort
+  if exists('*execute')
+    let out = execute('verbose setglobal all ' . a:option . '?')
+  else
+    redir => out
+    silent verbose execute 'setglobal all' a:option . '?'
+    redir END
+  endif
+  return out !~# " \\(\\~[\\/]\\|Lua\\)[^\n]*$"
 endfunction
 
-function! UndoHex()
-    " Get the current buffer name
-    let current_file = expand('%')
-
-	" Name stage 1: Remove the .hex extension if it exists
-    let new_file_stage1 = substitute(current_file, '\.hex$', '', '')
-
-	" Get the file name without extension
-	let file_name = substitute(new_file_stage1, '\(.*\)\.\(\w\+\)$', '\1', '')
-
-	" Get the file extension
-	let file_extension = substitute(new_file_stage1, '\(.*\)\.\(\w\+\)$', '\2', '')
-
-	" Add 'M' before the extension(M = Modded)
-	let new_file = file_name . 'M.' . file_extension
-
-    " Save the current buffer as a reversed hex file
-    execute 'w !xxd -r > ' . new_file
-
-    echo "Reversed Hex file created and saved as " . new_file
-endfunction
-
-" Function to toggle between hex and original states
-function! HexState()
-    " Get user input to choose the operation (0 for DoHex, 1 for UndoHex)
-    let operation = input("Choose operation (0 for DoHex, 1 for UndoHex): ")
-
-    if operation == 0
-        " Execute the DoHex function
-        call DoHex()
-    elseif operation == 1
-        " Execute the UndoHex function
-        call UndoHex()
-    else
-        echo "Invalid choice. Aborting."
-    endif
-endfunction
-
-"------------------STATUS_LINE------------------
-
-
-" Status line
-	set laststatus=2
-	set statusline=
-	set statusline+=%2*
-	set statusline+=%{StatuslineMode()}
-	set statusline+=\
-	set statusline+=%{SpellCheckStatus()}
-	set statusline+=%1*
-	set statusline+=\
-	set statusline+=%3*
-	set statusline+=<
-	set statusline+=-
-	set statusline+=\
-	set statusline+=%f
-	set statusline+=\
-	set statusline+=-
-	set statusline+=>
-	set statusline+=\
-	set statusline+=%4*
-	set statusline+=%m
-	set statusline+=%=
-	set statusline+=%h
-	set statusline+=%r
-	set statusline+=%4*
-	set statusline+=%c
-	set statusline+=/
-	set statusline+=%l
-	set statusline+=/
-	set statusline+=%L
-	set statusline+=\
-	set statusline+=%1*
-	set statusline+=|
-	set statusline+=%y
-	set statusline+=\
-	set statusline+=%4*
-	set statusline+=%P
-	set statusline+=\
-	set statusline+=%3*
-	set statusline+=t:
-	set statusline+=%n
-	set statusline+=\
-
-
-" Colors
-	hi User2 ctermbg=lightgreen ctermfg=black guibg=lightgreen guifg=black
-	hi User1 ctermbg=brown ctermfg=white guibg=black guifg=white
-	hi User3 ctermbg=brown  ctermfg=lightcyan guibg=black guifg=lightblue
-	hi User4 ctermbg=brown ctermfg=green guibg=black guifg=lightgreen
-
-
-" Mode
-	function! StatuslineMode()
-	  let l:mode=mode()
-	  if l:mode==#"n"
-	    return "NORMAL"
-	  elseif l:mode==#"V"
-	    return "VISUAL LINE"
-	  elseif l:mode==?"v"
-	    return "VISUAL"
-	  elseif l:mode==#"i"
-	    return "INSERT"
-	  elseif l:mode ==# "\<C-V>"
-		return "V-BLOCK"
-	  elseif l:mode==#"R"
-	    return "REPLACE"
-	  elseif l:mode==?"s"
-	    return "SELECT"
-	  elseif l:mode==#"t"
-	    return "TERMINAL"
-	  elseif l:mode==#"c"
-	    return "COMMAND"
-	  elseif l:mode==#"!"
-	    return "SHELL"
-	  else
-		  return "VIM"
-	  endif
-	endfunction
+if s:MaySet('backspace')
+  set backspace=indent,eol,start
+endif
+" Disable completing keywords in included files (e.g., #include in C).  When
+" configured properly, this can result in the slow, recursive scanning of
+" hundreds of files of dubious relevance.
+set complete-=i
+if s:MaySet('smarttab')
+  set smarttab
+endif
+
+set nrformats-=octal
+
+" Make the escape key more responsive by decreasing the wait time for an
+" escape sequence (e.g., arrow keys).
+if !has('nvim') && &ttimeoutlen == -1
+  set ttimeout
+  set ttimeoutlen=100
+endif
+
+if has('reltime') && s:MaySet('incsearch')
+  set incsearch
+endif
+" Use CTRL-L to clear the highlighting of 'hlsearch' (off by default) and call
+" :diffupdate.
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+
+if s:MaySet('laststatus')
+  set laststatus=2
+endif
+if s:MaySet('ruler')
+  set ruler
+endif
+if s:MaySet('wildmenu')
+  set wildmenu
+endif
+
+if s:MaySet('scrolloff')
+  set scrolloff=1
+endif
+if s:MaySet('sidescroll') && s:MaySet('sidescrolloff')
+  set sidescroll=1
+  set sidescrolloff=2
+endif
+set display+=lastline
+if has('patch-7.4.2109')
+  set display+=truncate
+endif
+
+if s:MaySet('listchars')
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+" Delete comment character when joining commented lines.
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j
+endif
+
+" Replace the check for a tags file in the parent directory of the current
+" file with a check in every ancestor directory.
+if has('path_extra') && (',' . &g:tags . ',') =~# ',\./tags,'
+  setglobal tags-=./tags tags-=./tags; tags^=./tags;
+endif
+
+if s:MaySet('autoread')
+  set autoread
+endif
+
+if s:MaySet('history')
+  set history=1000
+endif
+if s:MaySet('tabpagemax')
+  set tabpagemax=50
+endif
+
+" Persist g:UPPERCASE variables, used by some plugins, in .viminfo.
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+" Saving options in session and view files causes more problems than it
+" solves, so disable it.
+set sessionoptions-=options
+set viewoptions-=options
+
+" Allow color schemes to do bright colors without forcing bold.
+" if &t_Co == 8 && $TERM !~# '^Eterm'
+"   set t_Co=16
+" endif
+
+" If the running Vim lacks support for the Fish shell, use Bash instead.
+if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
+  set shell=/usr/bin/env\ bash
+endif
+
+" Disable a legacy behavior that can break plugin maps.
+if has('langmap') && exists('+langremap') && &langremap && s:MaySet('langremap')
+  set nolangremap
+endif
+
+if !(exists('g:did_load_filetypes') && exists('g:did_load_ftplugin') && exists('g:did_indent_on'))
+  filetype plugin indent on
+endif
+
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
+if empty(mapcheck('<C-U>', 'i'))
+  inoremap <C-U> <C-G>u<C-U>
+endif
+
+if empty(mapcheck('<C-W>', 'i'))
+  inoremap <C-W> <C-G>u<C-W>
+endif
+
+" From `:help :DiffOrig`.
+if exists(":DiffOrig") != 2
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
+        \ | diffthis | wincmd p | diffthis
+endif
+
+" Correctly highlight $() and other modern affordances in filetype=sh.
+if !exists('g:is_posix') && !exists('g:is_bash') && !exists('g:is_kornshell') && !exists('g:is_dash')
+  let g:is_posix = 1
+endif
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
+" Enable the :Man command shipped inside Vim's man filetype plugin.
+if exists(':Man') != 2 && !exists('g:loaded_man') && &filetype !=? 'man' && !has('nvim')
+  runtime ftplugin/man.vim
+endif
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 
-
-" Spell Check Status
-	function! SpellCheckStatus()
-		if &spell
-			return " [SPELL]"
-		else
-			return ''
-		endif
-	endfunction
-
-
-
-
-"------------------KEY_BINDINGS------------------
-
-
-" Spell-check on\off
-	map <C-z> :setlocal spell! spelllang=en_us<CR>
-
-
-" Type jj to exit insert mode quickly.
-	inoremap jj <Esc>
-
-
-" Format a paragraph into lines
-	map Q gq<CR>
-
-
-" Set the space  as the leader key.
-	let mapleader = " "
-
-
-" Select all the text
-	nnoremap <leader>a ggVG
-
-
-" Opening a file explore
-	map <leader>e :Lex<CR>
-
-" Opening a file from explorer
-	map <leader>o :Explore<CR>
-
-" Opening a terminal window
-	map <c-t> :ter<CR>
-" Closing the terminal window
-	tnoremap <c-t> exit<CR>
-" CTRL+I OR Esc to make the terminal scrollable and I to input mode
-	tnoremap <c-i> <c-w><s-n>
-	tnoremap <Esc> <C-\><C-n>
-
-
-" You can split the window in Vim. y - in the y access , x - in the x access
-	map <leader>y :split<space>
-	map <leader>x :vsplit<space>
-
-
-" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
-	nnoremap <c-j> <c-w>j
-	nnoremap <c-k> <c-w>k
-	nnoremap <c-h> <c-w>h
-	nnoremap <c-l> <c-w>l
-
-
-" Resize split windows using arrow keys by pressing:
-" CTRL+UP, CTRL+DOWN, CTRL+LEFT, or CTRL+RIGHT.
-	noremap <a-up> <c-w>+
-	noremap <a-down> <c-w>-
-	noremap <a-left> <c-w>>
-	noremap <a-right> <c-w><
-
-
-" Moving between tabs
-	map <leader>t gt
-
-
-" Opening\Creating a file in a new tab - write the tab to open
-	nnoremap <leader>c :tabedit<space>
-
-
-" Saving a file using CTRL+S
-	map <C-S> :w<CR>
-
-
-" Quitting and saving a file using CTRL+S
-	map <C-q> :wq<CR>
-
-
-" Surround word with a wanted character
-	nnoremap <leader>sw <cmd>echo "Press a character: " \| let c = nr2char(getchar()) \| exec "normal viwo\ei" . c . "\eea" . c . "\e" \| redraw<CR>
-
-
-" Replace all occurrences of a word
-	nnoremap <leader>rw :%s/\<<c-r><c-w>\>//g<left><left>
-
-
-" Toggle Hebrew key maps and Right-to-Left setting
-	nnoremap <leader>ht <cmd>call ToggleHebrew()<CR>
-
-
-" Toggle between creating a Hex conversion file and reversing the conversion
-	nnoremap <leader>hx <cmd>call HexState()<CR>
-
-
-" Map V-Block to not confuse with Past
-	noremap <leader>v <C-v>
-
-
-" For copy and past
-	map <C-V> "+P
-	vnoremap <C-C> "*y :let @+=@*<CR>
-" If not in Linux replace the keybinding in above line with: vnoremap <C-C> "+y
-
-
-" Seeing the registers
-	nnoremap <leader>r <cmd>registers<CR>
-
-" Moving lines in visual mode
-	vnoremap J :m '>+1<CR>gv=gv
-	vnoremap K :m '>-2<CR>gv=gv
-
-
-"------------------END_KEY------------------
