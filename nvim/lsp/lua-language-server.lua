@@ -1,4 +1,5 @@
 return {
+    cmd = { 'lua-language-server' },
     settings = {
         Lua = {
             runtime = {
@@ -20,5 +21,5 @@ return {
             },
         },
     },
-    filetypes = { "lua" },
+    filetypes = { "lua" }
 }

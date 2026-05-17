@@ -1,7 +1,7 @@
 return {
     cmd = { 'gopls', 'serve' },
     filetypes = { "go", "gomod", "gowork" },
-    root_markers = {"go.work", "go.mod"},
+    root_markers = { "go.work", "go.mod" },
     single_file_support = true,
 
     settings = {
