@@ -34,14 +34,14 @@ require("lazy").setup({
     -- Arie (list and move between functions
     require("plugins.aerial"),
 
-    {
-        'bfrg/vim-cpp-modern',
-        ft = {
-            'c',
-            'cpp',
-        },
-        lazy = true,
-    },
+    -- {
+    --     'bfrg/vim-cpp-modern',
+    --     ft = {
+    --         'c',
+    --         'cpp',
+    --     },
+    --     lazy = true,
+    -- },
 
     -- {
     --     -- Zig
@@ -53,6 +53,10 @@ require("lazy").setup({
     -- Telescope
     require("plugins.telescope"),
 
+    -- Mason
+    require("plugins.mason"),
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+
     -- {
     --     'nvim-telescope/telescope-fzf-native.nvim',
     --     build = 'make',
@@ -60,10 +64,10 @@ require("lazy").setup({
     -- },
 
     -- Indent Blankline
-    require("plugins.indent"),
+    -- require("plugins.indent"),
 
     -- Treesitter
-    require("plugins.treesitter"),
+    -- require("plugins.treesitter"),
     -- require("plugins.leptos-treesitter"),
 
     -- NVIM Lint
@@ -73,16 +77,16 @@ require("lazy").setup({
     require("plugins.barbecue"),
 
     -- LSP server installer and manager
-    require("plugins.nvim-lspconfig"),
+    -- require("plugins.nvim-lspconfig"),
 
     -- Neovim plugin to manage global and project-local settings.
     require("plugins.neoconf"),
 
     -- Text and code completions
-    require("plugins.cmp"),
+    -- require("plugins.cmp"),
 
     -- Show Error in Trouble Window
-    require("plugins.trouble"),
+    -- require("plugins.trouble"),
 
     -- Prettier
     require("plugins.conform"),
@@ -95,7 +99,7 @@ require("lazy").setup({
     require("plugins.comment"),
 
     -- Neotest
-    require("plugins.vim-test"),
+    -- require("plugins.vim-test"),
     -- require("plugins.neotest"),
     -- require("plugins.neotest.bash"),
     -- require("plugins.neotest.rust"),

@@ -361,8 +361,8 @@ endif
 " augroup END
 
 " colorscheme habamax
-" colorscheme onedark
-colorscheme naysayer
+colorscheme onedark
+" colorscheme naysayer
 
 " -------------- vim sensible ------------------
 " Disable vi compatibility, if for some reason it's on.

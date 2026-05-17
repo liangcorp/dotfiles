@@ -89,6 +89,19 @@ vim.cmd([[colorscheme onedark]])
 -- Statusline without Plugins
 require('config/statusline')
 
+-- vim.lsp.enable({'clangd', 'rust-analyzer', 'pylsp', 'jdtlsa', 'lua_ls', 'groovyls', 'jsonls', 'ts_ls'})
+
+-- vim.keymap.set("n", "<leader>ls", function()
+--   -- If you are on Neovim 0.11+
+--   if vim.lsp.is_enabled({ 'clangd', 'rust-analyzer', 'pylsp', 'jdtlsa', 'lua_ls', 'groovyls', 'jsonls', 'ts_ls' }) then
+--     vim.lsp.enable(false, {'clangd', 'rust-analyzer', 'pylsp', 'jdtlsa', 'lua_ls', 'groovyls', 'jsonls', 'ts_ls'})
+--     print("LSP Disabled")
+--   else
+--     vim.lsp.enable(true, {'clangd', 'rust-analyzer', 'pylsp', 'jdtlsa', 'lua_ls', 'groovyls', 'jsonls', 'ts_ls'})
+--     print("LSP Enabled")
+--   end
+-- end, { desc = "Toggle LSP on/off" })
+
 -- LSP configurations
 -- require('lsp/config')
 -- require('lsp/completion')

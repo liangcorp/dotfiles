@@ -64,21 +64,6 @@ hi DiagnosticError guifg=#c74138 guibg=#062329
 hi DiagnosticUnderlineError guisp=#c74138
 hi DiagnosticHint guifg=#c7a538 guibg=#062329
 
-hi LazyNormal guibg=#062329 guifg=#d1b897
-hi LazyButton guibg=#062329 guifg=#d1b897
-hi LazyButtonActive guifg=#062329 guibg=#d1b897
-
-if exists(':Telescope')
-    hi TelescopeSelection guibg=#062329 guifg=#d1b897
-endif
-
-if exists(':Copilot')
-    hi CopilotSuggestion guifg=#555555 ctermfg=8
-endif
-
-hi MasonNormal guibg=#062329 guifg=#d1b897
-hi MasonHeading guibg=#062329 guifg=#d1b897
-
 hi TroublePreview guifg=#062329 guibg=#d1b897
 
 hi tomlTable guifg=#d1b897
