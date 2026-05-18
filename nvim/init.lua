@@ -58,7 +58,7 @@ autocmd('BufWritePre', {
     command = ":%s/\\s\\+$//e"
 })
 
-vim.cmd[[
+vim.cmd [[
     autocmd FileType * set formatoptions-=cro
     autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
     autocmd Filetype css setlocal tabstop=2 shiftwidth=2 expandtab
@@ -89,18 +89,30 @@ vim.cmd([[colorscheme onedark]])
 -- Statusline without Plugins
 require('config/statusline')
 
--- vim.lsp.enable({'clangd', 'rust-analyzer', 'pylsp', 'jdtlsa', 'lua_ls', 'groovyls', 'jsonls', 'ts_ls'})
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
+    end,
+})
 
--- vim.keymap.set("n", "<leader>ls", function()
---   -- If you are on Neovim 0.11+
---   if vim.lsp.is_enabled({ 'clangd', 'rust-analyzer', 'pylsp', 'jdtlsa', 'lua_ls', 'groovyls', 'jsonls', 'ts_ls' }) then
---     vim.lsp.enable(false, {'clangd', 'rust-analyzer', 'pylsp', 'jdtlsa', 'lua_ls', 'groovyls', 'jsonls', 'ts_ls'})
---     print("LSP Disabled")
---   else
---     vim.lsp.enable(true, {'clangd', 'rust-analyzer', 'pylsp', 'jdtlsa', 'lua_ls', 'groovyls', 'jsonls', 'ts_ls'})
---     print("LSP Enabled")
---   end
--- end, { desc = "Toggle LSP on/off" })
+-- vim.lsp.enable({
+--     'clangd',
+--     'rust-analyzer',
+--     'python-language-server',
+--     'java-language-server',
+--     'lua-language-server',
+--     'groovy-language-server',
+--     'vscode-json-language-server',
+--     'gopls',
+--     'typescript-language-server',
+--     'bash-language-server',
+--     'yaml-language-server'
+-- })
+
+-- vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 
 -- LSP configurations
 -- require('lsp/config')
