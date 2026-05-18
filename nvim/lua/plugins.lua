@@ -67,7 +67,7 @@ require("lazy").setup({
     -- require("plugins.indent"),
 
     -- Treesitter
-    -- require("plugins.treesitter"),
+    require("plugins.treesitter"),
     -- require("plugins.leptos-treesitter"),
 
     -- NVIM Lint
