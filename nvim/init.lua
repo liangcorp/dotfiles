@@ -114,11 +114,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 
--- LSP configurations
--- require('lsp/config')
--- require('lsp/completion')
--- require('lsp/bash')
-
 -- Keyboard keymaps
 require('keymaps/basic')
 require('keymaps/lsp')
@@ -128,19 +123,13 @@ require('keymaps/lsp')
 -- require('keymaps/harpoon')
 
 -- Aerial for indexing/traversing definitions
--- require('navigation/aerialline')
+require('navigation/aerialline')
 
 -- Telescope for fuzzy finding
--- require('navigation/telescopeconfig')
+require('navigation/telescopeconfig')
 
 -- Trouble window
 require('navigation/diagnostics')
-
--- Debugger nvim-dap
--- require('dap/config')
-
--- DAP for c/cpp/rust
--- require('dap/adapters')
 
 require('gitsigns').setup({
     on_attach = function(bufnr)
@@ -184,9 +173,6 @@ require('gitsigns').setup({
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
     end
 })
-
--- DAP for javascript and typescript
--- require('dap/javascript')
 
 --------------- Theme -----------------------
 -- vim.cmd [[
