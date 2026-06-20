@@ -24,6 +24,7 @@ hi Normal         guifg=#d1b897 guibg=#062329
 hi SignColumn     guibg=#062329
 " hi CursorLine     guibg=#062329 guifg=#d1b897
 hi CursorLine     cterm=none    term=none ctermbg=236 guibg='#2C323C'
+hi CursorLineNr   cterm=none    term=none ctermbg=236 guibg='#2C323C'
 hi StatusLine     guibg=#062329 guifg=#d1b897 gui=NONE
 hi StatusLineNC   guibg=#d1b897 guifg=#062329
 hi VertSplit      guifg=#d1b897 guibg=#062329
